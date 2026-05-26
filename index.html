@@ -4,1144 +4,1023 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Englisch Unit 3 — Around South Africa</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#0f1117;--surface:#181b25;--card:#1e2130;--brd:rgba(255,255,255,.09);
-  --brd2:rgba(255,255,255,.15);--text:#f0f1f5;--muted:#8b8fa8;--hint:#5a5e72;
-  --blue:#4a9eff;--blue2:#2563eb;--lblue:rgba(74,158,255,.12);
-  --green:#3dd68c;--lgreen:rgba(61,214,140,.12);
-  --orange:#ff8c42;--lorange:rgba(255,140,66,.12);
-  --red:#ff5757;--lred:rgba(255,87,87,.12);
-  --purple:#a78bfa;--lpurple:rgba(167,139,250,.12);
-  --yellow:#fbbf24;--lyellow:rgba(251,191,36,.12);
-  --r:14px;--r2:10px
+  --bg:#0a0c12;--s1:#111420;--s2:#161926;--card:#1c1f2e;
+  --brd:rgba(255,255,255,.08);--brd2:rgba(255,255,255,.14);
+  --tx:#eef0f8;--mu:#7b7f9a;--hi:#3d4060;
+  --bl:#4f9dff;--gr:#35d498;--or:#ff9248;--rd:#ff5c5c;--pu:#a98aff;--ye:#fbbf24;
+  --lbl:rgba(79,157,255,.13);--lgr:rgba(53,212,152,.13);--lor:rgba(255,146,72,.13);
+  --lrd:rgba(255,92,92,.13);--lpu:rgba(169,138,255,.13);--lye:rgba(251,191,36,.13)
 }
-body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px}
+body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;overflow-x:hidden}
 
-/* HEADER */
-.hdr{background:linear-gradient(135deg,#1a1f35 0%,#0f1117 100%);border-bottom:1px solid var(--brd);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-.hlogo{font-size:16px;font-weight:800;display:flex;align-items:center;gap:8px;color:#fff}
-.hlogo span{background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hright{display:flex;align-items:center;gap:10px}
-.countdown{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;background:var(--lred);color:var(--red);border:1px solid rgba(255,87,87,.3);padding:5px 12px;border-radius:20px}
-.pts-badge{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;background:var(--lyellow);color:var(--yellow);border:1px solid rgba(251,191,36,.3);padding:5px 12px;border-radius:20px}
+/* ── COUNTDOWN BAR ── */
+.topbar{background:var(--s1);border-bottom:1px solid var(--brd);padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:200}
+.logo{font-size:14px;font-weight:900;letter-spacing:-.3px}
+.logo em{font-style:normal;color:var(--bl)}
+.cd-wrap{display:flex;align-items:center;gap:10px}
+.cd-label{font-size:10px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.08em}
+.cd-boxes{display:flex;gap:5px}
+.cd-box{background:var(--s2);border:1px solid var(--brd2);border-radius:8px;padding:4px 8px;text-align:center;min-width:42px}
+.cd-num{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:var(--tx);line-height:1}
+.cd-unit{font-size:8px;color:var(--mu);font-weight:700;text-transform:uppercase;margin-top:1px}
+.cd-box.urgent{border-color:rgba(255,92,92,.4);background:var(--lrd)}
+.cd-box.urgent .cd-num{color:var(--rd)}
 
-/* NAV */
-.nav{display:flex;background:var(--surface);border-bottom:1px solid var(--brd);overflow-x:auto;padding:0 8px;-webkit-overflow-scrolling:touch}
-.nbt{padding:11px 14px;font-size:12px;font-weight:700;cursor:pointer;border:none;background:none;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;font-family:'Sora',sans-serif;white-space:nowrap;display:flex;align-items:center;gap:5px;transition:all .15s}
-.nbt:hover{color:var(--text)}
-.nbt.on{color:var(--blue);border-bottom-color:var(--blue)}
+/* ── PROGRESS OVERVIEW ── */
+.overview{padding:16px;background:var(--s1);border-bottom:1px solid var(--brd)}
+.ov-title{font-size:11px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.ov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.ov-item{background:var(--card);border:1px solid var(--brd);border-radius:10px;padding:10px 8px;text-align:center;cursor:pointer;transition:all .18s;position:relative}
+.ov-item:hover{transform:translateY(-2px);border-color:var(--brd2)}
+.ov-item.locked{opacity:.4;cursor:not-allowed}
+.ov-item.done{border-color:var(--gr)!important;background:rgba(53,212,152,.07)}
+.ov-item.done::after{content:'✓';position:absolute;top:5px;right:7px;font-size:10px;font-weight:900;color:var(--gr)}
+.ov-item.active{border-color:var(--bl);background:rgba(79,157,255,.08)}
+.ov-emoji{font-size:22px;margin-bottom:4px}
+.ov-name{font-size:10px;font-weight:700;line-height:1.3;color:var(--mu)}
+.ov-prog{height:3px;background:rgba(255,255,255,.06);border-radius:3px;margin-top:6px;overflow:hidden}
+.ov-prog-fill{height:100%;border-radius:3px;transition:width .5s}
 
-.wrap{max-width:760px;margin:0 auto;padding:16px 14px 100px}
-[data-pg]{display:none}[data-pg].show{display:block}
+/* ── MAIN AREA ── */
+.main{max-width:680px;margin:0 auto;padding:20px 14px 120px}
 
-/* CARDS */
-.card{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);padding:16px;margin-bottom:12px}
-.ch{font-weight:700;font-size:13px;margin-bottom:10px;display:flex;align-items:center;gap:7px;color:var(--text)}
+/* ── TOPIC CARD (learn screen) ── */
+.topic-hero{border-radius:16px;padding:20px;margin-bottom:16px;position:relative;overflow:hidden}
+.topic-hero h1{font-size:20px;font-weight:900;margin-bottom:4px}
+.topic-hero p{font-size:12px;opacity:.7;font-weight:600}
+.topic-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:800;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em}
 
-/* BOXES */
-.box{border-radius:var(--r2);padding:12px 14px;margin:8px 0;font-size:13px;font-weight:500;line-height:1.8}
-.box.b{background:var(--lblue);border:1px solid rgba(74,158,255,.25);color:#93c5fd}
-.box.g{background:var(--lgreen);border:1px solid rgba(61,214,140,.25);color:#6ee7b7}
-.box.y{background:var(--lyellow);border:1px solid rgba(251,191,36,.25);color:#fde68a}
-.box.r{background:var(--lred);border:1px solid rgba(255,87,87,.25);color:#fca5a5}
-.box.p{background:var(--lpurple);border:1px solid rgba(167,139,250,.25);color:#c4b5fd}
-.box.o{background:var(--lorange);border:1px solid rgba(255,140,66,.25);color:#fdba74}
+/* ── LEARN CARD ── */
+.lcard{background:var(--card);border:1px solid var(--brd);border-radius:14px;padding:16px;margin-bottom:12px}
+.lcard-title{font-size:11px;font-weight:800;color:var(--mu);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.lcard-title span{width:18px;height:18px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;flex-shrink:0}
 
-.formel{background:#1e2a3a;border:1px solid rgba(74,158,255,.3);border-radius:var(--r2);padding:13px;text-align:center;margin:9px 0;font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:var(--blue)}
-.formel .sub{font-size:11px;opacity:.6;margin-top:4px;font-family:'Sora',sans-serif;color:var(--muted);font-weight:500}
+/* ── RULE BOXES ── */
+.rule{border-radius:10px;padding:13px 14px;margin:7px 0;font-size:13px;font-weight:600;line-height:1.85}
+.rule.b{background:var(--lbl);border:1px solid rgba(79,157,255,.22);color:#93c5fd}
+.rule.g{background:var(--lgr);border:1px solid rgba(53,212,152,.22);color:#6ee7b7}
+.rule.y{background:var(--lye);border:1px solid rgba(251,191,36,.22);color:#fde68a}
+.rule.r{background:var(--lrd);border:1px solid rgba(255,92,92,.22);color:#fca5a5}
+.rule.p{background:var(--lpu);border:1px solid rgba(169,138,255,.22);color:#c4b5fd}
+.rule.o{background:var(--lor);border:1px solid rgba(255,146,72,.22);color:#fdba74}
 
-/* EXAMPLE TABLE */
-.ex-table{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0}
-.ex-table th{padding:8px 10px;text-align:left;font-size:11px;font-weight:700;color:var(--muted);border-bottom:1px solid var(--brd);text-transform:uppercase;letter-spacing:.05em}
-.ex-table td{padding:8px 10px;border-bottom:1px solid var(--brd);vertical-align:top;line-height:1.6}
-.ex-table tr:last-child td{border-bottom:none}
-.ex-table .de{color:var(--muted)}
-.ex-table .en{color:var(--text);font-weight:600}
-.ex-table .gram{color:var(--blue);font-family:'JetBrains Mono',monospace;font-size:11px}
+.formula{background:#0f1c2e;border:1px solid rgba(79,157,255,.3);border-radius:10px;padding:14px;text-align:center;margin:9px 0;font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:var(--bl)}
+.formula small{display:block;font-size:11px;color:var(--mu);margin-top:4px;font-family:'Sora',sans-serif;font-weight:600}
 
-/* STEPS */
-.steps{display:flex;flex-direction:column;gap:7px;margin:8px 0}
-.step{display:flex;gap:9px;align-items:flex-start;padding:10px 12px;background:rgba(74,158,255,.06);border-radius:var(--r2);border-left:3px solid var(--blue)}
-.sn{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;background:var(--blue);color:#fff;padding:2px 7px;border-radius:5px;flex-shrink:0;margin-top:2px}
-.st{font-size:12px;font-weight:500;flex:1;line-height:1.7;color:var(--text)}
+/* ── EXAMPLES TABLE ── */
+.etable{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0}
+.etable th{padding:7px 10px;text-align:left;font-size:10px;font-weight:800;color:var(--hi);border-bottom:1px solid var(--brd);text-transform:uppercase;letter-spacing:.05em}
+.etable td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.04);line-height:1.65;vertical-align:top}
+.etable tr:last-child td{border-bottom:none}
+.etable .de{color:var(--mu);font-style:italic}
+.etable .en{color:var(--tx);font-weight:600}
+.etable .gram{color:var(--bl);font-family:'JetBrains Mono',monospace;font-size:11px}
+.etable .hl{color:var(--gr);font-weight:800;font-family:'JetBrains Mono',monospace}
 
-/* HERO */
-.hero{border-radius:var(--r);padding:16px 18px;margin-bottom:13px;position:relative;overflow:hidden}
-.hero h2{font-size:17px;font-weight:800;margin-bottom:3px}
-.hero p{font-size:11px;opacity:.65}
-.hi{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:52px;opacity:.08}
+/* ── QUIZ ── */
+.quiz-wrap{background:var(--s2);border:1px solid var(--brd);border-radius:16px;padding:18px;margin-top:16px}
+.quiz-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.quiz-title{font-size:13px;font-weight:800;color:var(--tx)}
+.quiz-counter{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--mu)}
+.qprog{height:4px;background:rgba(255,255,255,.06);border-radius:4px;margin-bottom:16px;overflow:hidden}
+.qprog-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--bl),var(--pu));transition:width .4s}
+.q-text{font-size:14px;font-weight:700;line-height:1.6;color:var(--tx);margin-bottom:14px}
+.q-de{font-size:11px;color:var(--mu);font-weight:600;margin-bottom:12px;font-style:italic}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px}
+.opt{padding:11px 13px;border-radius:10px;border:1px solid var(--brd);background:rgba(255,255,255,.03);font-size:12px;font-weight:700;cursor:pointer;transition:all .12s;text-align:left;color:var(--tx);font-family:'Sora',sans-serif;line-height:1.5}
+.opt:hover:not(:disabled){border-color:var(--bl);background:var(--lbl);color:var(--bl)}
+.opt.ok{border-color:var(--gr)!important;background:var(--lgr)!important;color:var(--gr)!important}
+.opt.no{border-color:var(--rd)!important;background:var(--lrd)!important;color:var(--rd)!important;animation:shake .3s}
+.opt:disabled{cursor:default}
+.q-feedback{font-size:12px;font-weight:700;min-height:18px;padding:0 2px;margin-bottom:10px}
+.q-feedback.ok{color:var(--gr)}.q-feedback.no{color:var(--rd)}
+.q-explain{background:rgba(255,255,255,.04);border-radius:8px;padding:10px 12px;font-size:12px;font-weight:600;line-height:1.7;color:var(--mu);margin-bottom:10px;display:none}
+.q-explain.show{display:block}
 
-/* AUFGABEN / ÜBUNGEN */
-.aufg{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);margin-bottom:12px;overflow:hidden;transition:border-color .2s}
-.aufg:hover{border-color:var(--brd2)}
-.aufg-head{padding:11px 15px;display:flex;align-items:center;justify-content:space-between;gap:8px;border-bottom:1px solid var(--brd)}
-.aufg-titel{font-weight:700;font-size:12px;display:flex;align-items:center;gap:6px;color:var(--text)}
-.aufg-pts{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;background:var(--lblue);border-radius:20px;padding:2px 9px;color:var(--blue)}
-.aufg-body{padding:13px 15px}
-.aufg-q{font-size:13px;font-weight:600;line-height:1.7;margin-bottom:10px;background:var(--lyellow);border-left:3px solid var(--yellow);padding:9px 12px;border-radius:0 var(--r2) var(--r2) 0;color:var(--yellow)}
+/* fill-in-blank style */
+.fill-inp{background:rgba(255,255,255,.05);border:1.5px solid var(--brd2);border-radius:8px;padding:9px 13px;font-size:13px;font-weight:700;color:var(--tx);width:100%;margin-bottom:8px;outline:none;font-family:'JetBrains Mono',monospace;transition:border .15s}
+.fill-inp:focus{border-color:var(--bl)}
+.fill-inp.ok{border-color:var(--gr)!important;background:var(--lgr)!important;color:var(--gr)!important}
+.fill-inp.no{border-color:var(--rd)!important;background:var(--lrd)!important;color:var(--rd)!important}
+.chk-btn{width:100%;padding:11px;background:var(--bl);border:none;border-radius:10px;color:#fff;font-size:13px;font-weight:800;cursor:pointer;font-family:'Sora',sans-serif;transition:all .12s;margin-bottom:8px}
+.chk-btn:hover{background:#3a8ef0;transform:translateY(-1px)}
+.chk-btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
 
-/* MULTIPLE CHOICE */
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:9px 0}
-.opt{padding:10px 12px;border-radius:var(--r2);border:1px solid var(--brd);background:rgba(255,255,255,.03);font-size:12px;font-weight:600;cursor:pointer;transition:all .12s;text-align:left;color:var(--text);font-family:'Sora',sans-serif;line-height:1.5}
-.opt:hover:not(:disabled){border-color:var(--blue);background:var(--lblue);color:var(--blue)}
-.opt.ok{border-color:var(--green)!important;background:var(--lgreen)!important;color:var(--green)!important}
-.opt.no{border-color:var(--red)!important;background:var(--lred)!important;color:var(--red)!important}
-.opt:disabled{cursor:default;opacity:.8}
+/* ── MASTERY GATE ── */
+.gate{background:linear-gradient(135deg,rgba(53,212,152,.1),rgba(79,157,255,.08));border:2px solid var(--gr);border-radius:16px;padding:20px;text-align:center;margin-top:16px}
+.gate h2{font-size:18px;font-weight:900;color:var(--gr);margin-bottom:6px}
+.gate p{font-size:12px;color:var(--mu);font-weight:600;margin-bottom:14px}
+.next-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--gr);border:none;border-radius:12px;color:#0a2018;font-size:13px;font-weight:900;cursor:pointer;font-family:'Sora',sans-serif;transition:all .15s}
+.next-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(53,212,152,.3)}
 
-/* TEXT INPUT */
-.ainp{padding:9px 12px;border:1px solid var(--brd);border-radius:var(--r2);font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;width:160px;outline:none;background:rgba(255,255,255,.04);color:var(--text);transition:border .15s}
-.ainp:focus{border-color:var(--blue);background:var(--lblue)}
-.ainp.ok{border-color:var(--green)!important;background:var(--lgreen)!important;color:var(--green)!important}
-.ainp.no{border-color:var(--red)!important;background:var(--lred)!important}
-.ainp-row{display:flex;gap:8px;align-items:center;margin:8px 0;flex-wrap:wrap}
-.ainp-row label{font-size:12px;font-weight:700;color:var(--muted)}
-.achk{padding:9px 16px;background:var(--blue);border:none;border-radius:var(--r2);color:#fff;font-size:12px;font-weight:700;cursor:pointer;font-family:'Sora',sans-serif;transition:all .12s}
-.achk:hover{background:#3b8ee8;transform:translateY(-1px)}
-.afb{font-size:12px;font-weight:700;margin-top:6px;min-height:17px;color:var(--muted)}
-.afb.ok{color:var(--green)}.afb.no{color:var(--red)}
+.retry-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:transparent;border:1px solid var(--brd2);border-radius:12px;color:var(--mu);font-size:12px;font-weight:700;cursor:pointer;font-family:'Sora',sans-serif;margin-top:8px;transition:all .12s}
+.retry-btn:hover{border-color:var(--bl);color:var(--bl)}
 
-/* LÖSUNG */
-.loes-btn{padding:6px 13px;background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.3);border-radius:var(--r2);color:var(--purple);font-size:11px;font-weight:700;cursor:pointer;font-family:'Sora',sans-serif;margin-top:8px;transition:all .12s}
-.loes-btn:hover{background:rgba(167,139,250,.2)}
-.loes-box{display:none;margin-top:9px;padding:11px 13px;background:var(--lgreen);border:1px solid rgba(61,214,140,.25);border-radius:var(--r2);font-size:12px;font-weight:600;line-height:1.9;color:#6ee7b7;font-family:'JetBrains Mono',monospace}
+/* ── FAIL GATE ── */
+.fail-gate{background:rgba(255,92,92,.07);border:2px solid rgba(255,92,92,.3);border-radius:16px;padding:20px;text-align:center;margin-top:16px}
+.fail-gate h2{font-size:17px;font-weight:900;color:var(--rd);margin-bottom:6px}
+.fail-gate p{font-size:12px;color:var(--mu);font-weight:600;margin-bottom:14px}
 
-/* THEMEN GRID */
-.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:12px}
-.tc{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);padding:14px;cursor:pointer;transition:all .18s;text-align:center}
-.tc:hover{border-color:var(--blue);transform:translateY(-2px);box-shadow:0 8px 24px rgba(74,158,255,.12)}
-.tc.dn{border-color:var(--green);background:rgba(61,214,140,.05)}
-.tc-n{font-size:9px;font-weight:700;color:var(--hint);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em;font-family:'JetBrains Mono',monospace}
-.tc-i{font-size:28px;margin-bottom:5px}
-.tc-t{font-size:11px;font-weight:700;line-height:1.4;color:var(--text)}
-.back{display:inline-flex;align-items:center;gap:5px;padding:7px 13px;background:var(--card);border:1px solid var(--brd);border-radius:20px;color:var(--muted);font-size:12px;font-weight:700;cursor:pointer;font-family:'Sora',sans-serif;margin-bottom:12px;transition:all .12s}
-.back:hover{border-color:var(--blue);color:var(--text)}
+/* ── HOME SCREEN ── */
+.home-hero{background:linear-gradient(135deg,#131830,#0a0c12);border:1px solid rgba(79,157,255,.15);border-radius:18px;padding:24px;margin-bottom:16px;text-align:center}
+.home-hero h1{font-size:24px;font-weight:900;margin-bottom:6px}
+.home-hero h1 em{font-style:normal;color:var(--bl)}
+.home-hero p{font-size:12px;color:var(--mu);font-weight:600;margin-bottom:16px}
+.home-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.hstat{background:rgba(255,255,255,.04);border:1px solid var(--brd);border-radius:10px;padding:12px 8px;text-align:center}
+.hstat-n{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--tx)}
+.hstat-l{font-size:10px;color:var(--mu);font-weight:700;margin-top:2px}
 
-/* PROGRESS */
-.prog-bar{background:rgba(255,255,255,.07);border-radius:20px;height:5px;overflow:hidden;margin:5px 0}
-.prog-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--purple));border-radius:20px;transition:width .5s}
+.topic-list{display:flex;flex-direction:column;gap:10px}
+.titem{background:var(--card);border:1px solid var(--brd);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all .18s;position:relative;overflow:hidden}
+.titem:hover:not(.locked){transform:translateY(-2px);border-color:var(--brd2);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.titem.done{border-color:rgba(53,212,152,.35);background:rgba(53,212,152,.05)}
+.titem.active{border-color:rgba(79,157,255,.4);background:rgba(79,157,255,.07)}
+.titem.locked{opacity:.35;cursor:not-allowed}
+.titem-emoji{font-size:28px;flex-shrink:0}
+.titem-body{flex:1}
+.titem-title{font-size:14px;font-weight:800;color:var(--tx);margin-bottom:3px}
+.titem-sub{font-size:11px;color:var(--mu);font-weight:600}
+.titem-right{flex-shrink:0;text-align:right}
+.titem-status{font-size:11px;font-weight:800;padding:3px 10px;border-radius:20px}
+.titem-status.done{background:var(--lgr);color:var(--gr)}
+.titem-status.active{background:var(--lbl);color:var(--bl)}
+.titem-status.locked{background:rgba(255,255,255,.06);color:var(--mu)}
+.titem-status.todo{background:rgba(255,255,255,.06);color:var(--mu)}
+.titem-bar{height:3px;background:rgba(255,255,255,.06);border-radius:3px;margin-top:6px;overflow:hidden}
+.titem-bar-fill{height:100%;border-radius:3px;transition:width .5s}
 
-/* VOCAB GRID */
-.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:8px 0}
-.vocab-card{background:rgba(255,255,255,.03);border:1px solid var(--brd);border-radius:var(--r2);padding:10px 12px;cursor:pointer;transition:all .15s;position:relative}
-.vocab-card:hover{border-color:var(--brd2);background:rgba(255,255,255,.05)}
-.vocab-card.flipped .vc-de{display:none}
-.vocab-card.flipped .vc-en{display:block}
-.vc-de{font-size:12px;font-weight:600;color:var(--muted)}
-.vc-en{display:none;font-size:13px;font-weight:700;color:var(--blue)}
-.vc-hint{font-size:10px;color:var(--hint);margin-top:2px}
-
-/* TIMER SETUP */
-.time-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:12px 0}
-.time-btn{padding:12px;border:1px solid var(--brd);border-radius:var(--r2);background:var(--card);cursor:pointer;text-align:center;transition:all .15s;font-family:'Sora',sans-serif;color:var(--text)}
-.time-btn:hover{border-color:var(--blue);background:var(--lblue);color:var(--blue)}
-.time-btn.sel{border-color:var(--blue);background:var(--lblue)}
-.time-btn .tb-t{font-size:18px;font-weight:800;color:var(--blue)}
-.time-btn .tb-s{font-size:11px;color:var(--muted);margin-top:2px;font-weight:600}
-
-/* TOAST */
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--blue);color:#fff;padding:9px 20px;border-radius:36px;font-weight:700;font-size:12px;z-index:300;transition:transform .25s;pointer-events:none;box-shadow:0 4px 20px rgba(74,158,255,.4)}
+/* ── TOAST ── */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(70px);background:#fff;color:#0a0c12;padding:10px 20px;border-radius:40px;font-weight:800;font-size:12px;z-index:999;transition:transform .25s;pointer-events:none;box-shadow:0 8px 30px rgba(0,0,0,.5)}
 .toast.show{transform:translateX(-50%) translateY(0)}
 
-/* TEST SECTION */
-.test-q{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);padding:14px;margin-bottom:10px}
-.test-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--muted);margin-bottom:6px}
-.test-text{font-size:13px;font-weight:600;line-height:1.7;margin-bottom:10px;color:var(--text)}
-.test-inp{width:100%;padding:9px 12px;border:1px solid var(--brd);border-radius:var(--r2);background:rgba(255,255,255,.04);color:var(--text);font-size:13px;font-family:'Sora',sans-serif;outline:none;transition:border .15s}
-.test-inp:focus{border-color:var(--blue)}
-.test-inp.ok{border-color:var(--green)!important;background:var(--lgreen)!important;color:var(--green)!important}
-.test-inp.no{border-color:var(--red)!important;background:var(--lred)!important}
+/* ── NAV BAR (bottom) ── */
+.botbar{position:fixed;bottom:0;left:0;right:0;background:var(--s1);border-top:1px solid var(--brd);display:flex;z-index:100}
+.bbt{flex:1;padding:12px 8px 14px;border:none;background:none;color:var(--mu);font-size:9px;font-weight:800;cursor:pointer;font-family:'Sora',sans-serif;text-transform:uppercase;letter-spacing:.06em;display:flex;flex-direction:column;align-items:center;gap:4px;transition:color .15s}
+.bbt svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.bbt.on{color:var(--bl)}
 
-/* SCROLLBAR */
-::-webkit-scrollbar{width:5px;height:5px}
-::-webkit-scrollbar-track{background:var(--surface)}
-::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:10px}
+/* ── ALL DONE SCREEN ── */
+.all-done{text-align:center;padding:40px 20px}
+.all-done .big{font-size:64px;margin-bottom:16px}
+.all-done h1{font-size:26px;font-weight:900;margin-bottom:8px;color:var(--gr)}
+.all-done p{font-size:13px;color:var(--mu);font-weight:600;line-height:1.7;max-width:320px;margin:0 auto 20px}
 
-@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
-@keyframes pop{0%{transform:scale(.92)}60%{transform:scale(1.05)}100%{transform:scale(1)}}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* ── SCREENS ── */
+.screen{display:none}.screen.on{display:block}
 
-.fade-in{animation:fadeIn .35s ease forwards}
-
-/* DEADLINE WARNING */
-.deadline-warning{background:rgba(255,87,87,.08);border:1px solid rgba(255,87,87,.25);border-radius:var(--r);padding:12px 14px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
-.dw-text{font-size:12px;font-weight:600;color:var(--red)}
-
-.tag{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700}
-.tag.blue{background:var(--lblue);color:var(--blue)}
-.tag.green{background:var(--lgreen);color:var(--green)}
-.tag.orange{background:var(--lorange);color:var(--orange)}
-
-strong.h{color:var(--blue)}
-strong.r{color:var(--red)}
-strong.g{color:var(--green)}
-strong.o{color:var(--orange)}
-
-.fill-blank{display:inline-block;border-bottom:1px solid var(--blue);min-width:80px;color:var(--blue);font-weight:700;padding:0 4px;font-family:'JetBrains Mono',monospace}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes pop{0%{transform:scale(.9)}60%{transform:scale(1.06)}100%{transform:scale(1)}}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.fadein{animation:fade .3s ease forwards}
 </style>
 </head>
 <body>
 
-<header class="hdr">
-  <div class="hlogo">🌍 <span>South Africa</span> &nbsp;Englisch Unit 3</div>
-  <div class="hright">
-    <div class="pts-badge">⭐ <span id="pts">0</span> Pkt</div>
-    <div class="countdown" id="deadline-cd">Arbeit: 28.05. 10:30</div>
+<!-- ── TOP BAR ── -->
+<div class="topbar">
+  <div class="logo">🌍 <em>South Africa</em> Englisch</div>
+  <div class="cd-wrap">
+    <div class="cd-label">Arbeit in</div>
+    <div class="cd-boxes">
+      <div class="cd-box" id="cd-d"><div class="cd-num" id="cd-dn">--</div><div class="cd-unit">Tage</div></div>
+      <div class="cd-box" id="cd-h"><div class="cd-num" id="cd-hn">--</div><div class="cd-unit">Std</div></div>
+      <div class="cd-box" id="cd-m"><div class="cd-num" id="cd-mn">--</div><div class="cd-unit">Min</div></div>
+      <div class="cd-box" id="cd-s"><div class="cd-num" id="cd-sn">--</div><div class="cd-unit">Sek</div></div>
+    </div>
   </div>
-</header>
-
-<div class="nav">
-  <button class="nbt on" onclick="switchPg('lernen',this)"><i class="ti ti-book-2"></i> Lernen</button>
-  <button class="nbt" onclick="switchPg('grammar',this)"><i class="ti ti-grammar"></i> Grammatik</button>
-  <button class="nbt" onclick="switchPg('vocab',this)"><i class="ti ti-vocabulary"></i> Vokabeln</button>
-  <button class="nbt" onclick="switchPg('uebungen',this)"><i class="ti ti-pencil"></i> Übungen</button>
-  <button class="nbt" onclick="switchPg('test',this)"><i class="ti ti-clipboard-check"></i> Test / Probe</button>
 </div>
 
-<div class="wrap">
+<!-- ── PROGRESS BAR (topic pills) ── -->
+<div class="overview">
+  <div class="ov-title">Dein Fortschritt — alle 5 Themen müssen ✓ sein!</div>
+  <div class="ov-grid" id="ov-grid"></div>
+</div>
 
-<!-- ═══════ LERNEN ═══════ -->
-<div data-pg="lernen" class="show">
+<!-- ── MAIN ── -->
+<div class="main">
 
-  <div id="learn-picker">
-    <div class="deadline-warning">
-      <i class="ti ti-alarm" style="color:var(--red);font-size:20px;flex-shrink:0" aria-hidden="true"></i>
-      <div class="dw-text">Klassenarbeit: <strong>Mittwoch, 28.05.2026 um 10:30 Uhr</strong> — du hast noch <strong id="days-left">...</strong>! Nutze die Zeit gut!</div>
-    </div>
-
-    <div style="background:linear-gradient(135deg,#1a2744,#0f1117);border:1px solid rgba(74,158,255,.2);border-radius:var(--r);padding:16px 18px;margin-bottom:14px;text-align:center">
-      <div style="font-size:36px;margin-bottom:6px">🌍</div>
-      <div style="font-size:18px;font-weight:800;color:#fff;margin-bottom:3px">Around South Africa</div>
-      <div style="font-size:11px;color:var(--muted)">Alles was du für die Arbeit am 28.05. brauchst</div>
-      <div style="display:flex;justify-content:center;gap:8px;margin-top:10px;flex-wrap:wrap">
-        <span class="tag blue">Present Participle</span>
-        <span class="tag green">Past Perfect</span>
-        <span class="tag orange">Passive Voice</span>
+  <!-- HOME -->
+  <div class="screen on" id="sc-home">
+    <div class="home-hero">
+      <div style="font-size:48px;margin-bottom:10px">🌍</div>
+      <h1>Englisch Unit 3<br><em>Around South Africa</em></h1>
+      <p>Lerne jedes Thema — du kommst erst weiter,<br>wenn du die Fragen wirklich beherrschst!</p>
+      <div class="home-stats">
+        <div class="hstat"><div class="hstat-n" id="hs-done">0/5</div><div class="hstat-l">Themen fertig</div></div>
+        <div class="hstat"><div class="hstat-n" id="hs-streak">0</div><div class="hstat-l">Richtig hintereinander</div></div>
+        <div class="hstat"><div class="hstat-n" id="hs-pts">0</div><div class="hstat-l">Punkte</div></div>
       </div>
     </div>
-
-    <div class="tgrid" id="tgrid"></div>
+    <div class="topic-list" id="topic-list"></div>
   </div>
 
-  <div id="learn-lesson" style="display:none">
-    <div id="ll-content"></div>
+  <!-- LEARN -->
+  <div class="screen" id="sc-learn">
+    <div id="learn-content"></div>
   </div>
 
-</div>
+  <!-- QUIZ -->
+  <div class="screen" id="sc-quiz">
+    <div id="quiz-content"></div>
+  </div>
 
-<!-- ═══════ GRAMMATIK ═══════ -->
-<div data-pg="grammar">
-  <div id="gram-picker">
-    <div class="tgrid">
-      <div class="tc" onclick="openGram('pp')"><div class="tc-n">G5</div><div class="tc-i">🔵</div><div class="tc-t">Present Participle</div></div>
-      <div class="tc" onclick="openGram('past')"><div class="tc-n">G6</div><div class="tc-i">🟠</div><div class="tc-t">Past Perfect</div></div>
-      <div class="tc" onclick="openGram('passive')"><div class="tc-n">G7</div><div class="tc-i">🟢</div><div class="tc-t">Passive Voice</div></div>
+  <!-- ALL DONE -->
+  <div class="screen" id="sc-alldone">
+    <div class="all-done fadein">
+      <div class="big">🏆</div>
+      <h1>Alles gelernt!</h1>
+      <p>Du hast alle 5 Themen gemeistert. Du bist bereit für die Arbeit am 28.05.! Mach kurz vor der Arbeit nochmal eine Runde zur Sicherheit.</p>
+      <button class="next-btn" onclick="resetAll()">🔄 Alles nochmal üben</button>
     </div>
   </div>
-  <div id="gram-detail" style="display:none"><div id="gram-content"></div></div>
+
 </div>
 
-<!-- ═══════ VOKABELN ═══════ -->
-<div data-pg="vocab">
-  <div class="card">
-    <div class="ch"><i class="ti ti-cards" aria-hidden="true"></i> Vokabeln Unit 3 — Klick eine Karte um die Übersetzung zu sehen!</div>
-    <div style="font-size:11px;color:var(--muted);margin-bottom:10px">Tippe auf eine Karte → Englisch erscheint. Nochmal tippen → zurück.</div>
-    <div class="vocab-grid" id="vocab-grid"></div>
-  </div>
-  <div class="card" style="margin-top:12px">
-    <div class="ch"><i class="ti ti-refresh" aria-hidden="true"></i> Vokabel-Quiz</div>
-    <div id="vq-area"><button class="achk" onclick="startVQ()" style="width:100%">Vokabel-Quiz starten ↗</button></div>
-  </div>
+<!-- ── BOTTOM NAV ── -->
+<div class="botbar">
+  <button class="bbt on" id="nav-home" onclick="goHome()">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Start
+  </button>
+  <button class="bbt" id="nav-voc" onclick="goVoc()">
+    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    Vokabeln
+  </button>
+  <button class="bbt" id="nav-gram" onclick="goGram()">
+    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+    Grammatik
+  </button>
 </div>
-
-<!-- ═══════ ÜBUNGEN ═══════ -->
-<div data-pg="uebungen">
-  <div id="ueb-picker">
-    <div class="tgrid">
-      <div class="tc" onclick="openUeb('pp')"><div class="tc-n">Übung 1</div><div class="tc-i">✏️</div><div class="tc-t">Present Participle</div></div>
-      <div class="tc" onclick="openUeb('pastperfect')"><div class="tc-n">Übung 2</div><div class="tc-i">📝</div><div class="tc-t">Past Perfect</div></div>
-      <div class="tc" onclick="openUeb('passive')"><div class="tc-n">Übung 3</div><div class="tc-i">📖</div><div class="tc-t">Passive Voice</div></div>
-      <div class="tc" onclick="openUeb('mixed')"><div class="tc-n">Übung 4</div><div class="tc-i">🎯</div><div class="tc-t">Gemischte Aufgaben</div></div>
-    </div>
-  </div>
-  <div id="ueb-detail" style="display:none"><div id="ueb-content"></div></div>
-</div>
-
-<!-- ═══════ TEST ═══════ -->
-<div data-pg="test">
-  <div id="test-setup">
-    <div style="background:linear-gradient(135deg,#1f1a35,#0f1117);border:1px solid rgba(167,139,250,.2);border-radius:var(--r);padding:16px;margin-bottom:14px;text-align:center">
-      <div style="font-size:32px;margin-bottom:6px">📝</div>
-      <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:3px">Test & Probearbeit</div>
-      <div style="font-size:11px;color:var(--muted)">Wie lange hast du Zeit? Der Test wird passend generiert!</div>
-    </div>
-    <div class="card">
-      <div class="ch">Wie viel Zeit hast du?</div>
-      <div class="time-grid">
-        <div class="time-btn" onclick="selTime(10,this)"><div class="tb-t">10 min</div><div class="tb-s">Mini-Test (5 Fragen)</div></div>
-        <div class="time-btn" onclick="selTime(20,this)"><div class="tb-t">20 min</div><div class="tb-s">Kurz-Test (10 Fragen)</div></div>
-        <div class="time-btn" onclick="selTime(30,this)"><div class="tb-t">30 min</div><div class="tb-s">Test (15 Fragen)</div></div>
-        <div class="time-btn" onclick="selTime(45,this)"><div class="tb-t">45 min</div><div class="tb-s">Probearbeit (20 Fragen)</div></div>
-        <div class="time-btn" onclick="selTime(60,this)"><div class="tb-t">60 min</div><div class="tb-s">Vollständige Arbeit</div></div>
-        <div class="time-btn" onclick="selTime(90,this)"><div class="tb-t">90 min</div><div class="tb-s">Intensiv-Training</div></div>
-      </div>
-      <div style="margin-top:8px">
-        <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px">Was soll abgefragt werden?</div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <label style="display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;cursor:pointer"><input type="checkbox" id="cb-pp" checked> Present Participle</label>
-          <label style="display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;cursor:pointer"><input type="checkbox" id="cb-past" checked> Past Perfect</label>
-          <label style="display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;cursor:pointer"><input type="checkbox" id="cb-pass" checked> Passive</label>
-          <label style="display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;cursor:pointer"><input type="checkbox" id="cb-voc" checked> Vokabeln</label>
-        </div>
-      </div>
-      <button class="achk" onclick="startTest()" style="width:100%;margin-top:12px;padding:12px;font-size:13px" id="start-test-btn" disabled>Zuerst Zeit auswählen ↑</button>
-    </div>
-  </div>
-  <div id="test-area" style="display:none"><div id="test-content"></div></div>
-  <div id="test-result" style="display:none"><div id="test-result-content"></div></div>
-</div>
-
-</div><!-- /wrap -->
 
 <div class="toast" id="toast"></div>
 
 <script>
-// ═══ STATE ═══
-let pts=0,ans={},dT={},selTimeMin=0;
-function sv(){try{localStorage.setItem('sa_eng',JSON.stringify({pts,ans,dT}));}catch(e){}}
-function ld(){try{const d=JSON.parse(localStorage.getItem('sa_eng')||'{}');pts=d.pts||0;ans=d.ans||{};dT=d.dT||{};document.getElementById('pts').textContent=pts;}catch(e){}}
+// ══════════════════════════════════════════
+//  STATE
+// ══════════════════════════════════════════
+const DEADLINE = new Date('2026-05-28T10:30:00');
 
-// ═══ DEADLINE ═══
-function updateDeadline(){
-  const target=new Date('2026-05-28T10:30:00');
-  const now=new Date();
-  const diff=target-now;
-  if(diff<=0){
-    document.getElementById('days-left').textContent='die Arbeit hat begonnen!';
-    document.getElementById('deadline-cd').textContent='⏰ Zeit abgelaufen!';
+let state = {
+  done: [],        // topic ids completed
+  streak: 0,
+  pts: 0,
+  currentTopic: null,
+  quizIdx: 0,
+  quizPool: [],
+  quizWrong: [],
+  quizPassed: false,
+};
+
+function save() { try { localStorage.setItem('sa26', JSON.stringify(state)); } catch(e){} }
+function load() {
+  try {
+    const d = JSON.parse(localStorage.getItem('sa26') || '{}');
+    if (d.done) state.done = d.done;
+    if (d.pts) state.pts = d.pts;
+    if (d.streak) state.streak = d.streak;
+  } catch(e) {}
+}
+
+// ══════════════════════════════════════════
+//  COUNTDOWN
+// ══════════════════════════════════════════
+function tick() {
+  const diff = DEADLINE - Date.now();
+  if (diff <= 0) {
+    ['d','h','m','s'].forEach(u => {
+      document.getElementById('cd-'+u+'n').textContent = '00';
+      document.getElementById('cd-'+u).classList.add('urgent');
+    });
     return;
   }
-  const d=Math.floor(diff/86400000);
-  const h=Math.floor((diff%86400000)/3600000);
-  const m=Math.floor((diff%3600000)/60000);
-  const s=Math.floor((diff%60000)/1000);
-  const total=Math.floor(diff/1000);
-  document.getElementById('days-left').textContent=`noch ${d}T ${h}h ${m}m ${s}s`;
-  document.getElementById('deadline-cd').textContent=`⏰ ${d}T ${h}h ${m}m ${s}s`;
-  // color urgency
-  const cd=document.getElementById('deadline-cd');
-  if(d===0&&h<3){cd.style.background='rgba(255,87,87,.25)';cd.style.borderColor='rgba(255,87,87,.5)';}
-  else if(d<=1){cd.style.background='rgba(255,140,66,.15)';cd.style.color='var(--orange)';cd.style.borderColor='rgba(255,140,66,.35)';}
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-dn').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-hn').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mn').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-sn').textContent = String(s).padStart(2,'0');
+  const sec = document.getElementById('cd-s');
+  const sbox = document.getElementById('cd-sn');
+  sbox.style.transform = 'scale(1.15)';
+  setTimeout(() => sbox.style.transform = '', 200);
+  if (d === 0 && h < 6) {
+    document.getElementById('cd-s').classList.add('urgent');
+    document.getElementById('cd-h').classList.add('urgent');
+  }
 }
-setInterval(updateDeadline,1000);updateDeadline();
+setInterval(tick, 1000);
+tick();
 
-// ═══ NAV ═══
-function switchPg(n,btn){
-  document.querySelectorAll('.nbt').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
-  document.querySelectorAll('[data-pg]').forEach(p=>p.classList.remove('show'));
-  document.querySelector(`[data-pg="${n}"]`).classList.add('show');
-}
+// ══════════════════════════════════════════
+//  TOPICS + CONTENT
+// ══════════════════════════════════════════
+const TOPICS = [
+  {
+    id: 0,
+    emoji: '🌍',
+    title: 'Südafrika — Fakten & Vokabeln',
+    sub: 'Was du über South Africa wissen musst',
+    color: '--gr',
+    learn: `
+<div class="topic-hero fadein" style="background:linear-gradient(135deg,#0f2218,#0a0c12);border:1px solid rgba(53,212,152,.2)">
+  <span class="topic-badge" style="background:rgba(53,212,152,.15);color:var(--gr)">Thema 1</span>
+  <h1>🌍 Südafrika — Fakten & Vokabeln</h1>
+  <p>Alles was du über South Africa wissen musst</p>
+</div>
 
-// ═══ TOAST ═══
-let tt;
-function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),2500);}
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">1</span> Wichtige Fakten</div>
+  <table class="etable">
+    <tr><th>Englisch</th><th>Deutsch</th></tr>
+    <tr><td class="en">Apartheid <span class="hl">was abolished</span> in 1991</td><td class="de">Rassentrennung wurde 1991 abgeschafft</td></tr>
+    <tr><td class="en">South Africa <span class="hl">was made</span> a republic in 1961</td><td class="de">SA wurde 1961 eine Republik</td></tr>
+    <tr><td class="en">Diamonds <span class="hl">were found</span> in the 19th century</td><td class="de">Diamanten wurden im 19. Jh. gefunden</td></tr>
+    <tr><td class="en">The Rugby World Cup <span class="hl">was won</span> by SA in 2007</td><td class="de">Rugby-WM 2007 von SA gewonnen</td></tr>
+    <tr><td class="en">The Football World Cup <span class="hl">was held</span> in SA in 2010</td><td class="de">Fußball-WM 2010 in SA ausgetragen</td></tr>
+    <tr><td class="en">Kruger National Park — rangers, lions, elephants, rhinos</td><td class="de">Berühmter Nationalpark mit Wildhütern</td></tr>
+  </table>
+</div>
 
-// ═══ THEMEN LERNEN ═══
-const LTHEMEN=[
-  {id:0,i:'🌍',n:'Südafrika — Überblick'},
-  {id:1,i:'🔵',n:'Present Participle'},
-  {id:2,i:'🟠',n:'Past Perfect'},
-  {id:3,i:'🟢',n:'Passive Voice'},
-  {id:4,i:'📝',n:'Artikel schreiben'},
-  {id:5,i:'🏆',n:'Alles zusammen'},
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">2</span> Wichtige Vokabeln</div>
+  <table class="etable">
+    <tr><th>Deutsch</th><th>Englisch</th></tr>
+    <tr><td class="de">Albtraum</td><td class="gram">nightmare</td></tr>
+    <tr><td class="de">leiden unter</td><td class="gram">suffer from</td></tr>
+    <tr><td class="de">Wächter</td><td class="gram">guard</td></tr>
+    <tr><td class="de">schuldig</td><td class="gram">guilty</td></tr>
+    <tr><td class="de">dumm / blöd</td><td class="gram">stupid / silly</td></tr>
+    <tr><td class="de">Gegenteil</td><td class="gram">opposite</td></tr>
+    <tr><td class="de">bewachte Wohnanlage</td><td class="gram">gated community</td></tr>
+    <tr><td class="de">Behandlung</td><td class="gram">treatment</td></tr>
+    <tr><td class="de">Naturschutzgebiet</td><td class="gram">nature reserve</td></tr>
+    <tr><td class="de">Wildhüter</td><td class="gram">ranger</td></tr>
+    <tr><td class="de">erschrecken</td><td class="gram">scare</td></tr>
+    <tr><td class="de">abschaffen</td><td class="gram">abolish</td></tr>
+    <tr><td class="de">entdecken</td><td class="gram">discover</td></tr>
+    <tr><td class="de">Unterschiede</td><td class="gram">differences</td></tr>
+    <tr><td class="de">Township (Armensiedlung)</td><td class="gram">township</td></tr>
+  </table>
+</div>
+
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">3</span> Soziale Unterschiede — Social differences</div>
+  <div class="rule b">In South Africa there are <strong>big social differences</strong>. Some people live in <strong>gated communities</strong> (bewachte Wohnanlagen) with guards, while others live in <strong>townships</strong> (Armensiedlungen).</div>
+  <div class="rule y">🇩🇪 Du musst darüber auf Englisch schreiben können — lern die Wörter!</div>
+</div>`,
+    quiz: [
+      { type:'mc', q:'When was apartheid abolished in South Africa?', de:'Wann wurde die Apartheid in Südafrika abgeschafft?', opts:['In 1961','In 1991','In 2007','In 2010'], ans:'In 1991', ex:'Apartheid was abolished in 1991 — das ist eine wichtige Jahreszahl!' },
+      { type:'mc', q:'What is a "gated community"?', de:'Was ist eine "gated community"?', opts:['Ein Nationalpark','Ein Armenviertel','Eine bewachte Wohnanlage','Ein Township'], ans:'Eine bewachte Wohnanlage', ex:'Gated community = bewachte Wohnanlage mit Wächtern (guards)' },
+      { type:'mc', q:'Deutsch → Englisch: "Albtraum"', de:'', opts:['guard','nightmare','treatment','opposite'], ans:'nightmare', ex:'Albtraum = nightmare' },
+      { type:'fill', q:'Deutsch → Englisch: "abschaffen"', de:'', ans:'abolish', ex:'abschaffen = abolish (z.B. Apartheid was abolished in 1991)' },
+      { type:'mc', q:'South Africa won the Rugby World Cup in ...', de:'', opts:['2001','2007','2010','2019'], ans:'2007', ex:'The Rugby World Cup was won by South Africa in 2007.' },
+      { type:'fill', q:'Deutsch → Englisch: "Naturschutzgebiet"', de:'', ans:'nature reserve', ex:'Naturschutzgebiet = nature reserve (z.B. Kruger National Park)' },
+      { type:'mc', q:'Deutsch → Englisch: "schuldig"', de:'', opts:['silly','guilty','stupid','suffering'], ans:'guilty', ex:'schuldig = guilty (z.B. The smuggler was guilty.)' },
+      { type:'fill', q:'Deutsch → Englisch: "entdecken"', de:'', ans:'discover', ex:'entdecken = discover (z.B. They discovered diamonds.)' },
+      { type:'mc', q:'Deutsch → Englisch: "bewachte Wohnanlage"', de:'', opts:['township','national park','gated community','nature reserve'], ans:'gated community', ex:'bewachte Wohnanlage = gated community' },
+      { type:'fill', q:'Deutsch → Englisch: "Wächter"', de:'', ans:'guard', ex:'Wächter = guard (Plural: guards)' },
+    ]
+  },
+
+  {
+    id: 1,
+    emoji: '🔵',
+    title: 'Present Participle (G5)',
+    sub: 'verb + -ing nach Wahrnehmungsverben',
+    color: '--bl',
+    learn: `
+<div class="topic-hero fadein" style="background:linear-gradient(135deg,#0e1830,#0a0c12);border:1px solid rgba(79,157,255,.2)">
+  <span class="topic-badge" style="background:rgba(79,157,255,.15);color:var(--bl)">Thema 2 — G5</span>
+  <h1>🔵 Present Participle</h1>
+  <p>Das Partizip Präsens — verb + -ing</p>
+</div>
+
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lbl);color:var(--bl)">1</span> Die Regel</div>
+  <div class="rule b">Nach Verben der Wahrnehmung (<strong>see, watch, notice, hear, feel, smell, listen to</strong>) → kommt das <strong>Partizip Präsens = verb + -ing</strong></div>
+  <div class="rule y">🇩🇪 Nach "sehen", "hören", "fühlen", "riechen" usw. kommt im Englischen <strong>verb + -ing</strong> — NICHT der Infinitiv!</div>
+  <div class="formula">Subjekt + Wahrnehmungsverb + Objekt + verb-ing<small>Beispiel: I saw him running. / She heard someone singing.</small></div>
+</div>
+
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lbl);color:var(--bl)">2</span> Bildung der -ing Form</div>
+  <table class="etable">
+    <tr><th>Regel</th><th>Infinitiv</th><th>-ing Form</th></tr>
+    <tr><td class="de">Normal: + ing</td><td class="en">play, hear, call</td><td class="gram">playing, hearing, calling</td></tr>
+    <tr><td class="de">Endet auf -e: e weg + ing</td><td class="en">come, leave, move, hide</td><td class="gram">coming, leaving, moving, hiding</td></tr>
+    <tr><td class="de">Kurzer Vokal + Konsonant: Dopplung</td><td class="en">run, get, swim, carry</td><td class="gram">running, getting, swimming, carrying</td></tr>
+    <tr><td class="de">Endet auf -ie → y + ing</td><td class="en">lie, die</td><td class="gram">lying, dying</td></tr>
+  </table>
+</div>
+
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lbl);color:var(--bl)">3</span> Beispiele aus deinem Buch (Aufgabe 2)</div>
+  <table class="etable">
+    <tr><th>Satz</th><th>-ing Form</th></tr>
+    <tr><td class="en">Jack listened to his brother ___ (play) the guitar.</td><td class="gram">playing</td></tr>
+    <tr><td class="en">We watched the cars ___ (come) nearer.</td><td class="gram">coming</td></tr>
+    <tr><td class="en">I could smell something ___ (burn) in the kitchen.</td><td class="gram">burning</td></tr>
+    <tr><td class="en">Did you hear Ryan ___ (sing) in the shower?</td><td class="gram">singing</td></tr>
+    <tr><td class="en">They felt the rain ___ (get) heavier.</td><td class="gram">getting</td></tr>
+    <tr><td class="en">Kate didn't notice all the people ___ (leave) the building.</td><td class="gram">leaving</td></tr>
+    <tr><td class="en">Amy saw two people ___ (carry) large bags out of the office.</td><td class="gram">carrying</td></tr>
+    <tr><td class="en">We didn't notice a girl ___ (hide) in the cupboard.</td><td class="gram">hiding</td></tr>
+  </table>
+</div>`,
+    quiz: [
+      { type:'fill', q:'We watched the cars ___ (come) nearer.', de:'Wir sahen die Autos näher kommen.', ans:'coming', ex:'come → e weg → coming' },
+      { type:'fill', q:'I could smell something ___ (burn) in the kitchen.', de:'Ich konnte etwas in der Küche brennen riechen.', ans:'burning', ex:'burn → + ing → burning' },
+      { type:'fill', q:'Did you hear Ryan ___ (sing) in the shower?', de:'Hast du Ryan in der Dusche singen hören?', ans:'singing', ex:'sing → + ing → singing' },
+      { type:'fill', q:'They felt the rain ___ (get) heavier.', de:'Sie spürten, wie der Regen stärker wurde.', ans:'getting', ex:'get → t verdoppeln → getting' },
+      { type:'fill', q:'Amy saw two people ___ (carry) large bags.', de:'Amy sah zwei Leute große Taschen tragen.', ans:'carrying', ex:'carry → + ing → carrying (kein Wechsel bei y+konsonant)' },
+      { type:'fill', q:'We didn\'t notice a girl ___ (hide) in the cupboard.', de:'Wir bemerkten kein Mädchen im Schrank.', ans:'hiding', ex:'hide → e weg → hiding' },
+      { type:'mc', q:'Which sentence is correct?', de:'Welcher Satz ist richtig?', opts:['I heard him to sing.','I heard him sing.','I heard him singing.','I heard him sings.'], ans:'I heard him singing.', ex:'Nach Wahrnehmungsverben: verb + -ing (heard + singing)' },
+      { type:'mc', q:'"-ing" form of "leave"?', de:'Was ist die -ing Form von "leave"?', opts:['leaveing','leaving','leving','leaved'], ans:'leaving', ex:'leave → e weg → leaving' },
+      { type:'mc', q:'"-ing" form of "run"?', de:'Was ist die -ing Form von "run"?', opts:['runing','running','runeing','runned'], ans:'running', ex:'run → kurzer Vokal + n → n verdoppeln → running' },
+      { type:'fill', q:'Emma noticed Steve ___ (show) his pictures to experts.', de:'Emma bemerkte Steve, wie er seine Bilder Experten zeigt.', ans:'showing', ex:'show → + ing → showing' },
+    ]
+  },
+
+  {
+    id: 2,
+    emoji: '🟠',
+    title: 'Past Perfect (G6)',
+    sub: 'had + 3. Form — was VOR der Vergangenheit passiert ist',
+    color: '--or',
+    learn: `
+<div class="topic-hero fadein" style="background:linear-gradient(135deg,#1e1208,#0a0c12);border:1px solid rgba(255,146,72,.2)">
+  <span class="topic-badge" style="background:rgba(255,146,72,.15);color:var(--or)">Thema 3 — G6</span>
+  <h1>🟠 Past Perfect</h1>
+  <p>had + past participle — Vorvergangenheit</p>
+</div>
+
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lor);color:var(--or)">1</span> Die Regel</div>
+  <div class="rule o">Das Past Perfect beschreibt etwas, das <strong>noch vor einem anderen vergangenen Ereignis</strong> passiert ist — die "Vorvergangenheit".</div>
+  <div class="formula" style="border-color:rgba(255,146,72,.3)">had + past participle (3. Form des Verbs)<small>Positiv: had gone | Negativ: hadn't gone | Frage: Had you gone?</small></div>
+  <div class="rule y">🇩🇪 Zwei Dinge in der Vergangenheit — das was ZUERST passiert ist, steht im Past Perfect!</div>
+</div>
+
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lor);color:var(--or)">2</span> Signalwörter</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0">
+    <div style="background:var(--lor);border-radius:10px;padding:12px;text-align:center"><div style="font-size:15px;font-weight:900;color:var(--or);font-family:'JetBrains Mono',monospace">after</div><div style="font-size:10px;color:var(--mu);margin-top:3px;font-weight:700">nachdem</div></div>
+    <div style="background:var(--lor);border-radius:10px;padding:12px;text-align:center"><div style="font-size:15px;font-weight:900;color:var(--or);font-family:'JetBrains Mono',monospace">before</div><div style="font-size:10px;color:var(--mu);margin-top:3px;font-weight:700">bevor</div></div>
+    <div style="background:var(--lor);border-radius:10px;padding:12px;text-align:center"><div style="font-size:15px;font-weight:900;color:var(--or);font-family:'JetBrains Mono',monospace">when</div><div style="font-size:10px;color:var(--mu);margin-top:3px;font-weight:700">als</div></div>
+  </div>
+  <div class="rule y">💡 Merktrick: Das was ZUERST passierte → Past Perfect. Das was DANACH passierte → Simple Past.</div>
+</div>
+
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lor);color:var(--or)">3</span> Beispiele aus deinem Arbeitsblatt (Aufgabe 9)</div>
+  <table class="etable">
+    <tr><th>Satz</th><th>Erklärung</th></tr>
+    <tr><td class="en">Lefa <span class="hl">wanted</span> to go to work after he <span class="hl">had spoken</span> to the police officer.</td><td class="de">Zuerst sprach er (had spoken), dann wollte er gehen (wanted)</td></tr>
+    <tr><td class="en">After the police officer <span class="hl">had interviewed</span> Lefa, he <span class="hl">allowed</span> him to go.</td><td class="de">Zuerst Verhör (had interviewed), dann gehen lassen (allowed)</td></tr>
+    <tr><td class="en">Piet's team <span class="hl">had left</span> school before the accident <span class="hl">happened</span>.</td><td class="de">Zuerst weg (had left), dann Unfall (happened)</td></tr>
+    <tr><td class="en">Friends <span class="hl">called</span> Piet after they <span class="hl">had read</span> the report.</td><td class="de">Zuerst lesen (had read), dann anrufen (called)</td></tr>
+    <tr><td class="en">After Cebile <span class="hl">had come</span> home, she <span class="hl">began</span> to make dinner.</td><td class="de">Zuerst nach Hause (had come), dann kochen (began)</td></tr>
+    <tr><td class="en">Before her mother <span class="hl">lost</span> her job, she <span class="hl">had worked</span> in an office.</td><td class="de">Zuerst gearbeitet (had worked), dann Job verloren (lost)</td></tr>
+  </table>
+</div>`,
+    quiz: [
+      { type:'fill', q:'After apartheid ___ (finish), all South Africans could go to the same school.', de:'Nachdem die Apartheid geendet hatte, konnten alle SA-Bürger dieselbe Schule besuchen.', ans:'had finished', ex:'Past Perfect: had + finished (regelmäßig)' },
+      { type:'fill', q:'Before the girls reached the hostel, they ___ (drink) all their water.', de:'Bevor die Mädchen die Herberge erreichten, hatten sie ihr ganzes Wasser getrunken.', ans:'had drunk', ex:'Past Perfect: had + drunk (unregelmäßig! drink→drunk)' },
+      { type:'fill', q:'After Cebile ___ (come) home from school, she began to make dinner.', de:'Nachdem Cebile von der Schule nach Hause gekommen war, begann sie das Abendessen zu kochen.', ans:'had come', ex:'Past Perfect: had + come (come→come, unregelmäßig!)' },
+      { type:'fill', q:'Before her mother lost her job, she ___ (work) in an office.', de:'Bevor ihre Mutter ihren Job verlor, hatte sie in einem Büro gearbeitet.', ans:'had worked', ex:'Past Perfect: had + worked (regelmäßig)' },
+      { type:'mc', q:'Which is correct? "Lefa wanted to go after he ___ to the police."', de:'', opts:['spoke','had spoken','has spoken','speaking'], ans:'had spoken', ex:'Nach "after" + Bezug zu Simple Past → Past Perfect: had spoken' },
+      { type:'mc', q:'Past Perfect = ?', de:'Wie bildet man das Past Perfect?', opts:['was/were + 3. Form','have + 3. Form','had + 3. Form','did + Infinitiv'], ans:'had + 3. Form', ex:'Past Perfect immer: had + past participle (3. Form)' },
+      { type:'fill', q:'After the police officer ___ (interview) Lefa, he allowed him to go.', de:'Nachdem der Polizeioffizier Lefa befragt hatte, ließ er ihn gehen.', ans:'had interviewed', ex:'Past Perfect: had + interviewed' },
+      { type:'mc', q:'Piet\'s team ___ school before the accident happened.', de:'', opts:['left','has left','had left','leaves'], ans:'had left', ex:'Zuerst verlassen (had left), dann der Unfall (happened) → Past Perfect' },
+      { type:'fill', q:'We ___ (not start) our game when our teacher came to look for us.', de:'Wir hatten unser Spiel noch nicht angefangen, als unser Lehrer kam.', ans:"hadn't started", ex:"Negativ Past Perfect: hadn't + started" },
+      { type:'mc', q:'Welches Wort ist ein Signalwort für das Past Perfect?', de:'', opts:['yesterday','now','before','tomorrow'], ans:'before', ex:'after, before, when = die 3 Signalwörter für das Past Perfect' },
+    ]
+  },
+
+  {
+    id: 3,
+    emoji: '🟢',
+    title: 'Passive Voice (G7)',
+    sub: 'was/were + 3. Form — Simple Past Passive',
+    color: '--gr',
+    learn: `
+<div class="topic-hero fadein" style="background:linear-gradient(135deg,#0a1f14,#0a0c12);border:1px solid rgba(53,212,152,.2)">
+  <span class="topic-badge" style="background:rgba(53,212,152,.15);color:var(--gr)">Thema 4 — G7</span>
+  <h1>🟢 Passive Voice</h1>
+  <p>was / were + past participle — Passiv Simple Past</p>
+</div>
+
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">1</span> Die Regel</div>
+  <div class="rule g">Im Passiv steht die Sache/Person <strong>mit der etwas passiert</strong> am Anfang — nicht der Täter!</div>
+  <div class="formula" style="border-color:rgba(53,212,152,.3);background:#0a1f14">was (Singular) / were (Plural) + past participle (3. Form)<small>Optional: + by [Täter]</small></div>
+  <div class="rule y">🇩🇪 Aktiv: "Man fand Diamanten." → Passiv: "Diamanten wurden gefunden." = "Diamonds were found."</div>
+</div>
+
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">2</span> Aktiv → Passiv: 3 Schritte</div>
+  <div style="display:flex;flex-direction:column;gap:7px">
+    <div style="background:rgba(79,157,255,.08);border-left:3px solid var(--bl);border-radius:10px;padding:11px 13px;font-size:13px;font-weight:700">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;background:var(--bl);color:#fff;padding:1px 7px;border-radius:4px;margin-right:8px">Schritt 1</span>
+      Objekt vom Aktivsatz → Subjekt im Passivsatz
+    </div>
+    <div style="background:rgba(53,212,152,.08);border-left:3px solid var(--gr);border-radius:10px;padding:11px 13px;font-size:13px;font-weight:700">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;background:var(--gr);color:#0a2018;padding:1px 7px;border-radius:4px;margin-right:8px">Schritt 2</span>
+      Verb: <strong>was</strong> (Singular) oder <strong>were</strong> (Plural) + 3. Form
+    </div>
+    <div style="background:rgba(255,146,72,.08);border-left:3px solid var(--or);border-radius:10px;padding:11px 13px;font-size:13px;font-weight:700">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;background:var(--or);color:#1a0800;padding:1px 7px;border-radius:4px;margin-right:8px">Schritt 3</span>
+      Subjekt vom Aktivsatz → hinten mit <strong>by</strong> (optional)
+    </div>
+  </div>
+</div>
+
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">3</span> Wichtige unregelmäßige Verben (3. Form!)</div>
+  <table class="etable">
+    <tr><th>Verb</th><th>Simple Past</th><th>3. Form (→ Passiv)</th></tr>
+    <tr><td class="en">find</td><td class="de">found</td><td class="gram">found → were found</td></tr>
+    <tr><td class="en">build</td><td class="de">built</td><td class="gram">built → were built</td></tr>
+    <tr><td class="en">make</td><td class="de">made</td><td class="gram">made → was made</td></tr>
+    <tr><td class="en">hold</td><td class="de">held</td><td class="gram">held → was held</td></tr>
+    <tr><td class="en">win</td><td class="de">won</td><td class="gram">won → was won</td></tr>
+    <tr><td class="en">abolish</td><td class="de">abolished</td><td class="gram">abolished → was abolished</td></tr>
+    <tr><td class="en">discover</td><td class="de">discovered</td><td class="gram">discovered → were discovered</td></tr>
+    <tr><td class="en">invade</td><td class="de">invaded</td><td class="gram">invaded → was invaded</td></tr>
+    <tr><td class="en">separate</td><td class="de">separated</td><td class="gram">separated → were separated</td></tr>
+  </table>
+</div>
+
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">4</span> Lösungen aus Workbook S. 57 — Aufgabe 7</div>
+  <table class="etable">
+    <tr><th>Aktivsatz</th><th>Passivsatz ✓</th></tr>
+    <tr><td class="de">They found diamonds in the 19th century.</td><td class="gram">Diamonds <span class="hl">were found</span> in the 19th century.</td></tr>
+    <tr><td class="de">They built many buildings in the cities.</td><td class="gram">Many buildings <span class="hl">were built</span> in the cities.</td></tr>
+    <tr><td class="de">They made the country a republic in 1961.</td><td class="gram">The country <span class="hl">was made</span> a republic in 1961.</td></tr>
+    <tr><td class="de">They abolished apartheid in 1991.</td><td class="gram">Apartheid <span class="hl">was abolished</span> in 1991.</td></tr>
+    <tr><td class="de">South Africa held the Football World Cup in 2010.</td><td class="gram">The Football World Cup <span class="hl">was held</span> in 2010.</td></tr>
+    <tr><td class="de">The government separated black and white people.</td><td class="gram">Black and white people <span class="hl">were separated</span> by the government.</td></tr>
+    <tr><td class="de">The British invaded South Africa.</td><td class="gram">South Africa <span class="hl">was invaded</span> by the British.</td></tr>
+    <tr><td class="de">South Africa won the Rugby World Cup in 2007.</td><td class="gram">The Rugby World Cup <span class="hl">was won</span> by South Africa in 2007.</td></tr>
+  </table>
+</div>`,
+    quiz: [
+      { type:'mc', q:'Simple Past Passive = ?', de:'Wie bildet man das Simple Past Passiv?', opts:['had + 3. Form','was/were + 3. Form','is/are + 3. Form','did + Infinitiv'], ans:'was/were + 3. Form', ex:'Simple Past Passive: was (Singular) / were (Plural) + past participle' },
+      { type:'fill', q:'Diamonds ___ (find) in the 19th century.', de:'Diamanten wurden im 19. Jahrhundert gefunden.', ans:'were found', ex:'Diamonds = Plural → were + found (3. Form von find)' },
+      { type:'fill', q:'Apartheid ___ (abolish) in 1991.', de:'Die Apartheid wurde 1991 abgeschafft.', ans:'was abolished', ex:'Apartheid = Singular → was + abolished' },
+      { type:'fill', q:'The country ___ (make) a republic in 1961.', de:'Das Land wurde 1961 eine Republik gemacht.', ans:'was made', ex:'The country = Singular → was + made (3. Form von make)' },
+      { type:'fill', q:'The Rugby World Cup ___ (win) by South Africa in 2007.', de:'Der Rugby-WM wurde 2007 von Südafrika gewonnen.', ans:'was won', ex:'Singular → was + won (3. Form von win)' },
+      { type:'fill', q:'Many buildings ___ (build) in the cities.', de:'Viele Gebäude wurden in den Städten gebaut.', ans:'were built', ex:'Plural → were + built (3. Form von build)' },
+      { type:'mc', q:'Was steht nach "by" im Passivsatz?', de:'What comes after "by" in a passive sentence?', opts:['Das Verb','Der Täter / Agent','Das Objekt','Das Adverb'], ans:'Der Täter / Agent', ex:'"by" + wer es getan hat: "was invaded by the British"' },
+      { type:'mc', q:'"The Football World Cup ___ in SA in 2010." (hold)', de:'', opts:['was holded','were held','was held','held'], ans:'was held', ex:'Singular → was + held (3. Form von hold = held)' },
+      { type:'fill', q:'South Africa ___ (invade) by the British in the 19th century.', de:'Südafrika wurde im 19. Jahrhundert von den Briten invadiert.', ans:'was invaded', ex:'Singular → was + invaded' },
+      { type:'mc', q:'"They found very old rock art." → Passive?', de:'', opts:['Very old rock art was found.','Very old rock art were found.','Very old rock art found.','Very old rock art has been found.'], ans:'Very old rock art was found.', ex:'rock art = Singular → was found' },
+    ]
+  },
+
+  {
+    id: 4,
+    emoji: '📝',
+    title: 'Alles zusammen — Probetest',
+    sub: 'Alle 3 Grammatikthemen + Vokabeln gemischt',
+    color: '--pu',
+    learn: `
+<div class="topic-hero fadein" style="background:linear-gradient(135deg,#160f2a,#0a0c12);border:1px solid rgba(169,138,255,.2)">
+  <span class="topic-badge" style="background:rgba(169,138,255,.15);color:var(--pu)">Thema 5 — Finale</span>
+  <h1>📝 Alles zusammen!</h1>
+  <p>Gemischte Aufgaben — genau wie in der Arbeit</p>
+</div>
+
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lpu);color:var(--pu)">★</span> Blitz-Übersicht — lern das auswendig!</div>
+  <table class="etable">
+    <tr><th>Grammatik</th><th>Formel</th><th>Beispiel</th></tr>
+    <tr><td style="color:var(--bl);font-weight:800">Present Participle</td><td class="gram">verb + -ing</td><td class="en">I heard him <span class="hl">singing</span>.</td></tr>
+    <tr><td style="color:var(--or);font-weight:800">Past Perfect</td><td class="gram">had + 3. Form</td><td class="en">She <span class="hl">had read</span> the book before...</td></tr>
+    <tr><td style="color:var(--gr);font-weight:800">Passive (Simple Past)</td><td class="gram">was/were + 3. Form</td><td class="en">Diamonds <span class="hl">were found</span> in...</td></tr>
+  </table>
+</div>
+
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lpu);color:var(--pu)">★</span> Typische Fehler — diese NICHT machen!</div>
+  <div class="rule r">❌ <strong>FALSCH:</strong> I heard him to sing. &nbsp;→&nbsp; ✅ I heard him <strong>singing</strong>.</div>
+  <div class="rule r">❌ <strong>FALSCH:</strong> Apartheid have been abolished. &nbsp;→&nbsp; ✅ Apartheid <strong>was abolished</strong>.</div>
+  <div class="rule r">❌ <strong>FALSCH:</strong> Before she came, she read the book. &nbsp;→&nbsp; ✅ Before she came, she <strong>had read</strong> the book.</div>
+  <div class="rule r">❌ <strong>FALSCH:</strong> The cars were runned. &nbsp;→&nbsp; ✅ Die Verben müssen <strong>unregelmäßige 3. Form</strong> haben!</div>
+</div>`,
+    quiz: [
+      { type:'fill', q:'I heard someone ___ (call) my name.', de:'Ich hörte jemanden meinen Namen rufen.', ans:'calling', ex:'Present Participle nach "heard": calling' },
+      { type:'fill', q:'Apartheid ___ (abolish) in 1991.', de:'Die Apartheid wurde 1991 abgeschafft.', ans:'was abolished', ex:'Passive Simple Past: was abolished' },
+      { type:'fill', q:'Before she came home, she ___ (buy) food.', de:'Bevor sie nach Hause kam, hatte sie Essen gekauft.', ans:'had bought', ex:'Past Perfect: had + bought (buy→bought, unregelmäßig!)' },
+      { type:'fill', q:'We watched the lions ___ (run) across the field.', de:'Wir sahen die Löwen über das Feld laufen.', ans:'running', ex:'Present Participle: run → running (n verdoppeln!)' },
+      { type:'fill', q:'The Rugby World Cup ___ (win) by South Africa in 2007.', de:'Die Rugby-WM wurde 2007 von Südafrika gewonnen.', ans:'was won', ex:'Passive: was won' },
+      { type:'fill', q:'After he ___ (speak) to the police, he went home.', de:'Nachdem er mit der Polizei gesprochen hatte, ging er nach Hause.', ans:'had spoken', ex:'Past Perfect: had spoken (speak→spoken, unregelmäßig!)' },
+      { type:'mc', q:'Which sentence uses the Present Participle correctly?', de:'', opts:['I saw him to run.','I saw him ran.','I saw him running.','I saw him runs.'], ans:'I saw him running.', ex:'saw + running (Present Participle)' },
+      { type:'mc', q:'"They discovered very old rock art." → Passive?', de:'', opts:['Very old rock art were discovered.','Very old rock art was discovered.','Very old rock art discovered.','Very old rock art had discovered.'], ans:'Very old rock art was discovered.', ex:'rock art = Singular → was discovered' },
+      { type:'fill', q:'Deutsch → Englisch: "Rassentrennung"', de:'', ans:'racial segregation', ex:'Rassentrennung = racial segregation (oder: apartheid)' },
+      { type:'mc', q:'Before Sizwe\'s family moved to Durban, they ___ in a township.', de:'', opts:['lived','had lived','have lived','were living'], ans:'had lived', ex:'Zuerst lebten sie (had lived), dann zogen sie um (moved) → Past Perfect' },
+    ]
+  }
 ];
-function buildTGrid(){
-  document.getElementById('tgrid').innerHTML=LTHEMEN.map(t=>{
-    const d=!!dT[t.id];
-    return`<div class="tc${d?' dn':''}" onclick="openLesson(${t.id})">
-      <div class="tc-n">Thema ${t.id+1}${d?' ✅':''}</div>
-      <div class="tc-i">${t.i}</div>
-      <div class="tc-t">${t.n}</div>
+
+// ══════════════════════════════════════════
+//  MASTERY SYSTEM: need 80%+ to unlock next
+// ══════════════════════════════════════════
+function getMastery(topicId) {
+  const data = JSON.parse(localStorage.getItem('sa26_m') || '{}');
+  return data[topicId] || { attempts: 0, passed: false };
+}
+function setMastery(topicId, passed) {
+  const data = JSON.parse(localStorage.getItem('sa26_m') || '{}');
+  if (!data[topicId]) data[topicId] = { attempts: 0, passed: false };
+  data[topicId].attempts++;
+  if (passed) data[topicId].passed = true;
+  localStorage.setItem('sa26_m', JSON.stringify(data));
+}
+function isUnlocked(topicId) {
+  if (topicId === 0) return true;
+  return getMastery(topicId - 1).passed;
+}
+function isPassed(topicId) {
+  return getMastery(topicId).passed;
+}
+
+// ══════════════════════════════════════════
+//  BUILD HOME / OVERVIEW
+// ══════════════════════════════════════════
+function buildHome() {
+  const done = TOPICS.filter(t => isPassed(t.id)).length;
+  document.getElementById('hs-done').textContent = done + '/5';
+  document.getElementById('hs-streak').textContent = state.streak;
+  document.getElementById('hs-pts').textContent = state.pts;
+
+  // overview pills
+  document.getElementById('ov-grid').innerHTML = TOPICS.map(t => {
+    const passed = isPassed(t.id);
+    const locked = !isUnlocked(t.id);
+    const cls = passed ? 'done' : locked ? 'locked' : '';
+    return `<div class="ov-item ${cls}" onclick="${locked ? '' : `goTopic(${t.id})`}">
+      <div class="ov-emoji">${t.emoji}</div>
+      <div class="ov-name">${t.title.split(' — ')[0]}</div>
+      <div class="ov-prog"><div class="ov-prog-fill" style="width:${passed?100:0}%;background:var(${t.color})"></div></div>
+    </div>`;
+  }).join('');
+
+  // topic list
+  document.getElementById('topic-list').innerHTML = TOPICS.map(t => {
+    const passed = isPassed(t.id);
+    const locked = !isUnlocked(t.id);
+    const m = getMastery(t.id);
+    let statusTxt = passed ? '✓ Fertig' : locked ? '🔒 Gesperrt' : m.attempts > 0 ? 'Wiederholen' : 'Starten';
+    let statusCls = passed ? 'done' : locked ? 'locked' : m.attempts > 0 ? 'active' : 'todo';
+    return `<div class="titem ${passed?'done':locked?'locked':m.attempts>0?'active':''}" onclick="${locked?'showLocked()':``goTopic(${t.id})``}">
+      <div class="titem-emoji">${t.emoji}</div>
+      <div class="titem-body">
+        <div class="titem-title">${t.title}</div>
+        <div class="titem-sub">${t.sub}</div>
+        <div class="titem-bar"><div class="titem-bar-fill" style="width:${passed?100:0}%;background:var(${t.color})"></div></div>
+      </div>
+      <div class="titem-right">
+        <div class="titem-status ${statusCls}">${statusTxt}</div>
+        ${m.attempts > 0 && !passed ? `<div style="font-size:10px;color:var(--mu);margin-top:4px;font-weight:700">${m.attempts}x versucht</div>` : ''}
+      </div>
     </div>`;
   }).join('');
 }
-function openLesson(id){
-  document.getElementById('learn-picker').style.display='none';
-  document.getElementById('learn-lesson').style.display='block';
-  document.getElementById('ll-content').innerHTML=LESSON_CONTENT[id]||'';
-  document.getElementById('ll-content').classList.add('fade-in');
-  setTimeout(()=>buildLQ(id),50);
+
+function showLocked() {
+  showToast('🔒 Schließe erst das vorherige Thema ab!');
+}
+
+// ══════════════════════════════════════════
+//  TOPIC FLOW: learn → quiz → pass/fail
+// ══════════════════════════════════════════
+let currentTopic = null;
+let quizState = { pool:[], idx:0, correct:0, wrong:[], mode:'learn' };
+
+function goTopic(id) {
+  currentTopic = TOPICS[id];
+  quizState.mode = 'learn';
+  showScreen('sc-learn');
+  document.getElementById('learn-content').innerHTML = currentTopic.learn +
+    `<button class="next-btn" style="width:100%;margin-top:16px;justify-content:center" onclick="startQuiz(${id})">
+      Jetzt Quiz starten — ${currentTopic.quiz.length} Fragen ➜
+    </button>`;
+  document.getElementById('learn-content').classList.add('fadein');
+  navHighlight('');
   window.scrollTo({top:0,behavior:'smooth'});
 }
-function goBackLearn(){
-  document.getElementById('learn-picker').style.display='block';
-  document.getElementById('learn-lesson').style.display='none';
-  buildTGrid();
-}
-const BK=`<button class="back" onclick="goBackLearn()"><i class="ti ti-arrow-left"></i> Zurück</button>`;
 
-// ═══ LESSON CONTENT ═══
-const LESSON_CONTENT={
-0:`${BK}
-<div class="hero" style="background:linear-gradient(135deg,#1a2d1a,#0f1117);border:1px solid rgba(61,214,140,.2)">
-  <div style="font-size:9px;font-weight:700;color:var(--hint);letter-spacing:.15em;text-transform:uppercase;margin-bottom:3px;font-family:'JetBrains Mono',monospace">Thema 1</div>
-  <h2 style="color:#fff">🌍 Südafrika — Was musst du wissen?</h2>
-  <p>Facts, Geschichte und soziale Unterschiede</p><div class="hi">🌍</div>
-</div>
-
-<div class="card">
-  <div class="ch"><i class="ti ti-info-circle" aria-hidden="true"></i> Wichtige Fakten über Südafrika</div>
-  <table class="ex-table">
-    <tr><th>Thema</th><th>Englisch</th><th>Deutsch</th></tr>
-    <tr><td>Hauptstädte</td><td class="en">Cape Town, Pretoria, Bloemfontein</td><td class="de">3 Hauptstädte!</td></tr>
-    <tr><td>Apartheid endete</td><td class="en">Apartheid ended in 1991</td><td class="de">Rassentrennung endete 1991</td></tr>
-    <tr><td>Gated community</td><td class="en">a protected area with guards</td><td class="de">bewachte Wohnanlage</td></tr>
-    <tr><td>Township</td><td class="en">a poor settlement outside cities</td><td class="de">arme Siedlung am Stadtrand</td></tr>
-    <tr><td>Rugby World Cup</td><td class="en">won by South Africa in 2007</td><td class="de">von Südafrika gewonnen</td></tr>
-    <tr><td>National Park</td><td class="en">Kruger National Park</td><td class="de">Berühmter Naturpark</td></tr>
-  </table>
-</div>
-
-<div class="card">
-  <div class="ch"><i class="ti ti-users" aria-hidden="true"></i> Soziale Unterschiede — Talk about social differences</div>
-  <div class="box b">In South Africa there are <strong class="h">big social differences</strong>. Some people live in <strong class="h">gated communities</strong> with guards, while others live in <strong class="h">townships</strong> with very little money.</div>
-  <div class="box y">🇩🇪 In Südafrika gibt es große soziale Unterschiede. Manche wohnen in bewachten Wohnanlagen, andere in armen Siedlungen.</div>
-  <table class="ex-table" style="margin-top:10px">
-    <tr><th>Englisch (für die Arbeit!)</th><th>Bedeutung</th></tr>
-    <tr><td class="en">suffer from sth.</td><td class="de">unter etwas leiden</td></tr>
-    <tr><td class="en">be guilty</td><td class="de">schuldig sein</td></tr>
-    <tr><td class="en">nightmare</td><td class="de">Albtraum</td></tr>
-    <tr><td class="en">gated community</td><td class="de">bewachte Wohnanlage</td></tr>
-    <tr><td class="en">treatment</td><td class="de">Behandlung</td></tr>
-    <tr><td class="en">opposite of safe</td><td class="de">das Gegenteil von sicher</td></tr>
-  </table>
-</div>
-
-<div class="card">
-  <div class="ch">⚡ Lern-Check</div>
-  <div id="qa_l0"></div>
-  <button class="achk" id="cb_l0" onclick="finLesson(0)" style="width:100%;margin-top:10px;padding:12px" disabled>✅ Thema abschließen</button>
-</div>`,
-
-1:`${BK}
-<div class="hero" style="background:linear-gradient(135deg,#1a2038,#0f1117);border:1px solid rgba(74,158,255,.2)">
-  <div style="font-size:9px;font-weight:700;color:var(--hint);letter-spacing:.15em;text-transform:uppercase;margin-bottom:3px;font-family:'JetBrains Mono',monospace">Thema 2 — G5</div>
-  <h2 style="color:#fff">🔵 Present Participle (Partizip Präsens)</h2>
-  <p>verb + -ing nach Wahrnehmungsverben</p><div class="hi">-ing</div>
-</div>
-
-<div class="card">
-  <div class="ch"><i class="ti ti-bulb" aria-hidden="true"></i> Wann benutzt du das Present Participle?</div>
-  <div class="box b">Nach Verben der Wahrnehmung (see, watch, notice, hear, feel, smell) verwendest du das Partizip Präsens = <strong class="h">verb + -ing</strong></div>
-  <div class="box y">🇩🇪 Nach Verben wie "sehen", "hören", "fühlen" kommt im Englischen <strong>verb + -ing</strong> — nicht der Infinitiv!</div>
-</div>
-
-<div class="card">
-  <div class="ch">📌 Verben der Wahrnehmung (Verbs of Perception)</div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:7px;margin:8px 0">
-    ${['see','watch','notice','hear','feel','smell','listen to','observe'].map(v=>`<div style="padding:7px 10px;background:var(--lblue);border-radius:var(--r2);font-size:12px;font-weight:700;color:var(--blue);text-align:center;font-family:'JetBrains Mono',monospace">${v}</div>`).join('')}
-  </div>
-</div>
-
-<div class="card">
-  <div class="ch">✏️ Beispiele aus deinem Schulbuch</div>
-  <table class="ex-table">
-    <tr><th>Englisch</th><th>Grammatik</th><th>Deutsch</th></tr>
-    <tr><td class="en">I saw the car <strong style="color:var(--blue)">driving</strong> towards the bus.</td><td class="gram">saw + driving</td><td class="de">Ich sah das Auto auf den Bus zufahren.</td></tr>
-    <tr><td class="en">We watched the boys <strong style="color:var(--blue)">playing</strong> rugby.</td><td class="gram">watched + playing</td><td class="de">Wir sahen die Jungs Rugby spielen.</td></tr>
-    <tr><td class="en">Jack listened to his brother <strong style="color:var(--blue)">playing</strong> guitar.</td><td class="gram">listened to + playing</td><td class="de">Jack hörte seinen Bruder Gitarre spielen.</td></tr>
-    <tr><td class="en">I could smell something <strong style="color:var(--blue)">burning</strong>.</td><td class="gram">smell + burning</td><td class="de">Ich konnte etwas brennen riechen.</td></tr>
-    <tr><td class="en">Did you hear Ryan <strong style="color:var(--blue)">singing</strong> in the shower?</td><td class="gram">hear + singing</td><td class="de">Hast du Ryan duschen singen hören?</td></tr>
-    <tr><td class="en">They felt the rain <strong style="color:var(--blue)">getting</strong> heavier.</td><td class="gram">felt + getting</td><td class="de">Sie spürten, wie der Regen stärker wurde.</td></tr>
-  </table>
-</div>
-
-<div class="card">
-  <div class="ch">⚠️ Bildung der -ing Form — Regeln!</div>
-  <table class="ex-table">
-    <tr><th>Regel</th><th>Beispiel</th><th>-ing Form</th></tr>
-    <tr><td class="de">Normalerweise: + -ing</td><td class="en">play</td><td class="gram">playing</td></tr>
-    <tr><td class="de">Endet auf -e: e weg, + -ing</td><td class="en">come</td><td class="gram">coming</td></tr>
-    <tr><td class="de">Kurzer Vokal + Konsonant: Dopplung</td><td class="en">run</td><td class="gram">running</td></tr>
-    <tr><td class="de">Endet auf -ie: ie → y + -ing</td><td class="en">lie</td><td class="gram">lying</td></tr>
-  </table>
-</div>
-
-<div class="card">
-  <div class="ch">🎯 Lösungen aus deinem Arbeitsblatt (Aufgabe 2)</div>
-  <div style="display:flex;flex-direction:column;gap:5px">
-    ${[['Jack listened to his brother','play','playing'],
-       ['We watched the cars','come','coming'],
-       ['I could smell something','burn','burning'],
-       ['Did you hear Ryan','sing','singing'],
-       ['They felt the rain','get','getting'],
-       ['Kate didn\'t notice all the people','leave','leaving'],
-       ['Amy saw two people','carry','carrying'],
-       ['We didn\'t notice a girl','hide','hiding']].map(([s,v,a])=>`
-    <div style="padding:8px 10px;background:rgba(255,255,255,.03);border:1px solid var(--brd);border-radius:var(--r2);font-size:12px;font-weight:600;line-height:1.7">
-      ${s} <span style="background:var(--lblue);color:var(--blue);padding:1px 7px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-weight:700">${a}</span> <span style="color:var(--hint)">(${v})</span>
-    </div>`).join('')}
-  </div>
-</div>
-
-<div class="card">
-  <div class="ch">⚡ Lern-Check</div>
-  <div id="qa_l1"></div>
-  <button class="achk" id="cb_l1" onclick="finLesson(1)" style="width:100%;margin-top:10px;padding:12px" disabled>✅ Thema abschließen (+50 Punkte)</button>
-</div>`,
-
-2:`${BK}
-<div class="hero" style="background:linear-gradient(135deg,#2a1a0f,#0f1117);border:1px solid rgba(255,140,66,.2)">
-  <div style="font-size:9px;font-weight:700;color:var(--hint);letter-spacing:.15em;text-transform:uppercase;margin-bottom:3px;font-family:'JetBrains Mono',monospace">Thema 3 — G6</div>
-  <h2 style="color:#fff">🟠 Past Perfect (Vorvergangenheit)</h2>
-  <p>had + past participle — was VOR der Vergangenheit passiert ist</p><div class="hi">had</div>
-</div>
-
-<div class="card">
-  <div class="ch"><i class="ti ti-bulb" aria-hidden="true"></i> Was ist das Past Perfect?</div>
-  <div class="box o">Das Past Perfect beschreibt etwas, das <strong style="color:var(--orange)">noch vor einem anderen vergangenen Ereignis</strong> passiert ist.</div>
-  <div class="box y">🇩🇪 Vorvergangenheit: Wenn du über zwei Dinge in der Vergangenheit sprichst und deutlich machen willst, was zuerst passiert ist.</div>
-  <div class="formel">had + past participle (3. Form)<div class="sub">Positiv: had gone | Negativ: hadn't gone | Frage: Had you gone?</div></div>
-</div>
-
-<div class="card">
-  <div class="ch">📌 Signalwörter — wann benutzt du Past Perfect?</div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:8px 0">
-    ${[['after','nachdem'],['before','bevor'],['when','als']].map(([e,d])=>`
-    <div style="padding:10px;background:var(--lorange);border-radius:var(--r2);text-align:center">
-      <div style="font-size:14px;font-weight:800;color:var(--orange);font-family:'JetBrains Mono',monospace">${e}</div>
-      <div style="font-size:11px;color:var(--hint);margin-top:2px">${d}</div>
-    </div>`).join('')}
-  </div>
-</div>
-
-<div class="card">
-  <div class="ch">✏️ Beispiele aus dem Schulbuch</div>
-  <table class="ex-table">
-    <tr><th>Englisch</th><th>Erklärung</th></tr>
-    <tr><td class="en"><strong style="color:var(--orange)">After</strong> apartheid <strong style="color:var(--blue)">had finished</strong>, all South Africans could go to the same school.</td><td class="de">Zuerst endete Apartheid (had finished), dann konnten alle zur selben Schule.</td></tr>
-    <tr><td class="en">Lefa <strong style="color:var(--green)">wanted</strong> to go to work after he <strong style="color:var(--blue)">had spoken</strong> to the police officer.</td><td class="de">Erst sprach er (had spoken), dann wollte er (wanted).</td></tr>
-    <tr><td class="en"><strong style="color:var(--orange)">Before</strong> the girls reached the hostel, they <strong style="color:var(--blue)">had drunk</strong> all their water.</td><td class="de">Erst tranken sie (had drunk), dann kamen sie an (reached).</td></tr>
-    <tr><td class="en">Piet's team <strong style="color:var(--blue)">had left</strong> school before the accident <strong style="color:var(--green)">happened</strong>.</td><td class="de">Erst weg (had left), dann Unfall (happened).</td></tr>
-  </table>
-</div>
-
-<div class="card">
-  <div class="ch">🎯 Lösungen Arbeitsblatt — Aufgabe 9 (Simple past or past perfect?)</div>
-  <div style="display:flex;flex-direction:column;gap:5px">
-    ${[
-      ['Lefa','wanted','(want)','after he','had spoken','(speak)','to the police officer.'],
-      ['After the police officer','had interviewed','(interview)','Lefa for an hour, he','allowed','(allow)','him to go.'],
-      ['Piet\'s rugby team','had left','(leave)','school on the bus a few minutes before the accident','happened','(happen)','.'],
-      ['Lots of worried friends','called','(call)','Piet after they','had read','(read)','the report on the internet.'],
-      ['After Cebile','had come','(come)','home from school, she','began','(begin)','to make dinner.'],
-      ['Before her mother','lost','(lose)','her job, she','had worked','(work)','in an office.'],
-    ].map((r,i)=>`
-    <div style="padding:8px 10px;background:rgba(255,255,255,.03);border:1px solid var(--brd);border-radius:var(--r2);font-size:12px;font-weight:600;line-height:1.8">
-      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--hint)">${i+1}. </span>
-      ${r[0]} <span style="background:var(--lgreen);color:var(--green);padding:1px 7px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-weight:700">${r[1]}</span> <span style="color:var(--hint)">${r[2]}</span>
-      ${r[3]} <span style="background:var(--lorange);color:var(--orange);padding:1px 7px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-weight:700">${r[4]}</span> <span style="color:var(--hint)">${r[5]}</span> ${r[6]}
-    </div>`).join('')}
-  </div>
-</div>
-
-<div class="card">
-  <div class="ch">⚡ Lern-Check</div>
-  <div id="qa_l2"></div>
-  <button class="achk" id="cb_l2" onclick="finLesson(2)" style="width:100%;margin-top:10px;padding:12px" disabled>✅ Thema abschließen (+50 Punkte)</button>
-</div>`,
-
-3:`${BK}
-<div class="hero" style="background:linear-gradient(135deg,#0f221a,#0f1117);border:1px solid rgba(61,214,140,.2)">
-  <div style="font-size:9px;font-weight:700;color:var(--hint);letter-spacing:.15em;text-transform:uppercase;margin-bottom:3px;font-family:'JetBrains Mono',monospace">Thema 4 — G7</div>
-  <h2 style="color:#fff">🟢 Passive Voice (Passiv)</h2>
-  <p>was/were + past participle — Simple Past Passive</p><div class="hi">was</div>
-</div>
-
-<div class="card">
-  <div class="ch"><i class="ti ti-bulb" aria-hidden="true"></i> Was ist das Passiv?</div>
-  <div class="box g">Im Passiv steht die Sache oder Person, mit der etwas passiert, am Anfang — nicht der Täter!</div>
-  <div class="box y">🇩🇪 Aktiv: "Man entdeckte alte Felsen." → Passiv: "Alte Felsen wurden entdeckt." Im Englischen: was/were + 3. Form</div>
-  <div class="formel" style="background:#0f2218;border-color:rgba(61,214,140,.3)">was / were + past participle<div class="sub">Simple Past Passive | By = von wem?</div></div>
-</div>
-
-<div class="card">
-  <div class="ch">📌 Aktiv → Passiv: So geht's</div>
-  <div class="steps">
-    <div class="step" style="border-color:var(--orange)"><span class="sn" style="background:var(--orange)">1</span><div class="st">Das <strong style="color:var(--orange)">Objekt</strong> aus dem Aktivsatz wird zum <strong style="color:var(--orange)">Subjekt</strong> im Passivsatz</div></div>
-    <div class="step"><span class="sn">2</span><div class="st">Verb: <strong style="color:var(--blue)">was</strong> (singular) oder <strong style="color:var(--blue)">were</strong> (plural) + <strong style="color:var(--green)">3. Form des Verbs</strong></div></div>
-    <div class="step" style="border-color:var(--green)"><span class="sn" style="background:var(--green)">3</span><div class="st">Das <strong style="color:var(--orange)">Subjekt</strong> aus dem Aktivsatz wird mit <strong style="color:var(--blue)">by</strong> angehängt (optional)</div></div>
-  </div>
-</div>
-
-<div class="card">
-  <div class="ch">✏️ Beispiele aus Workbook S. 57 — Aufgabe 7</div>
-  <table class="ex-table">
-    <tr><th>Aktiv</th><th>Passiv (Lösung)</th></tr>
-    <tr><td class="de">People discovered very old rock art in a cave.</td><td class="en gram">Very old art objects <strong style="color:var(--green)">were discovered</strong> in a cave.</td></tr>
-    <tr><td class="de">They found diamonds in the 19th century.</td><td class="en gram">Diamonds <strong style="color:var(--green)">were found</strong> in the 19th century.</td></tr>
-    <tr><td class="de">They built many buildings in the cities.</td><td class="en gram">Many buildings <strong style="color:var(--green)">were built</strong> in the cities.</td></tr>
-    <tr><td class="de">They made the country a republic in 1961.</td><td class="en gram">The country <strong style="color:var(--green)">was made</strong> a republic in 1961.</td></tr>
-    <tr><td class="de">They abolished apartheid in 1991.</td><td class="en gram">Apartheid <strong style="color:var(--green)">was abolished</strong> in 1991.</td></tr>
-    <tr><td class="de">South Africa held the Football World Cup in 2010.</td><td class="en gram">The Football World Cup <strong style="color:var(--green)">was held</strong> in 2010.</td></tr>
-  </table>
-  <div class="card" style="margin-top:10px;background:rgba(255,255,255,.02)">
-    <div class="ch" style="font-size:12px;color:var(--muted)">Mit "by" — Aufgabe 7b</div>
-    <table class="ex-table">
-      <tr><th>Aktiv</th><th>Passiv mit "by"</th></tr>
-      <tr><td class="de">The government separated black and white people.</td><td class="gram">Black and white people <strong style="color:var(--green)">were separated</strong> <strong style="color:var(--blue)">by the government</strong> during apartheid.</td></tr>
-      <tr><td class="de">The British invaded South Africa in the 19th century.</td><td class="gram">South Africa <strong style="color:var(--green)">was invaded</strong> <strong style="color:var(--blue)">by the British</strong> in the 19th century.</td></tr>
-      <tr><td class="de">South Africa won the Rugby World Cup in 2007.</td><td class="gram">The Rugby World Cup <strong style="color:var(--green)">was won</strong> <strong style="color:var(--blue)">by South Africa</strong> in 2007.</td></tr>
-    </table>
-  </div>
-</div>
-
-<div class="card">
-  <div class="ch">⚡ Lern-Check</div>
-  <div id="qa_l3"></div>
-  <button class="achk" id="cb_l3" onclick="finLesson(3)" style="width:100%;margin-top:10px;padding:12px" disabled>✅ Thema abschließen (+50 Punkte)</button>
-</div>`,
-
-4:`${BK}
-<div class="hero" style="background:linear-gradient(135deg,#1f1a38,#0f1117);border:1px solid rgba(167,139,250,.2)">
-  <div style="font-size:9px;font-weight:700;color:var(--hint);letter-spacing:.15em;text-transform:uppercase;margin-bottom:3px;font-family:'JetBrains Mono',monospace">Thema 5</div>
-  <h2 style="color:#fff">📝 Artikel schreiben</h2>
-  <p>Write an article about a nature reserve</p><div class="hi">📝</div>
-</div>
-
-<div class="card">
-  <div class="ch">🗂️ Aufbau eines Artikels (Structure)</div>
-  <div class="steps">
-    <div class="step" style="border-color:var(--yellow)"><span class="sn" style="background:var(--yellow)">1</span><div class="st"><strong style="color:var(--yellow)">Headline / Title:</strong> Kurze, interessante Überschrift</div></div>
-    <div class="step"><span class="sn">2</span><div class="st"><strong style="color:var(--blue)">Introduction:</strong> Wer, Was, Wo, Wann, Warum — kurz vorstellen</div></div>
-    <div class="step"><span class="sn">3</span><div class="st"><strong style="color:var(--blue)">Main Part:</strong> Details, Fakten, Beschreibungen — use the grammar!</div></div>
-    <div class="step" style="border-color:var(--green)"><span class="sn" style="background:var(--green)">4</span><div class="st"><strong style="color:var(--green)">Conclusion:</strong> Zusammenfassung, eigene Meinung oder Empfehlung</div></div>
-  </div>
-</div>
-
-<div class="card">
-  <div class="ch">📌 Nützliche Ausdrücke für den Artikel</div>
-  <table class="ex-table">
-    <tr><th>Funktion</th><th>Ausdruck</th></tr>
-    <tr><td class="de">Einleitung</td><td class="en">Have you ever been to...? / ... is one of the most...</td></tr>
-    <tr><td class="de">Informationen geben</td><td class="en">It is known that... / It was found that... / ... was built in...</td></tr>
-    <tr><td class="de">Beispiele</td><td class="en">For example, / such as / including</td></tr>
-    <tr><td class="de">Kontrast</td><td class="en">However, / Although / On the other hand,</td></tr>
-    <tr><td class="de">Schluss</td><td class="en">In conclusion, / To sum up, / Overall,</td></tr>
-    <tr><td class="de">Meinung</td><td class="en">In my opinion, / I think that / It seems that</td></tr>
-  </table>
-</div>
-
-<div class="card">
-  <div class="ch">✏️ Beispiel: Kruger National Park Artikel</div>
-  <div style="background:rgba(255,255,255,.03);border:1px solid var(--brd);border-radius:var(--r2);padding:14px;font-size:13px;line-height:1.9;color:var(--text)">
-    <div style="font-size:15px;font-weight:800;color:var(--purple);margin-bottom:8px">Kruger National Park — A Wild Adventure</div>
-    <p><strong style="color:var(--muted)">Introduction:</strong> Have you ever dreamed of seeing lions, elephants and rhinos in the wild? Kruger National Park in South Africa is one of the most famous nature reserves in the world.</p>
-    <p style="margin-top:8px"><strong style="color:var(--muted)">Main Part:</strong> The park <strong class="g">was founded</strong> in 1898 and <strong class="g">was named</strong> after President Paul Kruger. Today, thousands of tourists visit it every year. We <strong class="b">watched</strong> elephants <strong class="b">drinking</strong> water from the river. We could hear lions <strong class="b">roaring</strong> in the distance. Before we arrived, we <strong class="o">had read</strong> a lot about the animals.</p>
-    <p style="margin-top:8px"><strong style="color:var(--muted)">Conclusion:</strong> In my opinion, Kruger National Park is a must-see. However, visitors should always follow the rangers' rules for their safety.</p>
-  </div>
-  <div class="box b" style="margin-top:10px;font-size:12px">🔵 blau = Present Participle &nbsp;|&nbsp; 🟠 orange = Past Perfect &nbsp;|&nbsp; 🟢 grün = Passive</div>
-</div>
-
-<div class="card">
-  <div class="ch">⚡ Lern-Check</div>
-  <div id="qa_l4"></div>
-  <button class="achk" id="cb_l4" onclick="finLesson(4)" style="width:100%;margin-top:10px;padding:12px" disabled>✅ Thema abschließen (+50 Punkte)</button>
-</div>`,
-
-5:`${BK}
-<div class="hero" style="background:linear-gradient(135deg,#1f1a38,#0f221a);border:1px solid rgba(251,191,36,.2)">
-  <div style="font-size:9px;font-weight:700;color:var(--hint);letter-spacing:.15em;text-transform:uppercase;margin-bottom:3px;font-family:'JetBrains Mono',monospace">Thema 6 — FINALE</div>
-  <h2 style="color:#fff">🏆 Alles zusammen!</h2>
-  <p>Wiederholung — perfekt für die Arbeit am 28.05.</p><div class="hi">🏆</div>
-</div>
-<div class="card">
-  <div class="ch">⚡ Blitz-Übersicht</div>
-  <table class="ex-table">
-    <tr><th>Grammatik</th><th>Formel</th><th>Beispiel</th></tr>
-    <tr><td class="en">Present Participle</td><td class="gram">verb + -ing nach see/hear/...</td><td class="en">I saw him <strong class="b">running</strong>.</td></tr>
-    <tr><td class="en">Past Perfect</td><td class="gram">had + 3. Form</td><td class="en">She <strong class="o">had read</strong> the book before...</td></tr>
-    <tr><td class="en">Passive (Simple Past)</td><td class="gram">was/were + 3. Form</td><td class="en">Diamonds <strong class="g">were found</strong> in...</td></tr>
-  </table>
-</div>
-<div class="card"><div class="ch">🏆 Final-Quiz</div><div id="qa_l5"></div>
-<button class="achk" id="cb_l5" onclick="finLesson(5)" style="width:100%;margin-top:10px;padding:12px;background:linear-gradient(135deg,var(--blue),var(--purple))" disabled>🏆 Unit 3 gemeistert! (+100 Punkte)</button></div>`,
-};
-
-// ═══ QUIZ DATA ═══
-const QD={
-  l0:[
-    {q:'When did apartheid end in South Africa?',opts:['In 1991','In 1961','In 2007','In 2010'],cor:'In 1991',h:'Apartheid ended in 1991.'},
-    {q:'Was ist eine "gated community"?',txt:true,opts:['Bewachte Wohnanlage','Arme Siedlung','Nationalpark','Diamantenmine'],cor:'Bewachte Wohnanlage',h:'A gated community = eine bewachte Wohnanlage mit Wächtern.'},
-    {q:'South Africa won the Rugby World Cup in...',opts:['2007','2010','1991','2000'],cor:'2007',h:'South Africa won the Rugby World Cup in 2007.'},
-  ],
-  l1:[
-    {q:'Which -ing form is correct for "come"?',opts:['comeing','coming','comming','comeed'],cor:'coming',h:'come → e weg → coming'},
-    {q:'I heard someone __ (sing) in the garden.',opts:['sang','to sing','singing','sings'],cor:'singing',h:'After verbs of perception: verb + -ing → singing'},
-    {q:'We watched the boys __ (play) rugby.',opts:['play','to play','playing','played'],cor:'playing',h:'watched + playing (present participle)'},
-    {q:'Which is a verb of perception?',opts:['go','run','hear','laugh'],cor:'hear',h:'hear, see, watch, notice, feel, smell = verbs of perception'},
-  ],
-  l2:[
-    {q:'Past Perfect = had + ...?',opts:['infinitiv','present participle','past participle (3. Form)','simple past'],cor:'past participle (3. Form)',h:'Past Perfect: had + past participle (3. Form), z.B. had gone, had seen'},
-    {q:'Welches ist ein Signalwort für Past Perfect?',opts:['yesterday','now','before','tomorrow'],cor:'before',h:'after, before, when = Signalwörter für Past Perfect'},
-    {q:'Before her mother ___ (lose) her job, she ___ (work) in an office.',opts:['lost / had worked','had lost / worked','loses / works','lost / worked'],cor:'lost / had worked',h:'Das zweite Ereignis (zuerst passiert) steht im Past Perfect: had worked'},
-    {q:'After Cebile ___ (come) home, she ___ (begin) to make dinner.',opts:['had come / began','came / had begun','comes / began','had come / had begun'],cor:'had come / began',h:'Zuerst kam sie (had come), dann begann sie (began)'},
-  ],
-  l3:[
-    {q:'Passive Simple Past = ?',opts:['was/were + infinitive','was/were + past participle','had + past participle','is/are + past participle'],cor:'was/were + past participle',h:'Simple Past Passive: was/were + 3. Form (past participle)'},
-    {q:'Activ: "They found diamonds." → Passive?',opts:['Diamonds was found.','Diamonds were found.','Diamonds are found.','Diamonds had found.'],cor:'Diamonds were found.',h:'"diamonds" ist Plural → were found (3. Form von "find" = found)'},
-    {q:'Was steht nach "by" im Passivsatz?',opts:['Das Objekt','Der Täter / Das Subjekt vom Aktivsatz','Das Verb','Das Adverb'],cor:'Der Täter / Das Subjekt vom Aktivsatz',h:'"by" + wer es getan hat — z.B. "was invaded by the British"'},
-    {q:'"The country ___ a republic in 1961." (make)',opts:['was made','were made','had made','is made'],cor:'was made',h:'"the country" = Singular → was + made (3. Form von make)'},
-  ],
-  l4:[
-    {q:'Was kommt immer zuerst in einem Artikel?',opts:['Conclusion','Main Part','Headline/Title','Examples'],cor:'Headline/Title',h:'Aufbau: Headline → Introduction → Main Part → Conclusion'},
-    {q:'In my opinion = ?',opts:['Meiner Meinung nach','Zum Beispiel','Zusammenfassend','Obwohl'],cor:'Meiner Meinung nach',h:'"In my opinion" = Meiner Meinung nach — für die eigene Meinung!'},
-    {q:'Welches Grammar solltest du im Artikel über den Kruger Park nutzen?',opts:['Present perfect','Passive + Present Participle + Past Perfect','Simple future only','Conditional'],cor:'Passive + Present Participle + Past Perfect',h:'Alle drei: Passive (was built), Present Participle (watching), Past Perfect (had read)'},
-  ],
-  l5:[
-    {q:'I heard the birds __ (sing).',opts:['sang','to sing','singing','sings'],cor:'singing',h:'hear + singing (present participle)'},
-    {q:'Before she arrived, she __ (read) the guide.',opts:['read','reads','had read','was reading'],cor:'had read',h:'Past Perfect: had read — zuerst lesen, dann ankommen'},
-    {q:'"Apartheid ___ in 1991." (abolish)',opts:['abolish','was abolished','were abolished','had abolished'],cor:'was abolished',h:'Passive Simple Past: was abolished (3. Form von abolish = abolished)'},
-    {q:'Welche 3 Grammatikthemen sind in Unit 3?',opts:['Present perfect, simple past, future','Present participle, past perfect, passive','Conditional, modal verbs, passive','Reported speech, passive, future'],cor:'Present participle, past perfect, passive',h:'G5: Present Participle | G6: Past Perfect | G7: Passive'},
-    {q:'"The British ___ South Africa ___ the 19th century." (invade + by)',opts:['invaded by the British in','was invaded by the British in','were invaded by in','had invaded by in'],cor:'was invaded by the British in',h:'Passive: was invaded by the British in the 19th century'},
-  ],
-};
-
-function buildLQ(id){
-  const key='l'+id;const all=QD[key];if(!all)return;
-  const wrap=document.getElementById('qa_'+key);if(!wrap)return;
-  const pool=shuf(all).slice(0,Math.min(3,all.length));
-  window['_pool_'+key]=pool;
-  wrap.innerHTML=pool.map((q,i)=>`
-    <div class="aufg" id="qc_${key}_${i}" style="margin-bottom:8px">
-      <div style="padding:10px 13px;font-size:12px;font-weight:600;line-height:1.6;color:var(--text)">${q.q}</div>
-      <div class="opts" style="padding:0 13px 10px">${(q.opts).map(o=>`<button class="opt" onclick="chkTxt('${key}',${i},'${o.replace(/'/g,"&#39;")}','${q.cor.replace(/'/g,"&#39;")}','${(q.h||'').replace(/'/g,"&#39;")}')">
-        ${o}</button>`).join('')}</div>
-      <div class="afb" id="qf_${key}_${i}" style="padding:0 13px 9px"></div>
-    </div>`).join('');
-  updCb(key,pool.length);
+function startQuiz(id) {
+  currentTopic = TOPICS[id];
+  quizState = {
+    pool: shuffle([...currentTopic.quiz]),
+    idx: 0,
+    correct: 0,
+    wrong: [],
+    mode: 'quiz'
+  };
+  showScreen('sc-quiz');
+  renderQuestion();
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function chkTxt(key,i,chosen,cor,hint){
-  const k=key+'_'+i;if(ans[k])return;
-  const card=document.getElementById('qc_'+key+'_'+i);
-  const fb=document.getElementById('qf_'+key+'_'+i);
-  card.querySelectorAll('.opt').forEach(b=>b.disabled=true);
-  if(chosen===cor){
-    card.querySelectorAll('.opt').forEach(b=>{if(b.textContent.trim()===chosen)b.classList.add('ok');});
-    fb.textContent='✅ Richtig!';fb.className='afb ok';
-    ans[k]=true;pts+=10;document.getElementById('pts').textContent=pts;sv();
-    toast('+10 Punkte! ⭐');updCb(key,window['_pool_'+key]?.length||3);
-    card.style.animation='pop .35s';
+function renderQuestion() {
+  const q = quizState.pool[quizState.idx];
+  const total = quizState.pool.length;
+  const idx = quizState.idx;
+  const pct = Math.round((idx / total) * 100);
+
+  let qHTML = '';
+  if (q.type === 'mc') {
+    qHTML = `<div class="opts">${q.opts.map(o =>
+      `<button class="opt" onclick="answerMC(this,'${esc(o)}','${esc(q.ans)}','${esc(q.ex)}')">${o}</button>`
+    ).join('')}</div>`;
   } else {
-    card.querySelectorAll('.opt').forEach(b=>{
-      if(b.textContent.trim()===chosen)b.classList.add('no');
-      if(b.textContent.trim()===cor)b.classList.add('ok');
+    qHTML = `<input class="fill-inp" id="fill-inp" placeholder="Deine Antwort eingeben..." autocomplete="off"
+      onkeydown="if(event.key==='Enter')checkFill('${esc(q.ans)}','${esc(q.ex)}')">
+    <button class="chk-btn" onclick="checkFill('${esc(q.ans)}','${esc(q.ex)}')">Prüfen ✓</button>`;
+  }
+
+  document.getElementById('quiz-content').innerHTML = `
+    <div class="quiz-wrap fadein">
+      <div class="quiz-header">
+        <div class="quiz-title">${currentTopic.emoji} ${currentTopic.title.split(' — ')[0]}</div>
+        <div class="quiz-counter">${idx+1} / ${total}</div>
+      </div>
+      <div class="qprog"><div class="qprog-fill" style="width:${pct}%"></div></div>
+      <div class="q-text">${q.q}</div>
+      ${q.de ? `<div class="q-de">🇩🇪 ${q.de}</div>` : ''}
+      ${qHTML}
+      <div class="q-feedback" id="qfb"></div>
+      <div class="q-explain" id="qex">💡 ${q.ex}</div>
+    </div>`;
+}
+
+function answerMC(btn, chosen, correct, explain) {
+  document.querySelectorAll('.opt').forEach(b => b.disabled = true);
+  const ok = chosen === correct;
+  btn.classList.add(ok ? 'ok' : 'no');
+  if (!ok) {
+    document.querySelectorAll('.opt').forEach(b => {
+      if (b.textContent.trim() === correct) b.classList.add('ok');
     });
-    fb.innerHTML='❌ Richtig: <strong>'+cor+'</strong> — '+hint;fb.className='afb no';
-    card.style.animation='shake .3s';
-    setTimeout(()=>{card.style.animation='';card.querySelectorAll('.opt').forEach(b=>{b.disabled=false;b.classList.remove('no','ok');});fb.textContent='';},3500);
   }
+  document.getElementById('qfb').textContent = ok ? '✅ Richtig!' : '❌ Falsch — sieh dir die Erklärung an!';
+  document.getElementById('qfb').className = 'q-feedback ' + (ok ? 'ok' : 'no');
+  document.getElementById('qex').classList.add('show');
+  handleAnswer(ok, explain);
 }
 
-function updCb(key,total){
-  const btn=document.getElementById('cb_'+key);if(!btn)return;
-  const done=Object.keys(ans).filter(k=>k.startsWith(key+'_')).length;
-  btn.disabled=done<total;
-  btn.textContent=done>=total?'✅ Thema abschließen (+50 Punkte)':'Noch '+(total-done)+' Frage(n) beantworten';
-  if(key==='l5')btn.textContent=done>=total?'🏆 Unit 3 gemeistert! (+100 Punkte)':'Noch '+(total-done)+' Frage(n)';
+function checkFill(correct, explain) {
+  const inp = document.getElementById('fill-inp');
+  if (!inp) return;
+  inp.disabled = true;
+  const val = inp.value.trim().toLowerCase().replace(/['']/g,"'");
+  const cor = correct.trim().toLowerCase();
+  const ok = val === cor || val === cor.replace(/'/g,"'");
+  inp.classList.add(ok ? 'ok' : 'no');
+  document.getElementById('qfb').textContent = ok ? '✅ Richtig!' : `❌ Falsch! Richtig: ${correct}`;
+  document.getElementById('qfb').className = 'q-feedback ' + (ok ? 'ok' : 'no');
+  document.getElementById('qex').classList.add('show');
+  document.querySelector('.chk-btn').disabled = true;
+  handleAnswer(ok, explain);
 }
 
-function finLesson(id){
-  dT[id]=true;const bonus=id===5?100:50;pts+=bonus;document.getElementById('pts').textContent=pts;sv();
-  toast(`🎉 +${bonus} Punkte! Weiter so!`);
-  setTimeout(goBackLearn,700);
-}
-
-function shuf(a){const r=[...a];for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];}return r;}
-
-// ═══ GRAMMATIK DETAIL ═══
-const GRAM_CONTENT={
-  pp:`<button class="back" onclick="document.getElementById('gram-picker').style.display='block';document.getElementById('gram-detail').style.display='none'"><i class="ti ti-arrow-left"></i> Zurück</button>
-  <div class="card"><div class="ch" style="color:var(--blue)">🔵 G5 Das Partizip Präsens</div>
-  <div class="box b">Bildung: <strong class="h">verb + -ing</strong><br>Nach: see, watch, notice, hear, feel, smell, listen to</div>
-  <div class="formel">subject + verb of perception + object + verb-ing</div>
-  <table class="ex-table"><tr><th>Infinitiv</th><th>-ing Form</th><th>Regel</th></tr>
-  <tr><td class="en">play</td><td class="gram">playing</td><td class="de">+ ing</td></tr>
-  <tr><td class="en">come</td><td class="gram">coming</td><td class="de">e weg, + ing</td></tr>
-  <tr><td class="en">run</td><td class="gram">running</td><td class="de">n verdoppeln + ing</td></tr>
-  <tr><td class="en">carry</td><td class="gram">carrying</td><td class="de">y bleibt, + ing</td></tr>
-  <tr><td class="en">hide</td><td class="gram">hiding</td><td class="de">e weg, + ing</td></tr>
-  </table></div>`,
-  past:`<button class="back" onclick="document.getElementById('gram-picker').style.display='block';document.getElementById('gram-detail').style.display='none'"><i class="ti ti-arrow-left"></i> Zurück</button>
-  <div class="card"><div class="ch" style="color:var(--orange)">🟠 G6 Das Past Perfect</div>
-  <div class="formel" style="border-color:rgba(255,140,66,.3)">had + past participle (3. Form)<div class="sub">Signalwörter: after, before, when</div></div>
-  <table class="ex-table"><tr><th>Positiv</th><th>Negativ</th><th>Frage</th></tr>
-  <tr><td class="gram">I had gone</td><td class="gram">I hadn't gone</td><td class="gram">Had I gone?</td></tr>
-  <tr><td class="gram">she had seen</td><td class="gram">she hadn't seen</td><td class="gram">Had she seen?</td></tr>
-  </table>
-  <div class="box y">🇩🇪 Das Past Perfect beschreibt Ereignisse, die VOR einem anderen vergangenen Ereignis passiert sind — Vorvergangenheit!</div></div>`,
-  passive:`<button class="back" onclick="document.getElementById('gram-picker').style.display='block';document.getElementById('gram-detail').style.display='none'"><i class="ti ti-arrow-left"></i> Zurück</button>
-  <div class="card"><div class="ch" style="color:var(--green)">🟢 G7 Passive Voice — Simple Past</div>
-  <div class="formel" style="border-color:rgba(61,214,140,.3);background:#0f2218">was / were + past participle<div class="sub">Singular: was | Plural: were | By = von wem</div></div>
-  <table class="ex-table"><tr><th>Verb</th><th>3. Form</th><th>Passivsatz</th></tr>
-  <tr><td class="en">find</td><td class="gram">found</td><td class="gram">was/were found</td></tr>
-  <tr><td class="en">build</td><td class="gram">built</td><td class="gram">was/were built</td></tr>
-  <tr><td class="en">abolish</td><td class="gram">abolished</td><td class="gram">was/were abolished</td></tr>
-  <tr><td class="en">make</td><td class="gram">made</td><td class="gram">was/were made</td></tr>
-  <tr><td class="en">hold</td><td class="gram">held</td><td class="gram">was/were held</td></tr>
-  <tr><td class="en">discover</td><td class="gram">discovered</td><td class="gram">was/were discovered</td></tr>
-  </table></div>`,
-};
-
-function openGram(id){
-  document.getElementById('gram-picker').style.display='none';
-  document.getElementById('gram-detail').style.display='block';
-  document.getElementById('gram-content').innerHTML=GRAM_CONTENT[id]||'';
-}
-
-// ═══ VOKABELN ═══
-const VOCAB=[
-  ['Albtraum','nightmare'],['leiden unter','suffer from'],['Wächter','guard'],
-  ['schuldig','guilty'],['dumm/blöd','stupid'],['Gegenteil','opposite'],
-  ['bewachte Wohnanlage','gated community'],['Behandlung','treatment'],
-  ['Nationalpark','National Park'],['Ranger (Parkwächter)','ranger'],
-  ['Löwen','lions'],['erschrecken','scare'],['albern/blöd','silly'],
-  ['Reporter','reporter'],['verletzt werden','be injured'],
-  ['Apartheid','apartheid'],['Rassentrennung','racial segregation'],
-  ['Republik','republic'],['abschaffen','abolish'],['entdecken','discover'],
-  ['Diamanten','diamonds'],['Naturschutzgebiet','nature reserve'],
-  ['Sicherheit','safety'],['Unterschiede','differences'],
-  ['Township (Armenssiedlung)','township'],['sozial','social'],
-  ['Grundschule','primary school'],['Spielplatz','playground'],
-  ['Mitschüler','classmate'],['rau/grob','rough'],
-];
-
-function buildVocab(){
-  document.getElementById('vocab-grid').innerHTML=VOCAB.map((w,i)=>`
-    <div class="vocab-card" id="vc${i}" onclick="flipCard(${i})">
-      <div class="vc-de">${w[0]}</div>
-      <div class="vc-en">${w[1]}</div>
-      <div class="vc-hint">Tippen zum Übersetzen</div>
-    </div>`).join('');
-}
-function flipCard(i){
-  const c=document.getElementById('vc'+i);
-  c.classList.toggle('flipped');
-  c.querySelector('.vc-hint').textContent=c.classList.contains('flipped')?'Nochmal tippen':'Tippen zum Übersetzen';
-}
-
-let vqPool=[],vqIdx=0,vqScore=0;
-function startVQ(){
-  vqPool=shuf(VOCAB).slice(0,10);vqIdx=0;vqScore=0;
-  showVQ();
-}
-function showVQ(){
-  const area=document.getElementById('vq-area');
-  if(vqIdx>=vqPool.length){
-    area.innerHTML=`<div class="box g" style="text-align:center;padding:16px">🎉 Quiz beendet! Score: <strong>${vqScore}/${vqPool.length}</strong> — ${vqScore>=8?'Ausgezeichnet! 🏆':vqScore>=5?'Gut gemacht! 👍':'Nochmal üben! 💪'}</div>
-    <button class="achk" onclick="startVQ()" style="width:100%;margin-top:8px">Nochmal spielen</button>`;
-    pts+=vqScore*5;document.getElementById('pts').textContent=pts;sv();
-    return;
-  }
-  const w=vqPool[vqIdx];
-  const opts=shuf([w[1],...shuf(VOCAB.filter(v=>v[1]!==w[1])).slice(0,3).map(v=>v[1])]);
-  area.innerHTML=`<div style="font-size:11px;color:var(--muted);margin-bottom:6px;font-family:'JetBrains Mono',monospace">Frage ${vqIdx+1}/${vqPool.length}</div>
-    <div class="prog-bar"><div class="prog-fill" style="width:${(vqIdx/vqPool.length)*100}%"></div></div>
-    <div style="font-size:16px;font-weight:700;margin:12px 0;color:var(--text)">${w[0]}</div>
-    <div class="opts">${opts.map(o=>`<button class="opt" onclick="ansVQ('${o.replace(/'/g,"&#39;")}','${w[1].replace(/'/g,"&#39;")}')">
-      ${o}</button>`).join('')}</div>`;
-}
-function ansVQ(chosen,cor){
-  document.querySelectorAll('#vq-area .opt').forEach(b=>{b.disabled=true;if(b.textContent.trim()===chosen)b.classList.add(chosen===cor?'ok':'no');if(b.textContent.trim()===cor)b.classList.add('ok');});
-  if(chosen===cor)vqScore++;
-  setTimeout(()=>{vqIdx++;showVQ();},1400);
-}
-
-// ═══ ÜBUNGEN ═══
-const UEB_CONTENT={
-pp:`<button class="back" onclick="document.getElementById('ueb-picker').style.display='grid';document.getElementById('ueb-detail').style.display='none'"><i class="ti ti-arrow-left"></i> Zurück</button>
-<div class="card"><div class="ch">✏️ Present Participle — Übungen</div>
-${[
-  {q:'We watched the cars ___ (come) nearer.',a:'coming',h:'come → coming (e weg)'},
-  {q:'I could smell something ___ (burn) in the kitchen.',a:'burning',h:'burn → burning'},
-  {q:'Did you hear Ryan ___ (sing) in the shower?',a:'singing',h:'sing → singing'},
-  {q:'They felt the rain ___ (get) heavier.',a:'getting',h:'get → getting (Konsonant doppeln)'},
-  {q:'Kate didn\'t notice all the people ___ (leave) the building.',a:'leaving',h:'leave → leaving (e weg)'},
-  {q:'Amy saw two people ___ (carry) large bags.',a:'carrying',h:'carry → carrying'},
-  {q:'Emma has noticed Steve ___ (show) his pictures.',a:'showing',h:'show → showing'},
-  {q:'He likes to watch the clouds ___ (move) across the landscape.',a:'moving',h:'move → moving (e weg)'},
-].map((q,i)=>`
-<div class="aufg" style="margin-bottom:8px" id="pq${i}">
-  <div class="aufg-body">
-    <div style="font-size:13px;font-weight:600;margin-bottom:8px">${q.q}</div>
-    <div class="ainp-row">
-      <input class="ainp" id="pa${i}" type="text" placeholder="-ing Form..." onkeydown="if(event.key==='Enter')checkInp('pa${i}','${q.a}','pf${i}',5)">
-      <button class="achk" onclick="checkInp('pa${i}','${q.a}','pf${i}',5)">Prüfen</button>
-    </div>
-    <div class="afb" id="pf${i}"></div>
-    <button class="loes-btn" onclick="toggleL('pl${i}')">💡 Lösung</button>
-    <div class="loes-box" id="pl${i}">${q.a} — ${q.h}</div>
-  </div>
-</div>`).join('')}
-</div>`,
-
-pastperfect:`<button class="back" onclick="document.getElementById('ueb-picker').style.display='grid';document.getElementById('ueb-detail').style.display='none'"><i class="ti ti-arrow-left"></i> Zurück</button>
-<div class="card"><div class="ch">✏️ Past Perfect — Übungen (Aufgabe 1 aus Arbeitsblatt)</div>
-${[
-  {q:'After apartheid ___ (finish), all South Africans could go to the same school.',a:'had finished',h:'Past Perfect: had + finished'},
-  {q:'The end of apartheid ___ (come) before Cebile started school.',a:'had come',h:'Past Perfect: had + come'},
-  {q:'The students ___ (finish) lunch before they went to sports practice.',a:'had finished',h:'Past Perfect: had + finished'},
-  {q:'The boys ___ (not play) cricket before they went to South Africa.',a:'hadn\'t played',h:'Negativ: hadn\'t + played'},
-  {q:'Before the girls reached the hostel, they ___ (drink) all their water.',a:'had drunk',h:'Past Perfect: had + drunk (unregelmäßig!)'},
-  {q:'After people ___ (hear) the bad news, they felt very sad.',a:'had heard',h:'Past Perfect: had + heard (unregelmäßig!)'},
-  {q:'We ___ (not start) our game when our teacher came to look for us.',a:'hadn\'t started',h:'Negativ: hadn\'t + started'},
-  {q:'Before Sizwe\'s family moved to Durban, they ___ (have) a small house in a township.',a:'had had',h:'Past Perfect von "have": had had'},
-].map((q,i)=>`
-<div class="aufg" style="margin-bottom:8px">
-  <div class="aufg-body">
-    <div style="font-size:13px;font-weight:600;margin-bottom:8px">${q.q}</div>
-    <div class="ainp-row">
-      <input class="ainp" id="ga${i}" type="text" placeholder="had + ..." style="width:180px" onkeydown="if(event.key==='Enter')checkInp('ga${i}','${q.a}','gf${i}',5)">
-      <button class="achk" onclick="checkInp('ga${i}','${q.a}','gf${i}',5)">Prüfen</button>
-    </div>
-    <div class="afb" id="gf${i}"></div>
-    <button class="loes-btn" onclick="toggleL('gl${i}')">💡 Lösung</button>
-    <div class="loes-box" id="gl${i}">${q.a} — ${q.h}</div>
-  </div>
-</div>`).join('')}
-</div>`,
-
-passive:`<button class="back" onclick="document.getElementById('ueb-picker').style.display='grid';document.getElementById('ueb-detail').style.display='none'"><i class="ti ti-arrow-left"></i> Zurück</button>
-<div class="card"><div class="ch">✏️ Passive Voice — Übungen</div>
-<div class="box g" style="margin-bottom:10px;font-size:12px">Schreibe die Sätze ins Passiv (Simple Past)! was/were + 3. Form</div>
-${[
-  {q:'They found diamonds in the 19th century.',a:'Diamonds were found in the 19th century.',h:'found → were found (Plural: were)'},
-  {q:'They built many buildings in the cities.',a:'Many buildings were built in the cities.',h:'built → were built'},
-  {q:'They made the country a republic in 1961.',a:'The country was made a republic in 1961.',h:'made → was made (Singular: was)'},
-  {q:'They abolished apartheid in 1991.',a:'Apartheid was abolished in 1991.',h:'abolished → was abolished'},
-  {q:'South Africa held the Football World Cup in 2010.',a:'The Football World Cup was held in 2010.',h:'held → was held'},
-  {q:'The British invaded South Africa in the 19th century.',a:'South Africa was invaded by the British in the 19th century.',h:'invaded → was invaded by the British'},
-].map((q,i)=>`
-<div class="aufg" style="margin-bottom:8px">
-  <div class="aufg-body">
-    <div style="font-size:13px;font-weight:600;margin-bottom:8px">${q.q}</div>
-    <div style="margin:8px 0"><input type="text" class="test-inp" id="va${i}" placeholder="Passivsatz..." onkeydown="if(event.key==='Enter')checkPassive('va${i}','${q.a}','vf${i}')"></div>
-    <div class="afb" id="vf${i}"></div>
-    <button class="loes-btn" onclick="toggleL('vl${i}')">💡 Lösung</button>
-    <div class="loes-box" id="vl${i}">${q.a}<br><span style="font-size:11px;color:var(--hint)">${q.h}</span></div>
-  </div>
-</div>`).join('')}
-</div>`,
-
-mixed:`<button class="back" onclick="document.getElementById('ueb-picker').style.display='grid';document.getElementById('ueb-detail').style.display='none'"><i class="ti ti-arrow-left"></i> Zurück</button>
-<div class="card"><div class="ch">🎯 Gemischte Aufgaben — wie in der Arbeit!</div>
-${[
-  {q:'I heard someone ___ (call) my name.',a:'calling',h:'Present Participle: call → calling'},
-  {q:'Apartheid ___ (abolish) in 1991.',a:'was abolished',h:'Passive: was abolished'},
-  {q:'Before she came home, she ___ (buy) food.',a:'had bought',h:'Past Perfect: had bought (buy → bought)'},
-  {q:'We watched the lions ___ (run) across the field.',a:'running',h:'Present Participle: run → running (Dopplung!)'},
-  {q:'The Rugby World Cup ___ (win) by South Africa in 2007.',a:'was won',h:'Passive: was won (win → won)'},
-  {q:'After he ___ (speak) to the police, he went home.',a:'had spoken',h:'Past Perfect: had spoken (speak → spoken)'},
-].map((q,i)=>`
-<div class="aufg" style="margin-bottom:8px">
-  <div class="aufg-body">
-    <div style="font-size:11px;color:var(--hint);margin-bottom:4px;font-family:'JetBrains Mono',monospace">${i%3===0?'Present Participle':i%3===1?'Passive':'Past Perfect'}</div>
-    <div style="font-size:13px;font-weight:600;margin-bottom:8px">${q.q}</div>
-    <div class="ainp-row">
-      <input class="ainp" id="ma${i}" type="text" placeholder="Antwort..." style="width:200px" onkeydown="if(event.key==='Enter')checkInp('ma${i}','${q.a}','mf${i}',8)">
-      <button class="achk" onclick="checkInp('ma${i}','${q.a}','mf${i}',8)">Prüfen</button>
-    </div>
-    <div class="afb" id="mf${i}"></div>
-    <button class="loes-btn" onclick="toggleL('ml${i}')">💡 Lösung</button>
-    <div class="loes-box" id="ml${i}">${q.a} — ${q.h}</div>
-  </div>
-</div>`).join('')}
-</div>`,
-};
-
-function openUeb(id){
-  document.getElementById('ueb-picker').style.display='none';
-  document.getElementById('ueb-detail').style.display='block';
-  document.getElementById('ueb-content').innerHTML=UEB_CONTENT[id]||'';
-}
-
-function checkInp(inpId,correct,fbId,ptsVal){
-  const inp=document.getElementById(inpId);if(!inp)return;
-  const fb=document.getElementById(fbId);
-  const val=inp.value.trim().toLowerCase();
-  const cor=correct.trim().toLowerCase();
-  if(val===cor||val===cor.replace("'","'")){
-    inp.classList.add('ok');fb.textContent='✅ Richtig! 🎉';fb.className='afb ok';
-    inp.disabled=true;pts+=ptsVal;document.getElementById('pts').textContent=pts;sv();
-    toast(`+${ptsVal} Punkte!`);
+let nextTimeout = null;
+function handleAnswer(ok, explain) {
+  if (ok) {
+    quizState.correct++;
+    state.streak++;
+    state.pts += 10;
   } else {
-    inp.classList.add('no');fb.innerHTML='❌ Nicht ganz — Tipp: <strong style="color:var(--green)">'+correct+'</strong>';fb.className='afb no';
-    setTimeout(()=>{inp.classList.remove('no');fb.textContent='';},3000);
+    state.streak = 0;
+    quizState.wrong.push(quizState.pool[quizState.idx]);
   }
-}
+  save();
+  document.getElementById('hs-streak').textContent = state.streak;
+  document.getElementById('hs-pts').textContent = state.pts;
 
-function checkPassive(inpId,correct,fbId){
-  const inp=document.getElementById(inpId);if(!inp)return;
-  const fb=document.getElementById(fbId);
-  const val=inp.value.trim().toLowerCase().replace(/[.!?]/g,'');
-  const cor=correct.trim().toLowerCase().replace(/[.!?]/g,'');
-  const correctWords=cor.split(' ');
-  const valWords=val.split(' ');
-  const hasWasWere=val.includes('was ')||val.includes('were ');
-  const hasMainWord=correctWords.some(w=>w.length>3&&val.includes(w));
-  if(hasWasWere&&hasMainWord){
-    inp.classList.add('ok');fb.innerHTML='✅ Gut! Musterlösung: <strong>'+correct+'</strong>';fb.className='afb ok';
-    inp.disabled=true;pts+=8;document.getElementById('pts').textContent=pts;sv();toast('+8 Punkte!');
-  } else {
-    inp.classList.add('no');fb.innerHTML='❌ Überprüfe: was/were + 3. Form. Lösung: <strong style="color:var(--green)">'+correct+'</strong>';fb.className='afb no';
-    setTimeout(()=>{inp.classList.remove('no');fb.textContent='';},4000);
-  }
-}
-
-function toggleL(id){
-  const box=document.getElementById(id);if(!box)return;
-  box.style.display=box.style.display==='block'?'none':'block';
-}
-
-// ═══ TEST ═══
-let testTimeMin=0,testTimer=null,testStartTime=null,testQs=[];
-function selTime(min,btn){
-  testTimeMin=min;
-  document.querySelectorAll('.time-btn').forEach(b=>b.classList.remove('sel'));
-  btn.classList.add('sel');
-  const btn2=document.getElementById('start-test-btn');
-  const count=min<=10?5:min<=20?10:min<=30?15:min<=45?20:min<=60?25:35;
-  btn2.disabled=false;
-  btn2.textContent=`Test starten — ${count} Fragen, ${min} Minuten ↗`;
-}
-
-const ALL_TEST_QS=[
-  // Present Participle
-  {type:'pp',q:'We watched the cars ___ (come) nearer.',a:'coming',cat:'Present Participle'},
-  {type:'pp',q:'I could smell something ___ (burn) in the kitchen.',a:'burning',cat:'Present Participle'},
-  {type:'pp',q:'Did you hear Ryan ___ (sing) in the shower?',a:'singing',cat:'Present Participle'},
-  {type:'pp',q:'They felt the rain ___ (get) heavier.',a:'getting',cat:'Present Participle'},
-  {type:'pp',q:'Kate didn\'t notice all the people ___ (leave).',a:'leaving',cat:'Present Participle'},
-  {type:'pp',q:'Amy saw two people ___ (carry) large bags.',a:'carrying',cat:'Present Participle'},
-  {type:'pp',q:'He never hears anyone ___ (call) his name.',a:'calling',cat:'Present Participle'},
-  {type:'pp',q:'He likes to watch the clouds ___ (move) across the landscape.',a:'moving',cat:'Present Participle'},
-  // Past Perfect
-  {type:'past',q:'After apartheid ___ (finish), all South Africans could go to the same school.',a:'had finished',cat:'Past Perfect'},
-  {type:'past',q:'The end of apartheid ___ (come) before Cebile started school.',a:'had come',cat:'Past Perfect'},
-  {type:'past',q:'Before the girls reached the hostel, they ___ (drink) all their water.',a:'had drunk',cat:'Past Perfect'},
-  {type:'past',q:'Lots of worried friends called Piet after they ___ (read) the report.',a:'had read',cat:'Past Perfect'},
-  {type:'past',q:'After Cebile ___ (come) home from school, she began to make dinner.',a:'had come',cat:'Past Perfect'},
-  {type:'past',q:'Before her mother lost her job, she ___ (work) in an office.',a:'had worked',cat:'Past Perfect'},
-  {type:'past',q:'After the police officer ___ (interview) Lefa, he allowed him to go.',a:'had interviewed',cat:'Past Perfect'},
-  // Passive
-  {type:'pass',q:'"They found diamonds in the 19th century." → Passive:',a:'Diamonds were found in the 19th century.',cat:'Passive Voice'},
-  {type:'pass',q:'"They abolished apartheid in 1991." → Passive:',a:'Apartheid was abolished in 1991.',cat:'Passive Voice'},
-  {type:'pass',q:'"They built many buildings." → Passive:',a:'Many buildings were built in the cities.',cat:'Passive Voice'},
-  {type:'pass',q:'Passive: The country ___ (make) a republic in 1961.',a:'was made',cat:'Passive Voice'},
-  {type:'pass',q:'Passive: The Rugby World Cup ___ (win) by South Africa in 2007.',a:'was won',cat:'Passive Voice'},
-  // Vocab
-  {type:'voc',q:'Deutsch → Englisch: "Albtraum"',a:'nightmare',cat:'Vocabulary'},
-  {type:'voc',q:'Deutsch → Englisch: "Wächter"',a:'guard',cat:'Vocabulary'},
-  {type:'voc',q:'Deutsch → Englisch: "schuldig"',a:'guilty',cat:'Vocabulary'},
-  {type:'voc',q:'Deutsch → Englisch: "abschaffen"',a:'abolish',cat:'Vocabulary'},
-  {type:'voc',q:'Deutsch → Englisch: "Naturschutzgebiet"',a:'nature reserve',cat:'Vocabulary'},
-  {type:'voc',q:'Deutsch → Englisch: "bewachte Wohnanlage"',a:'gated community',cat:'Vocabulary'},
-  {type:'voc',q:'Deutsch → Englisch: "entdecken"',a:'discover',cat:'Vocabulary'},
-  {type:'voc',q:'Deutsch → Englisch: "Unterschiede"',a:'differences',cat:'Vocabulary'},
-  {type:'voc',q:'Deutsch → Englisch: "sozial"',a:'social',cat:'Vocabulary'},
-];
-
-function startTest(){
-  const usePP=document.getElementById('cb-pp').checked;
-  const usePast=document.getElementById('cb-past').checked;
-  const usePass=document.getElementById('cb-pass').checked;
-  const useVoc=document.getElementById('cb-voc').checked;
-  const count=testTimeMin<=10?5:testTimeMin<=20?10:testTimeMin<=30?15:testTimeMin<=45?20:testTimeMin<=60?25:35;
-  let pool=ALL_TEST_QS.filter(q=>(usePP&&q.type==='pp')||(usePast&&q.type==='past')||(usePass&&q.type==='pass')||(useVoc&&q.type==='voc'));
-  if(!pool.length)pool=ALL_TEST_QS;
-  testQs=shuf(pool).slice(0,Math.min(count,pool.length));
-  document.getElementById('test-setup').style.display='none';
-  document.getElementById('test-area').style.display='block';
-  testStartTime=Date.now();
-  renderTest();
-  if(testTimer)clearInterval(testTimer);
-  testTimer=setInterval(updateTestTimer,1000);
-}
-
-let testTimerEl;
-function updateTestTimer(){
-  const elapsed=Math.floor((Date.now()-testStartTime)/1000);
-  const totalSec=testTimeMin*60;
-  const left=Math.max(0,totalSec-elapsed);
-  const m=Math.floor(left/60);const s=left%60;
-  const el=document.getElementById('test-timer');
-  if(el)el.textContent=`⏱ ${m}:${s.toString().padStart(2,'0')} verbleibend`;
-  if(el&&left<60)el.style.color='var(--red)';
-  if(left===0){clearInterval(testTimer);submitTest();}
-}
-
-function renderTest(){
-  document.getElementById('test-content').innerHTML=`
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-      <div style="font-size:13px;font-weight:700;color:var(--text)">📝 ${testTimeMin}-Minuten Test — ${testQs.length} Fragen</div>
-      <div id="test-timer" style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--green)">⏱ ${testTimeMin}:00 verbleibend</div>
-    </div>
-    ${testQs.map((q,i)=>`
-    <div class="test-q" id="tq${i}">
-      <div class="test-num">Frage ${i+1} / ${testQs.length} &nbsp;·&nbsp; <span style="color:var(--blue)">${q.cat}</span></div>
-      <div class="test-text">${q.q}</div>
-      <input type="text" class="test-inp" id="ta${i}" placeholder="Deine Antwort...">
-    </div>`).join('')}
-    <button class="achk" onclick="submitTest()" style="width:100%;padding:13px;font-size:14px;margin-top:10px;background:linear-gradient(135deg,var(--blue),var(--purple))">
-      ✅ Test abgeben
-    </button>`;
-}
-
-function submitTest(){
-  clearInterval(testTimer);
-  let correct=0;
-  testQs.forEach((q,i)=>{
-    const inp=document.getElementById('ta'+i);if(!inp)return;
-    const val=inp.value.trim().toLowerCase().replace(/[.!?]/g,'');
-    const cor=q.a.trim().toLowerCase().replace(/[.!?]/g,'');
-    const isOk=val===cor||(val.length>3&&(cor.includes(val)||val.includes(cor.split(' ')[1]||cor)));
-    inp.classList.add(isOk?'ok':'no');inp.disabled=true;
-    if(!isOk){
-      const hint=document.createElement('div');
-      hint.style.cssText='font-size:11px;color:var(--green);margin-top:4px;font-family:"JetBrains Mono",monospace;font-weight:700';
-      hint.textContent='✓ '+q.a;inp.parentElement.appendChild(hint);
+  // auto-advance after 2s
+  clearTimeout(nextTimeout);
+  nextTimeout = setTimeout(() => {
+    quizState.idx++;
+    if (quizState.idx >= quizState.pool.length) {
+      showResult();
+    } else {
+      renderQuestion();
+      window.scrollTo({top:0,behavior:'smooth'});
     }
-    if(isOk)correct++;
-  });
-  const pct=Math.round((correct/testQs.length)*100);
-  const earned=correct*5;pts+=earned;document.getElementById('pts').textContent=pts;sv();
-  setTimeout(()=>{
-    document.getElementById('test-area').style.display='none';
-    document.getElementById('test-result').style.display='block';
-    const grade=pct>=90?'🏆 Sehr gut!':pct>=75?'👍 Gut!':pct>=60?'😐 Befriedigend':pct>=50?'😟 Ausreichend':'💪 Weiter üben!';
-    document.getElementById('test-result-content').innerHTML=`
-      <div style="text-align:center;padding:24px;background:var(--card);border:1px solid var(--brd);border-radius:var(--r)">
-        <div style="font-size:48px;margin-bottom:12px">${pct>=75?'🎉':'💪'}</div>
-        <div style="font-size:24px;font-weight:800;color:var(--text);margin-bottom:4px">${correct} / ${testQs.length} richtig</div>
-        <div style="font-size:32px;font-weight:800;color:${pct>=75?'var(--green)':pct>=50?'var(--yellow)':'var(--red)'};margin:8px 0">${pct}%</div>
-        <div style="font-size:16px;font-weight:700;color:var(--muted)">${grade}</div>
-        <div style="font-size:12px;color:var(--hint);margin-top:8px">+${earned} Punkte gesammelt</div>
-        <div style="display:flex;gap:10px;margin-top:16px;justify-content:center">
-          <button class="achk" onclick="document.getElementById('test-result').style.display='none';document.getElementById('test-setup').style.display='block';document.getElementById('test-area').style.display='none'">Neuer Test</button>
-          <button class="loes-btn" onclick="document.getElementById('test-result').style.display='none';document.getElementById('test-area').style.display='block'">Ergebnisse ansehen</button>
-        </div>
-      </div>`;
-  },2000);
+  }, ok ? 1600 : 2800);
 }
 
-// ═══ INIT ═══
-window.addEventListener('DOMContentLoaded',()=>{
-  ld();buildTGrid();buildVocab();
-});
+function showResult() {
+  const total = quizState.pool.length;
+  const correct = quizState.correct;
+  const pct = Math.round((correct / total) * 100);
+  const passed = pct >= 80;
+  setMastery(currentTopic.id, passed);
+  buildHome();
+  const allDone = TOPICS.every(t => isPassed(t.id));
+
+  let html = '';
+  if (passed) {
+    html = `<div class="gate fadein">
+      <div style="font-size:52px;margin-bottom:10px">${pct===100?'🏆':pct>=90?'🌟':'✅'}</div>
+      <h2>${pct}% — Bestanden!</h2>
+      <p>${correct} von ${total} richtig. ${pct===100?'Perfekt! Absolut top!':pct>=90?'Ausgezeichnet!':'Gut gemacht!'}<br>${allDone?'Du hast ALLE Themen abgeschlossen! Du bist bereit für die Arbeit!':'Nächstes Thema ist jetzt freigeschaltet!'}</p>
+      ${allDone
+        ? `<button class="next-btn" onclick="showScreen('sc-alldone')">🏆 Zur Siegerehrung!</button>`
+        : `<button class="next-btn" onclick="goTopic(${currentTopic.id+1})">Weiter zu Thema ${currentTopic.id+2} ➜</button>`}
+      <br><button class="retry-btn" onclick="startQuiz(${currentTopic.id})">🔄 Nochmal (zur Sicherheit)</button>
+    </div>`;
+  } else {
+    const needed = Math.ceil(total * 0.8);
+    html = `<div class="fail-gate fadein">
+      <div style="font-size:52px;margin-bottom:10px">😤</div>
+      <h2>${pct}% — Noch nicht bestanden</h2>
+      <p>Du brauchst <strong>mindestens 80%</strong> (${needed}/${total} richtig).<br>Du hattest ${correct}/${total}. Lern nochmal durch und versuch es dann nochmal!</p>
+      ${quizState.wrong.length ? `<div style="margin:12px 0;text-align:left;background:rgba(255,255,255,.04);border-radius:10px;padding:12px">
+        <div style="font-size:11px;font-weight:800;color:var(--mu);margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em">Falsch beantwortet:</div>
+        ${quizState.wrong.map(w=>`<div style="font-size:12px;font-weight:700;color:var(--rd);padding:3px 0">• ${w.q}</div>`).join('')}
+      </div>` : ''}
+      <button class="next-btn" style="background:var(--or)" onclick="goTopic(${currentTopic.id})">📖 Nochmal durchlesen</button>
+      <br><button class="retry-btn" onclick="startQuiz(${currentTopic.id})" style="margin-top:8px">🔄 Direkt Quiz wiederholen</button>
+    </div>`;
+  }
+  document.getElementById('quiz-content').innerHTML = html;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ══════════════════════════════════════════
+//  VOCAB SCREEN (bottom nav)
+// ══════════════════════════════════════════
+const VOCAB = [
+  ['Albtraum','nightmare'],['leiden unter','suffer from'],['Wächter','guard'],
+  ['schuldig','guilty'],['dumm / blöd','stupid / silly'],['Gegenteil','opposite'],
+  ['bewachte Wohnanlage','gated community'],['Behandlung','treatment'],
+  ['Naturschutzgebiet','nature reserve'],['Wildhüter','ranger'],
+  ['erschrecken','scare'],['abschaffen','abolish'],['entdecken','discover'],
+  ['Unterschiede','differences'],['Township','township'],['sozial','social'],
+  ['Grundschule','primary school'],['Spielplatz','playground'],
+  ['Mitschüler','classmate'],['rau / grob','rough'],['Rassentrennung','apartheid/racial segregation'],
+  ['Republik','republic'],['Diamanten','diamonds'],['einfältig / albern','silly'],
+];
+
+function goVoc() {
+  navHighlight('nav-voc');
+  const cards = shuffle([...VOCAB]);
+  let vidx = 0; let vscore = 0; let vtotal = 12;
+  const pool = cards.slice(0, vtotal);
+
+  function render() {
+    if (vidx >= vtotal) {
+      document.getElementById('learn-content').innerHTML = `
+        <div style="text-align:center;padding:32px 0" class="fadein">
+          <div style="font-size:52px;margin-bottom:12px">${vscore>=10?'🏆':vscore>=7?'👍':'💪'}</div>
+          <div style="font-size:22px;font-weight:900;color:var(--tx);margin-bottom:6px">${vscore}/${vtotal} richtig</div>
+          <div style="font-size:13px;color:var(--mu);font-weight:600;margin-bottom:20px">${vscore>=10?'Vokabeln sitzen!':'Noch etwas üben!'}</div>
+          <button class="next-btn" onclick="goVoc()">🔄 Nochmal</button>
+          <br><button class="retry-btn" onclick="goHome()" style="margin-top:10px">← Zurück</button>
+        </div>`;
+      state.pts += vscore * 3; save();
+      return;
+    }
+    const w = pool[vidx];
+    const wrong = shuffle(VOCAB.filter(v=>v[1]!==w[1])).slice(0,3).map(v=>v[1]);
+    const opts = shuffle([w[1], ...wrong]);
+    document.getElementById('learn-content').innerHTML = `
+      <div class="quiz-wrap fadein">
+        <div class="quiz-header">
+          <div class="quiz-title">📖 Vokabel-Quiz</div>
+          <div class="quiz-counter">${vidx+1}/${vtotal}</div>
+        </div>
+        <div class="qprog"><div class="qprog-fill" style="width:${Math.round(vidx/vtotal*100)}%"></div></div>
+        <div style="font-size:12px;color:var(--mu);font-weight:700;margin-bottom:8px">Deutsch → Englisch:</div>
+        <div class="q-text" style="font-size:20px">${w[0]}</div>
+        <div class="opts" style="margin-top:12px">${opts.map(o=>`<button class="opt" onclick="ansVoc(this,'${esc(o)}','${esc(w[1])}')">${o}</button>`).join('')}</div>
+        <div class="q-feedback" id="vfb"></div>
+      </div>`;
+  }
+
+  window.ansVoc = function(btn, chosen, cor) {
+    document.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+    const ok = chosen === cor;
+    btn.classList.add(ok?'ok':'no');
+    if (!ok) document.querySelectorAll('.opt').forEach(b=>{if(b.textContent.trim()===cor)b.classList.add('ok');});
+    document.getElementById('vfb').textContent = ok?'✅ Richtig!':'❌ Falsch — '+cor;
+    document.getElementById('vfb').className='q-feedback '+(ok?'ok':'no');
+    if (ok) vscore++;
+    setTimeout(()=>{vidx++;render();window.scrollTo({top:0,behavior:'smooth'});}, ok?1200:2000);
+  };
+
+  showScreen('sc-learn');
+  render();
+}
+
+// ══════════════════════════════════════════
+//  GRAMMAR SCREEN (bottom nav)
+// ══════════════════════════════════════════
+function goGram() {
+  navHighlight('nav-gram');
+  showScreen('sc-learn');
+  document.getElementById('learn-content').innerHTML = `
+    <div class="fadein">
+    <div style="font-size:13px;font-weight:800;margin-bottom:14px;color:var(--mu)">📋 GRAMMATIK-ÜBERSICHT</div>
+
+    <div class="lcard">
+      <div class="lcard-title"><span style="background:var(--lbl);color:var(--bl)">G5</span> Present Participle — verb + -ing</div>
+      <div class="rule b">Nach <strong>see, watch, notice, hear, feel, smell, listen to</strong> → <strong>verb + -ing</strong></div>
+      <table class="etable">
+        <tr><th>Infinitiv</th><th>-ing Form</th><th>Regel</th></tr>
+        <tr><td class="en">play</td><td class="gram">playing</td><td class="de">+ ing</td></tr>
+        <tr><td class="en">come / leave / hide</td><td class="gram">coming / leaving / hiding</td><td class="de">e weg + ing</td></tr>
+        <tr><td class="en">run / get / swim</td><td class="gram">running / getting / swimming</td><td class="de">Konsonant doppeln + ing</td></tr>
+        <tr><td class="en">carry / sing</td><td class="gram">carrying / singing</td><td class="de">normal + ing</td></tr>
+      </table>
+    </div>
+
+    <div class="lcard">
+      <div class="lcard-title"><span style="background:var(--lor);color:var(--or)">G6</span> Past Perfect — had + 3. Form</div>
+      <div class="formula" style="border-color:rgba(255,146,72,.3)">had + past participle<small>Negativ: hadn't + pp | Signalwörter: after / before / when</small></div>
+      <table class="etable">
+        <tr><th>Positiv</th><th>Negativ</th></tr>
+        <tr><td class="gram">I / she / we had gone</td><td class="gram">I / she / we hadn't gone</td></tr>
+        <tr><td class="gram">had spoken / had read / had drunk</td><td class="gram">hadn't started / hadn't come</td></tr>
+      </table>
+    </div>
+
+    <div class="lcard">
+      <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">G7</span> Passive Voice — was / were + 3. Form</div>
+      <div class="formula" style="border-color:rgba(53,212,152,.3);background:#0a1f14">was (Singular) / were (Plural) + 3. Form<small>Optional: by + Täter</small></div>
+      <table class="etable">
+        <tr><th>Verb</th><th>3. Form</th><th>Passiv</th></tr>
+        <tr><td class="en">find</td><td class="gram">found</td><td class="gram">was/were found</td></tr>
+        <tr><td class="en">build</td><td class="gram">built</td><td class="gram">was/were built</td></tr>
+        <tr><td class="en">win</td><td class="gram">won</td><td class="gram">was/were won</td></tr>
+        <tr><td class="en">make</td><td class="gram">made</td><td class="gram">was/were made</td></tr>
+        <tr><td class="en">hold</td><td class="gram">held</td><td class="gram">was/were held</td></tr>
+        <tr><td class="en">abolish</td><td class="gram">abolished</td><td class="gram">was/were abolished</td></tr>
+        <tr><td class="en">discover</td><td class="gram">discovered</td><td class="gram">was/were discovered</td></tr>
+      </table>
+    </div>
+
+    <button class="retry-btn" onclick="goHome()" style="width:100%;justify-content:center">← Zurück zum Start</button>
+    </div>`;
+}
+
+// ══════════════════════════════════════════
+//  NAVIGATION HELPERS
+// ══════════════════════════════════════════
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+}
+function goHome() {
+  navHighlight('nav-home');
+  buildHome();
+  showScreen('sc-home');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function navHighlight(id) {
+  document.querySelectorAll('.bbt').forEach(b=>b.classList.remove('on'));
+  if (id) document.getElementById(id)?.classList.add('on');
+}
+
+// ══════════════════════════════════════════
+//  UTILS
+// ══════════════════════════════════════════
+function shuffle(a){const r=[...a];for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];}return r;}
+function esc(s){return String(s).replace(/'/g,'&#39;').replace(/"/g,'&quot;');}
+
+let toastT;
+function showToast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastT);
+  toastT = setTimeout(()=>el.classList.remove('show'), 2400);
+}
+
+function resetAll() {
+  localStorage.removeItem('sa26');
+  localStorage.removeItem('sa26_m');
+  location.reload();
+}
+
+// ══════════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════════
+load();
+buildHome();
 </script>
 </body>
 </html>
