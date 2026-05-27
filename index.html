@@ -3,957 +3,878 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🌍 Englisch Unit 3 — South Africa LERNEN</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<title>🇿🇦 Unit 3 – Around South Africa | Lernwebsite</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#07090f;--s1:#0e1118;--s2:#131720;--card:#181c28;
-  --brd:rgba(255,255,255,.07);--brd2:rgba(255,255,255,.13);
-  --tx:#eef0f8;--mu:#6b6f8a;--hi:#3a3d56;
-  --bl:#4f9dff;--gr:#35d498;--or:#ff9248;--rd:#ff5c5c;--pu:#a98aff;--ye:#fbbf24;--cy:#22d3ee;
-  --lbl:rgba(79,157,255,.12);--lgr:rgba(53,212,152,.12);--lor:rgba(255,146,72,.12);
-  --lrd:rgba(255,92,92,.12);--lpu:rgba(169,138,255,.12);--lye:rgba(251,191,36,.12);--lcy:rgba(34,211,238,.12)
-}
-html{scroll-behavior:smooth}
-body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;overflow-x:hidden}
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --card2: #1c2330;
+    --accent: #f0a500;
+    --accent2: #e05c00;
+    --green: #2ea043;
+    --red: #da3633;
+    --blue: #388bfd;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --border: #30363d;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Nunito', sans-serif; min-height: 100vh; }
 
-/* TOP BAR */
-.topbar{background:rgba(14,17,24,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--brd);padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:200}
-.logo{font-size:13px;font-weight:900;letter-spacing:-.3px}
-.logo em{font-style:normal;color:var(--bl)}
-.cd-wrap{display:flex;align-items:center;gap:8px}
-.cd-label{font-size:9px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.08em}
-.cd-boxes{display:flex;gap:4px}
-.cd-box{background:var(--s2);border:1px solid var(--brd2);border-radius:7px;padding:3px 7px;text-align:center;min-width:38px}
-.cd-num{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:var(--tx);line-height:1}
-.cd-unit{font-size:7px;color:var(--mu);font-weight:700;text-transform:uppercase;margin-top:1px}
-.cd-box.urgent{border-color:rgba(255,92,92,.4);background:var(--lrd)}
-.cd-box.urgent .cd-num{color:var(--rd)}
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, #1a0a00 0%, #2a1200 40%, #0d1117 100%);
+    border-bottom: 2px solid var(--accent);
+    padding: 0 20px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(240,165,0,0.13) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-top { display: flex; justify-content: space-between; align-items: center; padding: 16px 0 10px; flex-wrap: wrap; gap: 10px; }
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--accent); letter-spacing: 2px; }
+  .logo span { color: #fff; }
+  h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); color: #fff; letter-spacing: 3px; margin: 6px 0 4px; }
+  h1 em { color: var(--accent); font-style: normal; }
+  header p { color: var(--muted); font-size: 1rem; }
 
-/* PROGRESS OVERVIEW */
-.overview{padding:12px 14px;background:var(--s1);border-bottom:1px solid var(--brd)}
-.ov-title{font-size:10px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
-.ov-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
-.ov-item{background:var(--card);border:1px solid var(--brd);border-radius:9px;padding:8px 4px;text-align:center;cursor:pointer;transition:all .18s;position:relative}
-.ov-item:hover{transform:translateY(-2px);border-color:var(--brd2)}
-.ov-item.locked{opacity:.35;cursor:not-allowed}
-.ov-item.done{border-color:var(--gr)!important;background:rgba(53,212,152,.06)}
-.ov-item.done::after{content:'✓';position:absolute;top:3px;right:5px;font-size:9px;font-weight:900;color:var(--gr)}
-.ov-item.active{border-color:var(--bl);background:rgba(79,157,255,.07)}
-.ov-emoji{font-size:18px;margin-bottom:2px}
-.ov-name{font-size:8px;font-weight:700;line-height:1.2;color:var(--mu)}
+  /* COUNTDOWN */
+  #countdown-box {
+    display: inline-flex; gap: 8px; align-items: center;
+    background: rgba(240,165,0,0.12); border: 1.5px solid var(--accent);
+    border-radius: var(--radius); padding: 10px 18px; margin-top: 14px;
+    flex-wrap: wrap; justify-content: center;
+  }
+  .cd-label { font-size: 0.75rem; color: var(--accent); font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+  .cd-unit { text-align: center; min-width: 44px; }
+  .cd-num { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: #fff; line-height: 1; display: block; }
+  .cd-sub { font-size: 0.6rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .cd-sep { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--accent); align-self: flex-start; padding-top: 4px; }
+  #cd-done { color: var(--green); font-weight: 900; font-size: 1.1rem; }
 
-/* MAIN */
-.main{max-width:680px;margin:0 auto;padding:18px 14px 100px}
+  /* NAV */
+  nav {
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+    padding: 16px 20px; background: var(--card); border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .nav-btn {
+    background: var(--card2); border: 1.5px solid var(--border); color: var(--text);
+    border-radius: 50px; padding: 7px 18px; cursor: pointer; font-family: 'Nunito', sans-serif;
+    font-weight: 700; font-size: 0.85rem; transition: all 0.2s;
+  }
+  .nav-btn:hover, .nav-btn.active { background: var(--accent); color: #000; border-color: var(--accent); }
 
-/* TOPIC HERO */
-.topic-hero{border-radius:14px;padding:18px;margin-bottom:14px;position:relative;overflow:hidden}
-.topic-hero h1{font-size:18px;font-weight:900;margin-bottom:3px}
-.topic-hero p{font-size:11px;opacity:.7;font-weight:600}
-.topic-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:9px;font-weight:800;margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em}
+  /* MAIN */
+  main { max-width: 960px; margin: 0 auto; padding: 28px 16px 60px; }
 
-/* LEARN CARD */
-.lcard{background:var(--card);border:1px solid var(--brd);border-radius:13px;padding:14px;margin-bottom:10px}
-.lcard-title{font-size:10px;font-weight:800;color:var(--mu);text-transform:uppercase;letter-spacing:.07em;margin-bottom:9px;display:flex;align-items:center;gap:6px}
-.lcard-title span{width:17px;height:17px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:900;flex-shrink:0}
+  .section { display: none; animation: fadeIn 0.3s ease; }
+  .section.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
-/* RULE BOXES */
-.rule{border-radius:9px;padding:11px 13px;margin:6px 0;font-size:12px;font-weight:600;line-height:1.85}
-.rule.b{background:var(--lbl);border:1px solid rgba(79,157,255,.2);color:#93c5fd}
-.rule.g{background:var(--lgr);border:1px solid rgba(53,212,152,.2);color:#6ee7b7}
-.rule.y{background:var(--lye);border:1px solid rgba(251,191,36,.2);color:#fde68a}
-.rule.r{background:var(--lrd);border:1px solid rgba(255,92,92,.2);color:#fca5a5}
-.rule.p{background:var(--lpu);border:1px solid rgba(169,138,255,.2);color:#c4b5fd}
-.rule.o{background:var(--lor);border:1px solid rgba(255,146,72,.2);color:#fdba74}
-.rule.cy{background:var(--lcy);border:1px solid rgba(34,211,238,.2);color:#67e8f9}
+  /* CARDS */
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 22px; margin-bottom: 18px;
+  }
+  .card-title {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem;
+    color: var(--accent); letter-spacing: 1px; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .badge {
+    background: var(--accent); color: #000; font-size: 0.7rem;
+    font-weight: 900; padding: 3px 10px; border-radius: 50px;
+    font-family: 'Nunito', sans-serif; letter-spacing: 1px;
+  }
+  .formula {
+    background: var(--card2); border-left: 3px solid var(--accent);
+    border-radius: 8px; padding: 12px 16px; margin: 10px 0;
+    font-weight: 700; font-size: 1.05rem;
+  }
+  .formula .em { color: var(--accent); }
+  .example {
+    background: rgba(46,160,67,0.1); border: 1px solid rgba(46,160,67,0.3);
+    border-radius: 8px; padding: 10px 14px; margin: 6px 0; font-size: 0.95rem;
+  }
+  .example .hl { color: #7ee787; font-weight: 800; }
+  .tip {
+    background: rgba(56,139,253,0.1); border: 1px solid rgba(56,139,253,0.3);
+    border-radius: 8px; padding: 10px 14px; margin: 8px 0; font-size: 0.9rem; color: #79c0ff;
+  }
+  .warn {
+    background: rgba(240,165,0,0.1); border: 1px solid rgba(240,165,0,0.3);
+    border-radius: 8px; padding: 10px 14px; margin: 8px 0; font-size: 0.9rem; color: var(--accent);
+  }
 
-.formula{background:#0d1a2e;border:1px solid rgba(79,157,255,.3);border-radius:9px;padding:12px;text-align:center;margin:8px 0;font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:var(--bl)}
-.formula small{display:block;font-size:10px;color:var(--mu);margin-top:4px;font-family:'Sora',sans-serif;font-weight:600}
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9rem; }
+  th { background: var(--card2); color: var(--accent); padding: 9px 12px; text-align: left; font-weight: 800; border-bottom: 2px solid var(--accent); }
+  td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  tr:hover td { background: rgba(255,255,255,0.03); }
+  .correct { color: #7ee787; font-weight: 700; }
+  .wrong { color: #ff7b72; text-decoration: line-through; }
 
-/* TABLES */
-.etable{width:100%;border-collapse:collapse;font-size:11.5px;margin:7px 0}
-.etable th{padding:6px 9px;text-align:left;font-size:9px;font-weight:800;color:var(--hi);border-bottom:1px solid var(--brd);text-transform:uppercase;letter-spacing:.05em}
-.etable td{padding:7px 9px;border-bottom:1px solid rgba(255,255,255,.03);line-height:1.6;vertical-align:top}
-.etable tr:last-child td{border-bottom:none}
-.etable .de{color:var(--mu);font-style:italic}
-.etable .en{color:var(--tx);font-weight:600}
-.etable .gram{color:var(--bl);font-family:'JetBrains Mono',monospace;font-size:11px}
-.etable .hl{color:var(--gr);font-weight:800}
-.etable .wrong{color:var(--rd);text-decoration:line-through}
-.etable .right{color:var(--gr);font-weight:800}
+  /* QUIZ */
+  .quiz-q {
+    background: var(--card2); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 18px; margin-bottom: 14px;
+  }
+  .quiz-q p { font-weight: 700; font-size: 1rem; margin-bottom: 12px; }
+  .quiz-q p span { color: var(--accent); }
+  .opt-btn {
+    display: block; width: 100%; text-align: left;
+    background: rgba(255,255,255,0.04); border: 1.5px solid var(--border);
+    color: var(--text); border-radius: 8px; padding: 9px 14px;
+    margin: 6px 0; cursor: pointer; font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem; font-weight: 600; transition: all 0.18s;
+  }
+  .opt-btn:hover:not(:disabled) { border-color: var(--accent); background: rgba(240,165,0,0.08); }
+  .opt-btn.correct-ans { background: rgba(46,160,67,0.2); border-color: var(--green); color: #7ee787; }
+  .opt-btn.wrong-ans { background: rgba(218,54,51,0.2); border-color: var(--red); color: #ff7b72; }
+  .quiz-feedback { font-size: 0.88rem; margin-top: 6px; padding: 6px 12px; border-radius: 6px; font-weight: 700; }
+  .quiz-feedback.ok { background: rgba(46,160,67,0.15); color: #7ee787; }
+  .quiz-feedback.nok { background: rgba(218,54,51,0.15); color: #ff7b72; }
 
-/* WORKBOOK SOLUTION CARD */
-.ws-card{background:linear-gradient(135deg,rgba(53,212,152,.07),rgba(79,157,255,.04));border:1px solid rgba(53,212,152,.25);border-radius:13px;padding:14px;margin-bottom:10px}
-.ws-title{font-size:10px;font-weight:800;color:var(--gr);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;display:flex;align-items:center;gap:6px}
-.ws-item{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:12px;align-items:flex-start}
-.ws-item:last-child{border-bottom:none}
-.ws-num{color:var(--mu);font-weight:800;font-family:'JetBrains Mono',monospace;font-size:11px;min-width:18px;margin-top:1px}
-.ws-ans{color:var(--gr);font-weight:700;font-family:'JetBrains Mono',monospace}
-.ws-context{color:var(--mu);font-size:11px}
+  .fill-input {
+    background: var(--card2); border: 1.5px solid var(--border);
+    color: var(--text); border-radius: 8px; padding: 8px 12px;
+    font-family: 'Nunito', sans-serif; font-size: 0.95rem; font-weight: 600;
+    width: 160px; transition: border-color 0.2s; outline: none;
+  }
+  .fill-input:focus { border-color: var(--accent); }
+  .fill-input.ok { border-color: var(--green); background: rgba(46,160,67,0.1); }
+  .fill-input.nok { border-color: var(--red); background: rgba(218,54,51,0.1); }
 
-/* QUIZ */
-.quiz-wrap{background:var(--s2);border:1px solid var(--brd);border-radius:14px;padding:16px;margin-top:14px}
-.quiz-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.quiz-title{font-size:12px;font-weight:800;color:var(--tx)}
-.quiz-counter{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--mu)}
-.qprog{height:3px;background:rgba(255,255,255,.05);border-radius:4px;margin-bottom:14px;overflow:hidden}
-.qprog-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--bl),var(--pu));transition:width .4s}
-.q-text{font-size:13px;font-weight:700;line-height:1.6;color:var(--tx);margin-bottom:10px}
-.q-de{font-size:11px;color:var(--mu);font-weight:600;margin-bottom:10px;font-style:italic}
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px}
-.opt{padding:10px 12px;border-radius:9px;border:1px solid var(--brd);background:rgba(255,255,255,.02);font-size:11.5px;font-weight:700;cursor:pointer;transition:all .12s;text-align:left;color:var(--tx);font-family:'Sora',sans-serif;line-height:1.5}
-.opt:hover:not(:disabled){border-color:var(--bl);background:var(--lbl);color:var(--bl)}
-.opt.ok{border-color:var(--gr)!important;background:var(--lgr)!important;color:var(--gr)!important}
-.opt.no{border-color:var(--rd)!important;background:var(--lrd)!important;color:var(--rd)!important;animation:shake .3s}
-.opt:disabled{cursor:default}
-.q-feedback{font-size:12px;font-weight:700;min-height:16px;padding:0 2px;margin-bottom:8px}
-.q-feedback.ok{color:var(--gr)}.q-feedback.no{color:var(--rd)}
-.q-explain{background:rgba(255,255,255,.03);border-radius:7px;padding:9px 11px;font-size:11.5px;font-weight:600;line-height:1.7;color:var(--mu);margin-bottom:8px;display:none}
-.q-explain.show{display:block}
-.fill-inp{background:rgba(255,255,255,.04);border:1.5px solid var(--brd2);border-radius:7px;padding:9px 12px;font-size:13px;font-weight:700;color:var(--tx);width:100%;margin-bottom:7px;outline:none;font-family:'JetBrains Mono',monospace;transition:border .15s}
-.fill-inp:focus{border-color:var(--bl)}
-.fill-inp.ok{border-color:var(--gr)!important;background:var(--lgr)!important;color:var(--gr)!important}
-.fill-inp.no{border-color:var(--rd)!important;background:var(--lrd)!important;color:var(--rd)!important}
-.chk-btn{width:100%;padding:10px;background:var(--bl);border:none;border-radius:9px;color:#fff;font-size:12px;font-weight:800;cursor:pointer;font-family:'Sora',sans-serif;transition:all .12s;margin-bottom:7px}
-.chk-btn:hover{background:#3a8ef0;transform:translateY(-1px)}
-.chk-btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+  .check-btn, .next-btn, .submit-btn, .restart-btn {
+    background: var(--accent); color: #000; border: none;
+    border-radius: 50px; padding: 9px 24px; cursor: pointer;
+    font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 0.9rem;
+    margin-top: 10px; transition: all 0.2s;
+  }
+  .check-btn:hover, .submit-btn:hover, .restart-btn:hover { background: var(--accent2); color: #fff; transform: translateY(-1px); }
 
-/* RESULT GATES */
-.gate{background:linear-gradient(135deg,rgba(53,212,152,.08),rgba(79,157,255,.06));border:2px solid var(--gr);border-radius:14px;padding:18px;text-align:center;margin-top:14px}
-.gate h2{font-size:17px;font-weight:900;color:var(--gr);margin-bottom:5px}
-.gate p{font-size:11.5px;color:var(--mu);font-weight:600;margin-bottom:12px;line-height:1.7}
-.next-btn{display:inline-flex;align-items:center;gap:7px;padding:11px 22px;background:var(--gr);border:none;border-radius:11px;color:#0a2018;font-size:12px;font-weight:900;cursor:pointer;font-family:'Sora',sans-serif;transition:all .15s}
-.next-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(53,212,152,.3)}
-.retry-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;background:transparent;border:1px solid var(--brd2);border-radius:11px;color:var(--mu);font-size:11px;font-weight:700;cursor:pointer;font-family:'Sora',sans-serif;margin-top:7px;transition:all .12s}
-.retry-btn:hover{border-color:var(--bl);color:var(--bl)}
-.fail-gate{background:rgba(255,92,92,.06);border:2px solid rgba(255,92,92,.3);border-radius:14px;padding:18px;text-align:center;margin-top:14px}
-.fail-gate h2{font-size:16px;font-weight:900;color:var(--rd);margin-bottom:5px}
-.fail-gate p{font-size:11.5px;color:var(--mu);font-weight:600;margin-bottom:12px;line-height:1.7}
+  /* SCORE */
+  .score-box {
+    text-align: center; padding: 30px; background: var(--card2);
+    border-radius: var(--radius); border: 2px solid var(--accent); margin-top: 16px;
+  }
+  .score-num { font-family: 'Bebas Neue', sans-serif; font-size: 4rem; color: var(--accent); }
+  .score-label { color: var(--muted); font-size: 0.95rem; margin-top: 4px; }
+  .stars { font-size: 2rem; margin: 10px 0; }
 
-/* HOME */
-.home-hero{background:linear-gradient(135deg,#0f1528,#07090f);border:1px solid rgba(79,157,255,.15);border-radius:16px;padding:20px;margin-bottom:14px;text-align:center}
-.home-hero h1{font-size:22px;font-weight:900;margin-bottom:5px}
-.home-hero h1 em{font-style:normal;color:var(--bl)}
-.home-hero p{font-size:11px;color:var(--mu);font-weight:600;margin-bottom:14px}
-.home-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
-.hstat{background:rgba(255,255,255,.03);border:1px solid var(--brd);border-radius:9px;padding:11px 7px;text-align:center}
-.hstat-n{font-family:'JetBrains Mono',monospace;font-size:19px;font-weight:700;color:var(--tx)}
-.hstat-l{font-size:9px;color:var(--mu);font-weight:700;margin-top:2px}
-.topic-list{display:flex;flex-direction:column;gap:8px}
-.titem{background:var(--card);border:1px solid var(--brd);border-radius:13px;padding:13px 15px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .18s;position:relative;overflow:hidden}
-.titem:hover:not(.locked){transform:translateY(-1px);border-color:var(--brd2);box-shadow:0 6px 20px rgba(0,0,0,.3)}
-.titem.done{border-color:rgba(53,212,152,.3);background:rgba(53,212,152,.04)}
-.titem.active{border-color:rgba(79,157,255,.35);background:rgba(79,157,255,.06)}
-.titem.locked{opacity:.3;cursor:not-allowed}
-.titem-emoji{font-size:26px;flex-shrink:0}
-.titem-body{flex:1}
-.titem-title{font-size:13px;font-weight:800;color:var(--tx);margin-bottom:2px}
-.titem-sub{font-size:10px;color:var(--mu);font-weight:600}
-.titem-right{flex-shrink:0;text-align:right}
-.titem-status{font-size:10px;font-weight:800;padding:3px 9px;border-radius:18px}
-.titem-status.done{background:var(--lgr);color:var(--gr)}
-.titem-status.active{background:var(--lbl);color:var(--bl)}
-.titem-status.locked{background:rgba(255,255,255,.05);color:var(--mu)}
-.titem-status.todo{background:rgba(255,255,255,.05);color:var(--mu)}
+  /* VOCAB */
+  .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+  .vocab-card {
+    background: var(--card2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 12px 14px; cursor: pointer;
+    transition: all 0.2s; position: relative;
+  }
+  .vocab-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .vocab-card .en { font-weight: 800; font-size: 1rem; color: var(--text); }
+  .vocab-card .de { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+  .vocab-card.flipped .de { color: var(--accent); font-weight: 700; }
 
-/* TOAST */
-.toast{position:fixed;bottom:72px;left:50%;transform:translateX(-50%) translateY(60px);background:#fff;color:#07090f;padding:9px 18px;border-radius:40px;font-weight:800;font-size:11px;z-index:999;transition:transform .25s;pointer-events:none;box-shadow:0 6px 24px rgba(0,0,0,.5)}
-.toast.show{transform:translateX(-50%) translateY(0)}
+  /* PROGRESS */
+  .progress-bar { background: var(--border); border-radius: 50px; height: 8px; margin: 10px 0; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 50px; transition: width 0.4s; }
 
-/* BOTTOM NAV */
-.botbar{position:fixed;bottom:0;left:0;right:0;background:rgba(14,17,24,.97);backdrop-filter:blur(12px);border-top:1px solid var(--brd);display:flex;z-index:100}
-.bbt{flex:1;padding:10px 8px 12px;border:none;background:none;color:var(--mu);font-size:8px;font-weight:800;cursor:pointer;font-family:'Sora',sans-serif;text-transform:uppercase;letter-spacing:.06em;display:flex;flex-direction:column;align-items:center;gap:3px;transition:color .15s}
-.bbt svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-.bbt.on{color:var(--bl)}
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+  .tl-item { position: relative; margin-bottom: 18px; }
+  .tl-item::before { content: ''; position: absolute; left: -24px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); }
+  .tl-year { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--accent); }
+  .tl-text { font-size: 0.9rem; color: var(--muted); }
 
-/* SCREENS */
-.screen{display:none}.screen.on{display:block}
+  /* PROBETEST */
+  .test-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 10px; }
+  .test-timer { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--accent); }
+  #test-progress-text { color: var(--muted); font-size: 0.9rem; }
 
-/* ALL DONE */
-.all-done{text-align:center;padding:40px 20px}
-.all-done .big{font-size:60px;margin-bottom:14px}
-.all-done h1{font-size:24px;font-weight:900;margin-bottom:7px;color:var(--gr)}
-.all-done p{font-size:12px;color:var(--mu);font-weight:600;line-height:1.7;max-width:300px;margin:0 auto 18px}
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem;
+    color: var(--blue); letter-spacing: 1px; margin: 20px 0 10px;
+    padding-bottom: 6px; border-bottom: 1px solid var(--border);
+  }
 
-/* STEP BOXES */
-.steps{display:flex;flex-direction:column;gap:6px;margin:8px 0}
-.step{display:flex;gap:10px;align-items:flex-start;background:rgba(255,255,255,.03);border-radius:9px;padding:10px 12px;font-size:12px;font-weight:700}
-.step-n{background:var(--bl);color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;flex-shrink:0;margin-top:1px}
-
-@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
-@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.fadein{animation:fade .3s ease forwards}
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .vocab-grid { grid-template-columns: repeat(2, 1fr); }
+    .fill-input { width: 120px; }
+  }
 </style>
 </head>
 <body>
 
-<div class="topbar">
-  <div class="logo">🌍 <em>South Africa</em> Unit 3</div>
-  <div class="cd-wrap">
-    <div class="cd-label">Arbeit in</div>
-    <div class="cd-boxes">
-      <div class="cd-box" id="cd-d"><div class="cd-num" id="cd-dn">--</div><div class="cd-unit">Tage</div></div>
-      <div class="cd-box" id="cd-h"><div class="cd-num" id="cd-hn">--</div><div class="cd-unit">Std</div></div>
-      <div class="cd-box" id="cd-m"><div class="cd-num" id="cd-mn">--</div><div class="cd-unit">Min</div></div>
-      <div class="cd-box" id="cd-s"><div class="cd-num" id="cd-sn">--</div><div class="cd-unit">Sek</div></div>
-    </div>
+<header>
+  <div class="header-top">
+    <div class="logo">🇿🇦 <span>South Africa</span> Lerner</div>
+    <div style="color:var(--muted);font-size:0.8rem;">Klasse 9 · Realschule · NRW</div>
   </div>
-</div>
+  <h1>Unit 3 · <em>Around South Africa</em></h1>
+  <p>Present Participle · Past Perfect · Passive Voice · Vokabeln</p>
+  <div id="countdown-box">
+    <div class="cd-label">⏰ Klassenarbeit in:</div>
+    <div class="cd-unit"><span class="cd-num" id="cd-h">00</span><span class="cd-sub">Std</span></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit"><span class="cd-num" id="cd-m">00</span><span class="cd-sub">Min</span></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit"><span class="cd-num" id="cd-s">00</span><span class="cd-sub">Sek</span></div>
+    <span id="cd-done" style="display:none">🎉 Viel Erfolg!</span>
+  </div>
+</header>
 
-<div class="overview">
-  <div class="ov-title">Fortschritt — alle 6 Themen müssen ✓ sein!</div>
-  <div class="ov-grid" id="ov-grid"></div>
-</div>
+<nav>
+  <button class="nav-btn active" onclick="showSection('lernen')">📚 Lernen</button>
+  <button class="nav-btn" onclick="showSection('verben')">🔤 Verben</button>
+  <button class="nav-btn" onclick="showSection('vokabeln')">💬 Vokabeln</button>
+  <button class="nav-btn" onclick="showSection('uebungen')">✏️ Übungen</button>
+  <button class="nav-btn" onclick="showSection('quiz')">🎯 Quiz</button>
+  <button class="nav-btn" onclick="showSection('probetest')">📝 Probetest</button>
+  <button class="nav-btn" onclick="showSection('suedafrika')">🌍 Südafrika</button>
+</nav>
 
-<div class="main">
-  <div class="screen on" id="sc-home">
-    <div class="home-hero">
-      <div style="font-size:44px;margin-bottom:8px">🌍</div>
-      <h1>Englisch Unit 3<br><em>Around South Africa</em></h1>
-      <p>Lern jedes Thema durch — Quiz bestehen = nächstes freischalten!<br>Du schaffst das heute in einem Tag. Geh durch!</p>
-      <div class="home-stats">
-        <div class="hstat"><div class="hstat-n" id="hs-done">0/6</div><div class="hstat-l">Themen ✓</div></div>
-        <div class="hstat"><div class="hstat-n" id="hs-streak">0</div><div class="hstat-l">Streak 🔥</div></div>
-        <div class="hstat"><div class="hstat-n" id="hs-pts">0</div><div class="hstat-l">Punkte</div></div>
+<main>
+
+<!-- ===== LERNEN ===== -->
+<div id="lernen" class="section active">
+
+  <div class="card">
+    <div class="card-title">G5 · Present Participle <span class="badge">verb + -ing</span></div>
+    <div class="formula">📌 Formel: <span class="em">Verb der Wahrnehmung + Person/Sache + verb<b>-ing</b></span></div>
+    <p style="margin:10px 0;color:var(--muted);">Benutze das Present Participle nach diesen Verben:</p>
+    <table>
+      <tr><th>Verb</th><th>Bedeutung</th><th>Beispiel</th></tr>
+      <tr><td><b>see / watch / notice</b></td><td>sehen / beobachten</td><td class="correct">I saw the car <b>driving</b> away.</td></tr>
+      <tr><td><b>hear / listen to</b></td><td>hören</td><td class="correct">She heard him <b>singing</b>.</td></tr>
+      <tr><td><b>feel</b></td><td>fühlen</td><td class="correct">He felt the rain <b>getting</b> heavier.</td></tr>
+      <tr><td><b>smell</b></td><td>riechen</td><td class="correct">I smelled something <b>burning</b>.</td></tr>
+    </table>
+    <div class="tip">💡 <b>Trick:</b> Zwei Sätze → Ein Satz!<br>
+    "A boy was shouting. I heard him." → <b>I heard a boy <span style="color:#7ee787">shouting</span>.</b></div>
+    <div class="warn">⚠️ Sonderregeln beim -ing:<br>
+    • Verb endet auf -e → e wegfallen lassen: come → com<b>ing</b><br>
+    • Kurzer Vokal + Konsonant → Konsonant verdoppeln: run → ru<b>nn</b>ing</div>
+    <p style="margin-top:12px;font-weight:800;color:var(--accent);">Mehr Beispiele:</p>
+    <div class="example">We <span class="hl">watched</span> the children <span class="hl">playing</span> in the park.</div>
+    <div class="example">Did you <span class="hl">hear</span> Ryan <span class="hl">singing</span> in the shower?</div>
+    <div class="example">Kate didn't <span class="hl">notice</span> the people <span class="hl">leaving</span> the building.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">G6 · Past Perfect <span class="badge">had + 3. Form</span></div>
+    <div class="formula">📌 Formel: <span class="em"><b>had/hadn't</b> + past participle (3. Form)</span></div>
+    <div class="tip">💡 <b>Wann?</b> Wenn 2 Dinge in der Vergangenheit passierten und du zeigen willst, was <b>zuerst</b> passierte!</div>
+    <div style="background:var(--card2);border-radius:10px;padding:14px;margin:12px 0;">
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <div style="text-align:center;flex:1;min-width:100px;">
+          <div style="font-size:0.75rem;color:var(--muted);">ZUERST</div>
+          <div style="background:rgba(240,165,0,0.2);border:1px solid var(--accent);border-radius:8px;padding:8px;margin-top:4px;font-weight:700;color:var(--accent);">PAST PERFECT<br><small style="font-weight:400">had + 3. Form</small></div>
+        </div>
+        <div style="font-size:1.5rem;color:var(--muted);">→</div>
+        <div style="text-align:center;flex:1;min-width:100px;">
+          <div style="font-size:0.75rem;color:var(--muted);">DANACH</div>
+          <div style="background:rgba(56,139,253,0.2);border:1px solid var(--blue);border-radius:8px;padding:8px;margin-top:4px;font-weight:700;color:var(--blue);">SIMPLE PAST<br><small style="font-weight:400">normale Vergangenheit</small></div>
+        </div>
       </div>
     </div>
-    <div class="topic-list" id="topic-list"></div>
+    <p style="font-weight:800;color:var(--accent);margin:10px 0 6px;">Signalwörter:</p>
+    <table>
+      <tr><th>Signalwort</th><th>Deutsch</th><th>Beispiel</th></tr>
+      <tr><td><b style="color:var(--accent)">after</b></td><td>nachdem</td><td class="correct"><b>After</b> Cebile <b>had come</b> home, she began to cook.</td></tr>
+      <tr><td><b style="color:var(--accent)">before</b></td><td>bevor</td><td class="correct"><b>Before</b> her mother lost her job, she <b>had worked</b> in an office.</td></tr>
+      <tr><td><b style="color:var(--accent)">when</b></td><td>als</td><td class="correct"><b>When</b> the accident happened, the bus <b>had not arrived</b> yet.</td></tr>
+    </table>
+    <div class="warn">⚠️ <b>Merke:</b> "after" → danach kommt past perfect | "before" → davor kommt past perfect</div>
   </div>
-  <div class="screen" id="sc-learn"><div id="learn-content"></div></div>
-  <div class="screen" id="sc-quiz"><div id="quiz-content"></div></div>
-  <div class="screen" id="sc-alldone">
-    <div class="all-done fadein">
-      <div class="big">🏆</div>
-      <h1>ALLES GELERNT!</h1>
-      <p>Alle 6 Themen gemeistert! Du bist absolut bereit für die Arbeit. Das war Vollgas — jetzt weißt du alles!</p>
-      <button class="next-btn" onclick="resetAll()">🔄 Nochmal durchgehen</button>
+
+  <div class="card">
+    <div class="card-title">G7 · Passive Voice Simple Past <span class="badge">was/were + 3. Form</span></div>
+    <div class="formula">📌 Formel: <span class="em"><b>was/were</b> + past participle (3. Form)</span></div>
+    <div class="tip">💡 <b>Wann?</b> Wenn die <b>Handlung</b> wichtiger ist als die Person, die sie tut.</div>
+    <table>
+      <tr><th>Singular</th><th>Plural</th></tr>
+      <tr><td class="correct">The diamond <b>was found</b>.</td><td class="correct">The diamonds <b>were found</b>.</td></tr>
+      <tr><td class="correct">Apartheid <b>was abolished</b>.</td><td class="correct">Many buildings <b>were built</b>.</td></tr>
+    </table>
+    <p style="margin:12px 0 6px;font-weight:800;color:var(--accent);">Aktiv → Passiv:</p>
+    <div class="example">
+      <span style="color:var(--muted)">Aktiv:</span> The British <b>invaded</b> South Africa.<br>
+      <span style="color:var(--muted)">Passiv:</span> South Africa <span class="hl">was invaded</span> <span class="hl">by</span> the British.
     </div>
+    <div class="example">
+      <span style="color:var(--muted)">Aktiv:</span> They <b>abolished</b> apartheid in 1991.<br>
+      <span style="color:var(--muted)">Passiv:</span> Apartheid <span class="hl">was abolished</span> in 1991.
+    </div>
+    <div class="tip">💡 Mit <b>"by"</b> kannst du sagen, wer die Handlung ausgeführt hat – aber nur wenn es wichtig ist!</div>
+    <p style="margin:12px 0 6px;font-weight:800;color:var(--accent);">Fragen im Passive:</p>
+    <div class="example"><span class="hl">Was</span> the park opened in 1927? → Yes, it <span class="hl">was</span>. / No, it <span class="hl">wasn't</span>.</div>
+    <div class="example"><span class="hl">Were</span> the diamonds found in the 19th century? → Yes, they <span class="hl">were</span>.</div>
   </div>
+
 </div>
 
-<div class="botbar">
-  <button class="bbt on" id="nav-home" onclick="goHome()">
-    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Start
-  </button>
-  <button class="bbt" id="nav-voc" onclick="goVoc()">
-    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Vokabeln
-  </button>
-  <button class="bbt" id="nav-gram" onclick="goGram()">
-    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Grammatik
-  </button>
-  <button class="bbt" id="nav-ws" onclick="goWS()">
-    <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Lösungen
-  </button>
-</div>
-<div class="toast" id="toast"></div>
-
-<script>
-const DEADLINE = new Date('2026-05-28T10:30:00');
-let state = { done:[], streak:0, pts:0 };
-
-function save(){try{localStorage.setItem('sa26v2',JSON.stringify(state));}catch(e){}}
-function load(){try{const d=JSON.parse(localStorage.getItem('sa26v2')||'{}');if(d.done)state.done=d.done;if(d.pts)state.pts=d.pts;if(d.streak)state.streak=d.streak;}catch(e){}}
-
-function tick(){
-  const diff=DEADLINE-Date.now();
-  if(diff<=0){['d','h','m','s'].forEach(u=>{document.getElementById('cd-'+u+'n').textContent='00';document.getElementById('cd-'+u).classList.add('urgent');});return;}
-  const d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
-  document.getElementById('cd-dn').textContent=String(d).padStart(2,'0');
-  document.getElementById('cd-hn').textContent=String(h).padStart(2,'0');
-  document.getElementById('cd-mn').textContent=String(m).padStart(2,'0');
-  document.getElementById('cd-sn').textContent=String(s).padStart(2,'0');
-  if(d===0&&h<6){['cd-s','cd-h','cd-m'].forEach(id=>document.getElementById(id).classList.add('urgent'));}
-}
-setInterval(tick,1000);tick();
-
-// ─────────────────────────────────────────
-// TOPICS
-// ─────────────────────────────────────────
-const TOPICS = [
-  {
-    id:0, emoji:'🌍', title:'Südafrika — Fakten & Vokabeln', sub:'Wichtige Jahreszahlen, Begriffe & Wortschatz', color:'--gr',
-    learn:`
-<div class="topic-hero fadein" style="background:linear-gradient(135deg,#0a1a10,#07090f);border:1px solid rgba(53,212,152,.2)">
-  <span class="topic-badge" style="background:rgba(53,212,152,.15);color:var(--gr)">Thema 1 von 6</span>
-  <h1>🌍 Südafrika — Fakten & Vokabeln</h1>
-  <p>Jahreszahlen, Passive-Sätze & wichtiger Wortschatz</p>
-</div>
-<div class="lcard">
-  <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">1</span> Die wichtigsten Fakten (Passiv-Sätze!)</div>
-  <table class="etable">
-    <tr><th>Englisch</th><th>Deutsch</th></tr>
-    <tr><td class="en">Apartheid <span class="hl">was abolished</span> in 1991.</td><td class="de">Apartheid wurde 1991 abgeschafft.</td></tr>
-    <tr><td class="en">South Africa <span class="hl">was made</span> a republic in 1961.</td><td class="de">SA wurde 1961 Republik.</td></tr>
-    <tr><td class="en">Diamonds <span class="hl">were found/discovered</span> in the 19th century.</td><td class="de">Diamanten wurden im 19. Jh. entdeckt.</td></tr>
-    <tr><td class="en">The Rugby World Cup <span class="hl">was won</span> by SA in 2007.</td><td class="de">Rugby-WM 2007 von SA gewonnen.</td></tr>
-    <tr><td class="en">The Football World Cup <span class="hl">was held</span> in SA in 2010.</td><td class="de">Fußball-WM 2010 in SA ausgetragen.</td></tr>
-    <tr><td class="en">South Africa <span class="hl">was invaded</span> by the British.</td><td class="de">SA wurde von den Briten invadiert.</td></tr>
-    <tr><td class="en">Black and white people <span class="hl">were separated</span>.</td><td class="de">Schwarze und Weiße wurden getrennt.</td></tr>
-    <tr><td class="en">Many buildings <span class="hl">were built</span> in the cities.</td><td class="de">Viele Gebäude wurden gebaut.</td></tr>
-  </table>
-</div>
-<div class="lcard">
-  <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">2</span> Wichtige Vokabeln — auswendig lernen!</div>
-  <table class="etable">
-    <tr><th>Deutsch</th><th>Englisch</th></tr>
-    <tr><td class="de">Albtraum</td><td class="gram">nightmare</td></tr>
-    <tr><td class="de">leiden unter</td><td class="gram">suffer from</td></tr>
-    <tr><td class="de">Wächter / Wachmann</td><td class="gram">guard</td></tr>
-    <tr><td class="de">schuldig</td><td class="gram">guilty</td></tr>
-    <tr><td class="de">blöd / dumm</td><td class="gram">stupid / silly</td></tr>
-    <tr><td class="de">Gegenteil</td><td class="gram">opposite</td></tr>
-    <tr><td class="de">bewachte Wohnanlage</td><td class="gram">gated community</td></tr>
-    <tr><td class="de">Behandlung</td><td class="gram">treatment</td></tr>
-    <tr><td class="de">Naturschutzgebiet</td><td class="gram">nature reserve</td></tr>
-    <tr><td class="de">Wildhüter</td><td class="gram">ranger</td></tr>
-    <tr><td class="de">erschrecken / erschreckend</td><td class="gram">scare / scary</td></tr>
-    <tr><td class="de">abschaffen</td><td class="gram">abolish</td></tr>
-    <tr><td class="de">entdecken</td><td class="gram">discover / find</td></tr>
-    <tr><td class="de">Unterschiede</td><td class="gram">differences</td></tr>
-    <tr><td class="de">Armensiedlung</td><td class="gram">township</td></tr>
-    <tr><td class="de">Rassentrennung</td><td class="gram">apartheid / racial segregation</td></tr>
-    <tr><td class="de">Republik</td><td class="gram">republic</td></tr>
-  </table>
-</div>
-<div class="lcard">
-  <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">3</span> Soziale Unterschiede</div>
-  <div class="rule b">In South Africa there are <strong>big social differences</strong>. Some live in <strong>gated communities</strong> (bewachte Wohnanlagen), others in <strong>townships</strong> (Armensiedlungen).</div>
-  <div class="rule y">📌 Merke: In einer Gated Community gibt es <strong>guards</strong> (Wächter). In einem Township gibt es <strong>no security</strong>.</div>
-</div>`,
-    quiz:[
-      {type:'mc',q:'When was apartheid abolished?',de:'Wann wurde die Apartheid abgeschafft?',opts:['1961','1991','2007','2010'],ans:'1991',ex:'Apartheid was abolished in 1991.'},
-      {type:'fill',q:'Deutsch → Englisch: "abschaffen"',de:'',ans:'abolish',ex:'abschaffen = abolish (Apartheid was abolished)'},
-      {type:'fill',q:'Deutsch → Englisch: "Naturschutzgebiet"',de:'',ans:'nature reserve',ex:'Naturschutzgebiet = nature reserve'},
-      {type:'mc',q:'South Africa won the Rugby World Cup in ...',de:'',opts:['2003','2007','2010','2015'],ans:'2007',ex:'The Rugby World Cup was won by SA in 2007.'},
-      {type:'fill',q:'Deutsch → Englisch: "Albtraum"',de:'',ans:'nightmare',ex:'Albtraum = nightmare'},
-      {type:'mc',q:'"gated community" = ?',de:'',opts:['Township','Nationalpark','Bewachte Wohnanlage','Schulgelände'],ans:'Bewachte Wohnanlage',ex:'Gated community = bewachte Wohnanlage mit guards'},
-      {type:'fill',q:'Deutsch → Englisch: "entdecken"',de:'',ans:'discover',ex:'entdecken = discover (oder: find)'},
-      {type:'mc',q:'The Football World Cup was ___ in SA in 2010.',de:'',opts:['won','built','held','found'],ans:'held',ex:'hold → held (3. Form). The World Cup was held = ausgetragen.'},
-      {type:'fill',q:'Deutsch → Englisch: "schuldig"',de:'',ans:'guilty',ex:'schuldig = guilty'},
-      {type:'fill',q:'Deutsch → Englisch: "Wächter"',de:'',ans:'guard',ex:'Wächter = guard (Plural: guards)'},
-    ]
-  },
-  {
-    id:1, emoji:'🔵', title:'Present Participle (G5)', sub:'verb + -ing nach Wahrnehmungsverben', color:'--bl',
-    learn:`
-<div class="topic-hero fadein" style="background:linear-gradient(135deg,#0a1020,#07090f);border:1px solid rgba(79,157,255,.2)">
-  <span class="topic-badge" style="background:rgba(79,157,255,.15);color:var(--bl)">Thema 2 — G5</span>
-  <h1>🔵 Present Participle</h1>
-  <p>verb + -ing nach Wahrnehmungsverben</p>
-</div>
-<div class="lcard">
-  <div class="lcard-title"><span style="background:var(--lbl);color:var(--bl)">1</span> Die Regel</div>
-  <div class="rule b">Nach Verben der Wahrnehmung: <strong>see, watch, notice, hear, feel, smell, listen to</strong><br>→ kommt immer <strong>verb + -ing</strong> (Present Participle)</div>
-  <div class="formula">Subjekt + Wahrnehmungsverb + Objekt + <span style="color:var(--gr)">verb-ing</span><small>I saw him running. / She heard someone singing. / We watched the cars coming.</small></div>
-  <div class="rule r">❌ FALSCH: I heard him <span style="text-decoration:line-through">to sing</span> / <span style="text-decoration:line-through">sing</span><br>✅ RICHTIG: I heard him <strong>singing</strong>.</div>
-</div>
-<div class="lcard">
-  <div class="lcard-title"><span style="background:var(--lbl);color:var(--bl)">2</span> Bildungsregeln -ing Form</div>
-  <table class="etable">
-    <tr><th>Regel</th><th>Beispiele</th><th>-ing Form</th></tr>
-    <tr><td class="de">+ ing (normal)</td><td class="en">play, hear, call, sing, show</td><td class="gram">playing, hearing, calling, singing, showing</td></tr>
-    <tr><td class="de">-e weg + ing</td><td class="en">come, leave, move, hide</td><td class="gram">coming, leaving, moving, hiding</td></tr>
-    <tr><td class="de">Vokal+Konsonant → doppeln</td><td class="en">run, get, swim, put</td><td class="gram">running, getting, swimming, putting</td></tr>
-    <tr><td class="de">-ie → y + ing</td><td class="en">lie, die</td><td class="gram">lying, dying</td></tr>
-  </table>
-</div>
-<div class="lcard">
-  <div class="lcard-title"><span style="background:var(--lbl);color:var(--bl)">3</span> Aufgabe 2 — Lösungen Workbook</div>
-  <div class="ws-card">
-    <div class="ws-title">✅ Alle Antworten</div>
-    <div class="ws-item"><span class="ws-num">1</span><div>Jack listened to his brother <span class="ws-ans">playing</span> the guitar. <span class="ws-context">(play → playing)</span></div></div>
-    <div class="ws-item"><span class="ws-num">2</span><div>We watched the cars <span class="ws-ans">coming</span> nearer. <span class="ws-context">(come → e weg → coming)</span></div></div>
-    <div class="ws-item"><span class="ws-num">3</span><div>I could smell something <span class="ws-ans">burning</span> in the kitchen. <span class="ws-context">(burn → burning)</span></div></div>
-    <div class="ws-item"><span class="ws-num">4</span><div>Did you hear Ryan <span class="ws-ans">singing</span> in the shower? <span class="ws-context">(sing → singing)</span></div></div>
-    <div class="ws-item"><span class="ws-num">5</span><div>They felt the rain <span class="ws-ans">getting</span> heavier. <span class="ws-context">(get → tt → getting)</span></div></div>
-    <div class="ws-item"><span class="ws-num">6</span><div>Kate didn't notice all the people <span class="ws-ans">leaving</span> the building. <span class="ws-context">(leave → e weg → leaving)</span></div></div>
-    <div class="ws-item"><span class="ws-num">7</span><div>Amy saw two people <span class="ws-ans">carrying</span> large bags. <span class="ws-context">(carry → carrying)</span></div></div>
-    <div class="ws-item"><span class="ws-num">8</span><div>We didn't notice a girl <span class="ws-ans">hiding</span> in the cupboard. <span class="ws-context">(hide → e weg → hiding)</span></div></div>
-  </div>
-</div>`,
-    quiz:[
-      {type:'fill',q:'We watched the cars ___ (come) nearer.',de:'Wir sahen die Autos näher kommen.',ans:'coming',ex:'come → e weg → coming'},
-      {type:'fill',q:'I could smell something ___ (burn) in the kitchen.',de:'Ich roch etwas in der Küche brennen.',ans:'burning',ex:'burn + ing = burning (normal)'},
-      {type:'fill',q:'Did you hear Ryan ___ (sing) in the shower?',de:'Hast du Ryan in der Dusche singen hören?',ans:'singing',ex:'sing + ing = singing'},
-      {type:'fill',q:'They felt the rain ___ (get) heavier.',de:'Sie spürten, wie der Regen stärker wurde.',ans:'getting',ex:'get → t verdoppeln → getting'},
-      {type:'fill',q:'Amy saw two people ___ (carry) large bags.',de:'Amy sah zwei Leute große Taschen tragen.',ans:'carrying',ex:'carry + ing = carrying'},
-      {type:'fill',q:'We didn\'t notice a girl ___ (hide) in the cupboard.',de:'Wir bemerkten kein Mädchen im Schrank.',ans:'hiding',ex:'hide → e weg → hiding'},
-      {type:'mc',q:'Welcher Satz ist richtig?',de:'',opts:['I heard him to sing.','I heard him sing.','I heard him singing.','I heard him sings.'],ans:'I heard him singing.',ex:'Nach Wahrnehmungsverben: verb + -ing'},
-      {type:'mc',q:'-ing Form von "run"?',de:'',opts:['runing','running','runeing','runned'],ans:'running',ex:'run: kurzer Vokal + n → n verdoppeln → running'},
-      {type:'mc',q:'-ing Form von "leave"?',de:'',opts:['leaveing','leaving','leving','leaved'],ans:'leaving',ex:'leave → e weg → leaving'},
-      {type:'fill',q:'Emma noticed Steve ___ (show) his pictures to experts.',de:'Emma bemerkte Steve, wie er seine Bilder zeigt.',ans:'showing',ex:'show + ing = showing (normal)'},
-    ]
-  },
-  {
-    id:2, emoji:'🟠', title:'Past Perfect (G6)', sub:'had + 3. Form — Vorvergangenheit', color:'--or',
-    learn:`
-<div class="topic-hero fadein" style="background:linear-gradient(135deg,#1a0f05,#07090f);border:1px solid rgba(255,146,72,.2)">
-  <span class="topic-badge" style="background:rgba(255,146,72,.15);color:var(--or)">Thema 3 — G6</span>
-  <h1>🟠 Past Perfect</h1>
-  <p>had + past participle — was VOR dem Simple Past passiert</p>
-</div>
-<div class="lcard">
-  <div class="lcard-title"><span style="background:var(--lor);color:var(--or)">1</span> Die Regel</div>
-  <div class="rule o">Das Past Perfect = was <strong>ZUERST</strong> passiert ist (noch vor einem anderen vergangenen Ereignis).</div>
-  <div class="formula" style="border-color:rgba(255,146,72,.3)">had + past participle (3. Form)<small>Positiv: had gone | Negativ: hadn't gone | Frage: Had you gone?</small></div>
-  <div class="rule y">🇩🇪 Zwei Ereignisse in der Vergangenheit → das ZUERST passierte = Past Perfect. Das DANACH passierte = Simple Past.</div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:8px 0">
-    <div style="background:var(--lor);border-radius:9px;padding:10px;text-align:center"><div style="font-size:14px;font-weight:900;color:var(--or);font-family:'JetBrains Mono',monospace">after</div><div style="font-size:9px;color:var(--mu);margin-top:2px;font-weight:700">nachdem</div></div>
-    <div style="background:var(--lor);border-radius:9px;padding:10px;text-align:center"><div style="font-size:14px;font-weight:900;color:var(--or);font-family:'JetBrains Mono',monospace">before</div><div style="font-size:9px;color:var(--mu);margin-top:2px;font-weight:700">bevor</div></div>
-    <div style="background:var(--lor);border-radius:9px;padding:10px;text-align:center"><div style="font-size:14px;font-weight:900;color:var(--or);font-family:'JetBrains Mono',monospace">when</div><div style="font-size:9px;color:var(--mu);margin-top:2px;font-weight:700">als</div></div>
-  </div>
-</div>
-<div class="lcard">
-  <div class="lcard-title"><span style="background:var(--lor);color:var(--or)">2</span> Aufgabe 9 — Lösungen Workbook</div>
-  <div class="ws-card">
-    <div class="ws-title">✅ Alle Antworten</div>
-    <div class="ws-item"><span class="ws-num">1</span><div>Lefa wanted to go to work after he <span class="ws-ans">had spoken</span> to the police officer. <span class="ws-context">(speak → spoken)</span></div></div>
-    <div class="ws-item"><span class="ws-num">2</span><div>After the police officer <span class="ws-ans">had interviewed</span> Lefa, he allowed him to go. <span class="ws-context">(interview → interviewed)</span></div></div>
-    <div class="ws-item"><span class="ws-num">3</span><div>Piet's team <span class="ws-ans">had left</span> school before the accident happened. <span class="ws-context">(leave → left)</span></div></div>
-    <div class="ws-item"><span class="ws-num">4</span><div>Friends called Piet after they <span class="ws-ans">had read</span> the report. <span class="ws-context">(read → read, gleich!)</span></div></div>
-    <div class="ws-item"><span class="ws-num">5</span><div>After Cebile <span class="ws-ans">had come</span> home, she began to make dinner. <span class="ws-context">(come → come)</span></div></div>
-    <div class="ws-item"><span class="ws-num">6</span><div>Before her mother lost her job, she <span class="ws-ans">had worked</span> in an office. <span class="ws-context">(work → worked)</span></div></div>
-    <div class="ws-item"><span class="ws-num">7</span><div>After apartheid <span class="ws-ans">had finished</span>, all SA citizens could go to the same school. <span class="ws-context">(finish → finished)</span></div></div>
-    <div class="ws-item"><span class="ws-num">8</span><div>Before the girls reached the hostel, they <span class="ws-ans">had drunk</span> all their water. <span class="ws-context">(drink → drunk, unregelmäßig!)</span></div></div>
-  </div>
-</div>`,
-    quiz:[
-      {type:'fill',q:'After apartheid ___ (finish), all SA citizens could go to the same school.',de:'Nachdem Apartheid geendet hatte...',ans:'had finished',ex:'Past Perfect: had + finished'},
-      {type:'fill',q:'Before the girls reached the hostel, they ___ (drink) all their water.',de:'',ans:'had drunk',ex:'Past Perfect: had + drunk (drink→drunk, unregelmäßig!)'},
-      {type:'fill',q:'After Cebile ___ (come) home, she began to make dinner.',de:'',ans:'had come',ex:'Past Perfect: had + come (come→come)'},
-      {type:'fill',q:'Before her mother lost her job, she ___ (work) in an office.',de:'',ans:'had worked',ex:'Past Perfect: had + worked'},
-      {type:'mc',q:'Lefa wanted to go after he ___ to the police.',de:'',opts:['spoke','had spoken','has spoken','speaking'],ans:'had spoken',ex:'Past Perfect: had + spoken (speak→spoken)'},
-      {type:'mc',q:'Past Perfect = ?',de:'',opts:['was/were + 3.Form','have + 3.Form','had + 3.Form','did + Infinitiv'],ans:'had + 3.Form',ex:'Past Perfect: immer had + past participle (3. Form)'},
-      {type:'fill',q:'After the police officer ___ (interview) Lefa, he allowed him to go.',de:'',ans:'had interviewed',ex:'Past Perfect: had + interviewed'},
-      {type:'mc',q:'Piet\'s team ___ school before the accident happened.',de:'',opts:['left','has left','had left','leaves'],ans:'had left',ex:'Zuerst verlassen (had left), dann Unfall (happened)'},
-      {type:'fill',q:'We ___ (not start) our game when our teacher came.',de:'',ans:"hadn't started",ex:"Negativ: hadn't + started"},
-      {type:'mc',q:'Signalwort für Past Perfect?',de:'',opts:['yesterday','now','before','tomorrow'],ans:'before',ex:'after, before, when = Signalwörter für Past Perfect'},
-    ]
-  },
-  {
-    id:3, emoji:'🟢', title:'Passive Voice — Theorie (G7)', sub:'was/were + 3.Form — wie & warum', color:'--gr',
-    learn:`
-<div class="topic-hero fadein" style="background:linear-gradient(135deg,#061510,#07090f);border:1px solid rgba(53,212,152,.2)">
-  <span class="topic-badge" style="background:rgba(53,212,152,.15);color:var(--gr)">Thema 4 — G7</span>
-  <h1>🟢 Passive Voice — Theorie</h1>
-  <p>was / were + past participle — Simple Past Passiv</p>
-</div>
-<div class="lcard">
-  <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">1</span> Wann benutzt man das Passiv?</div>
-  <div class="rule g">Das Passiv benutzt man, wenn man <strong>nicht weiß wer etwas getan hat</strong> oder wenn es <strong>nicht wichtig ist wer</strong> es getan hat. Im Vordergrund steht die Sache, nicht die Person!</div>
-  <div class="rule y">🇩🇪 Aktiv: "Man fand Diamanten." → Passiv: "Diamonds <strong>were found</strong>." (Man weiß nicht / es ist egal wer)</div>
-</div>
-<div class="lcard">
-  <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">2</span> Formel Simple Past Passiv</div>
-  <div class="formula" style="border-color:rgba(53,212,152,.3);background:#061510">was (Singular) / were (Plural) + past participle (3. Form)<small>Optional: + by [Täter/Agent] — wenn man doch sagen will wer</small></div>
-  <div class="steps">
-    <div class="step"><div class="step-n">1</div><div>Objekt vom Aktivsatz → <strong>Subjekt</strong> im Passivsatz (nach vorne)</div></div>
-    <div class="step"><div class="step-n">2</div><div>Verb: <strong>was</strong> (Singular) oder <strong>were</strong> (Plural) + <strong>3. Form</strong></div></div>
-    <div class="step"><div class="step-n">3</div><div>Subjekt vom Aktivsatz → hinten mit <strong>by</strong> (optional)</div></div>
-  </div>
-</div>
-<div class="lcard">
-  <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">3</span> Unregelmäßige 3. Formen — AUSWENDIG!</div>
-  <table class="etable">
-    <tr><th>Verb</th><th>Simple Past</th><th>3. Form (Passiv)</th></tr>
-    <tr><td class="en">find</td><td class="de">found</td><td class="gram">found → were found</td></tr>
-    <tr><td class="en">build</td><td class="de">built</td><td class="gram">built → were built</td></tr>
-    <tr><td class="en">make</td><td class="de">made</td><td class="gram">made → was made</td></tr>
-    <tr><td class="en">hold</td><td class="de">held</td><td class="gram">held → was held</td></tr>
-    <tr><td class="en">win</td><td class="de">won</td><td class="gram">won → was won</td></tr>
-    <tr><td class="en">see</td><td class="de">saw</td><td class="gram">seen → were seen</td></tr>
-    <tr><td class="en">send</td><td class="de">sent</td><td class="gram">sent → was/were sent</td></tr>
-    <tr><td class="en">write</td><td class="de">wrote</td><td class="gram">written → was written</td></tr>
-    <tr><td class="en">steal</td><td class="de">stole</td><td class="gram">stolen → were stolen</td></tr>
-    <tr><td class="en">take</td><td class="de">took</td><td class="gram">taken → were taken</td></tr>
-    <tr><td class="en">hide</td><td class="de">hid</td><td class="gram">hidden → were hidden</td></tr>
-    <tr><td class="en">leave</td><td class="de">left</td><td class="gram">left → was/were left</td></tr>
-    <tr><td class="en">buy</td><td class="de">bought</td><td class="gram">bought → were bought</td></tr>
-    <tr><td class="en">keep</td><td class="de">kept</td><td class="gram">kept → wasn't kept</td></tr>
-    <tr><td class="en">put</td><td class="de">put</td><td class="gram">put → was put</td></tr>
-    <tr><td class="en">invade</td><td class="de">invaded</td><td class="gram">invaded → was invaded</td></tr>
-    <tr><td class="en">abolish</td><td class="de">abolished</td><td class="gram">abolished → was abolished</td></tr>
-  </table>
-</div>`,
-    quiz:[
-      {type:'mc',q:'Simple Past Passive = ?',de:'Formel?',opts:['had + 3.Form','was/were + 3.Form','is/are + 3.Form','did + Infinitiv'],ans:'was/were + 3.Form',ex:'Simple Past Passive: was (Singular) / were (Plural) + past participle'},
-      {type:'mc',q:'3. Form von "win"?',de:'',opts:['winned','won','wun','wined'],ans:'won',ex:'win → won → won. Alle drei Formen gleich: win / won / won'},
-      {type:'mc',q:'3. Form von "hide"?',de:'',opts:['hided','hid','hidden','hide'],ans:'hidden',ex:'hide → hid → hidden. Im Passiv: were hidden'},
-      {type:'mc',q:'3. Form von "steal"?',de:'',opts:['stealed','stole','stolen','steal'],ans:'stolen',ex:'steal → stole → stolen. Im Passiv: were stolen'},
-      {type:'mc',q:'3. Form von "take"?',de:'',opts:['took','taked','taken','take'],ans:'taken',ex:'take → took → taken. Im Passiv: were taken'},
-      {type:'mc',q:'3. Form von "write"?',de:'',opts:['wrote','writed','written','write'],ans:'written',ex:'write → wrote → written. Im Passiv: was written'},
-      {type:'mc',q:'3. Form von "send"?',de:'',opts:['sended','sent','sand','sond'],ans:'sent',ex:'send → sent → sent (alle drei gleich!)'},
-      {type:'mc',q:'3. Form von "build"?',de:'',opts:['builded','build','built','bilt'],ans:'built',ex:'build → built → built (alle drei gleich!)'},
-      {type:'mc',q:'3. Form von "see"?',de:'',opts:['saw','seed','seen','see'],ans:'seen',ex:'see → saw → seen. Im Passiv: were seen'},
-      {type:'mc',q:'Was kommt nach "by" im Passivsatz?',de:'',opts:['Das Verb','Der Täter / Agent','Das Objekt','Die Zeit'],ans:'Der Täter / Agent',ex:'"by" + wer es getan hat: "was won by South Africa"'},
-    ]
-  },
-  {
-    id:4, emoji:'📋', title:'Passive Voice — Aufgaben (G7)', sub:'Workbook Aufgaben 1–4 mit Lösungen', color:'--cy',
-    learn:`
-<div class="topic-hero fadein" style="background:linear-gradient(135deg,#041418,#07090f);border:1px solid rgba(34,211,238,.2)">
-  <span class="topic-badge" style="background:rgba(34,211,238,.15);color:var(--cy)">Thema 5 — G7 Aufgaben</span>
-  <h1>📋 Passive — Workbook Lösungen</h1>
-  <p>Alle Aufgaben 1–4 vom Arbeitsblatt Station 2/G7</p>
-</div>
-<div class="lcard">
-  <div class="lcard-title"><span style="background:var(--lcy);color:var(--cy)">1</span> Aufgabe 1 — Complete the table</div>
-  <div class="ws-card">
-    <div class="ws-title">✅ Verb-Tabelle Lösungen</div>
-    <table class="etable">
-      <tr><th>Infinitiv</th><th>Simple Past</th><th>Past Participle ✓</th></tr>
-      <tr><td class="en">find</td><td class="gram">found</td><td class="right">found</td></tr>
-      <tr><td class="en">send</td><td class="gram">sent</td><td class="right">sent</td></tr>
-      <tr><td class="en">write</td><td class="gram">wrote</td><td class="right">written</td></tr>
-      <tr><td class="en">see</td><td class="gram">saw</td><td class="right">seen</td></tr>
-      <tr><td class="en">build</td><td class="gram">built</td><td class="right">built</td></tr>
-      <tr><td class="en">hide</td><td class="gram">hid</td><td class="right">hidden</td></tr>
-      <tr><td class="en">leave</td><td class="gram">left</td><td class="right">left</td></tr>
-      <tr><td class="en">steal</td><td class="gram">stole</td><td class="right">stolen</td></tr>
-      <tr><td class="en">take</td><td class="gram">took</td><td class="right">taken</td></tr>
-      <tr><td class="en">put</td><td class="gram">put</td><td class="right">put</td></tr>
+<!-- ===== VERBEN ===== -->
+<div id="verben" class="section">
+  <div class="card">
+    <div class="card-title">🔤 Unregelmäßige Verben</div>
+    <p style="color:var(--muted);margin-bottom:12px;">Diese Verben musst du für das Passive und Past Perfect kennen!</p>
+    <table>
+      <tr><th>Infinitiv</th><th>Simple Past</th><th>Past Participle (3. Form)</th><th>Bedeutung</th></tr>
+      <tr><td><b>find</b></td><td class="correct">found</td><td class="correct">found</td><td>finden</td></tr>
+      <tr><td><b>build</b></td><td class="correct">built</td><td class="correct">built</td><td>bauen</td></tr>
+      <tr><td><b>see</b></td><td class="correct">saw</td><td class="correct">seen</td><td>sehen</td></tr>
+      <tr><td><b>write</b></td><td class="correct">wrote</td><td class="correct">written</td><td>schreiben</td></tr>
+      <tr><td><b>hide</b></td><td class="correct">hid</td><td class="correct">hidden</td><td>verstecken</td></tr>
+      <tr><td><b>leave</b></td><td class="correct">left</td><td class="correct">left</td><td>verlassen</td></tr>
+      <tr><td><b>steal</b></td><td class="correct">stole</td><td class="correct">stolen</td><td>stehlen</td></tr>
+      <tr><td><b>take</b></td><td class="correct">took</td><td class="correct">taken</td><td>nehmen</td></tr>
+      <tr><td><b>send</b></td><td class="correct">sent</td><td class="correct">sent</td><td>schicken</td></tr>
+      <tr><td><b>put</b></td><td class="correct">put</td><td class="correct">put</td><td>legen/stellen</td></tr>
+      <tr><td><b>come</b></td><td class="correct">came</td><td class="correct">come</td><td>kommen</td></tr>
+      <tr><td><b>speak</b></td><td class="correct">spoke</td><td class="correct">spoken</td><td>sprechen</td></tr>
+      <tr><td><b>read</b></td><td class="correct">read</td><td class="correct">read</td><td>lesen</td></tr>
+      <tr><td><b>begin</b></td><td class="correct">began</td><td class="correct">begun</td><td>beginnen</td></tr>
+      <tr><td><b>lose</b></td><td class="correct">lost</td><td class="correct">lost</td><td>verlieren</td></tr>
+      <tr><td><b>make</b></td><td class="correct">made</td><td class="correct">made</td><td>machen</td></tr>
+      <tr><td><b>hold</b></td><td class="correct">held</td><td class="correct">held</td><td>halten/austragen</td></tr>
+      <tr><td><b>abolish</b></td><td class="correct">abolished</td><td class="correct">abolished</td><td>abschaffen (regelmäßig!)</td></tr>
+      <tr><td><b>win</b></td><td class="correct">won</td><td class="correct">won</td><td>gewinnen</td></tr>
+      <tr><td><b>invade</b></td><td class="correct">invaded</td><td class="correct">invaded</td><td>einmarschieren (regelmäßig!)</td></tr>
     </table>
   </div>
-</div>
-<div class="lcard">
-  <div class="lcard-title"><span style="background:var(--lcy);color:var(--cy)">2</span> Aufgabe 2 — was / were wählen</div>
-  <div class="ws-card">
-    <div class="ws-title">✅ Richtige Antworten</div>
-    <div class="ws-item"><span class="ws-num">1</span><div>Their trip to South Africa <span class="ws-ans">was</span> planned a year ago. <span class="ws-context">(trip = Singular)</span></div></div>
-    <div class="ws-item"><span class="ws-num">2</span><div>A taxi <span class="ws-ans">was</span> ordered at 10:30. <span class="ws-context">(taxi = Singular)</span></div></div>
-    <div class="ws-item"><span class="ws-num">3</span><div>I <span class="ws-ans">wasn't</span> invited to the party. <span class="ws-context">(I = Singular)</span></div></div>
-    <div class="ws-item"><span class="ws-num">4</span><div>A lot of skateboards <span class="ws-ans">were</span> stolen from the sports shop. <span class="ws-context">(skateboards = Plural)</span></div></div>
-    <div class="ws-item"><span class="ws-num">5</span><div>You <span class="ws-ans">weren't</span> hurt in the accident. <span class="ws-context">(you = Plural-Logik → weren't)</span></div></div>
-    <div class="ws-item"><span class="ws-num">6</span><div>Two men <span class="ws-ans">were</span> arrested in the street. <span class="ws-context">(men = Plural)</span></div></div>
+  <div class="card">
+    <div class="card-title">⚡ Verben der Wahrnehmung</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-top:6px;">
+      <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;">
+        <div style="font-size:1.5rem">👁️</div><div style="font-weight:800">see</div><div style="color:var(--muted);font-size:0.8rem">sehen</div>
+      </div>
+      <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;">
+        <div style="font-size:1.5rem">🎥</div><div style="font-weight:800">watch</div><div style="color:var(--muted);font-size:0.8rem">beobachten</div>
+      </div>
+      <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;">
+        <div style="font-size:1.5rem">👀</div><div style="font-weight:800">notice</div><div style="color:var(--muted);font-size:0.8rem">bemerken</div>
+      </div>
+      <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;">
+        <div style="font-size:1.5rem">👂</div><div style="font-weight:800">hear</div><div style="color:var(--muted);font-size:0.8rem">hören</div>
+      </div>
+      <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;">
+        <div style="font-size:1.5rem">🎵</div><div style="font-weight:800">listen to</div><div style="color:var(--muted);font-size:0.8rem">zuhören</div>
+      </div>
+      <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;">
+        <div style="font-size:1.5rem">🤲</div><div style="font-weight:800">feel</div><div style="color:var(--muted);font-size:0.8rem">fühlen</div>
+      </div>
+      <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;">
+        <div style="font-size:1.5rem">👃</div><div style="font-weight:800">smell</div><div style="color:var(--muted);font-size:0.8rem">riechen</div>
+      </div>
+    </div>
   </div>
-  <div class="rule y">📌 Regel: Singular → <strong>was</strong> / wasn't &nbsp;|&nbsp; Plural → <strong>were</strong> / weren't</div>
 </div>
-<div class="lcard">
-  <div class="lcard-title"><span style="background:var(--lcy);color:var(--cy)">3</span> Aufgabe 3 — Passiv Sätze vervollständigen</div>
-  <div class="ws-card">
-    <div class="ws-title">✅ Lösungen</div>
-    <div class="ws-item"><span class="ws-num">1</span><div>This message <span class="ws-ans">was sent</span> to me yesterday. <span class="ws-context">(send → sent)</span></div></div>
-    <div class="ws-item"><span class="ws-num">2</span><div>The money <span class="ws-ans">wasn't kept</span> in a safe place. <span class="ws-context">(not keep → keep → kept)</span></div></div>
-    <div class="ws-item"><span class="ws-num">3</span><div>The winners <span class="ws-ans">were interviewed</span> after the race. <span class="ws-context">(interview → interviewed, regelmäßig)</span></div></div>
-    <div class="ws-item"><span class="ws-num">4</span><div>Some souvenirs <span class="ws-ans">were hidden</span> in a cupboard. <span class="ws-context">(hide → hidden)</span></div></div>
-    <div class="ws-item"><span class="ws-num">5</span><div>Tony's shoes <span class="ws-ans">weren't made</span> in China. <span class="ws-context">(not make → make → made)</span></div></div>
-    <div class="ws-item"><span class="ws-num">6</span><div>Our car <span class="ws-ans">wasn't repaired</span> right away. <span class="ws-context">(not repair → repaired)</span></div></div>
+
+<!-- ===== VOKABELN ===== -->
+<div id="vokabeln" class="section">
+  <div class="card">
+    <div class="card-title">💬 Unit 3 Vokabeln <span class="badge">Klick zum Aufdecken</span></div>
+    <p style="color:var(--muted);margin-bottom:14px;">Klick auf eine Karte um die Übersetzung zu sehen!</p>
+    <div class="vocab-grid" id="vocab-grid"></div>
+  </div>
+  <div class="card" style="margin-top:18px;">
+    <div class="card-title">🃏 Vokabel-Quiz</div>
+    <div id="vocab-quiz-area"></div>
+    <button class="check-btn" onclick="nextVocabQ()" id="vocab-next-btn" style="display:none">Weiter →</button>
   </div>
 </div>
-<div class="lcard">
-  <div class="lcard-title"><span style="background:var(--lcy);color:var(--cy)">4</span> Aufgabe 4 — Bilder-Sätze</div>
-  <div class="ws-card">
-    <div class="ws-title">✅ Lösungen (Photos-Aufgabe)</div>
-    <div class="ws-item"><span class="ws-num">1</span><div>Photos <span class="ws-ans">were taken</span> in the national park. <span class="ws-context">(take → taken)</span></div></div>
-    <div class="ws-item"><span class="ws-num">2</span><div>Lions <span class="ws-ans">were seen</span> under a tree. <span class="ws-context">(see → seen)</span></div></div>
-    <div class="ws-item"><span class="ws-num">3</span><div>Jewellery/Souvenirs <span class="ws-ans">were bought</span> by tourists. <span class="ws-context">(buy → bought)</span></div></div>
-    <div class="ws-item"><span class="ws-num">4</span><div>A (text) message <span class="ws-ans">was sent</span> to all the guides. <span class="ws-context">(send → sent)</span></div></div>
-    <div class="ws-item"><span class="ws-num">5</span><div>The gate <span class="ws-ans">was closed</span> at 6 p.m. <span class="ws-context">(close → closed)</span></div></div>
-    <div class="ws-item"><span class="ws-num">6</span><div>Hotels/Houses <span class="ws-ans">were built</span> on the coast. <span class="ws-context">(build → built)</span></div></div>
+
+<!-- ===== ÜBUNGEN ===== -->
+<div id="uebungen" class="section">
+
+  <div class="card">
+    <div class="card-title">✏️ Übung 1 · Present Participle</div>
+    <p style="color:var(--muted);margin-bottom:14px;">Fülle die Lücken aus und klicke dann "Prüfen"!</p>
+    <div id="ex1"></div>
+    <button class="check-btn" onclick="checkEx1()">Prüfen ✓</button>
+    <div id="ex1-result" style="margin-top:10px;"></div>
   </div>
-</div>`,
-    quiz:[
-      {type:'fill',q:'Their trip to South Africa ___ (plan) a year ago.',de:'Singular!',ans:'was planned',ex:'trip = Singular → was + planned'},
-      {type:'fill',q:'A lot of skateboards ___ (steal) from the sports shop.',de:'Plural!',ans:'were stolen',ex:'skateboards = Plural → were + stolen (steal→stolen)'},
-      {type:'fill',q:'This message ___ (send) to me yesterday.',de:'',ans:'was sent',ex:'Singular → was + sent (send→sent)'},
-      {type:'fill',q:'The winners ___ (interview) after the race.',de:'Plural',ans:'were interviewed',ex:'Plural → were + interviewed (regelmäßig)'},
-      {type:'fill',q:"Tony's shoes ___ (not make) in China.",de:'Negativ! Plural.',ans:"weren't made",ex:"Plural Negativ → weren't + made (make→made)"},
-      {type:'fill',q:'Photos ___ (take) in the national park.',de:'Plural',ans:'were taken',ex:'Plural → were + taken (take→taken)'},
-      {type:'fill',q:'Lions ___ (see) under a tree.',de:'Plural',ans:'were seen',ex:'Plural → were + seen (see→seen)'},
-      {type:'fill',q:'The gate ___ (close) at 6 p.m.',de:'Singular',ans:'was closed',ex:'Singular → was + closed (regelmäßig)'},
-      {type:'mc',q:'Two men ___ arrested in the street.',de:'Plural oder Singular?',opts:['was','were','is','had'],ans:'were',ex:'men = Plural → were'},
-      {type:'fill',q:'The money ___ (not keep) in a safe place.',de:'Singular, Negativ',ans:"wasn't kept",ex:"Singular Negativ → wasn't + kept (keep→kept)"},
+
+  <div class="card">
+    <div class="card-title">✏️ Übung 2 · Past Perfect</div>
+    <p style="color:var(--muted);margin-bottom:14px;">Simple Past oder Past Perfect? Richtige Form einsetzen!</p>
+    <div id="ex2"></div>
+    <button class="check-btn" onclick="checkEx2()">Prüfen ✓</button>
+    <div id="ex2-result" style="margin-top:10px;"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">✏️ Übung 3 · Passive Voice</div>
+    <p style="color:var(--muted);margin-bottom:14px;">Bilde Passivsätze aus den Aktivsätzen!</p>
+    <div id="ex3"></div>
+    <button class="check-btn" onclick="checkEx3()">Prüfen ✓</button>
+    <div id="ex3-result" style="margin-top:10px;"></div>
+  </div>
+
+</div>
+
+<!-- ===== QUIZ ===== -->
+<div id="quiz" class="section">
+  <div class="card">
+    <div class="card-title">🎯 Schnell-Quiz</div>
+    <div class="progress-bar"><div class="progress-fill" id="quiz-bar" style="width:0%"></div></div>
+    <div id="quiz-counter" style="color:var(--muted);font-size:0.85rem;margin-bottom:14px;">Frage 1 von 15</div>
+    <div id="quiz-area"></div>
+    <div id="quiz-score" style="display:none"></div>
+  </div>
+</div>
+
+<!-- ===== PROBETEST ===== -->
+<div id="probetest" class="section">
+  <div class="card">
+    <div class="test-header">
+      <div>
+        <div class="card-title" style="margin-bottom:4px;">📝 Probetest · Unit 3</div>
+        <div id="test-progress-text">Beantworte alle Fragen!</div>
+      </div>
+      <div>
+        <div style="color:var(--muted);font-size:0.75rem;text-align:right">Zeit</div>
+        <div class="test-timer" id="test-timer">20:00</div>
+      </div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="test-bar" style="width:0%"></div></div>
+
+    <div id="test-area"></div>
+
+    <div style="margin-top:20px;text-align:center;">
+      <button class="submit-btn" onclick="submitTest()">📝 Test abgeben</button>
+    </div>
+    <div id="test-result" style="display:none"></div>
+  </div>
+</div>
+
+<!-- ===== SÜDAFRIKA ===== -->
+<div id="suedafrika" class="section">
+  <div class="card">
+    <div class="card-title">🌍 Südafrika – Das Wichtigste</div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-year">Ca. 1000 v.Chr.</div><div class="tl-text">Erste Völker besiedeln Südafrika (San, Khoikhoi)</div></div>
+      <div class="tl-item"><div class="tl-year">19. Jahrhundert</div><div class="tl-text">Briten und Holländer (Buren) besetzen das Land. Diamanten werden gefunden.</div></div>
+      <div class="tl-item"><div class="tl-year">1910</div><div class="tl-text">Südafrika wird eine Union (britisches Dominion)</div></div>
+      <div class="tl-item"><div class="tl-year">1948</div><div class="tl-text">Apartheid beginnt offiziell – Rassentrennung per Gesetz</div></div>
+      <div class="tl-item"><div class="tl-year">1961</div><div class="tl-text">Südafrika wird zur Republik</div></div>
+      <div class="tl-item"><div class="tl-year">1991</div><div class="tl-text">Apartheid wird <b>abgeschafft</b></div></div>
+      <div class="tl-item"><div class="tl-year">1994</div><div class="tl-text">Nelson Mandela wird erster schwarzer Präsident</div></div>
+      <div class="tl-item"><div class="tl-year">2007</div><div class="tl-text">Südafrika gewinnt den Rugby World Cup</div></div>
+      <div class="tl-item"><div class="tl-year">2010</div><div class="tl-text">Fußball-WM in Südafrika</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">📖 Passiv-Sätze über Südafrika</div>
+    <div class="example">Very old rock art <span class="hl">was discovered</span> in a cave.</div>
+    <div class="example">Diamonds <span class="hl">were found</span> in the 19th century.</div>
+    <div class="example">Many buildings <span class="hl">were built</span> in the cities.</div>
+    <div class="example">The country <span class="hl">was made</span> a republic in 1961.</div>
+    <div class="example">Apartheid <span class="hl">was abolished</span> in 1991.</div>
+    <div class="example">The Football World Cup <span class="hl">was held</span> in 2010.</div>
+    <div class="example">South Africa <span class="hl">was invaded by</span> the British in the 19th century.</div>
+    <div class="example">Black and white people <span class="hl">were separated by</span> the government during apartheid.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">🏞️ Kruger National Park</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-top:6px;">
+      <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;">
+        <div style="font-size:1.8rem">🦁</div><div style="font-weight:800;font-size:0.9rem">lions</div><div style="color:var(--muted);font-size:0.75rem">Löwen</div>
+      </div>
+      <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;">
+        <div style="font-size:1.8rem">🦏</div><div style="font-weight:800;font-size:0.9rem">rhinos</div><div style="color:var(--muted);font-size:0.75rem">Nashörner</div>
+      </div>
+      <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;">
+        <div style="font-size:1.8rem">🐘</div><div style="font-weight:800;font-size:0.9rem">elephants</div><div style="color:var(--muted);font-size:0.75rem">Elefanten</div>
+      </div>
+      <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;">
+        <div style="font-size:1.8rem">🌿</div><div style="font-weight:800;font-size:0.9rem">rangers</div><div style="color:var(--muted);font-size:0.75rem">Ranger</div>
+      </div>
+      <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;">
+        <div style="font-size:1.8rem">🏕️</div><div style="font-weight:800;font-size:0.9rem">national park</div><div style="color:var(--muted);font-size:0.75rem">Nationalpark</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script>
+// ===== COUNTDOWN =====
+function updateCountdown() {
+  const target = new Date('2026-05-28T10:30:00');
+  const now = new Date();
+  const diff = target - now;
+  if (diff <= 0) {
+    document.getElementById('cd-h').parentElement.style.display='none';
+    document.getElementById('cd-m').parentElement.style.display='none';
+    document.getElementById('cd-s').parentElement.style.display='none';
+    document.querySelectorAll('.cd-sep').forEach(e=>e.style.display='none');
+    document.getElementById('cd-done').style.display='inline';
+    return;
+  }
+  const h = Math.floor(diff / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// ===== NAV =====
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ===== VOKABELN =====
+const vocab = [
+  {en:'nightmare',de:'Albtraum'},{en:'guard',de:'Wächter'},{en:'guilty',de:'schuldig'},
+  {en:'rangers',de:'Ranger (Nationalpark)'},{en:'treatment',de:'Behandlung'},
+  {en:'to suffer',de:'leiden / erleiden'},{en:'silly',de:'albern / dumm'},
+  {en:'reporter',de:'Reporter/in'},{en:'opposite',de:'Gegenteil'},
+  {en:'gated community',de:'bewachte Wohnsiedlung'},{en:'apartheid',de:'Apartheid (Rassentrennung)'},
+  {en:'to abolish',de:'abschaffen'},{en:'republic',de:'Republik'},
+  {en:'to invade',de:'einmarschieren / überfallen'},{en:'to separate',de:'trennen'},
+  {en:'township',de:'Township (Stadtrandsiedlung)'},{en:'scare',de:'erschrecken / Angst machen'},
+  {en:'nightmares',de:'Albträume'},{en:'national park',de:'Nationalpark'},
+  {en:'to discover',de:'entdecken'},{en:'social differences',de:'soziale Unterschiede'},
+  {en:'poverty',de:'Armut'},{en:'wealthy',de:'wohlhabend / reich'},
+  {en:'to protect',de:'schützen'},{en:'injured',de:'verletzt'}
+];
+const grid = document.getElementById('vocab-grid');
+vocab.forEach(v => {
+  const c = document.createElement('div');
+  c.className = 'vocab-card';
+  c.innerHTML = `<div class="en">${v.en}</div><div class="de" style="display:none">${v.de}</div>`;
+  c.onclick = () => {
+    const de = c.querySelector('.de');
+    if(de.style.display==='none'){de.style.display='block';c.classList.add('flipped');}
+    else{de.style.display='none';c.classList.remove('flipped');}
+  };
+  grid.appendChild(c);
+});
+
+// Vocab Quiz
+let vqi = 0;
+const vqShuffle = [...vocab].sort(()=>Math.random()-0.5).slice(0,10);
+function renderVocabQ() {
+  const area = document.getElementById('vocab-quiz-area');
+  const btn = document.getElementById('vocab-next-btn');
+  if(vqi >= vqShuffle.length){
+    area.innerHTML=`<div class="score-box"><div class="score-num">✅</div><div class="score-label">Alle Vokabeln durch!</div><button class="restart-btn" onclick="restartVocabQuiz()">Nochmal</button></div>`;
+    btn.style.display='none'; return;
+  }
+  const q = vqShuffle[vqi];
+  const opts = [q.de, ...vocab.filter(v=>v.de!==q.de).sort(()=>Math.random()-0.5).slice(0,3).map(v=>v.de)].sort(()=>Math.random()-0.5);
+  area.innerHTML=`<div class="quiz-q"><p>Was bedeutet: <span>"${q.en}"</span>?</p>${opts.map(o=>`<button class="opt-btn" onclick="answerVocab(this,'${o.replace(/'/g,"\\'")}','${q.de.replace(/'/g,"\\'")}')">${o}</button>`).join('')}<div class="quiz-feedback" id="vfb" style="display:none"></div></div>`;
+  btn.style.display='none';
+}
+function answerVocab(btn, chosen, correct) {
+  document.querySelectorAll('#vocab-quiz-area .opt-btn').forEach(b=>b.disabled=true);
+  const fb = document.getElementById('vfb');
+  if(chosen===correct){btn.classList.add('correct-ans');fb.textContent='✅ Richtig!';fb.className='quiz-feedback ok';}
+  else{btn.classList.add('wrong-ans');fb.textContent=`❌ Falsch! Richtig: ${correct}`;fb.className='quiz-feedback nok';
+    document.querySelectorAll('#vocab-quiz-area .opt-btn').forEach(b=>{if(b.textContent===correct)b.classList.add('correct-ans');});}
+  fb.style.display='block';
+  document.getElementById('vocab-next-btn').style.display='inline-block';
+}
+function nextVocabQ(){vqi++;renderVocabQ();}
+function restartVocabQuiz(){vqi=0;vqShuffle.sort(()=>Math.random()-0.5);renderVocabQ();document.getElementById('vocab-next-btn').style.display='none';}
+renderVocabQ();
+
+// ===== ÜBUNGEN =====
+// Übung 1: Present Participle
+const ex1Data = [
+  {sent:'Jack listened to his brother ___ (play) the guitar.',ans:'playing'},
+  {sent:'We watched the cars ___ (come) nearer.',ans:'coming'},
+  {sent:'I could smell something ___ (burn) in the kitchen.',ans:'burning'},
+  {sent:'Did you hear Ryan ___ (sing) in the shower?',ans:'singing'},
+  {sent:'They felt the rain ___ (get) heavier.',ans:'getting'},
+  {sent:'Amy saw two people ___ (carry) large bags.',ans:'carrying'},
+];
+const ex1div = document.getElementById('ex1');
+ex1Data.forEach((q,i)=>{
+  const p = document.createElement('p');
+  p.style.cssText='margin:8px 0;font-size:0.95rem;';
+  const parts = q.sent.split('___');
+  p.innerHTML=`<b>${i+1}.</b> ${parts[0]}<input type="text" class="fill-input" id="ex1_${i}" placeholder="..."> ${parts[1]}`;
+  ex1div.appendChild(p);
+});
+function checkEx1(){
+  let ok=0;
+  ex1Data.forEach((q,i)=>{
+    const inp=document.getElementById(`ex1_${i}`);
+    const val=inp.value.trim().toLowerCase();
+    if(val===q.ans){inp.className='fill-input ok';ok++;}
+    else{inp.className='fill-input nok';inp.title=`Richtig: ${q.ans}`;}
+  });
+  document.getElementById('ex1-result').innerHTML=`<div class="quiz-feedback ${ok===ex1Data.length?'ok':'nok'}">${ok}/${ex1Data.length} richtig! ${ok<ex1Data.length?'Falsche Felder sind rot markiert – hover für die Lösung.':' 🎉 Alles richtig!'}</div>`;
+}
+
+// Übung 2: Past Perfect
+const ex2Data = [
+  {sent:'After apartheid ___ (finish), all South Africans could go to the same school.',ans:'had finished'},
+  {sent:'Piet\'s rugby team ___ (leave) school before the accident ___ (happen).',ans:'had left|happened'},
+  {sent:'Lots of worried friends ___ (call) Piet after they ___ (read) the report.',ans:'called|had read'},
+  {sent:'After Cebile ___ (come) home, she ___ (begin) to make dinner.',ans:'had come|began'},
+  {sent:'Before her mother ___ (lose) her job, she ___ (work) in an office.',ans:'lost|had worked'},
+];
+const ex2div = document.getElementById('ex2');
+ex2Data.forEach((q,i)=>{
+  const p = document.createElement('div');
+  p.style.cssText='margin:10px 0;font-size:0.95rem;';
+  const answers = q.ans.split('|');
+  let html=`<b>${i+1}.</b> `;
+  let parts = q.sent.split('___');
+  parts.forEach((part,pi)=>{
+    html+=part;
+    if(pi<answers.length) html+=`<input type="text" class="fill-input" id="ex2_${i}_${pi}" placeholder="..." style="width:130px">`;
+  });
+  p.innerHTML=html;
+  ex2div.appendChild(p);
+});
+function checkEx2(){
+  let ok=0,total=0;
+  ex2Data.forEach((q,i)=>{
+    const answers=q.ans.split('|');
+    answers.forEach((ans,pi)=>{
+      total++;
+      const inp=document.getElementById(`ex2_${i}_${pi}`);
+      if(!inp)return;
+      const val=inp.value.trim().toLowerCase();
+      if(val===ans.toLowerCase()){inp.className='fill-input ok';ok++;}
+      else{inp.className='fill-input nok';inp.title=`Richtig: ${ans}`;}
+    });
+  });
+  document.getElementById('ex2-result').innerHTML=`<div class="quiz-feedback ${ok===total?'ok':'nok'}">${ok}/${total} richtig! ${ok<total?'Hover über rote Felder für die Lösung.':'🎉 Perfekt!'}</div>`;
+}
+
+// Übung 3: Passive
+const ex3Data = [
+  {active:'They found diamonds in the 19th century.',passive:'Diamonds were found in the 19th century.'},
+  {active:'They built many buildings in the cities.',passive:'Many buildings were built in the cities.'},
+  {active:'They made the country a republic in 1961.',passive:'The country was made a republic in 1961.'},
+  {active:'They abolished apartheid in 1991.',passive:'Apartheid was abolished in 1991.'},
+  {active:'South Africa held the Football World Cup in 2010.',passive:'The Football World Cup was held in 2010.'},
+  {active:'The British invaded South Africa in the 19th century.',passive:'South Africa was invaded by the British in the 19th century.'},
+];
+const ex3div = document.getElementById('ex3');
+ex3Data.forEach((q,i)=>{
+  const d=document.createElement('div');
+  d.style.cssText='margin:12px 0;';
+  d.innerHTML=`<div style="color:var(--muted);font-size:0.85rem;margin-bottom:4px;"><b>${i+1}.</b> Aktiv: ${q.active}</div>
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+      <span style="color:var(--muted);font-size:0.85rem;">Passiv:</span>
+      <input type="text" class="fill-input" id="ex3_${i}" placeholder="Passivsatz..." style="width:100%;max-width:420px;">
+    </div>`;
+  ex3div.appendChild(d);
+});
+function checkEx3(){
+  let ok=0;
+  ex3Data.forEach((q,i)=>{
+    const inp=document.getElementById(`ex3_${i}`);
+    const val=inp.value.trim().toLowerCase().replace(/\s+/g,' ');
+    const correct=q.passive.toLowerCase().replace(/\s+/g,' ').replace(/\.$/,'');
+    const given=val.replace(/\.$/,'');
+    if(given===correct){inp.className='fill-input ok';ok++;}
+    else{inp.className='fill-input nok';inp.title=`Richtig: ${q.passive}`;}
+  });
+  document.getElementById('ex3-result').innerHTML=`<div class="quiz-feedback ${ok===ex3Data.length?'ok':'nok'}">${ok}/${ex3Data.length} richtig! ${ok<ex3Data.length?'Hover über rote Felder für die Lösung.':'🎉 Super!'}</div>`;
+}
+
+// ===== QUIZ =====
+const quizData = [
+  {q:'Welche Form ist richtig? "I heard the boy ___ (sing)."',opts:['singed','singing','to sing','sung'],a:1},
+  {q:'Welche Form braucht man für Past Perfect?',opts:['had + infinitive','had + past participle','was/were + past participle','verb + -ing'],a:1},
+  {q:'Welche Form ist richtig? "Apartheid ___ in 1991." (Passive)',opts:['was abolish','were abolished','was abolished','is abolished'],a:2},
+  {q:'Was ist das Signalwort für Past Perfect?',opts:['while','since','before','already'],a:2},
+  {q:'"They built many buildings." → Passive?',opts:['Many buildings built.','Many buildings were built.','Many buildings was built.','Many buildings are built.'],a:1},
+  {q:'Present Participle von "carry"?',opts:['carryed','carring','carrying','carryying'],a:2},
+  {q:'Was ist die 3. Form von "find"?',opts:['finded','found','fand','finds'],a:1},
+  {q:'"We ___ the children ___ in the park." (watch/play)',opts:['watched / playing','watched / played','watch / playing','watching / playing'],a:0},
+  {q:'"___ apartheid had finished, all South Africans could go to the same school."',opts:['Before','When','After','While'],a:2},
+  {q:'Passive: "A taxi ___ ordered at 10:30."',opts:['was','were','is','had'],a:0},
+  {q:'Present Participle von "come"?',opts:['comeing','coming','comes','comed'],a:1},
+  {q:'"South Africa ___ invaded by the British." – richtige Form?',opts:['is','were','was','had been'],a:2},
+  {q:'Was bedeutet "to abolish"?',opts:['feiern','abschaffen','aufbauen','trennen'],a:1},
+  {q:'"Before Cebile ___ home, she ___ to cook." – richtige Reihenfolge?',opts:['came / had begun','had come / began','had came / begin','come / began'],a:1},
+  {q:'Was bedeutet "gated community"?',opts:['Schulhof','Dorfplatz','bewachte Wohnsiedlung','Nationalpark'],a:2},
+];
+let qi=0, qScore=0;
+function renderQuiz(){
+  if(qi>=quizData.length){
+    document.getElementById('quiz-area').style.display='none';
+    document.getElementById('quiz-counter').style.display='none';
+    let stars='⭐'.repeat(Math.round(qScore/quizData.length*5));
+    document.getElementById('quiz-score').style.display='block';
+    document.getElementById('quiz-score').innerHTML=`<div class="score-box"><div class="score-num">${qScore}/${quizData.length}</div><div class="stars">${stars}</div><div class="score-label">${qScore>=12?'Excellent! Du bist super vorbereitet! 🎉':qScore>=8?'Gut! Noch ein bisschen üben! 💪':'Nochmal lernen! Du schaffst das! 📚'}</div><button class="restart-btn" onclick="restartQuiz()">Nochmal spielen</button></div>`;
+    return;
+  }
+  document.getElementById('quiz-bar').style.width=`${(qi/quizData.length)*100}%`;
+  document.getElementById('quiz-counter').textContent=`Frage ${qi+1} von ${quizData.length}`;
+  const q=quizData[qi];
+  document.getElementById('quiz-area').innerHTML=`<div class="quiz-q"><p>${q.q}</p>${q.opts.map((o,i)=>`<button class="opt-btn" onclick="answerQuiz(this,${i},${q.a})">${o}</button>`).join('')}<div class="quiz-feedback" id="qfb" style="display:none"></div></div>`;
+}
+function answerQuiz(btn,chosen,correct){
+  document.querySelectorAll('#quiz-area .opt-btn').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('qfb');
+  if(chosen===correct){btn.classList.add('correct-ans');fb.textContent='✅ Richtig!';fb.className='quiz-feedback ok';qScore++;}
+  else{btn.classList.add('wrong-ans');fb.textContent=`❌ Falsch! Richtig: "${quizData[qi].opts[correct]}"`;fb.className='quiz-feedback nok';
+    document.querySelectorAll('#quiz-area .opt-btn')[correct].classList.add('correct-ans');}
+  fb.style.display='block';
+  setTimeout(()=>{qi++;renderQuiz();},1600);
+}
+function restartQuiz(){qi=0;qScore=0;document.getElementById('quiz-area').style.display='block';document.getElementById('quiz-counter').style.display='block';document.getElementById('quiz-score').style.display='none';renderQuiz();}
+renderQuiz();
+
+// ===== PROBETEST =====
+const testSections = [
+  {
+    title:'Teil A · Present Participle (6 Punkte)',
+    questions:[
+      {type:'fill',sent:'We watched the cars ___ (come) nearer.',ans:'coming',pts:1},
+      {type:'fill',sent:'I could smell something ___ (burn) in the kitchen.',ans:'burning',pts:1},
+      {type:'fill',sent:'Did you hear Ryan ___ (sing) in the shower?',ans:'singing',pts:1},
+      {type:'fill',sent:'They felt the rain ___ (get) heavier.',ans:'getting',pts:1},
+      {type:'fill',sent:'Kate didn\'t notice all the people ___ (leave) the building.',ans:'leaving',pts:1},
+      {type:'fill',sent:'Amy saw two people ___ (carry) large bags out of the office.',ans:'carrying',pts:1},
     ]
   },
   {
-    id:5, emoji:'🏆', title:'MEGA-PROBETEST — Alles gemischt', sub:'G5 + G6 + G7 + Vokabeln — genau wie die Arbeit', color:'--pu',
-    learn:`
-<div class="topic-hero fadein" style="background:linear-gradient(135deg,#100a20,#07090f);border:1px solid rgba(169,138,255,.2)">
-  <span class="topic-badge" style="background:rgba(169,138,255,.15);color:var(--pu)">Thema 6 — FINALE</span>
-  <h1>🏆 MEGA-PROBETEST</h1>
-  <p>Alles gemischt — genau wie in der echten Arbeit!</p>
-</div>
-<div class="lcard">
-  <div class="lcard-title"><span style="background:var(--lpu);color:var(--pu)">★</span> Blitz-Übersicht — das muss sitzen!</div>
-  <table class="etable">
-    <tr><th>Grammatik</th><th>Formel</th><th>Beispiel</th></tr>
-    <tr><td style="color:var(--bl);font-weight:800">Present Participle (G5)</td><td class="gram">verb + -ing</td><td class="en">I heard him <span class="hl">singing</span>.</td></tr>
-    <tr><td style="color:var(--or);font-weight:800">Past Perfect (G6)</td><td class="gram">had + 3. Form</td><td class="en">She <span class="hl">had read</span> the book before...</td></tr>
-    <tr><td style="color:var(--gr);font-weight:800">Passive Simple Past (G7)</td><td class="gram">was/were + 3. Form</td><td class="en">Diamonds <span class="hl">were found</span>.</td></tr>
-  </table>
-</div>
-<div class="lcard">
-  <div class="lcard-title"><span style="background:var(--lpu);color:var(--pu)">★</span> Typische Fehler — diese NICHT machen!</div>
-  <div class="rule r">❌ I heard him <span style="text-decoration:line-through">to sing</span> → ✅ I heard him <strong>singing</strong>.</div>
-  <div class="rule r">❌ Apartheid <span style="text-decoration:line-through">have been abolished</span> → ✅ Apartheid <strong>was abolished</strong>.</div>
-  <div class="rule r">❌ Before she came, she <span style="text-decoration:line-through">read</span> the book → ✅ she <strong>had read</strong> the book.</div>
-  <div class="rule r">❌ The cars <span style="text-decoration:line-through">were runned</span> → ✅ Unregelmäßige Verben prüfen!</div>
-  <div class="rule r">❌ The message <span style="text-decoration:line-through">were sent</span> (Singular!) → ✅ The message <strong>was sent</strong>.</div>
-</div>`,
-    quiz:[
-      {type:'fill',q:'I heard someone ___ (call) my name.',de:'Present Participle!',ans:'calling',ex:'call + ing = calling'},
-      {type:'fill',q:'Apartheid ___ (abolish) in 1991.',de:'Passive!',ans:'was abolished',ex:'Passive: was + abolished (Singular)'},
-      {type:'fill',q:'Before she came home, she ___ (buy) food.',de:'Past Perfect!',ans:'had bought',ex:'Past Perfect: had + bought (buy→bought)'},
-      {type:'fill',q:'We watched the lions ___ (run) across the field.',de:'Present Participle!',ans:'running',ex:'run → n verdoppeln → running'},
-      {type:'fill',q:'The Rugby World Cup ___ (win) by South Africa in 2007.',de:'Passive!',ans:'was won',ex:'Passive Singular: was + won'},
-      {type:'fill',q:'After he ___ (speak) to the police, he went home.',de:'Past Perfect!',ans:'had spoken',ex:'Past Perfect: had + spoken (speak→spoken)'},
-      {type:'fill',q:'Some souvenirs ___ (hide) in a cupboard.',de:'Passive Plural!',ans:'were hidden',ex:'Plural Passive: were + hidden'},
-      {type:'mc',q:'Which uses Present Participle correctly?',de:'',opts:['I saw him to run.','I saw him ran.','I saw him running.','I saw him runs.'],ans:'I saw him running.',ex:'saw → Present Participle: running'},
-      {type:'mc',q:'Before Sizwe\'s family moved to Durban, they ___ in a township.',de:'',opts:['lived','had lived','have lived','were living'],ans:'had lived',ex:'Zuerst lebten sie (had lived), dann zogen sie um (moved)'},
-      {type:'fill',q:'Deutsch → Englisch: "Rassentrennung"',de:'',ans:'apartheid',ex:'Rassentrennung = apartheid (oder: racial segregation)'},
-      {type:'fill',q:'A taxi ___ (order) at 10:30.',de:'Passive Singular',ans:'was ordered',ex:'Singular → was + ordered (regelmäßig)'},
-      {type:'mc',q:'"They discovered very old rock art." → Passive?',de:'',opts:['Very old rock art were discovered.','Very old rock art was discovered.','Very old rock art discovered.','Very old rock art had been discovered.'],ans:'Very old rock art was discovered.',ex:'rock art = Singular → was discovered'},
+    title:'Teil B · Past Perfect (6 Punkte)',
+    questions:[
+      {type:'fill',sent:'The end of apartheid ___ (come) before Cebile started school.',ans:'had come',pts:1},
+      {type:'fill',sent:'The students ___ (finish) lunch before they went to sports practice.',ans:'had finished',pts:1},
+      {type:'fill',sent:'The boys ___ (not play) cricket before they went to South Africa.',ans:"hadn't played",pts:1},
+      {type:'fill',sent:'Before the girls reached the hostel, they ___ (drink) all their water.',ans:'had drunk',pts:1},
+      {type:'fill',sent:'After people ___ (hear) the bad news, they felt very sad.',ans:'had heard',pts:1},
+      {type:'fill',sent:'We ___ (not start) our game when our teacher came to look for us.',ans:"hadn't started",pts:1},
+    ]
+  },
+  {
+    title:'Teil C · Passive Voice (6 Punkte)',
+    questions:[
+      {type:'mc',q:'Their trip to South Africa ___ planned a year ago.',opts:['was','were','is','had'],a:0,pts:1},
+      {type:'mc',q:'A lot of skateboards ___ stolen from the sports shop.',opts:['was','were','is','had'],a:1,pts:1},
+      {type:'mc',q:'You ___ hurt in the accident.',opts:["wasn't","weren't","isn't","aren't"],a:1,pts:1},
+      {type:'fill',sent:'This message ___ (send) to me yesterday.',ans:'was sent',pts:1},
+      {type:'fill',sent:'The money ___ (not keep) in a safe place.',ans:"wasn't kept",pts:1},
+      {type:'fill',sent:'The winners ___ (interview) after the race.',ans:'were interviewed',pts:1},
+    ]
+  },
+  {
+    title:'Teil D · Vokabeln (4 Punkte)',
+    questions:[
+      {type:'mc',q:'Was bedeutet "to abolish"?',opts:['feiern','abschaffen','bauen','stehlen'],a:1,pts:1},
+      {type:'mc',q:'Was bedeutet "gated community"?',opts:['Schulhof','Marktplatz','bewachte Wohnsiedlung','Nationalpark'],a:2,pts:1},
+      {type:'mc',q:'Was bedeutet "to suffer"?',opts:['leiden','lachen','laufen','lügen'],a:0,pts:1},
+      {type:'mc',q:'Was bedeutet "guilty"?',opts:['traurig','lustig','schuldig','gelangweilt'],a:2,pts:1},
     ]
   }
 ];
-
-// ─────────────────────────────────────────
-// MASTERY
-// ─────────────────────────────────────────
-function getMastery(id){const d=JSON.parse(localStorage.getItem('sa26v2_m')||'{}');return d[id]||{attempts:0,passed:false};}
-function setMastery(id,passed){const d=JSON.parse(localStorage.getItem('sa26v2_m')||'{}');if(!d[id])d[id]={attempts:0,passed:false};d[id].attempts++;if(passed)d[id].passed=true;localStorage.setItem('sa26v2_m',JSON.stringify(d));}
-function isUnlocked(id){if(id===0)return true;return getMastery(id-1).passed;}
-function isPassed(id){return getMastery(id).passed;}
-
-// ─────────────────────────────────────────
-// HOME
-// ─────────────────────────────────────────
-function buildHome(){
-  const done=TOPICS.filter(t=>isPassed(t.id)).length;
-  document.getElementById('hs-done').textContent=done+'/6';
-  document.getElementById('hs-streak').textContent=state.streak;
-  document.getElementById('hs-pts').textContent=state.pts;
-  document.getElementById('ov-grid').innerHTML=TOPICS.map(t=>{
-    const passed=isPassed(t.id),locked=!isUnlocked(t.id);
-    const cls=passed?'done':locked?'locked':'';
-    return `<div class="ov-item ${cls}" onclick="${locked?'':``goTopic(${t.id})``}">
-      <div class="ov-emoji">${t.emoji}</div>
-      <div class="ov-name">${t.title.split(' — ')[0].substring(0,12)}</div>
-    </div>`;
-  }).join('');
-  document.getElementById('topic-list').innerHTML=TOPICS.map(t=>{
-    const passed=isPassed(t.id),locked=!isUnlocked(t.id),m=getMastery(t.id);
-    const stxt=passed?'✓ Fertig':locked?'🔒 Gesperrt':m.attempts>0?'Wiederholen':'Starten';
-    const scls=passed?'done':locked?'locked':m.attempts>0?'active':'todo';
-    return `<div class="titem ${passed?'done':locked?'locked':m.attempts>0?'active':''}" onclick="${locked?'showLocked()':``goTopic(${t.id})``}">
-      <div class="titem-emoji">${t.emoji}</div>
-      <div class="titem-body">
-        <div class="titem-title">${t.title}</div>
-        <div class="titem-sub">${t.sub}</div>
-      </div>
-      <div class="titem-right">
-        <div class="titem-status ${scls}">${stxt}</div>
-        ${m.attempts>0&&!passed?`<div style="font-size:9px;color:var(--mu);margin-top:3px;font-weight:700">${m.attempts}x versucht</div>`:''}
-      </div>
-    </div>`;
-  }).join('');
+let testTimerVal=1200, testInterval=null;
+function startTestTimer(){
+  testInterval=setInterval(()=>{
+    testTimerVal--;
+    const m=Math.floor(testTimerVal/60), s=testTimerVal%60;
+    document.getElementById('test-timer').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    if(testTimerVal<=0){clearInterval(testInterval);submitTest();}
+    if(testTimerVal<=120) document.getElementById('test-timer').style.color='var(--red)';
+  },1000);
 }
-function showLocked(){showToast('🔒 Erst das vorherige Thema bestehen!');}
-
-// ─────────────────────────────────────────
-// TOPIC FLOW
-// ─────────────────────────────────────────
-let currentTopic=null;
-let quizState={pool:[],idx:0,correct:0,wrong:[],mode:'learn'};
-
-function goTopic(id){
-  currentTopic=TOPICS[id];
-  showScreen('sc-learn');
-  document.getElementById('learn-content').innerHTML=currentTopic.learn+
-    `<button class="next-btn" style="width:100%;margin-top:14px;justify-content:center" onclick="startQuiz(${id})">
-      Quiz starten — ${currentTopic.quiz.length} Fragen ➜
-    </button>`;
-  navHighlight('');
-  window.scrollTo({top:0,behavior:'smooth'});
+function buildTest(){
+  const area=document.getElementById('test-area');
+  area.innerHTML='';
+  testSections.forEach((sec,si)=>{
+    const title=document.createElement('div');
+    title.className='section-title';
+    title.textContent=sec.title;
+    area.appendChild(title);
+    sec.questions.forEach((q,qi)=>{
+      const d=document.createElement('div');
+      d.style.cssText='margin:10px 0;';
+      if(q.type==='fill'){
+        const parts=q.sent.split('___');
+        d.innerHTML=`<p style="font-size:0.95rem;margin-bottom:4px;"><b>${si+1}.${qi+1}</b> ${parts[0]}<input type="text" class="fill-input" id="t_${si}_${qi}" placeholder="..." style="width:140px"> ${parts[1]}</p>`;
+      } else {
+        d.innerHTML=`<p style="font-size:0.95rem;margin-bottom:6px;"><b>${si+1}.${qi+1}</b> ${q.q}</p>${q.opts.map((o,i)=>`<button class="opt-btn" id="t_${si}_${qi}_${i}" onclick="selectTestOpt(${si},${qi},${i})">${o}</button>`).join('')}<input type="hidden" id="t_${si}_${qi}" value="">`;
+      }
+      area.appendChild(d);
+    });
+  });
+  startTestTimer();
 }
-
-function startQuiz(id){
-  currentTopic=TOPICS[id];
-  quizState={pool:shuffle([...currentTopic.quiz]),idx:0,correct:0,wrong:[],mode:'quiz'};
-  showScreen('sc-quiz');
-  renderQuestion();
-  window.scrollTo({top:0,behavior:'smooth'});
+function selectTestOpt(si,qi,chosen){
+  testSections[si].questions[qi].opts.forEach((_,i)=>{
+    const b=document.getElementById(`t_${si}_${qi}_${i}`);
+    if(b) b.style.borderColor='var(--border)';
+  });
+  const b=document.getElementById(`t_${si}_${qi}_${chosen}`);
+  if(b) b.style.borderColor='var(--accent)';
+  document.getElementById(`t_${si}_${qi}`).value=chosen;
 }
-
-function renderQuestion(){
-  const q=quizState.pool[quizState.idx];
-  const total=quizState.pool.length,idx=quizState.idx;
-  const pct=Math.round((idx/total)*100);
-  let qHTML='';
-  if(q.type==='mc'){
-    qHTML=`<div class="opts">${q.opts.map(o=>`<button class="opt" onclick="answerMC(this,'${esc(o)}','${esc(q.ans)}','${esc(q.ex)}')">${o}</button>`).join('')}</div>`;
-  } else {
-    qHTML=`<input class="fill-inp" id="fill-inp" placeholder="Antwort eingeben..." autocomplete="off" onkeydown="if(event.key==='Enter')checkFill('${esc(q.ans)}','${esc(q.ex)}')">
-    <button class="chk-btn" onclick="checkFill('${esc(q.ans)}','${esc(q.ex)}')">Prüfen ✓</button>`;
-  }
-  document.getElementById('quiz-content').innerHTML=`
-    <div class="quiz-wrap fadein">
-      <div class="quiz-header">
-        <div class="quiz-title">${currentTopic.emoji} ${currentTopic.title.split(' — ')[0]}</div>
-        <div class="quiz-counter">${idx+1} / ${total}</div>
-      </div>
-      <div class="qprog"><div class="qprog-fill" style="width:${pct}%"></div></div>
-      <div class="q-text">${q.q}</div>
-      ${q.de?`<div class="q-de">🇩🇪 ${q.de}</div>`:''}
-      ${qHTML}
-      <div class="q-feedback" id="qfb"></div>
-      <div class="q-explain" id="qex">💡 ${q.ex}</div>
-    </div>`;
+function submitTest(){
+  clearInterval(testInterval);
+  let total=0,correct=0;
+  testSections.forEach((sec,si)=>{
+    sec.questions.forEach((q,qi)=>{
+      total+=q.pts;
+      const inp=document.getElementById(`t_${si}_${qi}`);
+      if(!inp)return;
+      if(q.type==='fill'){
+        const val=inp.value.trim().toLowerCase();
+        const ans=q.ans.toLowerCase();
+        if(val===ans){correct+=q.pts;inp.className='fill-input ok';}
+        else{inp.className='fill-input nok';inp.title=`Richtig: ${q.ans}`;inp.style.borderColor='var(--red)';}
+      } else {
+        const chosen=parseInt(inp.value);
+        if(chosen===q.a){correct+=q.pts;
+          const b=document.getElementById(`t_${si}_${qi}_${chosen}`);
+          if(b){b.style.borderColor='var(--green)';b.style.background='rgba(46,160,67,0.15)';}
+        } else {
+          if(!isNaN(chosen)){const b=document.getElementById(`t_${si}_${qi}_${chosen}`);if(b){b.style.borderColor='var(--red)';b.style.background='rgba(218,54,51,0.15)';}}
+          const corr=document.getElementById(`t_${si}_${qi}_${q.a}`);
+          if(corr){corr.style.borderColor='var(--green)';corr.style.background='rgba(46,160,67,0.15)';}
+        }
+        sec.questions[qi].opts.forEach((_,i)=>{const b=document.getElementById(`t_${si}_${qi}_${i}`);if(b)b.disabled=true;});
+      }
+    });
+  });
+  const pct=Math.round(correct/total*100);
+  let grade='';
+  if(pct>=87)grade='sehr gut (1)';
+  else if(pct>=75)grade='gut (2)';
+  else if(pct>=62)grade='befriedigend (3)';
+  else if(pct>=50)grade='ausreichend (4)';
+  else if(pct>=25)grade='mangelhaft (5)';
+  else grade='ungenügend (6)';
+  const result=document.getElementById('test-result');
+  result.style.display='block';
+  result.innerHTML=`<div class="score-box"><div class="score-num">${correct}/${total}</div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:${pct>=50?'var(--green)':'var(--red)'}">Note: ${grade}</div><div class="score-label">${pct}% · ${pct>=50?'Bestanden 🎉':'Noch mehr üben! 💪'}</div><div style="margin-top:12px;color:var(--muted);font-size:0.85rem;">Falsche Antworten sind rot markiert.</div><button class="restart-btn" style="margin-top:12px" onclick="restartTest()">Test wiederholen</button></div>`;
+  result.scrollIntoView({behavior:'smooth'});
 }
-
-function answerMC(btn,chosen,correct,explain){
-  document.querySelectorAll('.opt').forEach(b=>b.disabled=true);
-  const ok=chosen===correct;
-  btn.classList.add(ok?'ok':'no');
-  if(!ok)document.querySelectorAll('.opt').forEach(b=>{if(b.textContent.trim()===correct)b.classList.add('ok');});
-  document.getElementById('qfb').textContent=ok?'✅ Richtig!':'❌ Falsch!';
-  document.getElementById('qfb').className='q-feedback '+(ok?'ok':'no');
-  document.getElementById('qex').classList.add('show');
-  handleAnswer(ok);
+function restartTest(){
+  document.getElementById('test-result').style.display='none';
+  testTimerVal=1200;
+  document.getElementById('test-timer').style.color='var(--accent)';
+  document.getElementById('test-timer').textContent='20:00';
+  buildTest();
 }
-
-function checkFill(correct,explain){
-  const inp=document.getElementById('fill-inp');
-  if(!inp)return;
-  inp.disabled=true;
-  const val=inp.value.trim().toLowerCase().replace(/['']/g,"'");
-  const cor=correct.trim().toLowerCase();
-  const ok=val===cor||val===cor.replace(/'/g,"'");
-  inp.classList.add(ok?'ok':'no');
-  document.getElementById('qfb').textContent=ok?'✅ Richtig!':'❌ Falsch! Richtig: '+correct;
-  document.getElementById('qfb').className='q-feedback '+(ok?'ok':'no');
-  document.querySelector('.chk-btn').disabled=true;
-  document.getElementById('qex').classList.add('show');
-  handleAnswer(ok);
-}
-
-let nextT=null;
-function handleAnswer(ok){
-  if(ok){quizState.correct++;state.streak++;state.pts+=10;}
-  else{state.streak=0;quizState.wrong.push(quizState.pool[quizState.idx]);}
-  save();
-  document.getElementById('hs-streak').textContent=state.streak;
-  document.getElementById('hs-pts').textContent=state.pts;
-  clearTimeout(nextT);
-  nextT=setTimeout(()=>{
-    quizState.idx++;
-    if(quizState.idx>=quizState.pool.length)showResult();
-    else{renderQuestion();window.scrollTo({top:0,behavior:'smooth'});}
-  },ok?1500:2800);
-}
-
-function showResult(){
-  const total=quizState.pool.length,correct=quizState.correct;
-  const pct=Math.round((correct/total)*100),passed=pct>=80;
-  setMastery(currentTopic.id,passed);
-  buildHome();
-  const allDone=TOPICS.every(t=>isPassed(t.id));
-  let html='';
-  if(passed){
-    html=`<div class="gate fadein">
-      <div style="font-size:48px;margin-bottom:8px">${pct===100?'🏆':pct>=90?'🌟':'✅'}</div>
-      <h2>${pct}% — Bestanden!</h2>
-      <p>${correct} von ${total} richtig. ${pct===100?'PERFEKT! Absolut top!':pct>=90?'Ausgezeichnet!':'Gut gemacht!'}<br>${allDone?'ALLE Themen durch! Du bist ready für die Arbeit!':'Nächstes Thema freigeschaltet!'}</p>
-      ${allDone
-        ?`<button class="next-btn" onclick="showScreen('sc-alldone')">🏆 Siegerehrung!</button>`
-        :`<button class="next-btn" onclick="goTopic(${currentTopic.id+1})">Weiter zu Thema ${currentTopic.id+2} ➜</button>`}
-      <br><button class="retry-btn" onclick="startQuiz(${currentTopic.id})">🔄 Nochmal (zur Sicherheit)</button>
-    </div>`;
-  } else {
-    const needed=Math.ceil(total*0.8);
-    html=`<div class="fail-gate fadein">
-      <div style="font-size:48px;margin-bottom:8px">😤</div>
-      <h2>${pct}% — Noch nicht bestanden</h2>
-      <p>Du brauchst mind. <strong>80%</strong> (${needed}/${total} richtig).<br>Du hattest ${correct}/${total}. Lern nochmal und versuch es wieder!</p>
-      ${quizState.wrong.length?`<div style="margin:10px 0;text-align:left;background:rgba(255,255,255,.03);border-radius:9px;padding:11px">
-        <div style="font-size:10px;font-weight:800;color:var(--mu);margin-bottom:7px;text-transform:uppercase">Falsch beantwortet:</div>
-        ${quizState.wrong.map(w=>`<div style="font-size:11px;font-weight:700;color:var(--rd);padding:2px 0">• ${w.q}</div>`).join('')}
-      </div>`:''}
-      <button class="next-btn" style="background:var(--or)" onclick="goTopic(${currentTopic.id})">📖 Nochmal durchlesen</button>
-      <br><button class="retry-btn" onclick="startQuiz(${currentTopic.id})" style="margin-top:7px">🔄 Direkt Quiz wiederholen</button>
-    </div>`;
-  }
-  document.getElementById('quiz-content').innerHTML=html;
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-// ─────────────────────────────────────────
-// VOCAB SCREEN
-// ─────────────────────────────────────────
-const VOCAB=[
-  ['Albtraum','nightmare'],['leiden unter','suffer from'],['Wächter','guard'],
-  ['schuldig','guilty'],['blöd / dumm','stupid / silly'],['Gegenteil','opposite'],
-  ['bewachte Wohnanlage','gated community'],['Behandlung','treatment'],
-  ['Naturschutzgebiet','nature reserve'],['Wildhüter','ranger'],
-  ['erschrecken','scare'],['abschaffen','abolish'],['entdecken','discover'],
-  ['Unterschiede','differences'],['Armensiedlung','township'],['sozial','social'],
-  ['Rassentrennung','apartheid'],['Republik','republic'],['Diamanten','diamonds'],
-  ['Grundschule','primary school'],['Mitschüler','classmate'],['rau / grob','rough'],
-];
-
-function goVoc(){
-  navHighlight('nav-voc');
-  const cards=shuffle([...VOCAB]);
-  let vidx=0,vscore=0,vtotal=12;
-  const pool=cards.slice(0,vtotal);
-  function render(){
-    if(vidx>=vtotal){
-      document.getElementById('learn-content').innerHTML=`
-        <div style="text-align:center;padding:30px 0" class="fadein">
-          <div style="font-size:48px;margin-bottom:10px">${vscore>=10?'🏆':vscore>=7?'👍':'💪'}</div>
-          <div style="font-size:20px;font-weight:900;color:var(--tx);margin-bottom:5px">${vscore}/${vtotal} richtig</div>
-          <div style="font-size:12px;color:var(--mu);font-weight:600;margin-bottom:18px">${vscore>=10?'Vokabeln sitzen perfekt!':'Noch etwas üben!'}</div>
-          <button class="next-btn" onclick="goVoc()">🔄 Nochmal</button>
-          <br><button class="retry-btn" onclick="goHome()" style="margin-top:9px">← Zurück</button>
-        </div>`;
-      state.pts+=vscore*3;save();return;
-    }
-    const w=pool[vidx];
-    const wrong=shuffle(VOCAB.filter(v=>v[1]!==w[1])).slice(0,3).map(v=>v[1]);
-    const opts=shuffle([w[1],...wrong]);
-    document.getElementById('learn-content').innerHTML=`
-      <div class="quiz-wrap fadein">
-        <div class="quiz-header"><div class="quiz-title">📖 Vokabel-Quiz</div><div class="quiz-counter">${vidx+1}/${vtotal}</div></div>
-        <div class="qprog"><div class="qprog-fill" style="width:${Math.round(vidx/vtotal*100)}%"></div></div>
-        <div style="font-size:11px;color:var(--mu);font-weight:700;margin-bottom:7px">Deutsch → Englisch:</div>
-        <div class="q-text" style="font-size:18px">${w[0]}</div>
-        <div class="opts" style="margin-top:10px">${opts.map(o=>`<button class="opt" onclick="ansVoc(this,'${esc(o)}','${esc(w[1])}')">${o}</button>`).join('')}</div>
-        <div class="q-feedback" id="vfb"></div>
-      </div>`;
-  }
-  window.ansVoc=function(btn,chosen,cor){
-    document.querySelectorAll('.opt').forEach(b=>b.disabled=true);
-    const ok=chosen===cor;
-    btn.classList.add(ok?'ok':'no');
-    if(!ok)document.querySelectorAll('.opt').forEach(b=>{if(b.textContent.trim()===cor)b.classList.add('ok');});
-    document.getElementById('vfb').textContent=ok?'✅ Richtig!':'❌ Falsch — '+cor;
-    document.getElementById('vfb').className='q-feedback '+(ok?'ok':'no');
-    if(ok)vscore++;
-    setTimeout(()=>{vidx++;render();window.scrollTo({top:0,behavior:'smooth'});},ok?1200:2000);
-  };
-  showScreen('sc-learn');render();
-}
-
-// ─────────────────────────────────────────
-// GRAMMAR OVERVIEW
-// ─────────────────────────────────────────
-function goGram(){
-  navHighlight('nav-gram');
-  showScreen('sc-learn');
-  document.getElementById('learn-content').innerHTML=`
-    <div class="fadein">
-    <div style="font-size:12px;font-weight:800;margin-bottom:12px;color:var(--mu)">📋 GRAMMATIK-ÜBERSICHT — Alles auf einen Blick</div>
-    <div class="lcard">
-      <div class="lcard-title"><span style="background:var(--lbl);color:var(--bl)">G5</span> Present Participle — verb + -ing</div>
-      <div class="rule b">Nach <strong>see, watch, notice, hear, feel, smell, listen to</strong> → <strong>verb + -ing</strong></div>
-      <table class="etable">
-        <tr><th>Infinitiv</th><th>-ing Form</th><th>Regel</th></tr>
-        <tr><td class="en">play / sing / call</td><td class="gram">playing / singing / calling</td><td class="de">+ ing</td></tr>
-        <tr><td class="en">come / leave / hide</td><td class="gram">coming / leaving / hiding</td><td class="de">e weg + ing</td></tr>
-        <tr><td class="en">run / get / swim</td><td class="gram">running / getting / swimming</td><td class="de">Konsonant doppeln</td></tr>
-      </table>
-    </div>
-    <div class="lcard">
-      <div class="lcard-title"><span style="background:var(--lor);color:var(--or)">G6</span> Past Perfect — had + 3. Form</div>
-      <div class="formula" style="border-color:rgba(255,146,72,.3)">had + past participle<small>Negativ: hadn't + pp | Signalwörter: after / before / when</small></div>
-      <div class="rule y">Das ZUERST passierte Ereignis → Past Perfect. Das DANACH passierte → Simple Past.</div>
-    </div>
-    <div class="lcard">
-      <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">G7</span> Passive Voice — was/were + 3. Form</div>
-      <div class="formula" style="border-color:rgba(53,212,152,.3);background:#061510">was (Singular) / were (Plural) + 3. Form<small>+ by [Täter] optional</small></div>
-      <div class="rule y">Singular → was / wasn't &nbsp;|&nbsp; Plural → were / weren't</div>
-      <table class="etable">
-        <tr><th>Verb</th><th>3. Form → Passiv</th></tr>
-        <tr><td class="en">find / build / win / make / hold</td><td class="gram">found / built / won / made / held</td></tr>
-        <tr><td class="en">see / send / write / steal / take</td><td class="gram">seen / sent / written / stolen / taken</td></tr>
-        <tr><td class="en">hide / leave / buy / keep / put</td><td class="gram">hidden / left / bought / kept / put</td></tr>
-      </table>
-    </div>
-    <button class="retry-btn" onclick="goHome()" style="width:100%;justify-content:center">← Zurück zum Start</button>
-    </div>`;
-}
-
-// ─────────────────────────────────────────
-// WORKBOOK SOLUTIONS SCREEN
-// ─────────────────────────────────────────
-function goWS(){
-  navHighlight('nav-ws');
-  showScreen('sc-learn');
-  document.getElementById('learn-content').innerHTML=`
-    <div class="fadein">
-    <div style="font-size:12px;font-weight:800;margin-bottom:12px;color:var(--mu)">📋 ALLE WORKBOOK-LÖSUNGEN — Station 2 / G7</div>
-    <div class="ws-card">
-      <div class="ws-title">Aufgabe 1 — Verb-Tabelle</div>
-      <table class="etable">
-        <tr><th>Infinitiv</th><th>Simple Past</th><th>Past Participle</th></tr>
-        <tr><td>find</td><td class="gram">found</td><td class="right">found</td></tr>
-        <tr><td>send</td><td class="gram">sent</td><td class="right">sent</td></tr>
-        <tr><td>write</td><td class="gram">wrote</td><td class="right">written</td></tr>
-        <tr><td>see</td><td class="gram">saw</td><td class="right">seen</td></tr>
-        <tr><td>build</td><td class="gram">built</td><td class="right">built</td></tr>
-        <tr><td>hide</td><td class="gram">hid</td><td class="right">hidden</td></tr>
-        <tr><td>leave</td><td class="gram">left</td><td class="right">left</td></tr>
-        <tr><td>steal</td><td class="gram">stole</td><td class="right">stolen</td></tr>
-        <tr><td>take</td><td class="gram">took</td><td class="right">taken</td></tr>
-        <tr><td>put</td><td class="gram">put</td><td class="right">put</td></tr>
-      </table>
-    </div>
-    <div class="ws-card">
-      <div class="ws-title">Aufgabe 2 — was / were</div>
-      <div class="ws-item"><span class="ws-num">1</span><div>...trip <span class="ws-ans">was</span> planned... <span class="ws-context">(Singular)</span></div></div>
-      <div class="ws-item"><span class="ws-num">2</span><div>A taxi <span class="ws-ans">was</span> ordered... <span class="ws-context">(Singular)</span></div></div>
-      <div class="ws-item"><span class="ws-num">3</span><div>I <span class="ws-ans">wasn't</span> invited... <span class="ws-context">(Singular)</span></div></div>
-      <div class="ws-item"><span class="ws-num">4</span><div>...skateboards <span class="ws-ans">were</span> stolen... <span class="ws-context">(Plural)</span></div></div>
-      <div class="ws-item"><span class="ws-num">5</span><div>You <span class="ws-ans">weren't</span> hurt... <span class="ws-context">(Plural-Logik)</span></div></div>
-      <div class="ws-item"><span class="ws-num">6</span><div>Two men <span class="ws-ans">were</span> arrested... <span class="ws-context">(Plural)</span></div></div>
-    </div>
-    <div class="ws-card">
-      <div class="ws-title">Aufgabe 3 — Sätze vervollständigen</div>
-      <div class="ws-item"><span class="ws-num">1</span><div>...message <span class="ws-ans">was sent</span>... <span class="ws-context">(send→sent, Singular)</span></div></div>
-      <div class="ws-item"><span class="ws-num">2</span><div>...money <span class="ws-ans">wasn't kept</span>... <span class="ws-context">(keep→kept, Negativ)</span></div></div>
-      <div class="ws-item"><span class="ws-num">3</span><div>...winners <span class="ws-ans">were interviewed</span>... <span class="ws-context">(regelmäßig, Plural)</span></div></div>
-      <div class="ws-item"><span class="ws-num">4</span><div>...souvenirs <span class="ws-ans">were hidden</span>... <span class="ws-context">(hide→hidden, Plural)</span></div></div>
-      <div class="ws-item"><span class="ws-num">5</span><div>Tony's shoes <span class="ws-ans">weren't made</span>... <span class="ws-context">(make→made, Plural Negativ)</span></div></div>
-      <div class="ws-item"><span class="ws-num">6</span><div>Our car <span class="ws-ans">wasn't repaired</span>... <span class="ws-context">(regelmäßig, Singular Negativ)</span></div></div>
-    </div>
-    <div class="ws-card">
-      <div class="ws-title">Aufgabe 4 — Bilder-Sätze</div>
-      <div class="ws-item"><span class="ws-num">1</span><div>Photos <span class="ws-ans">were taken</span> in the national park. <span class="ws-context">(take→taken)</span></div></div>
-      <div class="ws-item"><span class="ws-num">2</span><div>Lions <span class="ws-ans">were seen</span> under a tree. <span class="ws-context">(see→seen)</span></div></div>
-      <div class="ws-item"><span class="ws-num">3</span><div>Jewellery <span class="ws-ans">were bought</span> by tourists. <span class="ws-context">(buy→bought)</span></div></div>
-      <div class="ws-item"><span class="ws-num">4</span><div>A message <span class="ws-ans">was sent</span> to all the guides. <span class="ws-context">(send→sent)</span></div></div>
-      <div class="ws-item"><span class="ws-num">5</span><div>The gate <span class="ws-ans">was closed</span> at 6 p.m. <span class="ws-context">(close→closed)</span></div></div>
-      <div class="ws-item"><span class="ws-num">6</span><div>Hotels/Houses <span class="ws-ans">were built</span> on the coast. <span class="ws-context">(build→built)</span></div></div>
-    </div>
-    <div class="ws-card">
-      <div class="ws-title">Workbook S.57 Aufgabe 7 — Aktiv → Passiv</div>
-      <div class="ws-item"><span class="ws-num">1</span><div>Diamonds <span class="ws-ans">were found</span> in the 19th century.</div></div>
-      <div class="ws-item"><span class="ws-num">2</span><div>Many buildings <span class="ws-ans">were built</span> in the cities.</div></div>
-      <div class="ws-item"><span class="ws-num">3</span><div>The country <span class="ws-ans">was made</span> a republic in 1961.</div></div>
-      <div class="ws-item"><span class="ws-num">4</span><div>Apartheid <span class="ws-ans">was abolished</span> in 1991.</div></div>
-      <div class="ws-item"><span class="ws-num">5</span><div>The Football World Cup <span class="ws-ans">was held</span> in 2010.</div></div>
-      <div class="ws-item"><span class="ws-num">6</span><div>Black and white people <span class="ws-ans">were separated</span> by the government.</div></div>
-      <div class="ws-item"><span class="ws-num">7</span><div>South Africa <span class="ws-ans">was invaded</span> by the British.</div></div>
-      <div class="ws-item"><span class="ws-num">8</span><div>The Rugby World Cup <span class="ws-ans">was won</span> by South Africa in 2007.</div></div>
-    </div>
-    <button class="retry-btn" onclick="goHome()" style="width:100%;justify-content:center;margin-top:4px">← Zurück zum Start</button>
-    </div>`;
-}
-
-// ─────────────────────────────────────────
-// UTILS
-// ─────────────────────────────────────────
-function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on');}
-function goHome(){navHighlight('nav-home');buildHome();showScreen('sc-home');window.scrollTo({top:0,behavior:'smooth'});}
-function navHighlight(id){document.querySelectorAll('.bbt').forEach(b=>b.classList.remove('on'));if(id)document.getElementById(id)?.classList.add('on');}
-function shuffle(a){const r=[...a];for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];}return r;}
-function esc(s){return String(s).replace(/'/g,'&#39;').replace(/"/g,'&quot;');}
-let toastT;
-function showToast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),2400);}
-function resetAll(){localStorage.removeItem('sa26v2');localStorage.removeItem('sa26v2_m');location.reload();}
-
-load();buildHome();
+buildTest();
 </script>
 </body>
 </html>
