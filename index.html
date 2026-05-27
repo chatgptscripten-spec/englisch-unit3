@@ -3,762 +3,718 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🌍 Englisch Unit 3 — South Africa</title>
+<title>🌍 Englisch Unit 3 — South Africa LERNEN</title>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#090b10;--s1:#0f1118;--s2:#141720;--card:#191c28;
+  --bg:#07090f;--s1:#0e1118;--s2:#131720;--card:#181c28;
   --brd:rgba(255,255,255,.07);--brd2:rgba(255,255,255,.13);
-  --tx:#eef0f8;--mu:#7a7e96;--hi:#35384f;
-  --bl:#4f9dff;--gr:#35d498;--or:#ff9248;--rd:#ff5c5c;--pu:#a98aff;--ye:#fbbf24;
+  --tx:#eef0f8;--mu:#6b6f8a;--hi:#3a3d56;
+  --bl:#4f9dff;--gr:#35d498;--or:#ff9248;--rd:#ff5c5c;--pu:#a98aff;--ye:#fbbf24;--cy:#22d3ee;
   --lbl:rgba(79,157,255,.12);--lgr:rgba(53,212,152,.12);--lor:rgba(255,146,72,.12);
-  --lrd:rgba(255,92,92,.12);--lpu:rgba(169,138,255,.12);--lye:rgba(251,191,36,.12)
+  --lrd:rgba(255,92,92,.12);--lpu:rgba(169,138,255,.12);--lye:rgba(251,191,36,.12);--lcy:rgba(34,211,238,.12)
 }
-body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh}
+html{scroll-behavior:smooth}
+body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;overflow-x:hidden}
 
 /* TOP BAR */
-.topbar{background:var(--s1);border-bottom:1px solid var(--brd);padding:0 14px;display:flex;align-items:center;justify-content:space-between;height:50px;position:sticky;top:0;z-index:300}
-.logo{font-size:13px;font-weight:900;color:#fff}
-.logo em{font-style:normal;background:linear-gradient(90deg,var(--bl),var(--pu));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.cd{display:flex;gap:4px}
+.topbar{background:rgba(14,17,24,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--brd);padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:200}
+.logo{font-size:13px;font-weight:900;letter-spacing:-.3px}
+.logo em{font-style:normal;color:var(--bl)}
+.cd-wrap{display:flex;align-items:center;gap:8px}
+.cd-label{font-size:9px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.08em}
+.cd-boxes{display:flex;gap:4px}
 .cd-box{background:var(--s2);border:1px solid var(--brd2);border-radius:7px;padding:3px 7px;text-align:center;min-width:38px}
-.cd-n{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;line-height:1.1;transition:transform .15s}
-.cd-u{font-size:7px;color:var(--mu);font-weight:700;text-transform:uppercase}
-.cd-box.urg{border-color:rgba(255,92,92,.4);background:var(--lrd)}
-.cd-box.urg .cd-n{color:var(--rd)}
+.cd-num{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:var(--tx);line-height:1}
+.cd-unit{font-size:7px;color:var(--mu);font-weight:700;text-transform:uppercase;margin-top:1px}
+.cd-box.urgent{border-color:rgba(255,92,92,.4);background:var(--lrd)}
+.cd-box.urgent .cd-num{color:var(--rd)}
 
-/* PROGRESS PILLS */
-.pills{display:flex;gap:6px;padding:10px 14px;background:var(--s1);border-bottom:1px solid var(--brd);overflow-x:auto}
-.pill{flex-shrink:0;display:flex;align-items:center;gap:5px;padding:5px 10px;border-radius:20px;border:1px solid var(--brd);font-size:11px;font-weight:800;cursor:pointer;transition:all .15s;color:var(--mu);background:transparent}
-.pill:hover{border-color:var(--brd2);color:var(--tx)}
-.pill.done{border-color:var(--gr);color:var(--gr);background:rgba(53,212,152,.08)}
-.pill.active{border-color:var(--bl);color:var(--bl);background:rgba(79,157,255,.08)}
-.pill.locked{opacity:.3;cursor:not-allowed}
-.pill-dot{width:7px;height:7px;border-radius:50%;background:currentColor;flex-shrink:0}
+/* PROGRESS OVERVIEW */
+.overview{padding:12px 14px;background:var(--s1);border-bottom:1px solid var(--brd)}
+.ov-title{font-size:10px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.ov-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.ov-item{background:var(--card);border:1px solid var(--brd);border-radius:9px;padding:8px 4px;text-align:center;cursor:pointer;transition:all .18s;position:relative}
+.ov-item:hover{transform:translateY(-2px);border-color:var(--brd2)}
+.ov-item.locked{opacity:.35;cursor:not-allowed}
+.ov-item.done{border-color:var(--gr)!important;background:rgba(53,212,152,.06)}
+.ov-item.done::after{content:'✓';position:absolute;top:3px;right:5px;font-size:9px;font-weight:900;color:var(--gr)}
+.ov-item.active{border-color:var(--bl);background:rgba(79,157,255,.07)}
+.ov-emoji{font-size:18px;margin-bottom:2px}
+.ov-name{font-size:8px;font-weight:700;line-height:1.2;color:var(--mu)}
 
 /* MAIN */
-.wrap{max-width:700px;margin:0 auto;padding:16px 13px 90px}
+.main{max-width:680px;margin:0 auto;padding:18px 14px 100px}
 
-/* SCREENS */
-.sc{display:none}.sc.on{display:block}
+/* TOPIC HERO */
+.topic-hero{border-radius:14px;padding:18px;margin-bottom:14px;position:relative;overflow:hidden}
+.topic-hero h1{font-size:18px;font-weight:900;margin-bottom:3px}
+.topic-hero p{font-size:11px;opacity:.7;font-weight:600}
+.topic-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:9px;font-weight:800;margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em}
 
-/* HOME HERO */
-.home-hero{background:linear-gradient(135deg,#0e1428 0%,#09131e 100%);border:1px solid rgba(79,157,255,.15);border-radius:18px;padding:22px 20px;margin-bottom:14px;text-align:center}
-.home-hero .flag{font-size:44px;margin-bottom:8px}
-.home-hero h1{font-size:21px;font-weight:900;margin-bottom:5px}
-.home-hero h1 em{font-style:normal;color:var(--bl)}
-.home-hero p{font-size:12px;color:var(--mu);font-weight:600;line-height:1.7;margin-bottom:14px}
-.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.stat{background:rgba(255,255,255,.04);border:1px solid var(--brd);border-radius:10px;padding:10px 6px;text-align:center}
-.stat-n{font-family:'JetBrains Mono',monospace;font-size:19px;font-weight:700}
-.stat-l{font-size:10px;color:var(--mu);font-weight:700;margin-top:2px}
+/* LEARN CARD */
+.lcard{background:var(--card);border:1px solid var(--brd);border-radius:13px;padding:14px;margin-bottom:10px}
+.lcard-title{font-size:10px;font-weight:800;color:var(--mu);text-transform:uppercase;letter-spacing:.07em;margin-bottom:9px;display:flex;align-items:center;gap:6px}
+.lcard-title span{width:17px;height:17px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:900;flex-shrink:0}
 
-/* TOPIC ITEMS */
-.tlist{display:flex;flex-direction:column;gap:9px;margin-top:14px}
-.titem{background:var(--card);border:1px solid var(--brd);border-radius:14px;padding:13px 15px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .18s;position:relative;overflow:hidden}
-.titem::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:0 3px 3px 0}
-.titem.done::before{background:var(--gr)}
-.titem.active::before{background:var(--bl)}
-.titem.locked::before{background:var(--hi)}
-.titem:hover:not(.locked){transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.35);border-color:var(--brd2)}
-.titem.locked{opacity:.38;cursor:not-allowed}
-.titem-ico{font-size:26px;flex-shrink:0}
-.titem-body{flex:1;min-width:0}
-.titem-title{font-size:13px;font-weight:800;margin-bottom:2px}
-.titem-sub{font-size:11px;color:var(--mu);font-weight:600}
-.titem-bar{height:3px;background:rgba(255,255,255,.06);border-radius:3px;margin-top:7px;overflow:hidden}
-.titem-bar-fill{height:100%;border-radius:3px;transition:width .6s}
-.titem-tag{font-size:10px;font-weight:800;padding:3px 9px;border-radius:20px;flex-shrink:0}
-.titem-tag.done{background:rgba(53,212,152,.15);color:var(--gr)}
-.titem-tag.go{background:rgba(79,157,255,.15);color:var(--bl)}
-.titem-tag.retry{background:rgba(255,146,72,.15);color:var(--or)}
-.titem-tag.locked{background:var(--lrd);color:var(--rd)}
-
-/* CARDS */
-.card{background:var(--card);border:1px solid var(--brd);border-radius:14px;padding:15px;margin-bottom:12px}
-.card-title{font-size:10px;font-weight:800;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;display:flex;align-items:center;gap:6px}
-.card-title .badge{padding:1px 8px;border-radius:20px;font-size:9px;font-weight:900}
-
-/* RULES */
-.rule{border-radius:10px;padding:12px 14px;margin:7px 0;font-size:12.5px;font-weight:600;line-height:1.85}
+/* RULE BOXES */
+.rule{border-radius:9px;padding:11px 13px;margin:6px 0;font-size:12px;font-weight:600;line-height:1.85}
 .rule.b{background:var(--lbl);border:1px solid rgba(79,157,255,.2);color:#93c5fd}
 .rule.g{background:var(--lgr);border:1px solid rgba(53,212,152,.2);color:#6ee7b7}
 .rule.y{background:var(--lye);border:1px solid rgba(251,191,36,.2);color:#fde68a}
 .rule.r{background:var(--lrd);border:1px solid rgba(255,92,92,.2);color:#fca5a5}
 .rule.p{background:var(--lpu);border:1px solid rgba(169,138,255,.2);color:#c4b5fd}
 .rule.o{background:var(--lor);border:1px solid rgba(255,146,72,.2);color:#fdba74}
+.rule.cy{background:var(--lcy);border:1px solid rgba(34,211,238,.2);color:#67e8f9}
 
-.formula{background:#0b1625;border:1px solid rgba(79,157,255,.28);border-radius:10px;padding:13px;text-align:center;margin:9px 0;font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:var(--bl)}
-.formula small{display:block;font-size:11px;color:var(--mu);margin-top:4px;font-family:'Sora',sans-serif;font-weight:600}
+.formula{background:#0d1a2e;border:1px solid rgba(79,157,255,.3);border-radius:9px;padding:12px;text-align:center;margin:8px 0;font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:var(--bl)}
+.formula small{display:block;font-size:10px;color:var(--mu);margin-top:4px;font-family:'Sora',sans-serif;font-weight:600}
 
-/* TABLE */
-.t{width:100%;border-collapse:collapse;font-size:12px;margin:7px 0}
-.t th{padding:7px 9px;text-align:left;font-size:10px;font-weight:800;color:var(--hi);border-bottom:1px solid var(--brd);text-transform:uppercase;letter-spacing:.04em}
-.t td{padding:7px 9px;border-bottom:1px solid rgba(255,255,255,.04);line-height:1.65;vertical-align:top}
-.t tr:last-child td{border-bottom:none}
-.t .de{color:var(--mu);font-style:italic}
-.t .en{color:var(--tx);font-weight:600}
-.t .gr{color:var(--bl);font-family:'JetBrains Mono',monospace;font-size:11px}
-.t .hl{color:var(--gr);font-weight:800}
+/* TABLES */
+.etable{width:100%;border-collapse:collapse;font-size:11.5px;margin:7px 0}
+.etable th{padding:6px 9px;text-align:left;font-size:9px;font-weight:800;color:var(--hi);border-bottom:1px solid var(--brd);text-transform:uppercase;letter-spacing:.05em}
+.etable td{padding:7px 9px;border-bottom:1px solid rgba(255,255,255,.03);line-height:1.6;vertical-align:top}
+.etable tr:last-child td{border-bottom:none}
+.etable .de{color:var(--mu);font-style:italic}
+.etable .en{color:var(--tx);font-weight:600}
+.etable .gram{color:var(--bl);font-family:'JetBrains Mono',monospace;font-size:11px}
+.etable .hl{color:var(--gr);font-weight:800}
+.etable .wrong{color:var(--rd);text-decoration:line-through}
+.etable .right{color:var(--gr);font-weight:800}
+
+/* WORKBOOK SOLUTION CARD */
+.ws-card{background:linear-gradient(135deg,rgba(53,212,152,.07),rgba(79,157,255,.04));border:1px solid rgba(53,212,152,.25);border-radius:13px;padding:14px;margin-bottom:10px}
+.ws-title{font-size:10px;font-weight:800;color:var(--gr);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.ws-item{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:12px;align-items:flex-start}
+.ws-item:last-child{border-bottom:none}
+.ws-num{color:var(--mu);font-weight:800;font-family:'JetBrains Mono',monospace;font-size:11px;min-width:18px;margin-top:1px}
+.ws-ans{color:var(--gr);font-weight:700;font-family:'JetBrains Mono',monospace}
+.ws-context{color:var(--mu);font-size:11px}
 
 /* QUIZ */
-.qwrap{background:var(--s2);border:1px solid var(--brd);border-radius:16px;padding:18px;margin-top:4px}
-.qhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.qtitle{font-size:13px;font-weight:800}
-.qcount{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mu)}
-.qbar{height:4px;background:rgba(255,255,255,.06);border-radius:4px;margin-bottom:15px;overflow:hidden}
-.qbar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--bl),var(--pu));transition:width .4s}
-.qtext{font-size:14px;font-weight:700;line-height:1.65;margin-bottom:5px}
-.qde{font-size:11px;color:var(--mu);font-weight:600;margin-bottom:13px;font-style:italic}
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:11px}
-.opt{padding:11px 12px;border-radius:10px;border:1px solid var(--brd);background:rgba(255,255,255,.03);font-size:12px;font-weight:700;cursor:pointer;transition:all .13s;text-align:left;color:var(--tx);font-family:'Sora',sans-serif;line-height:1.5}
+.quiz-wrap{background:var(--s2);border:1px solid var(--brd);border-radius:14px;padding:16px;margin-top:14px}
+.quiz-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.quiz-title{font-size:12px;font-weight:800;color:var(--tx)}
+.quiz-counter{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--mu)}
+.qprog{height:3px;background:rgba(255,255,255,.05);border-radius:4px;margin-bottom:14px;overflow:hidden}
+.qprog-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--bl),var(--pu));transition:width .4s}
+.q-text{font-size:13px;font-weight:700;line-height:1.6;color:var(--tx);margin-bottom:10px}
+.q-de{font-size:11px;color:var(--mu);font-weight:600;margin-bottom:10px;font-style:italic}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px}
+.opt{padding:10px 12px;border-radius:9px;border:1px solid var(--brd);background:rgba(255,255,255,.02);font-size:11.5px;font-weight:700;cursor:pointer;transition:all .12s;text-align:left;color:var(--tx);font-family:'Sora',sans-serif;line-height:1.5}
 .opt:hover:not(:disabled){border-color:var(--bl);background:var(--lbl);color:var(--bl)}
 .opt.ok{border-color:var(--gr)!important;background:var(--lgr)!important;color:var(--gr)!important}
 .opt.no{border-color:var(--rd)!important;background:var(--lrd)!important;color:var(--rd)!important;animation:shake .3s}
 .opt:disabled{cursor:default}
-.qfb{font-size:12px;font-weight:700;min-height:18px;margin-bottom:8px}
-.qfb.ok{color:var(--gr)}.qfb.no{color:var(--rd)}
-.qex{background:rgba(255,255,255,.04);border-radius:8px;padding:9px 12px;font-size:12px;font-weight:600;color:var(--mu);line-height:1.7;display:none;margin-bottom:10px}
-.qex.show{display:block}
-.fill-inp{background:rgba(255,255,255,.05);border:1.5px solid var(--brd2);border-radius:9px;padding:10px 13px;font-size:13px;font-weight:700;color:var(--tx);width:100%;margin-bottom:8px;outline:none;font-family:'JetBrains Mono',monospace;transition:border .15s}
+.q-feedback{font-size:12px;font-weight:700;min-height:16px;padding:0 2px;margin-bottom:8px}
+.q-feedback.ok{color:var(--gr)}.q-feedback.no{color:var(--rd)}
+.q-explain{background:rgba(255,255,255,.03);border-radius:7px;padding:9px 11px;font-size:11.5px;font-weight:600;line-height:1.7;color:var(--mu);margin-bottom:8px;display:none}
+.q-explain.show{display:block}
+.fill-inp{background:rgba(255,255,255,.04);border:1.5px solid var(--brd2);border-radius:7px;padding:9px 12px;font-size:13px;font-weight:700;color:var(--tx);width:100%;margin-bottom:7px;outline:none;font-family:'JetBrains Mono',monospace;transition:border .15s}
 .fill-inp:focus{border-color:var(--bl)}
 .fill-inp.ok{border-color:var(--gr)!important;background:var(--lgr)!important;color:var(--gr)!important}
-.fill-inp.no{border-color:var(--rd)!important;background:var(--lrd)!important}
-.chk-btn{width:100%;padding:11px;background:var(--bl);border:none;border-radius:10px;color:#fff;font-size:13px;font-weight:800;cursor:pointer;font-family:'Sora',sans-serif;margin-bottom:8px;transition:all .13s}
-.chk-btn:hover{background:#3a8ef0}
-.chk-btn:disabled{opacity:.4;cursor:not-allowed}
+.fill-inp.no{border-color:var(--rd)!important;background:var(--lrd)!important;color:var(--rd)!important}
+.chk-btn{width:100%;padding:10px;background:var(--bl);border:none;border-radius:9px;color:#fff;font-size:12px;font-weight:800;cursor:pointer;font-family:'Sora',sans-serif;transition:all .12s;margin-bottom:7px}
+.chk-btn:hover{background:#3a8ef0;transform:translateY(-1px)}
+.chk-btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
 
 /* RESULT GATES */
-.gate{border-radius:16px;padding:22px;text-align:center;margin-top:4px}
-.gate.pass{background:rgba(53,212,152,.07);border:2px solid rgba(53,212,152,.3)}
-.gate.fail{background:rgba(255,92,92,.07);border:2px solid rgba(255,92,92,.3)}
-.gate .big{font-size:54px;margin-bottom:10px}
-.gate h2{font-size:20px;font-weight:900;margin-bottom:6px}
-.gate.pass h2{color:var(--gr)}.gate.fail h2{color:var(--rd)}
-.gate p{font-size:12px;color:var(--mu);font-weight:600;line-height:1.7;margin-bottom:16px}
-.btn-main{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:12px 22px;border:none;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Sora',sans-serif;transition:all .15s;width:100%;margin-bottom:8px}
-.btn-main:hover{transform:translateY(-2px)}
-.btn-main.green{background:var(--gr);color:#062010}
-.btn-main.blue{background:var(--bl);color:#fff}
-.btn-main.orange{background:var(--or);color:#1a0800}
-.btn-sec{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 18px;background:transparent;border:1px solid var(--brd2);border-radius:10px;color:var(--mu);font-size:12px;font-weight:700;cursor:pointer;font-family:'Sora',sans-serif;transition:all .13s;width:100%;margin-bottom:6px}
-.btn-sec:hover{border-color:var(--bl);color:var(--bl)}
+.gate{background:linear-gradient(135deg,rgba(53,212,152,.08),rgba(79,157,255,.06));border:2px solid var(--gr);border-radius:14px;padding:18px;text-align:center;margin-top:14px}
+.gate h2{font-size:17px;font-weight:900;color:var(--gr);margin-bottom:5px}
+.gate p{font-size:11.5px;color:var(--mu);font-weight:600;margin-bottom:12px;line-height:1.7}
+.next-btn{display:inline-flex;align-items:center;gap:7px;padding:11px 22px;background:var(--gr);border:none;border-radius:11px;color:#0a2018;font-size:12px;font-weight:900;cursor:pointer;font-family:'Sora',sans-serif;transition:all .15s}
+.next-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(53,212,152,.3)}
+.retry-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;background:transparent;border:1px solid var(--brd2);border-radius:11px;color:var(--mu);font-size:11px;font-weight:700;cursor:pointer;font-family:'Sora',sans-serif;margin-top:7px;transition:all .12s}
+.retry-btn:hover{border-color:var(--bl);color:var(--bl)}
+.fail-gate{background:rgba(255,92,92,.06);border:2px solid rgba(255,92,92,.3);border-radius:14px;padding:18px;text-align:center;margin-top:14px}
+.fail-gate h2{font-size:16px;font-weight:900;color:var(--rd);margin-bottom:5px}
+.fail-gate p{font-size:11.5px;color:var(--mu);font-weight:600;margin-bottom:12px;line-height:1.7}
 
-/* WRONG LIST */
-.wrong-list{background:rgba(255,255,255,.03);border-radius:10px;padding:12px 13px;margin:12px 0;text-align:left}
-.wrong-list div{font-size:11px;font-weight:700;color:var(--rd);padding:3px 0;line-height:1.5}
-
-/* LEARN CONTENT */
-.learn-hero{border-radius:16px;padding:18px 20px;margin-bottom:14px;position:relative;overflow:hidden}
-.learn-hero h1{font-size:19px;font-weight:900;margin-bottom:4px}
-.learn-hero p{font-size:11px;opacity:.65;font-weight:600}
-.lbadge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:800;margin-bottom:9px;text-transform:uppercase;letter-spacing:.05em}
-
-/* BOTTOM NAV */
-.botnav{position:fixed;bottom:0;left:0;right:0;background:var(--s1);border-top:1px solid var(--brd);display:flex;z-index:200}
-.bbt{flex:1;padding:11px 5px 13px;border:none;background:none;color:var(--mu);font-size:8.5px;font-weight:800;cursor:pointer;font-family:'Sora',sans-serif;text-transform:uppercase;letter-spacing:.05em;display:flex;flex-direction:column;align-items:center;gap:4px;transition:color .13s}
-.bbt svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.bbt.on{color:var(--bl)}
+/* HOME */
+.home-hero{background:linear-gradient(135deg,#0f1528,#07090f);border:1px solid rgba(79,157,255,.15);border-radius:16px;padding:20px;margin-bottom:14px;text-align:center}
+.home-hero h1{font-size:22px;font-weight:900;margin-bottom:5px}
+.home-hero h1 em{font-style:normal;color:var(--bl)}
+.home-hero p{font-size:11px;color:var(--mu);font-weight:600;margin-bottom:14px}
+.home-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.hstat{background:rgba(255,255,255,.03);border:1px solid var(--brd);border-radius:9px;padding:11px 7px;text-align:center}
+.hstat-n{font-family:'JetBrains Mono',monospace;font-size:19px;font-weight:700;color:var(--tx)}
+.hstat-l{font-size:9px;color:var(--mu);font-weight:700;margin-top:2px}
+.topic-list{display:flex;flex-direction:column;gap:8px}
+.titem{background:var(--card);border:1px solid var(--brd);border-radius:13px;padding:13px 15px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .18s;position:relative;overflow:hidden}
+.titem:hover:not(.locked){transform:translateY(-1px);border-color:var(--brd2);box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.titem.done{border-color:rgba(53,212,152,.3);background:rgba(53,212,152,.04)}
+.titem.active{border-color:rgba(79,157,255,.35);background:rgba(79,157,255,.06)}
+.titem.locked{opacity:.3;cursor:not-allowed}
+.titem-emoji{font-size:26px;flex-shrink:0}
+.titem-body{flex:1}
+.titem-title{font-size:13px;font-weight:800;color:var(--tx);margin-bottom:2px}
+.titem-sub{font-size:10px;color:var(--mu);font-weight:600}
+.titem-right{flex-shrink:0;text-align:right}
+.titem-status{font-size:10px;font-weight:800;padding:3px 9px;border-radius:18px}
+.titem-status.done{background:var(--lgr);color:var(--gr)}
+.titem-status.active{background:var(--lbl);color:var(--bl)}
+.titem-status.locked{background:rgba(255,255,255,.05);color:var(--mu)}
+.titem-status.todo{background:rgba(255,255,255,.05);color:var(--mu)}
 
 /* TOAST */
-.toast{position:fixed;bottom:72px;left:50%;transform:translateX(-50%) translateY(60px);background:#fff;color:#09090f;padding:9px 18px;border-radius:40px;font-weight:800;font-size:12px;z-index:999;transition:transform .22s;pointer-events:none;box-shadow:0 6px 28px rgba(0,0,0,.5)}
+.toast{position:fixed;bottom:72px;left:50%;transform:translateX(-50%) translateY(60px);background:#fff;color:#07090f;padding:9px 18px;border-radius:40px;font-weight:800;font-size:11px;z-index:999;transition:transform .25s;pointer-events:none;box-shadow:0 6px 24px rgba(0,0,0,.5)}
 .toast.show{transform:translateX(-50%) translateY(0)}
 
-/* ALL DONE */
-.alldone{text-align:center;padding:40px 16px}
-.alldone .big{font-size:64px;margin-bottom:14px}
-.alldone h1{font-size:24px;font-weight:900;color:var(--gr);margin-bottom:8px}
-.alldone p{font-size:13px;color:var(--mu);font-weight:600;line-height:1.75;max-width:320px;margin:0 auto 20px}
+/* BOTTOM NAV */
+.botbar{position:fixed;bottom:0;left:0;right:0;background:rgba(14,17,24,.97);backdrop-filter:blur(12px);border-top:1px solid var(--brd);display:flex;z-index:100}
+.bbt{flex:1;padding:10px 8px 12px;border:none;background:none;color:var(--mu);font-size:8px;font-weight:800;cursor:pointer;font-family:'Sora',sans-serif;text-transform:uppercase;letter-spacing:.06em;display:flex;flex-direction:column;align-items:center;gap:3px;transition:color .15s}
+.bbt svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.bbt.on{color:var(--bl)}
 
-/* VOCAB FLIP */
-.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
-.vcard{background:var(--card);border:1px solid var(--brd);border-radius:11px;padding:12px;cursor:pointer;transition:all .15s;min-height:64px;display:flex;flex-direction:column;justify-content:center}
-.vcard:hover{border-color:var(--brd2);background:rgba(255,255,255,.04)}
-.vc-de{font-size:12px;font-weight:700;color:var(--mu)}
-.vc-en{display:none;font-size:13px;font-weight:800;color:var(--bl)}
-.vc-tag{font-size:9px;color:var(--hi);margin-top:3px;font-weight:700}
-.vcard.flip .vc-de{display:none}
-.vcard.flip .vc-en{display:block}
+/* SCREENS */
+.screen{display:none}.screen.on{display:block}
+
+/* ALL DONE */
+.all-done{text-align:center;padding:40px 20px}
+.all-done .big{font-size:60px;margin-bottom:14px}
+.all-done h1{font-size:24px;font-weight:900;margin-bottom:7px;color:var(--gr)}
+.all-done p{font-size:12px;color:var(--mu);font-weight:600;line-height:1.7;max-width:300px;margin:0 auto 18px}
+
+/* STEP BOXES */
+.steps{display:flex;flex-direction:column;gap:6px;margin:8px 0}
+.step{display:flex;gap:10px;align-items:flex-start;background:rgba(255,255,255,.03);border-radius:9px;padding:10px 12px;font-size:12px;font-weight:700}
+.step-n{background:var(--bl);color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;flex-shrink:0;margin-top:1px}
 
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
-@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.fi{animation:fadein .3s ease forwards}
-
-/* PLAN BANNER */
-.plan{background:linear-gradient(135deg,rgba(79,157,255,.08),rgba(169,138,255,.06));border:1px solid rgba(79,157,255,.18);border-radius:12px;padding:13px 15px;margin-bottom:14px}
-.plan-title{font-size:11px;font-weight:800;color:var(--bl);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
-.plan-items{display:flex;flex-direction:column;gap:5px}
-.plan-item{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--tx)}
-.plan-item .pi-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.plan-item .pi-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu);margin-left:auto}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.fadein{animation:fade .3s ease forwards}
 </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
 <div class="topbar">
-  <div class="logo">🌍 <em>South Africa</em> Englisch</div>
-  <div class="cd">
-    <div class="cd-box" id="cdd"><div class="cd-n" id="cdn-d">--</div><div class="cd-u">Tage</div></div>
-    <div class="cd-box" id="cdh"><div class="cd-n" id="cdn-h">--</div><div class="cd-u">Std</div></div>
-    <div class="cd-box" id="cdm"><div class="cd-n" id="cdn-m">--</div><div class="cd-u">Min</div></div>
-    <div class="cd-box" id="cds"><div class="cd-n" id="cdn-s">--</div><div class="cd-u">Sek</div></div>
-  </div>
-</div>
-
-<!-- PROGRESS PILLS -->
-<div class="pills" id="pills"></div>
-
-<!-- MAIN -->
-<div class="wrap">
-  <div class="sc on" id="sc-home"><div id="home-body"></div></div>
-  <div class="sc" id="sc-learn"><div id="learn-body"></div></div>
-  <div class="sc" id="sc-quiz"><div id="quiz-body"></div></div>
-  <div class="sc" id="sc-voc"><div id="voc-body"></div></div>
-  <div class="sc" id="sc-gram"><div id="gram-body"></div></div>
-  <div class="sc" id="sc-done">
-    <div class="alldone fi">
-      <div class="big">🏆</div>
-      <h1>Alles fertig!</h1>
-      <p>Du hast alle Themen gemeistert und bist bereit für die Klassenarbeit am <strong>28.05.2026</strong>! Mach kurz vorher nochmal eine schnelle Runde zur Sicherheit.</p>
-      <button class="btn-main green" onclick="resetAll()" style="max-width:280px;margin:0 auto">🔄 Alles nochmal wiederholen</button>
+  <div class="logo">🌍 <em>South Africa</em> Unit 3</div>
+  <div class="cd-wrap">
+    <div class="cd-label">Arbeit in</div>
+    <div class="cd-boxes">
+      <div class="cd-box" id="cd-d"><div class="cd-num" id="cd-dn">--</div><div class="cd-unit">Tage</div></div>
+      <div class="cd-box" id="cd-h"><div class="cd-num" id="cd-hn">--</div><div class="cd-unit">Std</div></div>
+      <div class="cd-box" id="cd-m"><div class="cd-num" id="cd-mn">--</div><div class="cd-unit">Min</div></div>
+      <div class="cd-box" id="cd-s"><div class="cd-num" id="cd-sn">--</div><div class="cd-unit">Sek</div></div>
     </div>
   </div>
 </div>
 
-<!-- BOTTOM NAV -->
-<div class="botnav">
-  <button class="bbt on" id="nav-h" onclick="goHome()">
-    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Start
-  </button>
-  <button class="bbt" id="nav-v" onclick="goVoc()">
-    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Vokabeln
-  </button>
-  <button class="bbt" id="nav-g" onclick="goGram()">
-    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Grammatik
-  </button>
+<div class="overview">
+  <div class="ov-title">Fortschritt — alle 6 Themen müssen ✓ sein!</div>
+  <div class="ov-grid" id="ov-grid"></div>
 </div>
 
+<div class="main">
+  <div class="screen on" id="sc-home">
+    <div class="home-hero">
+      <div style="font-size:44px;margin-bottom:8px">🌍</div>
+      <h1>Englisch Unit 3<br><em>Around South Africa</em></h1>
+      <p>Lern jedes Thema durch — Quiz bestehen = nächstes freischalten!<br>Du schaffst das heute in einem Tag. Geh durch!</p>
+      <div class="home-stats">
+        <div class="hstat"><div class="hstat-n" id="hs-done">0/6</div><div class="hstat-l">Themen ✓</div></div>
+        <div class="hstat"><div class="hstat-n" id="hs-streak">0</div><div class="hstat-l">Streak 🔥</div></div>
+        <div class="hstat"><div class="hstat-n" id="hs-pts">0</div><div class="hstat-l">Punkte</div></div>
+      </div>
+    </div>
+    <div class="topic-list" id="topic-list"></div>
+  </div>
+  <div class="screen" id="sc-learn"><div id="learn-content"></div></div>
+  <div class="screen" id="sc-quiz"><div id="quiz-content"></div></div>
+  <div class="screen" id="sc-alldone">
+    <div class="all-done fadein">
+      <div class="big">🏆</div>
+      <h1>ALLES GELERNT!</h1>
+      <p>Alle 6 Themen gemeistert! Du bist absolut bereit für die Arbeit. Das war Vollgas — jetzt weißt du alles!</p>
+      <button class="next-btn" onclick="resetAll()">🔄 Nochmal durchgehen</button>
+    </div>
+  </div>
+</div>
+
+<div class="botbar">
+  <button class="bbt on" id="nav-home" onclick="goHome()">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Start
+  </button>
+  <button class="bbt" id="nav-voc" onclick="goVoc()">
+    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Vokabeln
+  </button>
+  <button class="bbt" id="nav-gram" onclick="goGram()">
+    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Grammatik
+  </button>
+  <button class="bbt" id="nav-ws" onclick="goWS()">
+    <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Lösungen
+  </button>
+</div>
 <div class="toast" id="toast"></div>
 
 <script>
-// ═══════════════════════════════════════════════
-//  DEADLINE + COUNTDOWN
-// ═══════════════════════════════════════════════
 const DEADLINE = new Date('2026-05-28T10:30:00');
+let state = { done:[], streak:0, pts:0 };
+
+function save(){try{localStorage.setItem('sa26v2',JSON.stringify(state));}catch(e){}}
+function load(){try{const d=JSON.parse(localStorage.getItem('sa26v2')||'{}');if(d.done)state.done=d.done;if(d.pts)state.pts=d.pts;if(d.streak)state.streak=d.streak;}catch(e){}}
 
 function tick(){
-  const diff = DEADLINE - Date.now();
-  if(diff <= 0){
-    ['d','h','m','s'].forEach(u=>{
-      document.getElementById('cdn-'+u).textContent='00';
-      document.getElementById('cd'+u).classList.add('urg');
-    });
-    return;
-  }
-  const d=Math.floor(diff/86400000);
-  const h=Math.floor((diff%86400000)/3600000);
-  const m=Math.floor((diff%3600000)/60000);
-  const s=Math.floor((diff%60000)/1000);
-  document.getElementById('cdn-d').textContent=String(d).padStart(2,'0');
-  document.getElementById('cdn-h').textContent=String(h).padStart(2,'0');
-  document.getElementById('cdn-m').textContent=String(m).padStart(2,'0');
-  document.getElementById('cdn-s').textContent=String(s).padStart(2,'0');
-  const sn=document.getElementById('cdn-s');
-  sn.style.transform='scale(1.2)';setTimeout(()=>sn.style.transform='',150);
-  if(d===0&&h<12){
-    document.getElementById('cds').classList.add('urg');
-    document.getElementById('cdh').classList.add('urg');
-  }
+  const diff=DEADLINE-Date.now();
+  if(diff<=0){['d','h','m','s'].forEach(u=>{document.getElementById('cd-'+u+'n').textContent='00';document.getElementById('cd-'+u).classList.add('urgent');});return;}
+  const d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
+  document.getElementById('cd-dn').textContent=String(d).padStart(2,'0');
+  document.getElementById('cd-hn').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-mn').textContent=String(m).padStart(2,'0');
+  document.getElementById('cd-sn').textContent=String(s).padStart(2,'0');
+  if(d===0&&h<6){['cd-s','cd-h','cd-m'].forEach(id=>document.getElementById(id).classList.add('urgent'));}
 }
-setInterval(tick,1000); tick();
+setInterval(tick,1000);tick();
 
-// ═══════════════════════════════════════════════
-//  STATE
-// ═══════════════════════════════════════════════
-let S={pts:0,streak:0};
-function saveS(){try{localStorage.setItem('sa26s',JSON.stringify(S));}catch(e){}}
-function loadS(){try{const d=JSON.parse(localStorage.getItem('sa26s')||'{}');if(d.pts)S.pts=d.pts;if(d.streak)S.streak=d.streak;}catch(e){}}
-
-function getMastery(id){try{return JSON.parse(localStorage.getItem('sa26_'+id)||'{"done":false,"tries":0}');}catch(e){return{done:false,tries:0};}}
-function setMastery(id,done){
-  const m=getMastery(id);
-  m.tries++;if(done)m.done=true;
-  try{localStorage.setItem('sa26_'+id,JSON.stringify(m));}catch(e){}
-}
-function isDone(id){return getMastery(id).done;}
-function isUnlocked(id){return id===0||isDone(id-1);}
-
-// ═══════════════════════════════════════════════
-//  TOPICS
-// ═══════════════════════════════════════════════
-const TOPICS=[
-  {id:0,ico:'🌍',title:'Fakten & Vokabeln',sub:'South Africa — Wörter & Geschichte',col:'--gr'},
-  {id:1,ico:'🔵',title:'Present Participle',sub:'verb + -ing nach Wahrnehmungsverben (G5)',col:'--bl'},
-  {id:2,ico:'🟠',title:'Past Perfect',sub:'had + 3. Form — Vorvergangenheit (G6)',col:'--or'},
-  {id:3,ico:'🟢',title:'Passive Voice',sub:'was/were + 3. Form — Passiv Simple Past (G7)',col:'--gr'},
-  {id:4,ico:'🏆',title:'Alles zusammen',sub:'Gemischte Aufgaben — wie in der Arbeit',col:'--pu'},
-];
-
-// ═══════════════════════════════════════════════
-//  LEARN CONTENT
-// ═══════════════════════════════════════════════
-const LEARN={
-0:`<div class="learn-hero fi" style="background:linear-gradient(135deg,#0c1f12,#09090f);border:1px solid rgba(53,212,152,.18)">
-  <div class="lbadge" style="background:rgba(53,212,152,.12);color:var(--gr)">Thema 1</div>
-  <h1>🌍 Fakten & Vokabeln</h1>
-  <p>Was du über South Africa wissen musst</p>
+// ─────────────────────────────────────────
+// TOPICS
+// ─────────────────────────────────────────
+const TOPICS = [
+  {
+    id:0, emoji:'🌍', title:'Südafrika — Fakten & Vokabeln', sub:'Wichtige Jahreszahlen, Begriffe & Wortschatz', color:'--gr',
+    learn:`
+<div class="topic-hero fadein" style="background:linear-gradient(135deg,#0a1a10,#07090f);border:1px solid rgba(53,212,152,.2)">
+  <span class="topic-badge" style="background:rgba(53,212,152,.15);color:var(--gr)">Thema 1 von 6</span>
+  <h1>🌍 Südafrika — Fakten & Vokabeln</h1>
+  <p>Jahreszahlen, Passive-Sätze & wichtiger Wortschatz</p>
 </div>
-<div class="card fi">
-  <div class="card-title"><span class="badge" style="background:var(--lgr);color:var(--gr)">Fakten</span> Wichtige Fakten für die Arbeit</div>
-  <table class="t">
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">1</span> Die wichtigsten Fakten (Passiv-Sätze!)</div>
+  <table class="etable">
     <tr><th>Englisch</th><th>Deutsch</th></tr>
-    <tr><td class="en">Apartheid <span class="hl">was abolished</span> in 1991</td><td class="de">Apartheid wurde 1991 abgeschafft</td></tr>
-    <tr><td class="en">SA <span class="hl">was made</span> a republic in 1961</td><td class="de">SA wurde 1961 eine Republik</td></tr>
-    <tr><td class="en">Diamonds <span class="hl">were found</span> in the 19th century</td><td class="de">Diamanten wurden im 19. Jh. gefunden</td></tr>
-    <tr><td class="en">The Rugby World Cup <span class="hl">was won</span> by SA in 2007</td><td class="de">Rugby-WM 2007 von SA gewonnen</td></tr>
-    <tr><td class="en">The Football World Cup <span class="hl">was held</span> in SA in 2010</td><td class="de">Fußball-WM 2010 in SA</td></tr>
-    <tr><td class="en">Kruger National Park — rangers, lions, rhinos</td><td class="de">Berühmter Nationalpark</td></tr>
-    <tr><td class="en">The park <span class="hl">was named</span> after Paul Kruger</td><td class="de">Der Park wurde nach Paul Kruger benannt</td></tr>
-    <tr><td class="en">Roads and visitor centres <span class="hl">were built</span></td><td class="de">Straßen und Besucherzentren wurden gebaut</td></tr>
+    <tr><td class="en">Apartheid <span class="hl">was abolished</span> in 1991.</td><td class="de">Apartheid wurde 1991 abgeschafft.</td></tr>
+    <tr><td class="en">South Africa <span class="hl">was made</span> a republic in 1961.</td><td class="de">SA wurde 1961 Republik.</td></tr>
+    <tr><td class="en">Diamonds <span class="hl">were found/discovered</span> in the 19th century.</td><td class="de">Diamanten wurden im 19. Jh. entdeckt.</td></tr>
+    <tr><td class="en">The Rugby World Cup <span class="hl">was won</span> by SA in 2007.</td><td class="de">Rugby-WM 2007 von SA gewonnen.</td></tr>
+    <tr><td class="en">The Football World Cup <span class="hl">was held</span> in SA in 2010.</td><td class="de">Fußball-WM 2010 in SA ausgetragen.</td></tr>
+    <tr><td class="en">South Africa <span class="hl">was invaded</span> by the British.</td><td class="de">SA wurde von den Briten invadiert.</td></tr>
+    <tr><td class="en">Black and white people <span class="hl">were separated</span>.</td><td class="de">Schwarze und Weiße wurden getrennt.</td></tr>
+    <tr><td class="en">Many buildings <span class="hl">were built</span> in the cities.</td><td class="de">Viele Gebäude wurden gebaut.</td></tr>
   </table>
 </div>
-<div class="card fi">
-  <div class="card-title"><span class="badge" style="background:var(--lye);color:var(--ye)">Vokabeln</span> Alle wichtigen Wörter Unit 3</div>
-  <table class="t">
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">2</span> Wichtige Vokabeln — auswendig lernen!</div>
+  <table class="etable">
     <tr><th>Deutsch</th><th>Englisch</th></tr>
-    <tr><td class="de">Albtraum</td><td class="gr">nightmare</td></tr>
-    <tr><td class="de">leiden unter</td><td class="gr">suffer from</td></tr>
-    <tr><td class="de">Wächter</td><td class="gr">guard</td></tr>
-    <tr><td class="de">schuldig</td><td class="gr">guilty</td></tr>
-    <tr><td class="de">dumm / albern</td><td class="gr">stupid / silly</td></tr>
-    <tr><td class="de">Gegenteil</td><td class="gr">opposite</td></tr>
-    <tr><td class="de">bewachte Wohnanlage</td><td class="gr">gated community</td></tr>
-    <tr><td class="de">Behandlung</td><td class="gr">treatment</td></tr>
-    <tr><td class="de">Naturschutzgebiet</td><td class="gr">nature reserve</td></tr>
-    <tr><td class="de">Wildhüter</td><td class="gr">ranger</td></tr>
-    <tr><td class="de">erschrecken</td><td class="gr">scare</td></tr>
-    <tr><td class="de">abschaffen</td><td class="gr">abolish</td></tr>
-    <tr><td class="de">entdecken</td><td class="gr">discover</td></tr>
-    <tr><td class="de">Unterschiede</td><td class="gr">differences</td></tr>
-    <tr><td class="de">Armensiedlung</td><td class="gr">township</td></tr>
-    <tr><td class="de">berichten / reporten</td><td class="gr">reporter (journalist)</td></tr>
-    <tr><td class="de">Republik</td><td class="gr">republic</td></tr>
-    <tr><td class="de">Rassentrennung</td><td class="gr">apartheid / racial segregation</td></tr>
+    <tr><td class="de">Albtraum</td><td class="gram">nightmare</td></tr>
+    <tr><td class="de">leiden unter</td><td class="gram">suffer from</td></tr>
+    <tr><td class="de">Wächter / Wachmann</td><td class="gram">guard</td></tr>
+    <tr><td class="de">schuldig</td><td class="gram">guilty</td></tr>
+    <tr><td class="de">blöd / dumm</td><td class="gram">stupid / silly</td></tr>
+    <tr><td class="de">Gegenteil</td><td class="gram">opposite</td></tr>
+    <tr><td class="de">bewachte Wohnanlage</td><td class="gram">gated community</td></tr>
+    <tr><td class="de">Behandlung</td><td class="gram">treatment</td></tr>
+    <tr><td class="de">Naturschutzgebiet</td><td class="gram">nature reserve</td></tr>
+    <tr><td class="de">Wildhüter</td><td class="gram">ranger</td></tr>
+    <tr><td class="de">erschrecken / erschreckend</td><td class="gram">scare / scary</td></tr>
+    <tr><td class="de">abschaffen</td><td class="gram">abolish</td></tr>
+    <tr><td class="de">entdecken</td><td class="gram">discover / find</td></tr>
+    <tr><td class="de">Unterschiede</td><td class="gram">differences</td></tr>
+    <tr><td class="de">Armensiedlung</td><td class="gram">township</td></tr>
+    <tr><td class="de">Rassentrennung</td><td class="gram">apartheid / racial segregation</td></tr>
+    <tr><td class="de">Republik</td><td class="gram">republic</td></tr>
   </table>
+</div>
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">3</span> Soziale Unterschiede</div>
+  <div class="rule b">In South Africa there are <strong>big social differences</strong>. Some live in <strong>gated communities</strong> (bewachte Wohnanlagen), others in <strong>townships</strong> (Armensiedlungen).</div>
+  <div class="rule y">📌 Merke: In einer Gated Community gibt es <strong>guards</strong> (Wächter). In einem Township gibt es <strong>no security</strong>.</div>
 </div>`,
-
-1:`<div class="learn-hero fi" style="background:linear-gradient(135deg,#0c1325,#09090f);border:1px solid rgba(79,157,255,.18)">
-  <div class="lbadge" style="background:rgba(79,157,255,.12);color:var(--bl)">Thema 2 — G5</div>
+    quiz:[
+      {type:'mc',q:'When was apartheid abolished?',de:'Wann wurde die Apartheid abgeschafft?',opts:['1961','1991','2007','2010'],ans:'1991',ex:'Apartheid was abolished in 1991.'},
+      {type:'fill',q:'Deutsch → Englisch: "abschaffen"',de:'',ans:'abolish',ex:'abschaffen = abolish (Apartheid was abolished)'},
+      {type:'fill',q:'Deutsch → Englisch: "Naturschutzgebiet"',de:'',ans:'nature reserve',ex:'Naturschutzgebiet = nature reserve'},
+      {type:'mc',q:'South Africa won the Rugby World Cup in ...',de:'',opts:['2003','2007','2010','2015'],ans:'2007',ex:'The Rugby World Cup was won by SA in 2007.'},
+      {type:'fill',q:'Deutsch → Englisch: "Albtraum"',de:'',ans:'nightmare',ex:'Albtraum = nightmare'},
+      {type:'mc',q:'"gated community" = ?',de:'',opts:['Township','Nationalpark','Bewachte Wohnanlage','Schulgelände'],ans:'Bewachte Wohnanlage',ex:'Gated community = bewachte Wohnanlage mit guards'},
+      {type:'fill',q:'Deutsch → Englisch: "entdecken"',de:'',ans:'discover',ex:'entdecken = discover (oder: find)'},
+      {type:'mc',q:'The Football World Cup was ___ in SA in 2010.',de:'',opts:['won','built','held','found'],ans:'held',ex:'hold → held (3. Form). The World Cup was held = ausgetragen.'},
+      {type:'fill',q:'Deutsch → Englisch: "schuldig"',de:'',ans:'guilty',ex:'schuldig = guilty'},
+      {type:'fill',q:'Deutsch → Englisch: "Wächter"',de:'',ans:'guard',ex:'Wächter = guard (Plural: guards)'},
+    ]
+  },
+  {
+    id:1, emoji:'🔵', title:'Present Participle (G5)', sub:'verb + -ing nach Wahrnehmungsverben', color:'--bl',
+    learn:`
+<div class="topic-hero fadein" style="background:linear-gradient(135deg,#0a1020,#07090f);border:1px solid rgba(79,157,255,.2)">
+  <span class="topic-badge" style="background:rgba(79,157,255,.15);color:var(--bl)">Thema 2 — G5</span>
   <h1>🔵 Present Participle</h1>
   <p>verb + -ing nach Wahrnehmungsverben</p>
 </div>
-<div class="card fi">
-  <div class="card-title"><span class="badge" style="background:var(--lbl);color:var(--bl)">Regel</span> Wann benutzt du es?</div>
-  <div class="rule b">Nach Verben der Wahrnehmung: <strong>see, watch, notice, hear, feel, smell, listen to</strong> → kommt <strong>verb + -ing</strong></div>
-  <div class="formula">Subjekt + Wahrnehmungsverb + Objekt + <strong>verb-ing</strong><small>I saw him running. / She heard someone singing.</small></div>
-  <div class="rule y">🇩🇪 Nach "sehen/hören/fühlen/riechen" → im Englischen <strong>verb + -ing</strong> — NICHT der Infinitiv!</div>
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lbl);color:var(--bl)">1</span> Die Regel</div>
+  <div class="rule b">Nach Verben der Wahrnehmung: <strong>see, watch, notice, hear, feel, smell, listen to</strong><br>→ kommt immer <strong>verb + -ing</strong> (Present Participle)</div>
+  <div class="formula">Subjekt + Wahrnehmungsverb + Objekt + <span style="color:var(--gr)">verb-ing</span><small>I saw him running. / She heard someone singing. / We watched the cars coming.</small></div>
+  <div class="rule r">❌ FALSCH: I heard him <span style="text-decoration:line-through">to sing</span> / <span style="text-decoration:line-through">sing</span><br>✅ RICHTIG: I heard him <strong>singing</strong>.</div>
 </div>
-<div class="card fi">
-  <div class="card-title"><span class="badge" style="background:var(--lbl);color:var(--bl)">Bildung</span> -ing Form Regeln</div>
-  <table class="t">
-    <tr><th>Regel</th><th>Infinitiv</th><th>-ing Form</th></tr>
-    <tr><td class="de">Normal + -ing</td><td class="en">play, hear, call, burn, sing</td><td class="gr">playing, hearing, calling, burning, singing</td></tr>
-    <tr><td class="de">Endet auf -e: e weg + -ing</td><td class="en">come, leave, move, hide, make</td><td class="gr">coming, leaving, moving, hiding, making</td></tr>
-    <tr><td class="de">Kurzer Vokal + Konsonant: doppeln</td><td class="en">run, get, swim, put, sit</td><td class="gr">running, getting, swimming, putting, sitting</td></tr>
-    <tr><td class="de">Endet auf -ie → y + -ing</td><td class="en">lie, die</td><td class="gr">lying, dying</td></tr>
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lbl);color:var(--bl)">2</span> Bildungsregeln -ing Form</div>
+  <table class="etable">
+    <tr><th>Regel</th><th>Beispiele</th><th>-ing Form</th></tr>
+    <tr><td class="de">+ ing (normal)</td><td class="en">play, hear, call, sing, show</td><td class="gram">playing, hearing, calling, singing, showing</td></tr>
+    <tr><td class="de">-e weg + ing</td><td class="en">come, leave, move, hide</td><td class="gram">coming, leaving, moving, hiding</td></tr>
+    <tr><td class="de">Vokal+Konsonant → doppeln</td><td class="en">run, get, swim, put</td><td class="gram">running, getting, swimming, putting</td></tr>
+    <tr><td class="de">-ie → y + ing</td><td class="en">lie, die</td><td class="gram">lying, dying</td></tr>
   </table>
 </div>
-<div class="card fi">
-  <div class="card-title"><span class="badge" style="background:var(--lbl);color:var(--bl)">Beispiele</span> Aus deinem Arbeitsblatt (Aufgabe 2)</div>
-  <table class="t">
-    <tr><th>Satz</th><th>✓ Lösung</th></tr>
-    <tr><td class="en">Jack listened to his brother ___ (play) guitar.</td><td class="gr">playing</td></tr>
-    <tr><td class="en">We watched the cars ___ (come) nearer.</td><td class="gr">coming</td></tr>
-    <tr><td class="en">I could smell something ___ (burn) in the kitchen.</td><td class="gr">burning</td></tr>
-    <tr><td class="en">Did you hear Ryan ___ (sing) in the shower?</td><td class="gr">singing</td></tr>
-    <tr><td class="en">They felt the rain ___ (get) heavier.</td><td class="gr">getting</td></tr>
-    <tr><td class="en">Kate didn't notice all the people ___ (leave) the building.</td><td class="gr">leaving</td></tr>
-    <tr><td class="en">Amy saw two people ___ (carry) large bags out of the office.</td><td class="gr">carrying</td></tr>
-    <tr><td class="en">We didn't notice a girl ___ (hide) in the cupboard.</td><td class="gr">hiding</td></tr>
-  </table>
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lbl);color:var(--bl)">3</span> Aufgabe 2 — Lösungen Workbook</div>
+  <div class="ws-card">
+    <div class="ws-title">✅ Alle Antworten</div>
+    <div class="ws-item"><span class="ws-num">1</span><div>Jack listened to his brother <span class="ws-ans">playing</span> the guitar. <span class="ws-context">(play → playing)</span></div></div>
+    <div class="ws-item"><span class="ws-num">2</span><div>We watched the cars <span class="ws-ans">coming</span> nearer. <span class="ws-context">(come → e weg → coming)</span></div></div>
+    <div class="ws-item"><span class="ws-num">3</span><div>I could smell something <span class="ws-ans">burning</span> in the kitchen. <span class="ws-context">(burn → burning)</span></div></div>
+    <div class="ws-item"><span class="ws-num">4</span><div>Did you hear Ryan <span class="ws-ans">singing</span> in the shower? <span class="ws-context">(sing → singing)</span></div></div>
+    <div class="ws-item"><span class="ws-num">5</span><div>They felt the rain <span class="ws-ans">getting</span> heavier. <span class="ws-context">(get → tt → getting)</span></div></div>
+    <div class="ws-item"><span class="ws-num">6</span><div>Kate didn't notice all the people <span class="ws-ans">leaving</span> the building. <span class="ws-context">(leave → e weg → leaving)</span></div></div>
+    <div class="ws-item"><span class="ws-num">7</span><div>Amy saw two people <span class="ws-ans">carrying</span> large bags. <span class="ws-context">(carry → carrying)</span></div></div>
+    <div class="ws-item"><span class="ws-num">8</span><div>We didn't notice a girl <span class="ws-ans">hiding</span> in the cupboard. <span class="ws-context">(hide → e weg → hiding)</span></div></div>
+  </div>
 </div>`,
-
-2:`<div class="learn-hero fi" style="background:linear-gradient(135deg,#1c1008,#09090f);border:1px solid rgba(255,146,72,.18)">
-  <div class="lbadge" style="background:rgba(255,146,72,.12);color:var(--or)">Thema 3 — G6</div>
+    quiz:[
+      {type:'fill',q:'We watched the cars ___ (come) nearer.',de:'Wir sahen die Autos näher kommen.',ans:'coming',ex:'come → e weg → coming'},
+      {type:'fill',q:'I could smell something ___ (burn) in the kitchen.',de:'Ich roch etwas in der Küche brennen.',ans:'burning',ex:'burn + ing = burning (normal)'},
+      {type:'fill',q:'Did you hear Ryan ___ (sing) in the shower?',de:'Hast du Ryan in der Dusche singen hören?',ans:'singing',ex:'sing + ing = singing'},
+      {type:'fill',q:'They felt the rain ___ (get) heavier.',de:'Sie spürten, wie der Regen stärker wurde.',ans:'getting',ex:'get → t verdoppeln → getting'},
+      {type:'fill',q:'Amy saw two people ___ (carry) large bags.',de:'Amy sah zwei Leute große Taschen tragen.',ans:'carrying',ex:'carry + ing = carrying'},
+      {type:'fill',q:'We didn\'t notice a girl ___ (hide) in the cupboard.',de:'Wir bemerkten kein Mädchen im Schrank.',ans:'hiding',ex:'hide → e weg → hiding'},
+      {type:'mc',q:'Welcher Satz ist richtig?',de:'',opts:['I heard him to sing.','I heard him sing.','I heard him singing.','I heard him sings.'],ans:'I heard him singing.',ex:'Nach Wahrnehmungsverben: verb + -ing'},
+      {type:'mc',q:'-ing Form von "run"?',de:'',opts:['runing','running','runeing','runned'],ans:'running',ex:'run: kurzer Vokal + n → n verdoppeln → running'},
+      {type:'mc',q:'-ing Form von "leave"?',de:'',opts:['leaveing','leaving','leving','leaved'],ans:'leaving',ex:'leave → e weg → leaving'},
+      {type:'fill',q:'Emma noticed Steve ___ (show) his pictures to experts.',de:'Emma bemerkte Steve, wie er seine Bilder zeigt.',ans:'showing',ex:'show + ing = showing (normal)'},
+    ]
+  },
+  {
+    id:2, emoji:'🟠', title:'Past Perfect (G6)', sub:'had + 3. Form — Vorvergangenheit', color:'--or',
+    learn:`
+<div class="topic-hero fadein" style="background:linear-gradient(135deg,#1a0f05,#07090f);border:1px solid rgba(255,146,72,.2)">
+  <span class="topic-badge" style="background:rgba(255,146,72,.15);color:var(--or)">Thema 3 — G6</span>
   <h1>🟠 Past Perfect</h1>
-  <p>had + past participle — Vorvergangenheit</p>
+  <p>had + past participle — was VOR dem Simple Past passiert</p>
 </div>
-<div class="card fi">
-  <div class="card-title"><span class="badge" style="background:var(--lor);color:var(--or)">Regel</span> Was ist das Past Perfect?</div>
-  <div class="rule o">Das Past Perfect = etwas das <strong>noch vor einem anderen vergangenen Ereignis</strong> passiert ist!</div>
-  <div class="formula" style="border-color:rgba(255,146,72,.3)">had + past participle (3. Form)<small>Negativ: hadn't + 3. Form &nbsp;|&nbsp; Frage: Had you ...?</small></div>
-  <div class="rule y">🇩🇪 Zwei Dinge in der Vergangenheit → was ZUERST passierte = Past Perfect. Was DANACH passierte = Simple Past.</div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:9px 0">
-    <div style="background:var(--lor);border-radius:10px;padding:11px;text-align:center">
-      <div style="font-size:14px;font-weight:900;color:var(--or);font-family:'JetBrains Mono',monospace">after</div>
-      <div style="font-size:10px;color:var(--mu);margin-top:2px;font-weight:700">nachdem</div>
-    </div>
-    <div style="background:var(--lor);border-radius:10px;padding:11px;text-align:center">
-      <div style="font-size:14px;font-weight:900;color:var(--or);font-family:'JetBrains Mono',monospace">before</div>
-      <div style="font-size:10px;color:var(--mu);margin-top:2px;font-weight:700">bevor</div>
-    </div>
-    <div style="background:var(--lor);border-radius:10px;padding:11px;text-align:center">
-      <div style="font-size:14px;font-weight:900;color:var(--or);font-family:'JetBrains Mono',monospace">when</div>
-      <div style="font-size:10px;color:var(--mu);margin-top:2px;font-weight:700">als</div>
-    </div>
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lor);color:var(--or)">1</span> Die Regel</div>
+  <div class="rule o">Das Past Perfect = was <strong>ZUERST</strong> passiert ist (noch vor einem anderen vergangenen Ereignis).</div>
+  <div class="formula" style="border-color:rgba(255,146,72,.3)">had + past participle (3. Form)<small>Positiv: had gone | Negativ: hadn't gone | Frage: Had you gone?</small></div>
+  <div class="rule y">🇩🇪 Zwei Ereignisse in der Vergangenheit → das ZUERST passierte = Past Perfect. Das DANACH passierte = Simple Past.</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:8px 0">
+    <div style="background:var(--lor);border-radius:9px;padding:10px;text-align:center"><div style="font-size:14px;font-weight:900;color:var(--or);font-family:'JetBrains Mono',monospace">after</div><div style="font-size:9px;color:var(--mu);margin-top:2px;font-weight:700">nachdem</div></div>
+    <div style="background:var(--lor);border-radius:9px;padding:10px;text-align:center"><div style="font-size:14px;font-weight:900;color:var(--or);font-family:'JetBrains Mono',monospace">before</div><div style="font-size:9px;color:var(--mu);margin-top:2px;font-weight:700">bevor</div></div>
+    <div style="background:var(--lor);border-radius:9px;padding:10px;text-align:center"><div style="font-size:14px;font-weight:900;color:var(--or);font-family:'JetBrains Mono',monospace">when</div><div style="font-size:9px;color:var(--mu);margin-top:2px;font-weight:700">als</div></div>
   </div>
 </div>
-<div class="card fi">
-  <div class="card-title"><span class="badge" style="background:var(--lor);color:var(--or)">Beispiele</span> Aus deinem Arbeitsblatt (Aufgabe 9)</div>
-  <table class="t">
-    <tr><th>Satz</th><th>Erklärung</th></tr>
-    <tr><td class="en">Lefa <span class="hl">wanted</span> to go after he <span class="hl">had spoken</span> to the police.</td><td class="de">Erst sprechen (had spoken), dann wollen (wanted)</td></tr>
-    <tr><td class="en">After the police officer <span class="hl">had interviewed</span> Lefa, he <span class="hl">allowed</span> him to go.</td><td class="de">Erst verhören (had interviewed), dann lassen (allowed)</td></tr>
-    <tr><td class="en">Piet's team <span class="hl">had left</span> school before the accident <span class="hl">happened</span>.</td><td class="de">Erst weg (had left), dann Unfall (happened)</td></tr>
-    <tr><td class="en">Friends <span class="hl">called</span> after they <span class="hl">had read</span> the report.</td><td class="de">Erst lesen (had read), dann anrufen (called)</td></tr>
-    <tr><td class="en">After Cebile <span class="hl">had come</span> home, she <span class="hl">began</span> to cook.</td><td class="de">Erst kommen (had come), dann kochen (began)</td></tr>
-    <tr><td class="en">Before her mother <span class="hl">lost</span> her job, she <span class="hl">had worked</span> in an office.</td><td class="de">Erst arbeiten (had worked), dann verlieren (lost)</td></tr>
-  </table>
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lor);color:var(--or)">2</span> Aufgabe 9 — Lösungen Workbook</div>
+  <div class="ws-card">
+    <div class="ws-title">✅ Alle Antworten</div>
+    <div class="ws-item"><span class="ws-num">1</span><div>Lefa wanted to go to work after he <span class="ws-ans">had spoken</span> to the police officer. <span class="ws-context">(speak → spoken)</span></div></div>
+    <div class="ws-item"><span class="ws-num">2</span><div>After the police officer <span class="ws-ans">had interviewed</span> Lefa, he allowed him to go. <span class="ws-context">(interview → interviewed)</span></div></div>
+    <div class="ws-item"><span class="ws-num">3</span><div>Piet's team <span class="ws-ans">had left</span> school before the accident happened. <span class="ws-context">(leave → left)</span></div></div>
+    <div class="ws-item"><span class="ws-num">4</span><div>Friends called Piet after they <span class="ws-ans">had read</span> the report. <span class="ws-context">(read → read, gleich!)</span></div></div>
+    <div class="ws-item"><span class="ws-num">5</span><div>After Cebile <span class="ws-ans">had come</span> home, she began to make dinner. <span class="ws-context">(come → come)</span></div></div>
+    <div class="ws-item"><span class="ws-num">6</span><div>Before her mother lost her job, she <span class="ws-ans">had worked</span> in an office. <span class="ws-context">(work → worked)</span></div></div>
+    <div class="ws-item"><span class="ws-num">7</span><div>After apartheid <span class="ws-ans">had finished</span>, all SA citizens could go to the same school. <span class="ws-context">(finish → finished)</span></div></div>
+    <div class="ws-item"><span class="ws-num">8</span><div>Before the girls reached the hostel, they <span class="ws-ans">had drunk</span> all their water. <span class="ws-context">(drink → drunk, unregelmäßig!)</span></div></div>
+  </div>
 </div>`,
-
-3:`<div class="learn-hero fi" style="background:linear-gradient(135deg,#091c12,#09090f);border:1px solid rgba(53,212,152,.18)">
-  <div class="lbadge" style="background:rgba(53,212,152,.12);color:var(--gr)">Thema 4 — G7</div>
-  <h1>🟢 Passive Voice</h1>
+    quiz:[
+      {type:'fill',q:'After apartheid ___ (finish), all SA citizens could go to the same school.',de:'Nachdem Apartheid geendet hatte...',ans:'had finished',ex:'Past Perfect: had + finished'},
+      {type:'fill',q:'Before the girls reached the hostel, they ___ (drink) all their water.',de:'',ans:'had drunk',ex:'Past Perfect: had + drunk (drink→drunk, unregelmäßig!)'},
+      {type:'fill',q:'After Cebile ___ (come) home, she began to make dinner.',de:'',ans:'had come',ex:'Past Perfect: had + come (come→come)'},
+      {type:'fill',q:'Before her mother lost her job, she ___ (work) in an office.',de:'',ans:'had worked',ex:'Past Perfect: had + worked'},
+      {type:'mc',q:'Lefa wanted to go after he ___ to the police.',de:'',opts:['spoke','had spoken','has spoken','speaking'],ans:'had spoken',ex:'Past Perfect: had + spoken (speak→spoken)'},
+      {type:'mc',q:'Past Perfect = ?',de:'',opts:['was/were + 3.Form','have + 3.Form','had + 3.Form','did + Infinitiv'],ans:'had + 3.Form',ex:'Past Perfect: immer had + past participle (3. Form)'},
+      {type:'fill',q:'After the police officer ___ (interview) Lefa, he allowed him to go.',de:'',ans:'had interviewed',ex:'Past Perfect: had + interviewed'},
+      {type:'mc',q:'Piet\'s team ___ school before the accident happened.',de:'',opts:['left','has left','had left','leaves'],ans:'had left',ex:'Zuerst verlassen (had left), dann Unfall (happened)'},
+      {type:'fill',q:'We ___ (not start) our game when our teacher came.',de:'',ans:"hadn't started",ex:"Negativ: hadn't + started"},
+      {type:'mc',q:'Signalwort für Past Perfect?',de:'',opts:['yesterday','now','before','tomorrow'],ans:'before',ex:'after, before, when = Signalwörter für Past Perfect'},
+    ]
+  },
+  {
+    id:3, emoji:'🟢', title:'Passive Voice — Theorie (G7)', sub:'was/were + 3.Form — wie & warum', color:'--gr',
+    learn:`
+<div class="topic-hero fadein" style="background:linear-gradient(135deg,#061510,#07090f);border:1px solid rgba(53,212,152,.2)">
+  <span class="topic-badge" style="background:rgba(53,212,152,.15);color:var(--gr)">Thema 4 — G7</span>
+  <h1>🟢 Passive Voice — Theorie</h1>
   <p>was / were + past participle — Simple Past Passiv</p>
 </div>
-<div class="card fi">
-  <div class="card-title"><span class="badge" style="background:var(--lgr);color:var(--gr)">Regel</span> Was ist das Passiv?</div>
-  <div class="rule g">Im Passiv steht die Sache/Person <strong>mit der etwas passiert</strong> am Anfang — nicht der Täter!</div>
-  <div class="formula" style="border-color:rgba(53,212,152,.28);background:#081612">was (Singular) / were (Plural) + past participle (3. Form)<small>Optional: + by [wer es getan hat]</small></div>
-  <div class="rule y">🇩🇪 Aktiv: "Man baute Straßen." → Passiv: "Roads <strong>were built</strong>." &nbsp;|&nbsp; Aktiv: "Man benannte den Park." → "The park <strong>was named</strong>."</div>
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">1</span> Wann benutzt man das Passiv?</div>
+  <div class="rule g">Das Passiv benutzt man, wenn man <strong>nicht weiß wer etwas getan hat</strong> oder wenn es <strong>nicht wichtig ist wer</strong> es getan hat. Im Vordergrund steht die Sache, nicht die Person!</div>
+  <div class="rule y">🇩🇪 Aktiv: "Man fand Diamanten." → Passiv: "Diamonds <strong>were found</strong>." (Man weiß nicht / es ist egal wer)</div>
 </div>
-<div class="card fi">
-  <div class="card-title"><span class="badge" style="background:var(--lgr);color:var(--gr)">Schritte</span> Aktiv → Passiv</div>
-  <div style="display:flex;flex-direction:column;gap:7px">
-    <div style="padding:10px 13px;background:rgba(79,157,255,.08);border-left:3px solid var(--bl);border-radius:0 10px 10px 0;font-size:13px;font-weight:700"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;background:var(--bl);color:#fff;padding:1px 7px;border-radius:4px;margin-right:7px">1</span>Objekt des Aktivsatzes → Subjekt im Passivsatz</div>
-    <div style="padding:10px 13px;background:rgba(53,212,152,.08);border-left:3px solid var(--gr);border-radius:0 10px 10px 0;font-size:13px;font-weight:700"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;background:var(--gr);color:#062010;padding:1px 7px;border-radius:4px;margin-right:7px">2</span>Verb: <strong>was</strong> (Singular) oder <strong>were</strong> (Plural) + 3. Form</div>
-    <div style="padding:10px 13px;background:rgba(255,146,72,.08);border-left:3px solid var(--or);border-radius:0 10px 10px 0;font-size:13px;font-weight:700"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;background:var(--or);color:#1a0800;padding:1px 7px;border-radius:4px;margin-right:7px">3</span>Subjekt des Aktivsatzes → hinten mit <strong>by</strong> (optional)</div>
-  </div>
-  <div class="rule r" style="margin-top:10px">Aus deinem Arbeitsblatt G7:<br>
-    Aktiv: <strong>South African workers built a new road.</strong><br>
-    Passiv: <strong>A new road was built (by South African workers).</strong><br><br>
-    Aktiv: <strong>Hunters killed elephants for their ivory.</strong><br>
-    Passiv: <strong>Elephants were killed for their ivory (by hunters).</strong>
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">2</span> Formel Simple Past Passiv</div>
+  <div class="formula" style="border-color:rgba(53,212,152,.3);background:#061510">was (Singular) / were (Plural) + past participle (3. Form)<small>Optional: + by [Täter/Agent] — wenn man doch sagen will wer</small></div>
+  <div class="steps">
+    <div class="step"><div class="step-n">1</div><div>Objekt vom Aktivsatz → <strong>Subjekt</strong> im Passivsatz (nach vorne)</div></div>
+    <div class="step"><div class="step-n">2</div><div>Verb: <strong>was</strong> (Singular) oder <strong>were</strong> (Plural) + <strong>3. Form</strong></div></div>
+    <div class="step"><div class="step-n">3</div><div>Subjekt vom Aktivsatz → hinten mit <strong>by</strong> (optional)</div></div>
   </div>
 </div>
-<div class="card fi">
-  <div class="card-title"><span class="badge" style="background:var(--lgr);color:var(--gr)">Wichtig</span> Unregelmäßige Verben 3. Form</div>
-  <table class="t">
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">3</span> Unregelmäßige 3. Formen — AUSWENDIG!</div>
+  <table class="etable">
     <tr><th>Verb</th><th>Simple Past</th><th>3. Form (Passiv)</th></tr>
-    <tr><td class="en">find</td><td class="de">found</td><td class="gr">found → was/were found</td></tr>
-    <tr><td class="en">send</td><td class="de">sent</td><td class="gr">sent → was sent</td></tr>
-    <tr><td class="en">write</td><td class="de">wrote</td><td class="gr">written → was written</td></tr>
-    <tr><td class="en">see</td><td class="de">saw</td><td class="gr">seen → was/were seen</td></tr>
-    <tr><td class="en">build</td><td class="de">built</td><td class="gr">built → was/were built</td></tr>
-    <tr><td class="en">hide</td><td class="de">hid</td><td class="gr">hidden → was/were hidden</td></tr>
-    <tr><td class="en">leave</td><td class="de">left</td><td class="gr">left → was/were left</td></tr>
-    <tr><td class="en">steal</td><td class="de">stole</td><td class="gr">stolen → was/were stolen</td></tr>
-    <tr><td class="en">take</td><td class="de">took</td><td class="gr">taken → was/were taken</td></tr>
-    <tr><td class="en">put</td><td class="de">put</td><td class="gr">put → was/were put</td></tr>
-    <tr><td class="en">win</td><td class="de">won</td><td class="gr">won → was won</td></tr>
-    <tr><td class="en">make</td><td class="de">made</td><td class="gr">made → was made</td></tr>
-    <tr><td class="en">hold</td><td class="de">held</td><td class="gr">held → was held</td></tr>
-    <tr><td class="en">abolish</td><td class="de">abolished</td><td class="gr">abolished → was abolished</td></tr>
-    <tr><td class="en">name</td><td class="de">named</td><td class="gr">named → was named</td></tr>
-    <tr><td class="en">open</td><td class="de">opened</td><td class="gr">opened → was opened</td></tr>
-    <tr><td class="en">plan</td><td class="de">planned</td><td class="gr">planned → was planned</td></tr>
-    <tr><td class="en">arrest</td><td class="de">arrested</td><td class="gr">arrested → was/were arrested</td></tr>
-    <tr><td class="en">interview</td><td class="de">interviewed</td><td class="gr">interviewed → were interviewed</td></tr>
-    <tr><td class="en">repair</td><td class="de">repaired</td><td class="gr">repaired → was repaired</td></tr>
-    <tr><td class="en">keep</td><td class="de">kept</td><td class="gr">kept → was kept</td></tr>
-    <tr><td class="en">buy</td><td class="de">bought</td><td class="gr">bought → was/were bought</td></tr>
-    <tr><td class="en">close</td><td class="de">closed</td><td class="gr">closed → was closed</td></tr>
-  </table>
-</div>
-<div class="card fi">
-  <div class="card-title"><span class="badge" style="background:var(--lgr);color:var(--gr)">Lösungen</span> Arbeitsblatt G7 — Aufgabe 2 (was/were)</div>
-  <table class="t">
-    <tr><th>Satz</th><th>✓ Antwort</th></tr>
-    <tr><td class="en">Their trip to SA ___ planned a year ago.</td><td class="gr">was</td></tr>
-    <tr><td class="en">A taxi ___ ordered at 10:30.</td><td class="gr">was</td></tr>
-    <tr><td class="en">I ___ invited to the party.</td><td class="gr">wasn't</td></tr>
-    <tr><td class="en">A lot of skateboards ___ stolen from the sports shop.</td><td class="gr">were</td></tr>
-    <tr><td class="en">You ___ hurt in the accident.</td><td class="gr">weren't</td></tr>
-    <tr><td class="en">Two men ___ arrested in the street.</td><td class="gr">were</td></tr>
-  </table>
-  <div class="card-title" style="margin-top:12px"><span class="badge" style="background:var(--lgr);color:var(--gr)">Lösungen</span> Aufgabe 3 (complete the sentences)</div>
-  <table class="t">
-    <tr><th>Satz</th><th>✓ Lösung</th></tr>
-    <tr><td class="en">This message ___ (send) to me yesterday.</td><td class="gr">was sent</td></tr>
-    <tr><td class="en">The money ___ (not keep) in a safe place.</td><td class="gr">wasn't kept</td></tr>
-    <tr><td class="en">The winners ___ (interview) after the race.</td><td class="gr">were interviewed</td></tr>
-    <tr><td class="en">Some souvenirs ___ (hide) in a cupboard.</td><td class="gr">were hidden</td></tr>
-    <tr><td class="en">Tony's shoes ___ (not make) in China.</td><td class="gr">weren't made</td></tr>
-    <tr><td class="en">Our car ___ (not repair) right away.</td><td class="gr">wasn't repaired</td></tr>
-  </table>
-  <div class="card-title" style="margin-top:12px"><span class="badge" style="background:var(--lgr);color:var(--gr)">Lösungen</span> Aufgabe 4 (pictures)</div>
-  <table class="t">
-    <tr><th>Satz</th><th>✓ Lösung</th></tr>
-    <tr><td class="en">Photos ___ in the national park.</td><td class="gr">were taken</td></tr>
-    <tr><td class="en">Lions ___ under a tree.</td><td class="gr">were seen</td></tr>
-    <tr><td class="en">Jewellery/Souvenirs ___ by tourists.</td><td class="gr">were bought</td></tr>
-    <tr><td class="en">A (text) message ___ to all the guides.</td><td class="gr">was sent</td></tr>
-    <tr><td class="en">The gate ___ at 6 p.m.</td><td class="gr">was closed</td></tr>
-    <tr><td class="en">Hotels/Houses ___ on the coast.</td><td class="gr">were built</td></tr>
+    <tr><td class="en">find</td><td class="de">found</td><td class="gram">found → were found</td></tr>
+    <tr><td class="en">build</td><td class="de">built</td><td class="gram">built → were built</td></tr>
+    <tr><td class="en">make</td><td class="de">made</td><td class="gram">made → was made</td></tr>
+    <tr><td class="en">hold</td><td class="de">held</td><td class="gram">held → was held</td></tr>
+    <tr><td class="en">win</td><td class="de">won</td><td class="gram">won → was won</td></tr>
+    <tr><td class="en">see</td><td class="de">saw</td><td class="gram">seen → were seen</td></tr>
+    <tr><td class="en">send</td><td class="de">sent</td><td class="gram">sent → was/were sent</td></tr>
+    <tr><td class="en">write</td><td class="de">wrote</td><td class="gram">written → was written</td></tr>
+    <tr><td class="en">steal</td><td class="de">stole</td><td class="gram">stolen → were stolen</td></tr>
+    <tr><td class="en">take</td><td class="de">took</td><td class="gram">taken → were taken</td></tr>
+    <tr><td class="en">hide</td><td class="de">hid</td><td class="gram">hidden → were hidden</td></tr>
+    <tr><td class="en">leave</td><td class="de">left</td><td class="gram">left → was/were left</td></tr>
+    <tr><td class="en">buy</td><td class="de">bought</td><td class="gram">bought → were bought</td></tr>
+    <tr><td class="en">keep</td><td class="de">kept</td><td class="gram">kept → wasn't kept</td></tr>
+    <tr><td class="en">put</td><td class="de">put</td><td class="gram">put → was put</td></tr>
+    <tr><td class="en">invade</td><td class="de">invaded</td><td class="gram">invaded → was invaded</td></tr>
+    <tr><td class="en">abolish</td><td class="de">abolished</td><td class="gram">abolished → was abolished</td></tr>
   </table>
 </div>`,
-
-4:`<div class="learn-hero fi" style="background:linear-gradient(135deg,#140f25,#09090f);border:1px solid rgba(169,138,255,.18)">
-  <div class="lbadge" style="background:rgba(169,138,255,.12);color:var(--pu)">Thema 5 — Finale</div>
-  <h1>🏆 Alles zusammen</h1>
-  <p>Genau wie in der Klassenarbeit am 28.05.!</p>
+    quiz:[
+      {type:'mc',q:'Simple Past Passive = ?',de:'Formel?',opts:['had + 3.Form','was/were + 3.Form','is/are + 3.Form','did + Infinitiv'],ans:'was/were + 3.Form',ex:'Simple Past Passive: was (Singular) / were (Plural) + past participle'},
+      {type:'mc',q:'3. Form von "win"?',de:'',opts:['winned','won','wun','wined'],ans:'won',ex:'win → won → won. Alle drei Formen gleich: win / won / won'},
+      {type:'mc',q:'3. Form von "hide"?',de:'',opts:['hided','hid','hidden','hide'],ans:'hidden',ex:'hide → hid → hidden. Im Passiv: were hidden'},
+      {type:'mc',q:'3. Form von "steal"?',de:'',opts:['stealed','stole','stolen','steal'],ans:'stolen',ex:'steal → stole → stolen. Im Passiv: were stolen'},
+      {type:'mc',q:'3. Form von "take"?',de:'',opts:['took','taked','taken','take'],ans:'taken',ex:'take → took → taken. Im Passiv: were taken'},
+      {type:'mc',q:'3. Form von "write"?',de:'',opts:['wrote','writed','written','write'],ans:'written',ex:'write → wrote → written. Im Passiv: was written'},
+      {type:'mc',q:'3. Form von "send"?',de:'',opts:['sended','sent','sand','sond'],ans:'sent',ex:'send → sent → sent (alle drei gleich!)'},
+      {type:'mc',q:'3. Form von "build"?',de:'',opts:['builded','build','built','bilt'],ans:'built',ex:'build → built → built (alle drei gleich!)'},
+      {type:'mc',q:'3. Form von "see"?',de:'',opts:['saw','seed','seen','see'],ans:'seen',ex:'see → saw → seen. Im Passiv: were seen'},
+      {type:'mc',q:'Was kommt nach "by" im Passivsatz?',de:'',opts:['Das Verb','Der Täter / Agent','Das Objekt','Die Zeit'],ans:'Der Täter / Agent',ex:'"by" + wer es getan hat: "was won by South Africa"'},
+    ]
+  },
+  {
+    id:4, emoji:'📋', title:'Passive Voice — Aufgaben (G7)', sub:'Workbook Aufgaben 1–4 mit Lösungen', color:'--cy',
+    learn:`
+<div class="topic-hero fadein" style="background:linear-gradient(135deg,#041418,#07090f);border:1px solid rgba(34,211,238,.2)">
+  <span class="topic-badge" style="background:rgba(34,211,238,.15);color:var(--cy)">Thema 5 — G7 Aufgaben</span>
+  <h1>📋 Passive — Workbook Lösungen</h1>
+  <p>Alle Aufgaben 1–4 vom Arbeitsblatt Station 2/G7</p>
 </div>
-<div class="card fi">
-  <div class="card-title"><span class="badge" style="background:var(--lpu);color:var(--pu)">Übersicht</span> Die 3 Grammatikthemen auf einen Blick</div>
-  <table class="t">
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lcy);color:var(--cy)">1</span> Aufgabe 1 — Complete the table</div>
+  <div class="ws-card">
+    <div class="ws-title">✅ Verb-Tabelle Lösungen</div>
+    <table class="etable">
+      <tr><th>Infinitiv</th><th>Simple Past</th><th>Past Participle ✓</th></tr>
+      <tr><td class="en">find</td><td class="gram">found</td><td class="right">found</td></tr>
+      <tr><td class="en">send</td><td class="gram">sent</td><td class="right">sent</td></tr>
+      <tr><td class="en">write</td><td class="gram">wrote</td><td class="right">written</td></tr>
+      <tr><td class="en">see</td><td class="gram">saw</td><td class="right">seen</td></tr>
+      <tr><td class="en">build</td><td class="gram">built</td><td class="right">built</td></tr>
+      <tr><td class="en">hide</td><td class="gram">hid</td><td class="right">hidden</td></tr>
+      <tr><td class="en">leave</td><td class="gram">left</td><td class="right">left</td></tr>
+      <tr><td class="en">steal</td><td class="gram">stole</td><td class="right">stolen</td></tr>
+      <tr><td class="en">take</td><td class="gram">took</td><td class="right">taken</td></tr>
+      <tr><td class="en">put</td><td class="gram">put</td><td class="right">put</td></tr>
+    </table>
+  </div>
+</div>
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lcy);color:var(--cy)">2</span> Aufgabe 2 — was / were wählen</div>
+  <div class="ws-card">
+    <div class="ws-title">✅ Richtige Antworten</div>
+    <div class="ws-item"><span class="ws-num">1</span><div>Their trip to South Africa <span class="ws-ans">was</span> planned a year ago. <span class="ws-context">(trip = Singular)</span></div></div>
+    <div class="ws-item"><span class="ws-num">2</span><div>A taxi <span class="ws-ans">was</span> ordered at 10:30. <span class="ws-context">(taxi = Singular)</span></div></div>
+    <div class="ws-item"><span class="ws-num">3</span><div>I <span class="ws-ans">wasn't</span> invited to the party. <span class="ws-context">(I = Singular)</span></div></div>
+    <div class="ws-item"><span class="ws-num">4</span><div>A lot of skateboards <span class="ws-ans">were</span> stolen from the sports shop. <span class="ws-context">(skateboards = Plural)</span></div></div>
+    <div class="ws-item"><span class="ws-num">5</span><div>You <span class="ws-ans">weren't</span> hurt in the accident. <span class="ws-context">(you = Plural-Logik → weren't)</span></div></div>
+    <div class="ws-item"><span class="ws-num">6</span><div>Two men <span class="ws-ans">were</span> arrested in the street. <span class="ws-context">(men = Plural)</span></div></div>
+  </div>
+  <div class="rule y">📌 Regel: Singular → <strong>was</strong> / wasn't &nbsp;|&nbsp; Plural → <strong>were</strong> / weren't</div>
+</div>
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lcy);color:var(--cy)">3</span> Aufgabe 3 — Passiv Sätze vervollständigen</div>
+  <div class="ws-card">
+    <div class="ws-title">✅ Lösungen</div>
+    <div class="ws-item"><span class="ws-num">1</span><div>This message <span class="ws-ans">was sent</span> to me yesterday. <span class="ws-context">(send → sent)</span></div></div>
+    <div class="ws-item"><span class="ws-num">2</span><div>The money <span class="ws-ans">wasn't kept</span> in a safe place. <span class="ws-context">(not keep → keep → kept)</span></div></div>
+    <div class="ws-item"><span class="ws-num">3</span><div>The winners <span class="ws-ans">were interviewed</span> after the race. <span class="ws-context">(interview → interviewed, regelmäßig)</span></div></div>
+    <div class="ws-item"><span class="ws-num">4</span><div>Some souvenirs <span class="ws-ans">were hidden</span> in a cupboard. <span class="ws-context">(hide → hidden)</span></div></div>
+    <div class="ws-item"><span class="ws-num">5</span><div>Tony's shoes <span class="ws-ans">weren't made</span> in China. <span class="ws-context">(not make → make → made)</span></div></div>
+    <div class="ws-item"><span class="ws-num">6</span><div>Our car <span class="ws-ans">wasn't repaired</span> right away. <span class="ws-context">(not repair → repaired)</span></div></div>
+  </div>
+</div>
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lcy);color:var(--cy)">4</span> Aufgabe 4 — Bilder-Sätze</div>
+  <div class="ws-card">
+    <div class="ws-title">✅ Lösungen (Photos-Aufgabe)</div>
+    <div class="ws-item"><span class="ws-num">1</span><div>Photos <span class="ws-ans">were taken</span> in the national park. <span class="ws-context">(take → taken)</span></div></div>
+    <div class="ws-item"><span class="ws-num">2</span><div>Lions <span class="ws-ans">were seen</span> under a tree. <span class="ws-context">(see → seen)</span></div></div>
+    <div class="ws-item"><span class="ws-num">3</span><div>Jewellery/Souvenirs <span class="ws-ans">were bought</span> by tourists. <span class="ws-context">(buy → bought)</span></div></div>
+    <div class="ws-item"><span class="ws-num">4</span><div>A (text) message <span class="ws-ans">was sent</span> to all the guides. <span class="ws-context">(send → sent)</span></div></div>
+    <div class="ws-item"><span class="ws-num">5</span><div>The gate <span class="ws-ans">was closed</span> at 6 p.m. <span class="ws-context">(close → closed)</span></div></div>
+    <div class="ws-item"><span class="ws-num">6</span><div>Hotels/Houses <span class="ws-ans">were built</span> on the coast. <span class="ws-context">(build → built)</span></div></div>
+  </div>
+</div>`,
+    quiz:[
+      {type:'fill',q:'Their trip to South Africa ___ (plan) a year ago.',de:'Singular!',ans:'was planned',ex:'trip = Singular → was + planned'},
+      {type:'fill',q:'A lot of skateboards ___ (steal) from the sports shop.',de:'Plural!',ans:'were stolen',ex:'skateboards = Plural → were + stolen (steal→stolen)'},
+      {type:'fill',q:'This message ___ (send) to me yesterday.',de:'',ans:'was sent',ex:'Singular → was + sent (send→sent)'},
+      {type:'fill',q:'The winners ___ (interview) after the race.',de:'Plural',ans:'were interviewed',ex:'Plural → were + interviewed (regelmäßig)'},
+      {type:'fill',q:"Tony's shoes ___ (not make) in China.",de:'Negativ! Plural.',ans:"weren't made",ex:"Plural Negativ → weren't + made (make→made)"},
+      {type:'fill',q:'Photos ___ (take) in the national park.',de:'Plural',ans:'were taken',ex:'Plural → were + taken (take→taken)'},
+      {type:'fill',q:'Lions ___ (see) under a tree.',de:'Plural',ans:'were seen',ex:'Plural → were + seen (see→seen)'},
+      {type:'fill',q:'The gate ___ (close) at 6 p.m.',de:'Singular',ans:'was closed',ex:'Singular → was + closed (regelmäßig)'},
+      {type:'mc',q:'Two men ___ arrested in the street.',de:'Plural oder Singular?',opts:['was','were','is','had'],ans:'were',ex:'men = Plural → were'},
+      {type:'fill',q:'The money ___ (not keep) in a safe place.',de:'Singular, Negativ',ans:"wasn't kept",ex:"Singular Negativ → wasn't + kept (keep→kept)"},
+    ]
+  },
+  {
+    id:5, emoji:'🏆', title:'MEGA-PROBETEST — Alles gemischt', sub:'G5 + G6 + G7 + Vokabeln — genau wie die Arbeit', color:'--pu',
+    learn:`
+<div class="topic-hero fadein" style="background:linear-gradient(135deg,#100a20,#07090f);border:1px solid rgba(169,138,255,.2)">
+  <span class="topic-badge" style="background:rgba(169,138,255,.15);color:var(--pu)">Thema 6 — FINALE</span>
+  <h1>🏆 MEGA-PROBETEST</h1>
+  <p>Alles gemischt — genau wie in der echten Arbeit!</p>
+</div>
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lpu);color:var(--pu)">★</span> Blitz-Übersicht — das muss sitzen!</div>
+  <table class="etable">
     <tr><th>Grammatik</th><th>Formel</th><th>Beispiel</th></tr>
-    <tr><td style="color:var(--bl);font-weight:800">Present Participle</td><td class="gr">verb + -ing</td><td class="en">I heard him <span class="hl">singing</span>.</td></tr>
-    <tr><td style="color:var(--or);font-weight:800">Past Perfect</td><td class="gr">had + 3. Form</td><td class="en">She <span class="hl">had read</span> the book before...</td></tr>
-    <tr><td style="color:var(--gr);font-weight:800">Passive (Simple Past)</td><td class="gr">was/were + 3. Form</td><td class="en">Diamonds <span class="hl">were found</span> in...</td></tr>
+    <tr><td style="color:var(--bl);font-weight:800">Present Participle (G5)</td><td class="gram">verb + -ing</td><td class="en">I heard him <span class="hl">singing</span>.</td></tr>
+    <tr><td style="color:var(--or);font-weight:800">Past Perfect (G6)</td><td class="gram">had + 3. Form</td><td class="en">She <span class="hl">had read</span> the book before...</td></tr>
+    <tr><td style="color:var(--gr);font-weight:800">Passive Simple Past (G7)</td><td class="gram">was/were + 3. Form</td><td class="en">Diamonds <span class="hl">were found</span>.</td></tr>
   </table>
 </div>
-<div class="card fi">
-  <div class="card-title"><span class="badge" style="background:var(--lrd);color:var(--rd)">Fehler</span> Diese Fehler NICHT machen!</div>
-  <div class="rule r">❌ I heard him <strong>to sing</strong>. &nbsp;→&nbsp; ✅ I heard him <strong>singing</strong>.</div>
-  <div class="rule r">❌ Apartheid <strong>have been</strong> abolished. &nbsp;→&nbsp; ✅ Apartheid <strong>was abolished</strong>.</div>
-  <div class="rule r">❌ Before she came, she <strong>read</strong> the book. &nbsp;→&nbsp; ✅ Before she came, she <strong>had read</strong> the book.</div>
-  <div class="rule r">❌ The cars <strong>were runned</strong>. &nbsp;→&nbsp; ✅ Nur die <strong>korrekte 3. Form</strong> (run → run, nicht runned!)</div>
-  <div class="rule r">❌ A lot of skateboards <strong>was</strong> stolen. &nbsp;→&nbsp; ✅ A lot of skateboards <strong>were</strong> stolen. (Plural!)</div>
-</div>`
-};
-
-// ═══════════════════════════════════════════════
-//  QUIZ DATA
-// ═══════════════════════════════════════════════
-const QUIZZES={
-0:[
-  {type:'mc',q:'When was apartheid abolished in South Africa?',de:'Wann wurde die Apartheid in Südafrika abgeschafft?',opts:['In 1961','In 1991','In 2007','In 2010'],ans:'In 1991',ex:'Apartheid was abolished in 1991 — wichtige Jahreszahl!'},
-  {type:'mc',q:'What is a "gated community"?',de:'',opts:['Ein Nationalpark','Armenviertel','Bewachte Wohnanlage','Ein Krankenhaus'],ans:'Bewachte Wohnanlage',ex:'gated community = bewachte Wohnanlage mit Wächtern (guards)'},
-  {type:'fill',q:'Deutsch → Englisch: "Albtraum"',de:'',ans:'nightmare',ex:'Albtraum = nightmare'},
-  {type:'fill',q:'Deutsch → Englisch: "abschaffen"',de:'',ans:'abolish',ex:'abschaffen = abolish (Apartheid was abolished in 1991)'},
-  {type:'mc',q:'South Africa won the Rugby World Cup in ...',de:'',opts:['2001','2007','2010','2019'],ans:'2007',ex:'The Rugby World Cup was won by South Africa in 2007.'},
-  {type:'fill',q:'Deutsch → Englisch: "Naturschutzgebiet"',de:'',ans:'nature reserve',ex:'Naturschutzgebiet = nature reserve (z.B. Kruger National Park)'},
-  {type:'mc',q:'Deutsch → Englisch: "schuldig"',de:'',opts:['silly','guilty','stupid','suffering'],ans:'guilty',ex:'schuldig = guilty'},
-  {type:'fill',q:'Deutsch → Englisch: "entdecken"',de:'',ans:'discover',ex:'entdecken = discover'},
-  {type:'mc',q:'Deutsch → Englisch: "bewachte Wohnanlage"',de:'',opts:['township','national park','gated community','nature reserve'],ans:'gated community',ex:'bewachte Wohnanlage = gated community'},
-  {type:'fill',q:'Deutsch → Englisch: "Wächter"',de:'',ans:'guard',ex:'Wächter = guard'},
-  {type:'mc',q:'The park ___ named after Paul Kruger.',de:'Wie lautet die Passivform?',opts:['were named','was name','was named','named'],ans:'was named',ex:'Singular → was + named (Passiv!)'},
-  {type:'fill',q:'Deutsch → Englisch: "Wildhüter"',de:'',ans:'ranger',ex:'Wildhüter = ranger'},
-],
-1:[
-  {type:'fill',q:'We watched the cars ___ (come) nearer.',de:'Wir beobachteten die Autos näher kommen.',ans:'coming',ex:'come → e weg → coming'},
-  {type:'fill',q:'I could smell something ___ (burn) in the kitchen.',de:'Ich konnte etwas in der Küche brennen riechen.',ans:'burning',ex:'burn → + ing → burning'},
-  {type:'fill',q:'Did you hear Ryan ___ (sing) in the shower?',de:'Hast du Ryan in der Dusche singen hören?',ans:'singing',ex:'sing → + ing → singing'},
-  {type:'fill',q:'They felt the rain ___ (get) heavier.',de:'Sie spürten wie der Regen stärker wurde.',ans:'getting',ex:'get → t verdoppeln → getting'},
-  {type:'fill',q:'Amy saw two people ___ (carry) large bags.',de:'Amy sah zwei Leute große Taschen tragen.',ans:'carrying',ex:'carry → + ing → carrying'},
-  {type:'fill',q:'We didn\'t notice a girl ___ (hide) in the cupboard.',de:'Wir bemerkten kein Mädchen, das sich im Schrank versteckte.',ans:'hiding',ex:'hide → e weg → hiding'},
-  {type:'mc',q:'Which sentence is correct?',de:'Welcher Satz ist richtig?',opts:['I heard him to sing.','I heard him sing.','I heard him singing.','I heard him sings.'],ans:'I heard him singing.',ex:'Nach Wahrnehmungsverben: verb + -ing'},
-  {type:'mc',q:'"-ing" form of "leave"?',de:'',opts:['leaveing','leaving','leving','leaved'],ans:'leaving',ex:'leave → e weg → leaving'},
-  {type:'mc',q:'"-ing" form of "run"?',de:'',opts:['runing','running','runeing','runned'],ans:'running',ex:'run → n verdoppeln → running'},
-  {type:'fill',q:'Jack listened to his brother ___ (play) the guitar.',de:'',ans:'playing',ex:'play → + ing → playing'},
-  {type:'fill',q:'Kate didn\'t notice all the people ___ (leave) the building.',de:'',ans:'leaving',ex:'leave → e weg → leaving'},
-  {type:'mc',q:'Which is a verb of perception?',de:'Welches ist ein Wahrnehmungsverb?',opts:['go','run','hear','laugh'],ans:'hear',ex:'hear, see, watch, notice, feel, smell, listen to = Wahrnehmungsverben'},
-],
-2:[
-  {type:'fill',q:'After apartheid ___ (finish), all South Africans could go to the same school.',de:'',ans:'had finished',ex:'Past Perfect: had + finished'},
-  {type:'fill',q:'Before the girls reached the hostel, they ___ (drink) all their water.',de:'',ans:'had drunk',ex:'Past Perfect: had + drunk (drink→drunk, unregelmäßig!)'},
-  {type:'fill',q:'After Cebile ___ (come) home from school, she began to make dinner.',de:'',ans:'had come',ex:'Past Perfect: had + come (unregelmäßig!)'},
-  {type:'fill',q:'Before her mother lost her job, she ___ (work) in an office.',de:'',ans:'had worked',ex:'Past Perfect: had + worked'},
-  {type:'mc',q:'Which is correct? "Lefa wanted to go after he ___ to the police."',de:'',opts:['spoke','had spoken','has spoken','speaking'],ans:'had spoken',ex:'Nach "after" + Bezug zu Simple Past → Past Perfect: had spoken'},
-  {type:'mc',q:'Past Perfect = ?',de:'Wie bildet man das Past Perfect?',opts:['was/were + 3. Form','have + 3. Form','had + 3. Form','did + Infinitiv'],ans:'had + 3. Form',ex:'Past Perfect immer: had + past participle (3. Form)'},
-  {type:'fill',q:'After the police officer ___ (interview) Lefa, he allowed him to go.',de:'',ans:'had interviewed',ex:'Past Perfect: had + interviewed'},
-  {type:'mc',q:'Piet\'s team ___ school before the accident happened.',de:'',opts:['left','has left','had left','leaves'],ans:'had left',ex:'Zuerst verlassen (had left), dann der Unfall (happened)'},
-  {type:'fill',q:'We ___ (not start) our game when our teacher came.',de:'',ans:"hadn't started",ex:"Negativ Past Perfect: hadn't + started"},
-  {type:'mc',q:'Welches ist ein Signalwort für Past Perfect?',de:'',opts:['yesterday','now','before','tomorrow'],ans:'before',ex:'after, before, when = die 3 Signalwörter'},
-  {type:'fill',q:'Lots of friends ___ (call) Piet after they ___ (read) the report.',de:'Gib beide Formen ein, getrennt durch Komma.',ans:'called, had read',ex:'Zuerst lesen (had read), dann anrufen (called)'},
-],
-3:[
-  {type:'mc',q:'Simple Past Passive = ?',de:'',opts:['had + 3. Form','was/were + 3. Form','is/are + 3. Form','did + Infinitiv'],ans:'was/were + 3. Form',ex:'Simple Past Passive: was (Singular) / were (Plural) + past participle'},
-  {type:'fill',q:'Diamonds ___ (find) in the 19th century.',de:'Diamanten wurden im 19. Jh. gefunden.',ans:'were found',ex:'Diamonds = Plural → were + found'},
-  {type:'fill',q:'Apartheid ___ (abolish) in 1991.',de:'',ans:'was abolished',ex:'Apartheid = Singular → was + abolished'},
-  {type:'fill',q:'The country ___ (make) a republic in 1961.',de:'',ans:'was made',ex:'Singular → was + made (3. Form von make)'},
-  {type:'fill',q:'The Rugby World Cup ___ (win) by South Africa in 2007.',de:'',ans:'was won',ex:'Singular → was + won'},
-  {type:'fill',q:'Many buildings ___ (build) in the cities.',de:'',ans:'were built',ex:'Plural → were + built'},
-  {type:'mc',q:'"A lot of skateboards ___ stolen from the sports shop."',de:'was oder were?',opts:['was stolen','were stolen','are stolen','is stolen'],ans:'were stolen',ex:'skateboards = Plural → were stolen'},
-  {type:'mc',q:'"A taxi ___ ordered at 10:30."',de:'was oder were?',opts:['were ordered','was order','was ordered','ordered'],ans:'was ordered',ex:'taxi = Singular → was ordered'},
-  {type:'fill',q:'This message ___ (send) to me yesterday.',de:'',ans:'was sent',ex:'Singular → was sent (3. Form von send = sent)'},
-  {type:'fill',q:'The winners ___ (interview) after the race.',de:'',ans:'were interviewed',ex:'Plural → were interviewed'},
-  {type:'fill',q:'Some souvenirs ___ (hide) in a cupboard.',de:'',ans:'were hidden',ex:'Plural → were hidden (3. Form von hide = hidden)'},
-  {type:'fill',q:'Photos ___ (take) in the national park.',de:'',ans:'were taken',ex:'Plural → were taken (3. Form von take = taken)'},
-  {type:'fill',q:'The gate ___ (close) at 6 p.m.',de:'',ans:'was closed',ex:'Singular → was closed'},
-  {type:'fill',q:'Our car ___ (not repair) right away.',de:'',ans:"wasn't repaired",ex:"Negativ Singular → wasn't repaired"},
-],
-4:[
-  {type:'fill',q:'I heard someone ___ (call) my name.',de:'',ans:'calling',ex:'Present Participle nach "heard": calling'},
-  {type:'fill',q:'Apartheid ___ (abolish) in 1991.',de:'',ans:'was abolished',ex:'Passive Simple Past: was abolished'},
-  {type:'fill',q:'Before she came home, she ___ (buy) food.',de:'',ans:'had bought',ex:'Past Perfect: had + bought (buy→bought!)'},
-  {type:'fill',q:'We watched the lions ___ (run) across the field.',de:'',ans:'running',ex:'Present Participle: run → running (n verdoppeln!)'},
-  {type:'fill',q:'The Rugby World Cup ___ (win) by South Africa in 2007.',de:'',ans:'was won',ex:'Passive: was won'},
-  {type:'fill',q:'After he ___ (speak) to the police, he went home.',de:'',ans:'had spoken',ex:'Past Perfect: had spoken (speak→spoken!)'},
-  {type:'mc',q:'Which sentence is correct?',de:'',opts:['I saw him to run.','I saw him ran.','I saw him running.','I saw him runs.'],ans:'I saw him running.',ex:'saw + running (Present Participle)'},
-  {type:'mc',q:'"They discovered very old rock art." → Passive?',de:'',opts:['Very old rock art were discovered.','Very old rock art was discovered.','Very old rock art discovered.','Very old rock art had discovered.'],ans:'Very old rock art was discovered.',ex:'rock art = Singular → was discovered'},
-  {type:'fill',q:'Deutsch → Englisch: "Rassentrennung"',de:'',ans:'apartheid',ex:'Rassentrennung = apartheid (auch: racial segregation)'},
-  {type:'mc',q:'Before Sizwe\'s family moved to Durban, they ___ in a township.',de:'',opts:['lived','had lived','have lived','were living'],ans:'had lived',ex:'Zuerst wohnen (had lived), dann umziehen (moved)'},
-  {type:'fill',q:'The money ___ (not keep) in a safe place.',de:'',ans:"wasn't kept",ex:"Negativ Singular: wasn't + kept (3. Form von keep)"},
-  {type:'mc',q:'Past Perfect negativ?',de:'',opts:['wasn\'t + 3. Form','hadn\'t + 3. Form','didn\'t + Infinitiv','not had + 3. Form'],ans:"hadn't + 3. Form",ex:"Negativ Past Perfect: hadn't + past participle"},
-]
-};
-
-// ═══════════════════════════════════════════════
-//  LERNPLAN
-// ═══════════════════════════════════════════════
-function calcPlan(){
-  const now=Date.now();
-  const diff=DEADLINE-now;
-  const hoursLeft=diff/3600000;
-  const doneCount=TOPICS.filter(t=>isDone(t.id)).length;
-  const remaining=TOPICS.length-doneCount;
-  if(remaining===0) return null;
-  const hPerTopic=hoursLeft/remaining;
-  return {hoursLeft:Math.round(hoursLeft),remaining,hPerTopic:Math.round(hPerTopic*10)/10};
-}
-
-// ═══════════════════════════════════════════════
-//  BUILD HOME
-// ═══════════════════════════════════════════════
-function buildHome(){
-  const done=TOPICS.filter(t=>isDone(t.id)).length;
-  const plan=calcPlan();
-  let planHTML='';
-  if(plan&&plan.remaining>0){
-    planHTML=`<div class="plan">
-      <div class="plan-title">📅 Dein Lernplan bis 28.05.</div>
-      <div class="plan-items">
-        ${TOPICS.filter(t=>!isDone(t.id)).map(t=>`
-        <div class="plan-item">
-          <div class="pi-dot" style="background:var(${t.col})"></div>
-          <span>${t.ico} ${t.title}</span>
-          <span class="pi-time">~${plan.hPerTopic<1?Math.round(plan.hPerTopic*60)+'min':Math.round(plan.hPerTopic)+'h'} einplanen</span>
-        </div>`).join('')}
-      </div>
-    </div>`;
+<div class="lcard">
+  <div class="lcard-title"><span style="background:var(--lpu);color:var(--pu)">★</span> Typische Fehler — diese NICHT machen!</div>
+  <div class="rule r">❌ I heard him <span style="text-decoration:line-through">to sing</span> → ✅ I heard him <strong>singing</strong>.</div>
+  <div class="rule r">❌ Apartheid <span style="text-decoration:line-through">have been abolished</span> → ✅ Apartheid <strong>was abolished</strong>.</div>
+  <div class="rule r">❌ Before she came, she <span style="text-decoration:line-through">read</span> the book → ✅ she <strong>had read</strong> the book.</div>
+  <div class="rule r">❌ The cars <span style="text-decoration:line-through">were runned</span> → ✅ Unregelmäßige Verben prüfen!</div>
+  <div class="rule r">❌ The message <span style="text-decoration:line-through">were sent</span> (Singular!) → ✅ The message <strong>was sent</strong>.</div>
+</div>`,
+    quiz:[
+      {type:'fill',q:'I heard someone ___ (call) my name.',de:'Present Participle!',ans:'calling',ex:'call + ing = calling'},
+      {type:'fill',q:'Apartheid ___ (abolish) in 1991.',de:'Passive!',ans:'was abolished',ex:'Passive: was + abolished (Singular)'},
+      {type:'fill',q:'Before she came home, she ___ (buy) food.',de:'Past Perfect!',ans:'had bought',ex:'Past Perfect: had + bought (buy→bought)'},
+      {type:'fill',q:'We watched the lions ___ (run) across the field.',de:'Present Participle!',ans:'running',ex:'run → n verdoppeln → running'},
+      {type:'fill',q:'The Rugby World Cup ___ (win) by South Africa in 2007.',de:'Passive!',ans:'was won',ex:'Passive Singular: was + won'},
+      {type:'fill',q:'After he ___ (speak) to the police, he went home.',de:'Past Perfect!',ans:'had spoken',ex:'Past Perfect: had + spoken (speak→spoken)'},
+      {type:'fill',q:'Some souvenirs ___ (hide) in a cupboard.',de:'Passive Plural!',ans:'were hidden',ex:'Plural Passive: were + hidden'},
+      {type:'mc',q:'Which uses Present Participle correctly?',de:'',opts:['I saw him to run.','I saw him ran.','I saw him running.','I saw him runs.'],ans:'I saw him running.',ex:'saw → Present Participle: running'},
+      {type:'mc',q:'Before Sizwe\'s family moved to Durban, they ___ in a township.',de:'',opts:['lived','had lived','have lived','were living'],ans:'had lived',ex:'Zuerst lebten sie (had lived), dann zogen sie um (moved)'},
+      {type:'fill',q:'Deutsch → Englisch: "Rassentrennung"',de:'',ans:'apartheid',ex:'Rassentrennung = apartheid (oder: racial segregation)'},
+      {type:'fill',q:'A taxi ___ (order) at 10:30.',de:'Passive Singular',ans:'was ordered',ex:'Singular → was + ordered (regelmäßig)'},
+      {type:'mc',q:'"They discovered very old rock art." → Passive?',de:'',opts:['Very old rock art were discovered.','Very old rock art was discovered.','Very old rock art discovered.','Very old rock art had been discovered.'],ans:'Very old rock art was discovered.',ex:'rock art = Singular → was discovered'},
+    ]
   }
+];
 
-  document.getElementById('home-body').innerHTML=`
-    <div class="home-hero fi">
-      <div class="flag">🌍</div>
-      <h1>Englisch Unit 3<br><em>Around South Africa</em></h1>
-      <p>Lerne jedes Thema durch — du kommst erst weiter,<br>wenn du <strong>mindestens 80%</strong> richtig hast!</p>
-      <div class="stats-row">
-        <div class="stat"><div class="stat-n" style="color:var(--gr)">${done}/5</div><div class="stat-l">Themen fertig</div></div>
-        <div class="stat"><div class="stat-n" style="color:var(--ye)">${S.streak}</div><div class="stat-l">Streak 🔥</div></div>
-        <div class="stat"><div class="stat-n" style="color:var(--pu)">${S.pts}</div><div class="stat-l">Punkte ⭐</div></div>
-      </div>
-    </div>
-    ${planHTML}
-    <div class="tlist">
-      ${TOPICS.map(t=>{
-        const d=isDone(t.id);
-        const locked=!isUnlocked(t.id);
-        const m=getMastery(t.id);
-        const tagTxt=d?'✓ Fertig':locked?'🔒 Gesperrt':m.tries>0?'↺ Wiederholen':'▶ Starten';
-        const tagCls=d?'done':locked?'locked':m.tries>0?'retry':'go';
-        return`<div class="titem ${d?'done':locked?'locked':m.tries>0?'active':''}" onclick="${locked?"showToast('🔒 Schließe erst das vorherige Thema ab!')":``goTopic(${t.id})``}">
-          <div class="titem-ico">${t.ico}</div>
-          <div class="titem-body">
-            <div class="titem-title">${t.title}</div>
-            <div class="titem-sub">${t.sub}</div>
-            <div class="titem-bar"><div class="titem-bar-fill" style="width:${d?100:0}%;background:var(${t.col})"></div></div>
-          </div>
-          <div class="titem-tag ${tagCls}">${tagTxt}</div>
-        </div>`;
-      }).join('')}
+// ─────────────────────────────────────────
+// MASTERY
+// ─────────────────────────────────────────
+function getMastery(id){const d=JSON.parse(localStorage.getItem('sa26v2_m')||'{}');return d[id]||{attempts:0,passed:false};}
+function setMastery(id,passed){const d=JSON.parse(localStorage.getItem('sa26v2_m')||'{}');if(!d[id])d[id]={attempts:0,passed:false};d[id].attempts++;if(passed)d[id].passed=true;localStorage.setItem('sa26v2_m',JSON.stringify(d));}
+function isUnlocked(id){if(id===0)return true;return getMastery(id-1).passed;}
+function isPassed(id){return getMastery(id).passed;}
+
+// ─────────────────────────────────────────
+// HOME
+// ─────────────────────────────────────────
+function buildHome(){
+  const done=TOPICS.filter(t=>isPassed(t.id)).length;
+  document.getElementById('hs-done').textContent=done+'/6';
+  document.getElementById('hs-streak').textContent=state.streak;
+  document.getElementById('hs-pts').textContent=state.pts;
+  document.getElementById('ov-grid').innerHTML=TOPICS.map(t=>{
+    const passed=isPassed(t.id),locked=!isUnlocked(t.id);
+    const cls=passed?'done':locked?'locked':'';
+    return `<div class="ov-item ${cls}" onclick="${locked?'':``goTopic(${t.id})``}">
+      <div class="ov-emoji">${t.emoji}</div>
+      <div class="ov-name">${t.title.split(' — ')[0].substring(0,12)}</div>
     </div>`;
-
-  buildPills();
-}
-
-function buildPills(){
-  document.getElementById('pills').innerHTML=TOPICS.map(t=>{
-    const d=isDone(t.id);
-    const locked=!isUnlocked(t.id);
-    const cls=d?'done':locked?'locked':'';
-    return`<div class="pill ${cls}" onclick="${locked?'':``goTopic(${t.id})``}">
-      <div class="pill-dot"></div>${t.ico} ${t.title.split(' (')[0]}${d?' ✓':''}
+  }).join('');
+  document.getElementById('topic-list').innerHTML=TOPICS.map(t=>{
+    const passed=isPassed(t.id),locked=!isUnlocked(t.id),m=getMastery(t.id);
+    const stxt=passed?'✓ Fertig':locked?'🔒 Gesperrt':m.attempts>0?'Wiederholen':'Starten';
+    const scls=passed?'done':locked?'locked':m.attempts>0?'active':'todo';
+    return `<div class="titem ${passed?'done':locked?'locked':m.attempts>0?'active':''}" onclick="${locked?'showLocked()':``goTopic(${t.id})``}">
+      <div class="titem-emoji">${t.emoji}</div>
+      <div class="titem-body">
+        <div class="titem-title">${t.title}</div>
+        <div class="titem-sub">${t.sub}</div>
+      </div>
+      <div class="titem-right">
+        <div class="titem-status ${scls}">${stxt}</div>
+        ${m.attempts>0&&!passed?`<div style="font-size:9px;color:var(--mu);margin-top:3px;font-weight:700">${m.attempts}x versucht</div>`:''}
+      </div>
     </div>`;
   }).join('');
 }
+function showLocked(){showToast('🔒 Erst das vorherige Thema bestehen!');}
 
-// ═══════════════════════════════════════════════
-//  TOPIC FLOW
-// ═══════════════════════════════════════════════
-let CUR=null;
-let QS={pool:[],idx:0,correct:0,wrong:[]};
-let QT=null;
+// ─────────────────────────────────────────
+// TOPIC FLOW
+// ─────────────────────────────────────────
+let currentTopic=null;
+let quizState={pool:[],idx:0,correct:0,wrong:[],mode:'learn'};
 
 function goTopic(id){
-  CUR=TOPICS[id];
-  showSc('sc-learn');
-  navHL('');
-  document.getElementById('learn-body').innerHTML=LEARN[id]+
-    `<button class="btn-main blue fi" style="margin-top:4px" onclick="startQuiz(${id})">
-      Quiz starten — ${QUIZZES[id].length} Fragen ➜
+  currentTopic=TOPICS[id];
+  showScreen('sc-learn');
+  document.getElementById('learn-content').innerHTML=currentTopic.learn+
+    `<button class="next-btn" style="width:100%;margin-top:14px;justify-content:center" onclick="startQuiz(${id})">
+      Quiz starten — ${currentTopic.quiz.length} Fragen ➜
     </button>`;
+  navHighlight('');
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function startQuiz(id){
-  CUR=TOPICS[id];
-  QS={pool:shuf([...QUIZZES[id]]),idx:0,correct:0,wrong:[]};
-  showSc('sc-quiz');
-  renderQ();
+  currentTopic=TOPICS[id];
+  quizState={pool:shuffle([...currentTopic.quiz]),idx:0,correct:0,wrong:[],mode:'quiz'};
+  showScreen('sc-quiz');
+  renderQuestion();
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function renderQ(){
-  const q=QS.pool[QS.idx];
-  const total=QS.pool.length;
-  const pct=Math.round((QS.idx/total)*100);
-
-  let inputHTML='';
+function renderQuestion(){
+  const q=quizState.pool[quizState.idx];
+  const total=quizState.pool.length,idx=quizState.idx;
+  const pct=Math.round((idx/total)*100);
+  let qHTML='';
   if(q.type==='mc'){
-    inputHTML=`<div class="opts">${q.opts.map(o=>`<button class="opt" onclick="doMC(this,'${esc(o)}','${esc(q.ans)}','${esc(q.ex)}')">${o}</button>`).join('')}</div>`;
+    qHTML=`<div class="opts">${q.opts.map(o=>`<button class="opt" onclick="answerMC(this,'${esc(o)}','${esc(q.ans)}','${esc(q.ex)}')">${o}</button>`).join('')}</div>`;
   } else {
-    inputHTML=`<input class="fill-inp" id="fi" placeholder="Antwort eingeben..." autocomplete="off" autocorrect="off" spellcheck="false"
-      onkeydown="if(event.key==='Enter')doFill('${esc(q.ans)}','${esc(q.ex)}')">
-    <button class="chk-btn" onclick="doFill('${esc(q.ans)}','${esc(q.ex)}')">Prüfen ✓</button>`;
+    qHTML=`<input class="fill-inp" id="fill-inp" placeholder="Antwort eingeben..." autocomplete="off" onkeydown="if(event.key==='Enter')checkFill('${esc(q.ans)}','${esc(q.ex)}')">
+    <button class="chk-btn" onclick="checkFill('${esc(q.ans)}','${esc(q.ex)}')">Prüfen ✓</button>`;
   }
-
-  document.getElementById('quiz-body').innerHTML=`
-    <div class="qwrap fi">
-      <div class="qhead">
-        <div class="qtitle">${CUR.ico} ${CUR.title}</div>
-        <div class="qcount">${QS.idx+1}/${total}</div>
+  document.getElementById('quiz-content').innerHTML=`
+    <div class="quiz-wrap fadein">
+      <div class="quiz-header">
+        <div class="quiz-title">${currentTopic.emoji} ${currentTopic.title.split(' — ')[0]}</div>
+        <div class="quiz-counter">${idx+1} / ${total}</div>
       </div>
-      <div class="qbar"><div class="qbar-fill" style="width:${pct}%"></div></div>
-      <div class="qtext">${q.q}</div>
-      ${q.de?`<div class="qde">🇩🇪 ${q.de}</div>`:''}
-      ${inputHTML}
-      <div class="qfb" id="qfb"></div>
-      <div class="qex" id="qex">💡 ${q.ex}</div>
+      <div class="qprog"><div class="qprog-fill" style="width:${pct}%"></div></div>
+      <div class="q-text">${q.q}</div>
+      ${q.de?`<div class="q-de">🇩🇪 ${q.de}</div>`:''}
+      ${qHTML}
+      <div class="q-feedback" id="qfb"></div>
+      <div class="q-explain" id="qex">💡 ${q.ex}</div>
     </div>`;
 }
 
-function doMC(btn,chosen,correct,explain){
+function answerMC(btn,chosen,correct,explain){
   document.querySelectorAll('.opt').forEach(b=>b.disabled=true);
   const ok=chosen===correct;
   btn.classList.add(ok?'ok':'no');
-  if(!ok) document.querySelectorAll('.opt').forEach(b=>{if(b.textContent.trim()===correct)b.classList.add('ok');});
+  if(!ok)document.querySelectorAll('.opt').forEach(b=>{if(b.textContent.trim()===correct)b.classList.add('ok');});
   document.getElementById('qfb').textContent=ok?'✅ Richtig!':'❌ Falsch!';
-  document.getElementById('qfb').className='qfb '+(ok?'ok':'no');
+  document.getElementById('qfb').className='q-feedback '+(ok?'ok':'no');
   document.getElementById('qex').classList.add('show');
-  handleAns(ok);
+  handleAnswer(ok);
 }
 
-function doFill(correct,explain){
-  const inp=document.getElementById('fi');
+function checkFill(correct,explain){
+  const inp=document.getElementById('fill-inp');
   if(!inp)return;
   inp.disabled=true;
   const val=inp.value.trim().toLowerCase().replace(/['']/g,"'");
@@ -766,234 +722,238 @@ function doFill(correct,explain){
   const ok=val===cor||val===cor.replace(/'/g,"'");
   inp.classList.add(ok?'ok':'no');
   document.getElementById('qfb').textContent=ok?'✅ Richtig!':'❌ Falsch! Richtig: '+correct;
-  document.getElementById('qfb').className='qfb '+(ok?'ok':'no');
+  document.getElementById('qfb').className='q-feedback '+(ok?'ok':'no');
+  document.querySelector('.chk-btn').disabled=true;
   document.getElementById('qex').classList.add('show');
-  if(document.querySelector('.chk-btn')) document.querySelector('.chk-btn').disabled=true;
-  handleAns(ok);
+  handleAnswer(ok);
 }
 
-function handleAns(ok){
-  if(ok){QS.correct++;S.streak++;S.pts+=10;}
-  else{S.streak=0;QS.wrong.push(QS.pool[QS.idx]);}
-  saveS();
-  clearTimeout(QT);
-  QT=setTimeout(()=>{
-    QS.idx++;
-    if(QS.idx>=QS.pool.length) showResult();
-    else{renderQ();window.scrollTo({top:0,behavior:'smooth'});}
+let nextT=null;
+function handleAnswer(ok){
+  if(ok){quizState.correct++;state.streak++;state.pts+=10;}
+  else{state.streak=0;quizState.wrong.push(quizState.pool[quizState.idx]);}
+  save();
+  document.getElementById('hs-streak').textContent=state.streak;
+  document.getElementById('hs-pts').textContent=state.pts;
+  clearTimeout(nextT);
+  nextT=setTimeout(()=>{
+    quizState.idx++;
+    if(quizState.idx>=quizState.pool.length)showResult();
+    else{renderQuestion();window.scrollTo({top:0,behavior:'smooth'});}
   },ok?1500:2800);
 }
 
 function showResult(){
-  const total=QS.pool.length;
-  const pct=Math.round((QS.correct/total)*100);
-  const passed=pct>=80;
-  setMastery(CUR.id,passed);
+  const total=quizState.pool.length,correct=quizState.correct;
+  const pct=Math.round((correct/total)*100),passed=pct>=80;
+  setMastery(currentTopic.id,passed);
   buildHome();
-  const allDone=TOPICS.every(t=>isDone(t.id));
-
-  const wrongHTML=QS.wrong.length?`<div class="wrong-list">
-    <div style="font-size:10px;font-weight:800;color:var(--mu);text-transform:uppercase;letter-spacing:.05em;margin-bottom:7px">Falsch beantwortet:</div>
-    ${QS.wrong.map(w=>`<div>• ${w.q}</div>`).join('')}
-  </div>`:'';
-
+  const allDone=TOPICS.every(t=>isPassed(t.id));
+  let html='';
   if(passed){
-    const nextId=CUR.id+1;
-    document.getElementById('quiz-body').innerHTML=`<div class="gate pass fi">
-      <div class="big">${pct===100?'🏆':pct>=90?'🌟':'✅'}</div>
+    html=`<div class="gate fadein">
+      <div style="font-size:48px;margin-bottom:8px">${pct===100?'🏆':pct>=90?'🌟':'✅'}</div>
       <h2>${pct}% — Bestanden!</h2>
-      <p>${QS.correct}/${total} richtig. ${pct===100?'Perfekt!':pct>=90?'Ausgezeichnet!':'Gut gemacht!'}<br>${allDone?'Du hast ALLE Themen abgeschlossen!':'Nächstes Thema ist jetzt freigeschaltet!'}</p>
+      <p>${correct} von ${total} richtig. ${pct===100?'PERFEKT! Absolut top!':pct>=90?'Ausgezeichnet!':'Gut gemacht!'}<br>${allDone?'ALLE Themen durch! Du bist ready für die Arbeit!':'Nächstes Thema freigeschaltet!'}</p>
       ${allDone
-        ?`<button class="btn-main green" onclick="showSc('sc-done');navHL('')">🏆 Zur Siegerehrung!</button>`
-        :`<button class="btn-main green" onclick="goTopic(${nextId})">Weiter → Thema ${nextId+1} ➜</button>`}
-      <button class="btn-sec" onclick="startQuiz(${CUR.id})">🔄 Nochmal üben</button>
+        ?`<button class="next-btn" onclick="showScreen('sc-alldone')">🏆 Siegerehrung!</button>`
+        :`<button class="next-btn" onclick="goTopic(${currentTopic.id+1})">Weiter zu Thema ${currentTopic.id+2} ➜</button>`}
+      <br><button class="retry-btn" onclick="startQuiz(${currentTopic.id})">🔄 Nochmal (zur Sicherheit)</button>
     </div>`;
   } else {
     const needed=Math.ceil(total*0.8);
-    document.getElementById('quiz-body').innerHTML=`<div class="gate fail fi">
-      <div class="big">😤</div>
+    html=`<div class="fail-gate fadein">
+      <div style="font-size:48px;margin-bottom:8px">😤</div>
       <h2>${pct}% — Noch nicht bestanden</h2>
-      <p>Du brauchst <strong>mindestens 80%</strong> (${needed}/${total} richtig).<br>Du hattest ${QS.correct}/${total}. Lies nochmal durch und probier es dann wieder!</p>
-      ${wrongHTML}
-      <button class="btn-main orange" onclick="goTopic(${CUR.id})">📖 Nochmal durchlesen</button>
-      <button class="btn-sec" onclick="startQuiz(${CUR.id})">🔄 Quiz direkt wiederholen</button>
+      <p>Du brauchst mind. <strong>80%</strong> (${needed}/${total} richtig).<br>Du hattest ${correct}/${total}. Lern nochmal und versuch es wieder!</p>
+      ${quizState.wrong.length?`<div style="margin:10px 0;text-align:left;background:rgba(255,255,255,.03);border-radius:9px;padding:11px">
+        <div style="font-size:10px;font-weight:800;color:var(--mu);margin-bottom:7px;text-transform:uppercase">Falsch beantwortet:</div>
+        ${quizState.wrong.map(w=>`<div style="font-size:11px;font-weight:700;color:var(--rd);padding:2px 0">• ${w.q}</div>`).join('')}
+      </div>`:''}
+      <button class="next-btn" style="background:var(--or)" onclick="goTopic(${currentTopic.id})">📖 Nochmal durchlesen</button>
+      <br><button class="retry-btn" onclick="startQuiz(${currentTopic.id})" style="margin-top:7px">🔄 Direkt Quiz wiederholen</button>
     </div>`;
   }
+  document.getElementById('quiz-content').innerHTML=html;
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// ═══════════════════════════════════════════════
-//  VOCAB SCREEN
-// ═══════════════════════════════════════════════
+// ─────────────────────────────────────────
+// VOCAB SCREEN
+// ─────────────────────────────────────────
 const VOCAB=[
   ['Albtraum','nightmare'],['leiden unter','suffer from'],['Wächter','guard'],
-  ['schuldig','guilty'],['dumm / albern','stupid / silly'],['Gegenteil','opposite'],
+  ['schuldig','guilty'],['blöd / dumm','stupid / silly'],['Gegenteil','opposite'],
   ['bewachte Wohnanlage','gated community'],['Behandlung','treatment'],
   ['Naturschutzgebiet','nature reserve'],['Wildhüter','ranger'],
   ['erschrecken','scare'],['abschaffen','abolish'],['entdecken','discover'],
   ['Unterschiede','differences'],['Armensiedlung','township'],['sozial','social'],
-  ['Grundschule','primary school'],['Spielplatz','playground'],
-  ['Mitschüler','classmate'],['rau / grob','rough'],
-  ['Rassentrennung','apartheid'],['Republik','republic'],
-  ['Diamanten','diamonds'],['Reporter','reporter'],
-  ['Dschungel / Busch','bush'],['Nationalpark','national park'],
+  ['Rassentrennung','apartheid'],['Republik','republic'],['Diamanten','diamonds'],
+  ['Grundschule','primary school'],['Mitschüler','classmate'],['rau / grob','rough'],
 ];
 
 function goVoc(){
-  navHL('nav-v');showSc('sc-voc');
-  document.getElementById('voc-body').innerHTML=`
-    <div style="font-size:14px;font-weight:800;margin-bottom:5px;color:var(--tx)">📖 Vokabeln Unit 3</div>
-    <div style="font-size:11px;color:var(--mu);font-weight:600;margin-bottom:12px">Tippe auf eine Karte → Englisch erscheint!</div>
-    <div class="vgrid">${VOCAB.map((w,i)=>`
-      <div class="vcard" id="vc${i}" onclick="this.classList.toggle('flip')">
-        <div class="vc-de">${w[0]}</div>
-        <div class="vc-en">${w[1]}</div>
-        <div class="vc-tag">Tippen zum Übersetzen</div>
-      </div>`).join('')}</div>
-    <div style="margin-top:16px">
-      <button class="btn-main blue" onclick="startVocQuiz()">🎯 Vokabel-Quiz starten</button>
-    </div>`;
-}
-
-function startVocQuiz(){
-  const pool=shuf([...VOCAB]).slice(0,14);
-  let idx=0,score=0;
+  navHighlight('nav-voc');
+  const cards=shuffle([...VOCAB]);
+  let vidx=0,vscore=0,vtotal=12;
+  const pool=cards.slice(0,vtotal);
   function render(){
-    if(idx>=pool.length){
-      document.getElementById('voc-body').innerHTML=`<div class="gate ${score>=10?'pass':'fail'} fi">
-        <div class="big">${score>=12?'🏆':score>=9?'👍':'💪'}</div>
-        <h2>${score}/${pool.length} richtig</h2>
-        <p>${score>=12?'Vokabeln sitzen perfekt!':score>=9?'Fast! Nochmal üben!':'Noch üben — du schaffst das!'}</p>
-        <button class="btn-main blue" onclick="startVocQuiz()">🔄 Nochmal</button>
-        <button class="btn-sec" onclick="goVoc()">← Karten ansehen</button>
-      </div>`;
-      S.pts+=score*3;saveS();return;
+    if(vidx>=vtotal){
+      document.getElementById('learn-content').innerHTML=`
+        <div style="text-align:center;padding:30px 0" class="fadein">
+          <div style="font-size:48px;margin-bottom:10px">${vscore>=10?'🏆':vscore>=7?'👍':'💪'}</div>
+          <div style="font-size:20px;font-weight:900;color:var(--tx);margin-bottom:5px">${vscore}/${vtotal} richtig</div>
+          <div style="font-size:12px;color:var(--mu);font-weight:600;margin-bottom:18px">${vscore>=10?'Vokabeln sitzen perfekt!':'Noch etwas üben!'}</div>
+          <button class="next-btn" onclick="goVoc()">🔄 Nochmal</button>
+          <br><button class="retry-btn" onclick="goHome()" style="margin-top:9px">← Zurück</button>
+        </div>`;
+      state.pts+=vscore*3;save();return;
     }
-    const w=pool[idx];
-    const wrong=shuf(VOCAB.filter(v=>v[1]!==w[1])).slice(0,3).map(v=>v[1]);
-    const opts=shuf([w[1],...wrong]);
-    document.getElementById('voc-body').innerHTML=`
-      <div class="qwrap fi">
-        <div class="qhead"><div class="qtitle">📖 Vokabel-Quiz</div><div class="qcount">${idx+1}/${pool.length}</div></div>
-        <div class="qbar"><div class="qbar-fill" style="width:${Math.round(idx/pool.length*100)}%"></div></div>
-        <div style="font-size:12px;color:var(--mu);font-weight:700;margin-bottom:8px">🇩🇪 Deutsch → Englisch:</div>
-        <div class="qtext" style="font-size:20px;margin-bottom:14px">${w[0]}</div>
-        <div class="opts">${opts.map(o=>`<button class="opt" onclick="
-          document.querySelectorAll('.opt').forEach(b=>b.disabled=true);
-          var ok='${esc(o)}'==='${esc(w[1])}';
-          this.classList.add(ok?'ok':'no');
-          if(!ok)document.querySelectorAll('.opt').forEach(b=>{if(b.textContent.trim()==='${esc(w[1])}')b.classList.add('ok')});
-          if(ok)score++;
-          setTimeout(()=>{idx++;render();},ok?1200:2000);
-        ">${o}</button>`).join('')}</div>
+    const w=pool[vidx];
+    const wrong=shuffle(VOCAB.filter(v=>v[1]!==w[1])).slice(0,3).map(v=>v[1]);
+    const opts=shuffle([w[1],...wrong]);
+    document.getElementById('learn-content').innerHTML=`
+      <div class="quiz-wrap fadein">
+        <div class="quiz-header"><div class="quiz-title">📖 Vokabel-Quiz</div><div class="quiz-counter">${vidx+1}/${vtotal}</div></div>
+        <div class="qprog"><div class="qprog-fill" style="width:${Math.round(vidx/vtotal*100)}%"></div></div>
+        <div style="font-size:11px;color:var(--mu);font-weight:700;margin-bottom:7px">Deutsch → Englisch:</div>
+        <div class="q-text" style="font-size:18px">${w[0]}</div>
+        <div class="opts" style="margin-top:10px">${opts.map(o=>`<button class="opt" onclick="ansVoc(this,'${esc(o)}','${esc(w[1])}')">${o}</button>`).join('')}</div>
+        <div class="q-feedback" id="vfb"></div>
       </div>`;
   }
-  // close over score/idx
-  let vocIdx=0,vocScore=0;
-  idx=vocIdx;score=vocScore;
-  // fix: rebind
-  function go(){
-    if(idx>=pool.length){
-      document.getElementById('voc-body').innerHTML=`<div class="gate ${score>=10?'pass':'fail'} fi">
-        <div class="big">${score>=12?'🏆':score>=9?'👍':'💪'}</div>
-        <h2>${score}/${pool.length} richtig</h2>
-        <p>${score>=12?'Vokabeln sitzen perfekt!':score>=9?'Fast! Nochmal üben!':'Noch üben!'}</p>
-        <button class="btn-main blue" onclick="startVocQuiz()">🔄 Nochmal</button>
-        <button class="btn-sec" onclick="goVoc()">← Karten ansehen</button>
-      </div>`;
-      S.pts+=score*3;saveS();return;
-    }
-    const w=pool[idx];
-    const wrong=shuf(VOCAB.filter(v=>v[1]!==w[1])).slice(0,3).map(v=>v[1]);
-    const opts=shuf([w[1],...wrong]);
-    document.getElementById('voc-body').innerHTML=`
-      <div class="qwrap fi">
-        <div class="qhead"><div class="qtitle">📖 Vokabel-Quiz</div><div class="qcount">${idx+1}/${pool.length}</div></div>
-        <div class="qbar"><div class="qbar-fill" style="width:${Math.round(idx/pool.length*100)}%"></div></div>
-        <div style="font-size:12px;color:var(--mu);font-weight:700;margin-bottom:8px">🇩🇪 → Englisch:</div>
-        <div class="qtext" style="font-size:18px;margin-bottom:14px">${w[0]}</div>
-        <div class="opts">${opts.map(o=>`<button class="opt" data-ans="${esc(o)}">${o}</button>`).join('')}</div>
-        <div class="qfb" id="vqfb"></div>
-      </div>`;
-    document.querySelectorAll('.opt').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        document.querySelectorAll('.opt').forEach(b=>b.disabled=true);
-        const ok=btn.dataset.ans===w[1];
-        btn.classList.add(ok?'ok':'no');
-        if(!ok)document.querySelectorAll('.opt').forEach(b=>{if(b.dataset.ans===w[1])b.classList.add('ok');});
-        document.getElementById('vqfb').textContent=ok?'✅ Richtig!':'❌ Falsch! → '+w[1];
-        document.getElementById('vqfb').className='qfb '+(ok?'ok':'no');
-        if(ok)score++;
-        setTimeout(()=>{idx++;go();window.scrollTo({top:0,behavior:'smooth'});},ok?1200:2000);
-      });
-    });
-  }
-  go();
+  window.ansVoc=function(btn,chosen,cor){
+    document.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+    const ok=chosen===cor;
+    btn.classList.add(ok?'ok':'no');
+    if(!ok)document.querySelectorAll('.opt').forEach(b=>{if(b.textContent.trim()===cor)b.classList.add('ok');});
+    document.getElementById('vfb').textContent=ok?'✅ Richtig!':'❌ Falsch — '+cor;
+    document.getElementById('vfb').className='q-feedback '+(ok?'ok':'no');
+    if(ok)vscore++;
+    setTimeout(()=>{vidx++;render();window.scrollTo({top:0,behavior:'smooth'});},ok?1200:2000);
+  };
+  showScreen('sc-learn');render();
 }
 
-// ═══════════════════════════════════════════════
-//  GRAMMAR SCREEN
-// ═══════════════════════════════════════════════
+// ─────────────────────────────────────────
+// GRAMMAR OVERVIEW
+// ─────────────────────────────────────────
 function goGram(){
-  navHL('nav-g');showSc('sc-gram');
-  document.getElementById('gram-body').innerHTML=`
-    <div class="fi">
-    <div style="font-size:14px;font-weight:800;margin-bottom:14px">📋 Grammatik-Übersicht</div>
-    <div class="card">
-      <div class="card-title"><span class="badge" style="background:var(--lbl);color:var(--bl)">G5</span> Present Participle — verb + -ing</div>
+  navHighlight('nav-gram');
+  showScreen('sc-learn');
+  document.getElementById('learn-content').innerHTML=`
+    <div class="fadein">
+    <div style="font-size:12px;font-weight:800;margin-bottom:12px;color:var(--mu)">📋 GRAMMATIK-ÜBERSICHT — Alles auf einen Blick</div>
+    <div class="lcard">
+      <div class="lcard-title"><span style="background:var(--lbl);color:var(--bl)">G5</span> Present Participle — verb + -ing</div>
       <div class="rule b">Nach <strong>see, watch, notice, hear, feel, smell, listen to</strong> → <strong>verb + -ing</strong></div>
-      <table class="t">
+      <table class="etable">
         <tr><th>Infinitiv</th><th>-ing Form</th><th>Regel</th></tr>
-        <tr><td class="en">play / burn / sing</td><td class="gr">playing / burning / singing</td><td class="de">+ -ing</td></tr>
-        <tr><td class="en">come / leave / hide / make</td><td class="gr">coming / leaving / hiding / making</td><td class="de">e weg + -ing</td></tr>
-        <tr><td class="en">run / get / swim / put</td><td class="gr">running / getting / swimming / putting</td><td class="de">Konsonant doppeln + -ing</td></tr>
-        <tr><td class="en">carry / study</td><td class="gr">carrying / studying</td><td class="de">normal + -ing</td></tr>
+        <tr><td class="en">play / sing / call</td><td class="gram">playing / singing / calling</td><td class="de">+ ing</td></tr>
+        <tr><td class="en">come / leave / hide</td><td class="gram">coming / leaving / hiding</td><td class="de">e weg + ing</td></tr>
+        <tr><td class="en">run / get / swim</td><td class="gram">running / getting / swimming</td><td class="de">Konsonant doppeln</td></tr>
       </table>
     </div>
-    <div class="card">
-      <div class="card-title"><span class="badge" style="background:var(--lor);color:var(--or)">G6</span> Past Perfect — had + 3. Form</div>
-      <div class="formula" style="border-color:rgba(255,146,72,.3)">had + past participle<small>Negativ: hadn't + pp &nbsp;|&nbsp; Signalwörter: after / before / when</small></div>
-      <table class="t">
-        <tr><th>Positiv</th><th>Negativ</th></tr>
-        <tr><td class="gr">had gone / had spoken / had read</td><td class="gr">hadn't gone / hadn't started</td></tr>
-        <tr><td class="gr">had finished / had come / had drunk</td><td class="gr">hadn't played / hadn't worked</td></tr>
+    <div class="lcard">
+      <div class="lcard-title"><span style="background:var(--lor);color:var(--or)">G6</span> Past Perfect — had + 3. Form</div>
+      <div class="formula" style="border-color:rgba(255,146,72,.3)">had + past participle<small>Negativ: hadn't + pp | Signalwörter: after / before / when</small></div>
+      <div class="rule y">Das ZUERST passierte Ereignis → Past Perfect. Das DANACH passierte → Simple Past.</div>
+    </div>
+    <div class="lcard">
+      <div class="lcard-title"><span style="background:var(--lgr);color:var(--gr)">G7</span> Passive Voice — was/were + 3. Form</div>
+      <div class="formula" style="border-color:rgba(53,212,152,.3);background:#061510">was (Singular) / were (Plural) + 3. Form<small>+ by [Täter] optional</small></div>
+      <div class="rule y">Singular → was / wasn't &nbsp;|&nbsp; Plural → were / weren't</div>
+      <table class="etable">
+        <tr><th>Verb</th><th>3. Form → Passiv</th></tr>
+        <tr><td class="en">find / build / win / make / hold</td><td class="gram">found / built / won / made / held</td></tr>
+        <tr><td class="en">see / send / write / steal / take</td><td class="gram">seen / sent / written / stolen / taken</td></tr>
+        <tr><td class="en">hide / leave / buy / keep / put</td><td class="gram">hidden / left / bought / kept / put</td></tr>
       </table>
     </div>
-    <div class="card">
-      <div class="card-title"><span class="badge" style="background:var(--lgr);color:var(--gr)">G7</span> Passive Voice — was / were + 3. Form</div>
-      <div class="formula" style="border-color:rgba(53,212,152,.28);background:#081612">was (Singular) / were (Plural) + 3. Form<small>Optional: + by [Täter]</small></div>
-      <table class="t">
-        <tr><th>Verb</th><th>Simple Past</th><th>3. Form (Passiv)</th></tr>
-        <tr><td class="en">find / send / write</td><td class="de">found / sent / wrote</td><td class="gr">found / sent / written</td></tr>
-        <tr><td class="en">see / build / hide</td><td class="de">saw / built / hid</td><td class="gr">seen / built / hidden</td></tr>
-        <tr><td class="en">leave / steal / take</td><td class="de">left / stole / took</td><td class="gr">left / stolen / taken</td></tr>
-        <tr><td class="en">win / make / hold</td><td class="de">won / made / held</td><td class="gr">won / made / held</td></tr>
-        <tr><td class="en">abolish / name / open</td><td class="de">abolished / named / opened</td><td class="gr">abolished / named / opened</td></tr>
-        <tr><td class="en">keep / buy / close</td><td class="de">kept / bought / closed</td><td class="gr">kept / bought / closed</td></tr>
-        <tr><td class="en">interview / repair / arrest</td><td class="de">interviewed / repaired / arrested</td><td class="gr">interviewed / repaired / arrested</td></tr>
-      </table>
-    </div>
-    <button class="btn-sec" onclick="goHome()" style="margin-top:4px">← Zurück zum Start</button>
+    <button class="retry-btn" onclick="goHome()" style="width:100%;justify-content:center">← Zurück zum Start</button>
     </div>`;
 }
 
-// ═══════════════════════════════════════════════
-//  HELPERS
-// ═══════════════════════════════════════════════
-function showSc(id){document.querySelectorAll('.sc').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on');}
-function navHL(id){document.querySelectorAll('.bbt').forEach(b=>b.classList.remove('on'));if(id)document.getElementById(id)?.classList.add('on');}
-function goHome(){navHL('nav-h');buildHome();showSc('sc-home');window.scrollTo({top:0,behavior:'smooth'});}
-function shuf(a){const r=[...a];for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];}return r;}
-function esc(s){return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'&quot;');}
-let toastT;
-function showToast(m){const e=document.getElementById('toast');e.textContent=m;e.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>e.classList.remove('show'),2300);}
-function resetAll(){if(confirm('Wirklich alles zurücksetzen?')){['sa26s','sa26_0','sa26_1','sa26_2','sa26_3','sa26_4'].forEach(k=>localStorage.removeItem(k));location.reload();}}
+// ─────────────────────────────────────────
+// WORKBOOK SOLUTIONS SCREEN
+// ─────────────────────────────────────────
+function goWS(){
+  navHighlight('nav-ws');
+  showScreen('sc-learn');
+  document.getElementById('learn-content').innerHTML=`
+    <div class="fadein">
+    <div style="font-size:12px;font-weight:800;margin-bottom:12px;color:var(--mu)">📋 ALLE WORKBOOK-LÖSUNGEN — Station 2 / G7</div>
+    <div class="ws-card">
+      <div class="ws-title">Aufgabe 1 — Verb-Tabelle</div>
+      <table class="etable">
+        <tr><th>Infinitiv</th><th>Simple Past</th><th>Past Participle</th></tr>
+        <tr><td>find</td><td class="gram">found</td><td class="right">found</td></tr>
+        <tr><td>send</td><td class="gram">sent</td><td class="right">sent</td></tr>
+        <tr><td>write</td><td class="gram">wrote</td><td class="right">written</td></tr>
+        <tr><td>see</td><td class="gram">saw</td><td class="right">seen</td></tr>
+        <tr><td>build</td><td class="gram">built</td><td class="right">built</td></tr>
+        <tr><td>hide</td><td class="gram">hid</td><td class="right">hidden</td></tr>
+        <tr><td>leave</td><td class="gram">left</td><td class="right">left</td></tr>
+        <tr><td>steal</td><td class="gram">stole</td><td class="right">stolen</td></tr>
+        <tr><td>take</td><td class="gram">took</td><td class="right">taken</td></tr>
+        <tr><td>put</td><td class="gram">put</td><td class="right">put</td></tr>
+      </table>
+    </div>
+    <div class="ws-card">
+      <div class="ws-title">Aufgabe 2 — was / were</div>
+      <div class="ws-item"><span class="ws-num">1</span><div>...trip <span class="ws-ans">was</span> planned... <span class="ws-context">(Singular)</span></div></div>
+      <div class="ws-item"><span class="ws-num">2</span><div>A taxi <span class="ws-ans">was</span> ordered... <span class="ws-context">(Singular)</span></div></div>
+      <div class="ws-item"><span class="ws-num">3</span><div>I <span class="ws-ans">wasn't</span> invited... <span class="ws-context">(Singular)</span></div></div>
+      <div class="ws-item"><span class="ws-num">4</span><div>...skateboards <span class="ws-ans">were</span> stolen... <span class="ws-context">(Plural)</span></div></div>
+      <div class="ws-item"><span class="ws-num">5</span><div>You <span class="ws-ans">weren't</span> hurt... <span class="ws-context">(Plural-Logik)</span></div></div>
+      <div class="ws-item"><span class="ws-num">6</span><div>Two men <span class="ws-ans">were</span> arrested... <span class="ws-context">(Plural)</span></div></div>
+    </div>
+    <div class="ws-card">
+      <div class="ws-title">Aufgabe 3 — Sätze vervollständigen</div>
+      <div class="ws-item"><span class="ws-num">1</span><div>...message <span class="ws-ans">was sent</span>... <span class="ws-context">(send→sent, Singular)</span></div></div>
+      <div class="ws-item"><span class="ws-num">2</span><div>...money <span class="ws-ans">wasn't kept</span>... <span class="ws-context">(keep→kept, Negativ)</span></div></div>
+      <div class="ws-item"><span class="ws-num">3</span><div>...winners <span class="ws-ans">were interviewed</span>... <span class="ws-context">(regelmäßig, Plural)</span></div></div>
+      <div class="ws-item"><span class="ws-num">4</span><div>...souvenirs <span class="ws-ans">were hidden</span>... <span class="ws-context">(hide→hidden, Plural)</span></div></div>
+      <div class="ws-item"><span class="ws-num">5</span><div>Tony's shoes <span class="ws-ans">weren't made</span>... <span class="ws-context">(make→made, Plural Negativ)</span></div></div>
+      <div class="ws-item"><span class="ws-num">6</span><div>Our car <span class="ws-ans">wasn't repaired</span>... <span class="ws-context">(regelmäßig, Singular Negativ)</span></div></div>
+    </div>
+    <div class="ws-card">
+      <div class="ws-title">Aufgabe 4 — Bilder-Sätze</div>
+      <div class="ws-item"><span class="ws-num">1</span><div>Photos <span class="ws-ans">were taken</span> in the national park. <span class="ws-context">(take→taken)</span></div></div>
+      <div class="ws-item"><span class="ws-num">2</span><div>Lions <span class="ws-ans">were seen</span> under a tree. <span class="ws-context">(see→seen)</span></div></div>
+      <div class="ws-item"><span class="ws-num">3</span><div>Jewellery <span class="ws-ans">were bought</span> by tourists. <span class="ws-context">(buy→bought)</span></div></div>
+      <div class="ws-item"><span class="ws-num">4</span><div>A message <span class="ws-ans">was sent</span> to all the guides. <span class="ws-context">(send→sent)</span></div></div>
+      <div class="ws-item"><span class="ws-num">5</span><div>The gate <span class="ws-ans">was closed</span> at 6 p.m. <span class="ws-context">(close→closed)</span></div></div>
+      <div class="ws-item"><span class="ws-num">6</span><div>Hotels/Houses <span class="ws-ans">were built</span> on the coast. <span class="ws-context">(build→built)</span></div></div>
+    </div>
+    <div class="ws-card">
+      <div class="ws-title">Workbook S.57 Aufgabe 7 — Aktiv → Passiv</div>
+      <div class="ws-item"><span class="ws-num">1</span><div>Diamonds <span class="ws-ans">were found</span> in the 19th century.</div></div>
+      <div class="ws-item"><span class="ws-num">2</span><div>Many buildings <span class="ws-ans">were built</span> in the cities.</div></div>
+      <div class="ws-item"><span class="ws-num">3</span><div>The country <span class="ws-ans">was made</span> a republic in 1961.</div></div>
+      <div class="ws-item"><span class="ws-num">4</span><div>Apartheid <span class="ws-ans">was abolished</span> in 1991.</div></div>
+      <div class="ws-item"><span class="ws-num">5</span><div>The Football World Cup <span class="ws-ans">was held</span> in 2010.</div></div>
+      <div class="ws-item"><span class="ws-num">6</span><div>Black and white people <span class="ws-ans">were separated</span> by the government.</div></div>
+      <div class="ws-item"><span class="ws-num">7</span><div>South Africa <span class="ws-ans">was invaded</span> by the British.</div></div>
+      <div class="ws-item"><span class="ws-num">8</span><div>The Rugby World Cup <span class="ws-ans">was won</span> by South Africa in 2007.</div></div>
+    </div>
+    <button class="retry-btn" onclick="goHome()" style="width:100%;justify-content:center;margin-top:4px">← Zurück zum Start</button>
+    </div>`;
+}
 
-// ═══════════════════════════════════════════════
-//  INIT
-// ═══════════════════════════════════════════════
-loadS();
-buildHome();
+// ─────────────────────────────────────────
+// UTILS
+// ─────────────────────────────────────────
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on');}
+function goHome(){navHighlight('nav-home');buildHome();showScreen('sc-home');window.scrollTo({top:0,behavior:'smooth'});}
+function navHighlight(id){document.querySelectorAll('.bbt').forEach(b=>b.classList.remove('on'));if(id)document.getElementById(id)?.classList.add('on');}
+function shuffle(a){const r=[...a];for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];}return r;}
+function esc(s){return String(s).replace(/'/g,'&#39;').replace(/"/g,'&quot;');}
+let toastT;
+function showToast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),2400);}
+function resetAll(){localStorage.removeItem('sa26v2');localStorage.removeItem('sa26v2_m');location.reload();}
+
+load();buildHome();
 </script>
 </body>
 </html>
